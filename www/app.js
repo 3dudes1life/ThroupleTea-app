@@ -12,6 +12,17 @@
     progress: JSON.parse(localStorage.getItem('tt:progress') || '{}'),
     currentEpisode: null,
     currentVideo: null,
+    watchParty: {
+      available: false,
+      active: false,
+      starting: false,
+      participants: 1,
+      videoId: null,
+      suppressBroadcastUntil: 0,
+      lastPlaybackSentAt: 0,
+      lastPlaybackSignature: '',
+      recentMessages: new Set(),
+    },
     activeTab: localStorage.getItem('tt:tab') || 'home',
     remoteLoaded: false,
     bowlData: { minPlayers: 2, maxPlayers: 9, packs: [] },
@@ -218,9 +229,10 @@
       <div class="short-video-card__body">
         ${newBadge}
         <h3>${escapeHTML(displayTitle(video.title))}</h3>
-        <div class="video-actions">
+        <div class="video-actions three">
           <button class="primary" data-play-video="${escapeHTML(video.id)}">Watch</button>
           <button data-share-video="${escapeHTML(video.id)}">Share</button>
+          <button class="party-button" data-watch-party-video="${escapeHTML(video.id)}"><svg viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM16 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/><path d="M2 21c0-4 2.4-6 6-6s6 2 6 6M13 16c4-1 8 1 8 5"/></svg>Party</button>
         </div>
       </div>
       ${favoriteButton('video', video.id)}
@@ -240,9 +252,10 @@
         ${newBadge}
         <h3>${escapeHTML(displayTitle(video.title))}</h3>
         <p>${escapeHTML(videoLabel(video))}</p>
-        <div class="video-actions">
+        <div class="video-actions three">
           <button class="primary" data-play-video="${escapeHTML(video.id)}">Play</button>
           <button data-share-video="${escapeHTML(video.id)}">Share</button>
+          <button class="party-button" data-watch-party-video="${escapeHTML(video.id)}"><svg viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM16 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/><path d="M2 21c0-4 2.4-6 6-6s6 2 6 6M13 16c4-1 8 1 8 5"/></svg>Party</button>
         </div>
       </div>
       ${favoriteButton('video', video.id)}
@@ -347,9 +360,10 @@
         <span class="video-kind-pill ${isNewVideo(featured) ? 'new' : ''}">${isNewVideo(featured) ? 'LATEST DROP' : videoKind(featured) === 'short' ? 'SHORT' : 'FULL EPISODE'}</span>
         <h2>${escapeHTML(displayTitle(featured.title))}</h2>
         <p>${escapeHTML(videoLabel(featured))}</p>
-        <div class="watch-featured-actions">
+        <div class="watch-featured-actions three">
           <button class="primary" data-play-video="${escapeHTML(featured.id)}">Play</button>
           <button class="secondary" data-share-video="${escapeHTML(featured.id)}">Share</button>
+          <button class="secondary party-button" data-watch-party-video="${escapeHTML(featured.id)}"><svg viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM16 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/><path d="M2 21c0-4 2.4-6 6-6s6 2 6 6M13 16c4-1 8 1 8 5"/></svg>Party</button>
         </div>
       </div>
       ${favoriteButton('video', featured.id)}
@@ -870,6 +884,10 @@
       event.stopPropagation();
       openVideo(button.dataset.playVideo);
     });
+    $$('[data-watch-party-video]').forEach(button => button.onclick = event => {
+      event.stopPropagation();
+      startWatchParty(button.dataset.watchPartyVideo);
+    });
     $$('[data-favorite-type]').forEach(button => button.onclick = () => toggleFavorite(button.dataset.favoriteType, button.dataset.favoriteId));
   }
 
@@ -922,10 +940,48 @@
     miniPlayer.classList.toggle('playing', !audio.paused);
   }
 
-  async function openVideo(id) {
+  function watchPartyPlugin() {
+    return window.Capacitor?.Plugins?.ThroupleWatchParty || null;
+  }
+
+  function updateWatchPartyUI() {
+    const modal = $('#videoPlayerModal');
+    if (!modal) return;
+    modal.classList.toggle('party-active', state.watchParty.active);
+    modal.classList.toggle('party-starting', state.watchParty.starting);
+    $('#watchPartyStatus').hidden = !state.watchParty.active;
+    $('#watchPartyReactions').hidden = !state.watchParty.active;
+
+    const participants = Math.max(1, Number(state.watchParty.participants || 1));
+    $('#watchPartyParticipantCount').textContent = `${participants} ${participants === 1 ? 'person' : 'people'}`;
+
+    const startButton = $('#startCurrentWatchParty');
+    if (state.watchParty.active) {
+      startButton.classList.add('active');
+      startButton.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM16 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/><path d="M2 21c0-4 2.4-6 6-6s6 2 6 6M13 16c4-1 8 1 8 5"/></svg>Watch Party Live';
+    } else if (state.watchParty.starting) {
+      startButton.classList.remove('active');
+      startButton.textContent = 'Opening SharePlay…';
+    } else {
+      startButton.classList.remove('active');
+      startButton.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM16 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/><path d="M2 21c0-4 2.4-6 6-6s6 2 6 6M13 16c4-1 8 1 8 5"/></svg>Start Watch Party';
+    }
+  }
+
+  function postPlayerCommand(command, payload = {}) {
+    const frame = $('#videoPlayerFrame');
+    if (!frame?.contentWindow) return;
+    frame.contentWindow.postMessage({
+      source: 'throupletea-app',
+      command,
+      ...payload
+    }, '*');
+  }
+
+  function openVideo(id, options = {}) {
     const video = state.content.videos.find(item => item.id === id);
     if (!video) return;
-    await haptic('MEDIUM');
+    haptic('MEDIUM');
 
     state.currentVideo = video;
     const modal = $('#videoPlayerModal');
@@ -936,18 +992,25 @@
     playerUrl.searchParams.set('v', video.id);
     playerUrl.searchParams.set('kind', kind);
     playerUrl.searchParams.set('title', displayTitle(video.title));
+    playerUrl.searchParams.set('party', state.watchParty.active || options.party ? '1' : '0');
 
     $('#videoPlayerHeaderTitle').textContent = displayTitle(video.title);
     $('#videoPlayerTitle').textContent = displayTitle(video.title);
-    $('#videoPlayerKind').textContent = kind === 'short' ? 'WATCHING A SHORT' : 'WATCHING A FULL EPISODE';
+    $('#videoPlayerKind').textContent = state.watchParty.active ? 'WATCH PARTY' : kind === 'short' ? 'WATCHING A SHORT' : 'WATCHING A FULL EPISODE';
     $('#videoPlayerMeta').textContent = videoLabel(video);
     stage.classList.toggle('is-short', kind === 'short');
+    stage.classList.remove('loaded');
     frame.src = playerUrl.toString();
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
+    updateWatchPartyUI();
   }
 
   function closeVideoPlayer() {
+    if (state.watchParty.active) {
+      showToast('Leave the Watch Party before closing');
+      return;
+    }
     const modal = $('#videoPlayerModal');
     $('#videoPlayerFrame').src = 'about:blank';
     modal.hidden = true;
@@ -965,6 +1028,222 @@
     const video = state.currentVideo;
     if (!video) return;
     openURL(video.url || `https://www.youtube.com/watch?v=${video.id}`);
+  }
+
+  async function startWatchParty(videoId = state.currentVideo?.id) {
+    const video = state.content.videos.find(item => item.id === videoId);
+    if (!video) return;
+
+    if (!window.Capacitor?.isNativePlatform?.()) {
+      showToast('Watch Party requires the iPhone app');
+      return;
+    }
+
+    const plugin = watchPartyPlugin();
+    if (!plugin) {
+      showToast('Native Watch Party bridge is not loaded');
+      return;
+    }
+
+    if (state.watchParty.active) {
+      if (state.watchParty.videoId === video.id) {
+        showToast('This Watch Party is already live');
+        return;
+      }
+      showToast('Leave the current Watch Party first');
+      return;
+    }
+
+    state.watchParty.starting = true;
+    openVideo(video.id, { party: true });
+    updateWatchPartyUI();
+
+    try {
+      const availability = await plugin.isAvailable();
+      if (!availability?.available) {
+        state.watchParty.starting = false;
+        updateWatchPartyUI();
+        showToast(availability?.reason || 'SharePlay is unavailable');
+        return;
+      }
+
+      await plugin.start({
+        videoId: video.id,
+        title: displayTitle(video.title),
+        kind: videoKind(video),
+        thumbnail: video.thumbnail || ''
+      });
+    } catch (error) {
+      state.watchParty.starting = false;
+      updateWatchPartyUI();
+      showToast('Watch Party was canceled');
+    }
+  }
+
+  async function leaveWatchParty() {
+    const plugin = watchPartyPlugin();
+    try {
+      await plugin?.leave?.();
+    } catch (_) {}
+    state.watchParty.active = false;
+    state.watchParty.starting = false;
+    state.watchParty.participants = 1;
+    state.watchParty.videoId = null;
+    updateWatchPartyUI();
+    showToast('You left the Watch Party');
+  }
+
+  async function sendPartyMessage(message) {
+    if (!state.watchParty.active) return;
+    const plugin = watchPartyPlugin();
+    if (!plugin) return;
+    const payload = {
+      ...message,
+      sentAt: Number(message.sentAt || Date.now()),
+      messageId: message.messageId || `${Date.now()}-${Math.random().toString(16).slice(2)}`
+    };
+    try {
+      await plugin.sendMessage(payload);
+    } catch (_) {}
+  }
+
+  function showPartyReaction(label, remote = false) {
+    const stage = $('#partyReactionStage');
+    if (!stage) return;
+    const bubble = document.createElement('div');
+    bubble.className = `party-reaction-bubble ${remote ? 'remote' : ''}`;
+    bubble.textContent = label;
+    bubble.style.setProperty('--drift', `${Math.round((Math.random() - .5) * 120)}px`);
+    stage.appendChild(bubble);
+    setTimeout(() => bubble.remove(), 2300);
+    haptic(remote ? 'LIGHT' : 'MEDIUM');
+  }
+
+  function sendPartyReaction(label) {
+    if (!state.watchParty.active) return;
+    showPartyReaction(label, false);
+    sendPartyMessage({
+      type: 'reaction',
+      reaction: label
+    });
+  }
+
+  function handlePartyMessage(message) {
+    if (!message || !message.type) return;
+    const messageId = message.messageId;
+    if (messageId && state.watchParty.recentMessages.has(messageId)) return;
+    if (messageId) {
+      state.watchParty.recentMessages.add(messageId);
+      setTimeout(() => state.watchParty.recentMessages.delete(messageId), 12000);
+    }
+
+    if (message.type === 'reaction' && message.reaction) {
+      showPartyReaction(message.reaction, true);
+      return;
+    }
+
+    if (message.type === 'sync-request') {
+      postPlayerCommand('requestState');
+      return;
+    }
+
+    if (message.type === 'playback') {
+      const ageSeconds = Math.max(0, (Date.now() - Number(message.sentAt || Date.now())) / 1000);
+      let position = Number(message.position || 0);
+      if (message.playing) position += Math.min(ageSeconds, 3);
+      state.watchParty.suppressBroadcastUntil = Date.now() + 1200;
+      postPlayerCommand('sync', {
+        action: message.action || (message.playing ? 'play' : 'pause'),
+        position,
+        playing: Boolean(message.playing)
+      });
+    }
+  }
+
+  function handlePlayerBridgeMessage(event) {
+    const data = event.data;
+    if (!data || data.source !== 'throupletea-player') return;
+
+    if (data.event === 'ready') {
+      if (state.watchParty.active) {
+        sendPartyMessage({ type: 'sync-request' });
+      }
+      return;
+    }
+
+    if (data.event !== 'state' || !state.watchParty.active) return;
+    if (Date.now() < state.watchParty.suppressBroadcastUntil) return;
+
+    const position = Number(data.position || 0);
+    const playing = Boolean(data.playing);
+    const action = data.action || (playing ? 'play' : 'pause');
+    const signature = `${action}:${playing}:${Math.round(position)}`;
+    const now = Date.now();
+    const changed = signature !== state.watchParty.lastPlaybackSignature;
+    const heartbeatDue = now - state.watchParty.lastPlaybackSentAt > 2500;
+
+    if (!changed && !heartbeatDue) return;
+    state.watchParty.lastPlaybackSignature = signature;
+    state.watchParty.lastPlaybackSentAt = now;
+
+    sendPartyMessage({
+      type: 'playback',
+      action,
+      position,
+      playing
+    });
+  }
+
+  async function initializeWatchParty() {
+    const plugin = watchPartyPlugin();
+    if (!plugin || !window.Capacitor?.isNativePlatform?.()) {
+      state.watchParty.available = false;
+      return;
+    }
+
+    try {
+      const availability = await plugin.isAvailable();
+      state.watchParty.available = Boolean(availability?.available);
+
+      plugin.addListener('sessionStarted', data => {
+        state.watchParty.active = true;
+        state.watchParty.starting = false;
+        state.watchParty.participants = Number(data.participants || 1);
+        state.watchParty.videoId = data.videoId;
+
+        const video = state.content.videos.find(item => item.id === data.videoId);
+        if (video) openVideo(video.id, { party: true });
+        $('#videoPlayerKind').textContent = 'WATCH PARTY';
+        updateWatchPartyUI();
+        showToast('Watch Party is live');
+      });
+
+      plugin.addListener('participantsChanged', data => {
+        state.watchParty.participants = Number(data.participants || 1);
+        updateWatchPartyUI();
+      });
+
+      plugin.addListener('partyMessage', handlePartyMessage);
+
+      plugin.addListener('sessionEnded', () => {
+        state.watchParty.active = false;
+        state.watchParty.starting = false;
+        state.watchParty.participants = 1;
+        state.watchParty.videoId = null;
+        updateWatchPartyUI();
+        showToast('Watch Party ended');
+      });
+
+      const current = await plugin.getState();
+      if (current?.active) {
+        state.watchParty.active = true;
+        state.watchParty.participants = Number(current.participants || 1);
+        state.watchParty.videoId = current.videoId;
+      }
+      updateWatchPartyUI();
+    } catch (_) {
+      state.watchParty.available = false;
+    }
   }
 
 
@@ -1074,7 +1353,11 @@
     });
     $('#closeVideoPlayer').addEventListener('click', closeVideoPlayer);
     $('#shareCurrentVideo').addEventListener('click', shareCurrentVideo);
+    $('#startCurrentWatchParty').addEventListener('click', () => startWatchParty());
+    $('#leaveWatchParty').addEventListener('click', leaveWatchParty);
+    $$('[data-party-reaction]').forEach(button => button.addEventListener('click', () => sendPartyReaction(button.dataset.partyReaction)));
     $('#youtubeFallbackButton').addEventListener('click', openCurrentVideoOnYouTube);
+    window.addEventListener('message', handlePlayerBridgeMessage);
     $('#videoPlayerFrame').addEventListener('load', () => {
       $('#videoPlayerStage')?.classList.add('loaded');
     });
@@ -1131,6 +1414,7 @@
   if (initialHash) state.activeTab = initialHash;
   bindStaticEvents();
   bindBowlEvents();
+  initializeWatchParty();
   setTab(state.activeTab, false);
   loadBowlInitialData();
   loadInitialData().catch(error => {

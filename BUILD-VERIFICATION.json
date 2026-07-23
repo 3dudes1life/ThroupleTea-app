@@ -1,36 +1,41 @@
 {
-  "version": "2.5.0",
+  "version": "2.6.0",
   "websiteModified": false,
-  "feature": "Digital Bowl of Chaos",
-  "players": {
-    "min": 2,
-    "max": 9
-  },
-  "packCount": 5,
-  "cardCount": 150,
-  "packs": [
-    "Classic Chaos",
-    "Most Likely To",
-    "Would You Rather",
-    "Red Flag or Just Gay?",
-    "Astrology Chaos"
+  "feature": "Throuple Tea Watch Party",
+  "nativeFramework": "Apple Group Activities / SharePlay",
+  "videoTypes": [
+    "Shorts",
+    "Full video episodes"
   ],
-  "features": [
-    "optional player names",
-    "multi-pack selection",
-    "shake or tap draw",
-    "haptics and rattle sound",
-    "automatic turn rotation",
-    "no repeated cards",
-    "draw history",
-    "saved cards",
-    "game summary",
-    "native sharing",
-    "remote pack updates"
+  "synchronized": [
+    "play",
+    "pause",
+    "seek",
+    "position heartbeat"
   ],
+  "reactions": [
+    "Team William",
+    "Team Daniel",
+    "Team Caleb",
+    "Red Flag",
+    "Relatable",
+    "WTF"
+  ],
+  "physicalDeviceTestingRequired": true,
+  "groupActivitiesEntitlementAutomated": true,
   "checks": [
     {
       "name": "app.js syntax",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "SharePlay configurator syntax",
+      "passed": true,
+      "details": "Spreadsheet runtime warmup failed during python startup\nTraceback (most recent call last):\n  File \"/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py\", line 26, in warm_spreadsheet_runtime_on_startup\n  File \"/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/spreadsheet_warmup.py\", line 785, in warm_spreadsheet_runtime\n  File \"/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/spreadsheet_warmup.py\", line 720, in _warm_feature_flows\n  File \"/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/spreadsheet_warmup.py\", line 704, in _warm_collaboration_flows\n  File \"/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/generated/interface/models.py\", line 30820, in hydrate_crdt_from_proto\n  File \"/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/rpc/remote.py\", line 749, in __call__\n  File \"/tmp/tmp.yTcnQsZYiA/artifact_tool_v2-2.8.4/artifact_tool/rpc/client.py\", line 150, in call\nartifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document."
+    },
+    {
+      "name": "Swift parse",
       "passed": true,
       "details": ""
     },

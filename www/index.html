@@ -113,8 +113,24 @@
       <div class="page-title watch-title">
         <span class="eyebrow">FULL EPISODES + DAILY SHORTS</span>
         <h1>Watch the chaos.</h1>
-        <p>Binge the full video podcast, then swipe through the daily clips without leaving the app.</p>
+        <p>Binge alone or launch a Throuple Tea Watch Party and keep every iPhone in sync through SharePlay.</p>
       </div>
+
+      <section class="watch-party-banner">
+        <div class="watch-party-banner__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM16 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/><path d="M2 21c0-4 2.4-6 6-6s6 2 6 6M13 16c4-1 8 1 8 5"/><path d="m10 10 4 2-4 2z"/></svg>
+        </div>
+        <div>
+          <span class="eyebrow">NEW IN UX7</span>
+          <h2>Throuple Tea Watch Party</h2>
+          <p>Invite friends through FaceTime, watch the same episode together, and throw live reactions across everyone’s screen.</p>
+        </div>
+        <div class="watch-party-banner__badges">
+          <span>Synced playback</span>
+          <span>Live reactions</span>
+          <span>SharePlay</span>
+        </div>
+      </section>
 
       <div id="watchFeatured"></div>
 
@@ -454,10 +470,36 @@
       </iframe>
     </div>
 
+    <div id="watchPartyStatus" class="watch-party-status" hidden>
+      <div class="watch-party-status__live">
+        <span class="party-live-dot"></span>
+        <strong>WATCH PARTY LIVE</strong>
+      </div>
+      <span id="watchPartyParticipantCount">1 person</span>
+      <button id="leaveWatchParty" type="button">Leave</button>
+    </div>
+
+    <div id="watchPartyReactions" class="watch-party-reactions" hidden>
+      <button type="button" data-party-reaction="TEAM WILLIAM">Team William</button>
+      <button type="button" data-party-reaction="TEAM DANIEL">Team Daniel</button>
+      <button type="button" data-party-reaction="TEAM CALEB">Team Caleb</button>
+      <button type="button" data-party-reaction="RED FLAG">Red Flag</button>
+      <button type="button" data-party-reaction="RELATABLE">Relatable</button>
+      <button type="button" data-party-reaction="WTF">WTF</button>
+    </div>
+
+    <div id="partyReactionStage" class="party-reaction-stage" aria-hidden="true"></div>
+
     <footer class="app-video-player__footer">
       <strong id="videoPlayerTitle">A Little Throuple Tea</strong>
       <p id="videoPlayerMeta"></p>
-      <button id="youtubeFallbackButton" class="wide-outline-button" type="button">Having trouble? Open on YouTube</button>
+      <div class="video-footer-actions">
+        <button id="startCurrentWatchParty" class="watch-party-start-button" type="button">
+          <svg viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM16 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/><path d="M2 21c0-4 2.4-6 6-6s6 2 6 6M13 16c4-1 8 1 8 5"/></svg>
+          Start Watch Party
+        </button>
+        <button id="youtubeFallbackButton" class="wide-outline-button" type="button">Open on YouTube</button>
+      </div>
     </footer>
   </section>
 

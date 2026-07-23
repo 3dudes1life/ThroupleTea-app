@@ -1,8 +1,8 @@
 {
   "name": "throupletea-app",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "private": true,
-  "description": "Superman UX6 with the Digital Bowl of Chaos for 2\u20139 players.",
+  "description": "Superman UX7 with native Throuple Tea Watch Party powered by SharePlay.",
   "scripts": {
     "ios:add": "npx cap add ios",
     "ios:sync": "npx cap sync ios",
@@ -18,7 +18,8 @@
     "@capacitor/network": "^8.0.0",
     "@capacitor/share": "^8.0.0",
     "@capacitor/splash-screen": "^8.0.0",
-    "@capacitor/status-bar": "^8.0.0"
+    "@capacitor/status-bar": "^8.0.0",
+    "throuple-watch-party": "file:plugins/throuple-watch-party"
   },
   "devDependencies": {
     "@capacitor/cli": "^8.4.2"

@@ -16,5 +16,8 @@ fi
 echo "Syncing the complete app into Xcode..."
 npx cap sync ios
 
+echo "Configuring native SharePlay support..."
+python3 scripts/configure-shareplay-ios.py
+
 echo "Opening Xcode..."
 npx cap open ios

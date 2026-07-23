@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 6
+# A Little Throuple Tea — Superman UX 7
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -148,3 +148,40 @@ The app now includes a complete app-exclusive Bowl of Chaos game.
 The bundled launch contains 150 cards. `live-data/bowl-packs.json` is fetched remotely, so future packs and cards can be added through GitHub without requiring an App Store update.
 
 The Throuple Hotline remains available from Home and More. The center navigation tab is now the Bowl.
+
+
+## UX 7 — Throuple Tea Watch Party
+
+UX7 adds a native iOS SharePlay experience for Shorts and full video episodes.
+
+### Included
+
+- Watch Party buttons on the featured video, Shorts, and full episodes
+- Native SharePlay invitation through FaceTime
+- Group Activities entitlement configured automatically during the build
+- Session joining and participant counts
+- Synchronized play, pause, seek, and periodic playback position
+- Catch-up sync when another participant joins
+- Live floating reactions:
+  - Team William
+  - Team Daniel
+  - Team Caleb
+  - Red Flag
+  - Relatable
+  - WTF
+- Leave-party handling
+- Normal solo playback remains unchanged
+- The hosted YouTube wrapper now uses the YouTube IFrame API for playback control
+
+### Important testing requirements
+
+SharePlay cannot be tested meaningfully in the iOS Simulator. Use two physical iPhones:
+
+1. Both devices need the UX7 build installed.
+2. Sign into FaceTime on both devices.
+3. Start a Watch Party from one phone.
+4. Invite the second phone.
+5. Accept the FaceTime call and SharePlay invitation.
+6. Verify play, pause, seeking, participant count, and reactions.
+
+The build script now runs `scripts/configure-shareplay-ios.py` automatically after Capacitor sync.
