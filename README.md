@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 7.5
+# A Little Throuple Tea — Superman UX 7.6
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -245,3 +245,51 @@ The build script now runs `scripts/configure-shareplay-ios.py` automatically aft
   - tells users to tap Play and then Start Watch Party
 - Watch Party controls remain inside the video player, where they make sense.
 - Includes the UX7.4 Bowl logo crop fix and all previous Bowl, YouTube, and SharePlay work.
+
+
+## UX 7.6 — Superman Stability Pass
+
+No redesign. This release hardens the launch build.
+
+### Bowl
+
+- Correct singular/plural grammar for card, player, and pack counts.
+- Saved Bowl cards now appear in **More → Saved Bowl cards**.
+- Saved cards can be removed from the gallery.
+- Simulator identifies itself and disables Shake to Draw with a clear physical-iPhone note.
+- Physical iPhones retain shake, haptics, pass-the-phone turns, and all five launch packs.
+
+### Listen
+
+- Continue Listening is ordered by the episode played most recently.
+- Listening timestamps persist separately from progress positions.
+- Audio play/pause no longer rebuilds the 75-video Watch page.
+- Progress writes are deduplicated instead of firing repeatedly at five-second marks.
+
+### Watch
+
+- Full episode cards load in batches of 12.
+- Shorts remain swipeable.
+- Failed YouTube thumbnails fall back to official podcast artwork.
+- Watch Party visibly explains that everyone starts from 0:00.
+- The preferred UX7.5 Watch design and SharePlay controls remain unchanged.
+
+### Live data and offline safety
+
+- Website archive, podcast RSS, YouTube full videos, YouTube Shorts, and Atom fallback are isolated.
+- One failed source cannot stop the others from updating.
+- Fresh RSS entries preserve saved website labels, summaries, artwork, and episode-page URLs when the archive is temporarily down.
+- Concurrent refresh requests collapse into one request.
+- Background refreshes use a two-minute cooldown.
+- Manual Refresh remains immediate.
+- Refresh preserves the user’s scroll position.
+- Corrupted local-storage values are discarded safely instead of blanking the app.
+- The build refuses to bundle fewer than five YouTube videos.
+
+### Native/App Store hardening
+
+- SharePlay now merges into `App.entitlements` rather than replacing the file.
+- Future OneSignal/APNs entitlements will be preserved.
+- Direct Capacitor versions are exact rather than floating ranges.
+- `package-lock.json` is retained and no longer deleted during builds.
+- Added the Capacitor Device plugin for reliable Simulator detection.

@@ -14,9 +14,24 @@ if not project.exists():
     sys.exit(1)
 
 entitlements.parent.mkdir(parents=True, exist_ok=True)
+
+# Merge instead of replace. This preserves APNs, associated domains,
+# Sign in with Apple, and any other entitlements added later.
+existing = {}
+if entitlements.exists():
+    try:
+        with entitlements.open("rb") as handle:
+            loaded = plistlib.load(handle)
+            if isinstance(loaded, dict):
+                existing = loaded
+    except Exception as exc:
+        print(f"⚠️ Existing entitlements could not be read: {exc}")
+
+existing["com.apple.developer.group-session"] = True
+
 with entitlements.open("wb") as handle:
     plistlib.dump(
-        {"com.apple.developer.group-session": True},
+        existing,
         handle,
         fmt=plistlib.FMT_XML,
         sort_keys=True,
@@ -24,7 +39,6 @@ with entitlements.open("wb") as handle:
 
 text = project.read_text(encoding="utf-8")
 
-# Add the entitlement path to both App target configurations.
 if "CODE_SIGN_ENTITLEMENTS = App/App.entitlements;" not in text:
     text = text.replace(
         "CODE_SIGN_STYLE = Automatic;",
@@ -32,7 +46,6 @@ if "CODE_SIGN_ENTITLEMENTS = App/App.entitlements;" not in text:
         "\t\t\t\tCODE_SIGN_STYLE = Automatic;"
     )
 
-# Mark Group Activities as an enabled system capability in the target metadata.
 if "com.apple.GroupActivities" not in text:
     target_match = re.search(
         r'(ProvisioningStyle = Automatic;\n)(\s*};\n\s*};\n\s*};)',
@@ -52,5 +65,6 @@ if "com.apple.GroupActivities" not in text:
 
 project.write_text(text, encoding="utf-8")
 
+print("✅ Existing iOS entitlements preserved.")
 print("✅ Group Activities entitlement configured.")
 print("✅ Throuple Tea Watch Party native bridge ready.")

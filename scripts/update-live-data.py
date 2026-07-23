@@ -13,6 +13,7 @@ import re
 import os
 import subprocess
 import sys
+import time
 import urllib.request
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
@@ -26,10 +27,21 @@ EPISODE_ARCHIVE_URL = "https://throupletea.com/episodes/"
 YOUTUBE_FEED_URL = "https://www.youtube.com/feeds/videos.xml?channel_id=UCswzye8bcm8bByqLlW0QaFQ"
 USER_AGENT = "ThroupleTeaAppDataBot/1.0 (+https://throupletea.com)"
 
-def fetch(url: str) -> bytes:
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "*/*"})
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return response.read()
+def fetch(url: str, attempts: int = 3) -> bytes:
+    last_error = None
+    for attempt in range(1, attempts + 1):
+        try:
+            request = urllib.request.Request(
+                url,
+                headers={"User-Agent": USER_AGENT, "Accept": "*/*"},
+            )
+            with urllib.request.urlopen(request, timeout=30) as response:
+                return response.read()
+        except Exception as exc:
+            last_error = exc
+            if attempt < attempts:
+                time.sleep(attempt)
+    raise last_error or RuntimeError(f"Unable to fetch {url}")
 
 def text(node, name: str, namespaces=None) -> str:
     found = node.find(name, namespaces or {})
@@ -117,7 +129,7 @@ def best_archive_match(title: str, cards: list[dict]) -> dict | None:
     score, card = max(scored, default=(0, None), key=lambda pair: pair[0])
     return card if score >= 0.72 else None
 
-def parse_rss(cards: list[dict]) -> list[dict]:
+def _parse_rss_unprotected(cards: list[dict]) -> list[dict]:
     root = ET.fromstring(fetch(RSS_URL))
     channel = root.find("channel")
     ns = {"itunes": "http://www.itunes.com/dtds/podcast-1.0.dtd"}
@@ -149,6 +161,13 @@ def parse_rss(cards: list[dict]) -> list[dict]:
             "episode": int(text(item, "itunes:episode", ns)) if text(item, "itunes:episode", ns).isdigit() else None,
         })
     return result[:60]
+
+def parse_rss(cards: list[dict]) -> list[dict]:
+    try:
+        return _parse_rss_unprotected(cards)
+    except Exception as exc:
+        print(f"Podcast RSS warning: {exc}")
+        return []
 
 def _published_iso(entry: dict) -> str:
     timestamp = entry.get("timestamp") or entry.get("release_timestamp")
@@ -355,24 +374,66 @@ def parse_youtube() -> list[dict]:
     print(f"Loaded {short_count} Shorts and {episode_count} full videos from YouTube.")
     return videos
 
+def _catalog_from_file(path: Path) -> dict:
+    if not path.exists():
+        return {}
+    try:
+        loaded = json.loads(path.read_text(encoding="utf-8"))
+        return loaded if isinstance(loaded, dict) else {}
+    except Exception as exc:
+        print(f"Saved catalog warning for {path}: {exc}")
+        return {}
+
+def _best_existing_catalog() -> dict:
+    catalogs = [_catalog_from_file(OUT), _catalog_from_file(BUNDLED_OUT)]
+    best_episodes = max(
+        (catalog.get("episodes", []) for catalog in catalogs),
+        key=len,
+        default=[],
+    )
+    best_videos = max(
+        (catalog.get("videos", []) for catalog in catalogs),
+        key=len,
+        default=[],
+    )
+    return {
+        "episodes": best_episodes,
+        "videos": best_videos,
+    }
+
+def _merge_episode_metadata(fresh: list[dict], existing: list[dict]) -> list[dict]:
+    if not fresh:
+        return existing
+
+    by_id = {item.get("id"): item for item in existing if item.get("id")}
+    by_title = {
+        normalize(item.get("title", "")): item
+        for item in existing
+        if item.get("title")
+    }
+
+    merged = []
+    for episode in fresh:
+        previous = by_id.get(episode.get("id")) or by_title.get(normalize(episode.get("title", ""))) or {}
+        result = dict(episode)
+        for key in ("label", "summary", "image", "webUrl"):
+            if not result.get(key) and previous.get(key):
+                result[key] = previous[key]
+        merged.append(result)
+    return merged
+
 def main():
+    existing = _best_existing_catalog()
+
+    # Each source is isolated. A temporary outage in one source never prevents
+    # the others from refreshing or the saved catalog from being preserved.
     cards = parse_archive()
-    existing = {}
+    fresh_episodes = parse_rss(cards)
+    fresh_videos = parse_youtube()
 
-    for candidate in (OUT, BUNDLED_OUT):
-        if not candidate.exists():
-            continue
-        try:
-            loaded = json.loads(candidate.read_text(encoding="utf-8"))
-            if len(loaded.get("videos", [])) > len(existing.get("videos", [])):
-                existing = loaded
-        except Exception:
-            pass
+    episodes = _merge_episode_metadata(fresh_episodes, existing.get("episodes", []))
+    videos = fresh_videos
 
-    episodes = parse_rss(cards)
-    videos = parse_youtube()
-
-    # Never replace a healthy catalog with a degraded one-video response.
     existing_videos = existing.get("videos", [])
     if len(videos) < 5 and len(existing_videos) > len(videos):
         print(
@@ -381,12 +442,22 @@ def main():
         )
         videos = existing_videos
 
+    if not episodes:
+        episodes = existing.get("episodes", [])
+    if not videos:
+        videos = existing_videos
+
     payload = {
-        "schemaVersion": 2,
+        "schemaVersion": 3,
         "generatedAt": dt.datetime.now(dt.timezone.utc).isoformat(),
-        "source": "rss+website+youtube-tabs+atom",
-        "episodes": episodes or existing.get("episodes", []),
-        "videos": videos or existing_videos,
+        "source": "resilient-rss+website+youtube-tabs+atom",
+        "sourceStatus": {
+            "websiteArchive": "fresh" if cards else "saved-metadata",
+            "podcastRss": "fresh" if fresh_episodes else "saved",
+            "youtube": "fresh" if fresh_videos else "saved",
+        },
+        "episodes": episodes,
+        "videos": videos,
     }
 
     for destination in (OUT, BUNDLED_OUT):

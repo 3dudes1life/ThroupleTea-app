@@ -4,14 +4,56 @@
 
   const REMOTE_BASE = 'https://raw.githubusercontent.com/3dudes1life/ThroupleTea-app/main/live-data';
   const FALLBACK_IMAGE = './assets/podcast-artwork.jpg';
-  const CONTENT_CACHE_VERSION = 3;
+  const CONTENT_CACHE_VERSION = 4;
   const PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player/';
   const PARTY_PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player-party/';
+  function safeStorageGet(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function safeStorageSet(key, value) {
+    try {
+      localStorage.setItem(key, value);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function safeStorageRemove(key) {
+    try {
+      localStorage.removeItem(key);
+    } catch (_) {}
+  }
+
+  function safeJSON(key, fallback, validate = () => true) {
+    const raw = safeStorageGet(key);
+    if (raw === null || raw === '') return fallback;
+    try {
+      const parsed = JSON.parse(raw);
+      if (!validate(parsed)) throw new Error('Invalid stored value');
+      return parsed;
+    } catch (_) {
+      safeStorageRemove(key);
+      return fallback;
+    }
+  }
+
+  const isArrayValue = value => Array.isArray(value);
+  const isObjectValue = value => Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+  const WATCH_BATCH_SIZE = 12;
+  const REFRESH_COOLDOWN_MS = 2 * 60 * 1000;
+
   const state = {
     content: { episodes: [], videos: [], generatedAt: null, source: 'fallback' },
     config: { links: {}, starterEpisodeIds: [], announcement: {} },
-    favorites: new Set(JSON.parse(localStorage.getItem('tt:favorites') || '[]')),
-    progress: JSON.parse(localStorage.getItem('tt:progress') || '{}'),
+    favorites: new Set(safeJSON('tt:favorites', [], isArrayValue)),
+    progress: safeJSON('tt:progress', {}, isObjectValue),
+    lastPlayed: safeJSON('tt:last-played', {}, isObjectValue),
     currentEpisode: null,
     currentVideo: null,
     watchParty: {
@@ -25,15 +67,20 @@
       lastPlaybackSignature: '',
       recentMessages: new Set(),
     },
-    activeTab: localStorage.getItem('tt:tab') || 'home',
+    activeTab: safeStorageGet('tt:tab') || 'home',
     remoteLoaded: false,
+    initialized: false,
+    refreshPromise: null,
+    lastRefreshAttemptAt: 0,
+    watchFullLimit: WATCH_BATCH_SIZE,
+    deviceInfo: { loaded: false, isVirtual: false, platform: 'web' },
     bowlData: { minPlayers: 2, maxPlayers: 9, packs: [] },
-    bowlFavorites: new Set(JSON.parse(localStorage.getItem('tt:bowl-favorites') || '[]')),
+    bowlFavorites: new Set(safeJSON('tt:bowl-favorites', [], isArrayValue)),
     bowl: {
       phase: 'setup',
-      playerCount: Number(localStorage.getItem('tt:bowl-player-count') || 3),
-      playerNames: JSON.parse(localStorage.getItem('tt:bowl-player-names') || '[]'),
-      selectedPacks: new Set(JSON.parse(localStorage.getItem('tt:bowl-selected-packs') || '["classic-chaos"]')),
+      playerCount: Number(safeStorageGet('tt:bowl-player-count') || 3),
+      playerNames: safeJSON('tt:bowl-player-names', [], isArrayValue),
+      selectedPacks: new Set(safeJSON('tt:bowl-selected-packs', ['classic-chaos'], isArrayValue)),
       deck: [],
       history: [],
       currentCard: null,
@@ -108,6 +155,14 @@
     return bits.join(' · ');
   }
 
+  function videoThumbnail(video) {
+    return video?.thumbnail || `https://i.ytimg.com/vi/${video?.id || ''}/hqdefault.jpg`;
+  }
+
+  function videoImageAttributes(video) {
+    return `src="${escapeHTML(videoThumbnail(video))}" alt="${escapeHTML(displayTitle(video?.title || 'A Little Throuple Tea video'))}" loading="lazy" class="video-image-fallback" onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}'"`;
+  }
+
   function itemKey(type, id) { return `${type}:${id}`; }
 
   function showToast(message) {
@@ -165,7 +220,7 @@
       state.favorites.add(key);
       showToast('Saved');
     }
-    localStorage.setItem('tt:favorites', JSON.stringify([...state.favorites]));
+    safeStorageSet('tt:favorites', JSON.stringify([...state.favorites]));
     haptic('MEDIUM');
     renderAll();
   }
@@ -173,14 +228,14 @@
   function setTab(tab, pushHash = true) {
     if (!['home','listen','bowl','watch','hotline','more'].includes(tab)) tab = 'home';
     state.activeTab = tab;
-    localStorage.setItem('tt:tab', tab);
+    safeStorageSet('tt:tab', tab);
     $$('.app-view').forEach(view => view.classList.toggle('active', view.dataset.view === tab));
     $$('.tab-bar button').forEach(button => button.classList.toggle('active', button.dataset.tab === tab));
     if (pushHash && location.hash !== `#${tab}`) history.replaceState(null, '', `#${tab}`);
     window.scrollTo({ top:0, behavior:'smooth' });
     haptic();
     if (tab === 'more') renderSaved();
-    refreshRemoteData(false);
+    if (state.initialized) refreshRemoteData(false);
   }
 
   function episodeMeta(ep) {
@@ -224,7 +279,7 @@
     const duration = videoDuration(video);
     return `<article class="short-video-card">
       <div class="short-video-card__thumb" data-play-video="${escapeHTML(video.id)}">
-        <img src="${escapeHTML(video.thumbnail || `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`)}" alt="" loading="lazy">
+        <img ${videoImageAttributes(video)}>
         <div class="play-badge"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
         ${duration ? `<span class="video-duration-pill">${escapeHTML(duration)}</span>` : ''}
       </div>
@@ -245,7 +300,7 @@
     const duration = videoDuration(video);
     return `<article class="full-video-card">
       <div class="full-video-card__thumb" data-play-video="${escapeHTML(video.id)}">
-        <img src="${escapeHTML(video.thumbnail || `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`)}" alt="" loading="lazy">
+        <img ${videoImageAttributes(video)}>
         <div class="play-badge"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
         ${duration ? `<span class="video-duration-pill">${escapeHTML(duration)}</span>` : ''}
       </div>
@@ -289,9 +344,17 @@
     </article>`;
 
     const progressed = state.content.episodes
-      .map(ep => ({ ep, seconds: Number(state.progress[ep.id] || 0) }))
+      .map((ep, index) => ({
+        ep,
+        seconds: Number(state.progress[ep.id] || 0),
+        lastPlayedAt: Number(state.lastPlayed[ep.id] || 0),
+        fallbackOrder: index
+      }))
       .filter(item => item.seconds > 15)
-      .sort((a, b) => b.seconds - a.seconds)[0];
+      .sort((a, b) =>
+        (b.lastPlayedAt - a.lastPlayedAt)
+        || (a.fallbackOrder - b.fallbackOrder)
+      )[0];
     const continueSection = $('#continueSection');
     if (progressed) {
       continueSection.hidden = false;
@@ -304,7 +367,7 @@
     const latestVideo = state.content.videos[0];
     $('#homeVideo').innerHTML = latestVideo ? `<article class="feature-video" data-play-video="${escapeHTML(latestVideo.id)}">
       <div class="feature-video__thumb">
-        <img src="${escapeHTML(latestVideo.thumbnail || `https://i.ytimg.com/vi/${latestVideo.id}/hqdefault.jpg`)}" alt="">
+        <img ${videoImageAttributes(latestVideo)}>
         <div class="play-badge"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
       </div>
       <div class="feature-video__copy">
@@ -318,7 +381,7 @@
     let starters = starterIds.map(id => state.content.episodes.find(ep => ep.id.includes(id))).filter(Boolean);
     if (!starters.length) starters = state.content.episodes.slice(0, 4);
     $('#starterRail').innerHTML = starters.map(ep => `<article class="rail-card">
-      <img src="${escapeHTML(ep.image || FALLBACK_IMAGE)}" alt="" loading="lazy">
+      <img src="${escapeHTML(ep.image || FALLBACK_IMAGE)}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}'">
       <div class="rail-card__body">
         <span class="card-meta">${escapeHTML(episodeMeta(ep))}</span>
         <h3>${escapeHTML(displayTitle(ep.title))}</h3>
@@ -346,13 +409,14 @@
     const shorts = videos.filter(video => videoKind(video) === 'short');
     const fullEpisodes = videos.filter(video => videoKind(video) === 'episode');
     const featured = videos[0] || null;
+    const visibleFullEpisodes = fullEpisodes.slice(0, state.watchFullLimit);
 
     $('#shortsCount').textContent = shorts.length;
     $('#fullVideosCount').textContent = fullEpisodes.length;
 
     $('#watchFeatured').innerHTML = featured ? `<article class="watch-featured-card">
       <div class="watch-featured-card__thumb" data-play-video="${escapeHTML(featured.id)}">
-        <img src="${escapeHTML(featured.thumbnail || `https://i.ytimg.com/vi/${featured.id}/hqdefault.jpg`)}" alt="">
+        <img ${videoImageAttributes(featured)}>
         <div class="play-badge"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
         ${videoDuration(featured) ? `<span class="video-duration-pill">${escapeHTML(videoDuration(featured))}</span>` : ''}
       </div>
@@ -372,15 +436,72 @@
       ? shorts.map(shortVideoCard).join('')
       : `<div class="video-card-empty"><strong>No Shorts loaded yet.</strong>Tap Refresh after the YouTube catalog update finishes.</div>`;
 
-    $('#fullVideoGrid').innerHTML = fullEpisodes.length
-      ? fullEpisodes.map(fullVideoCard).join('')
+    $('#fullVideoGrid').innerHTML = visibleFullEpisodes.length
+      ? visibleFullEpisodes.map(fullVideoCard).join('')
       : `<div class="video-card-empty"><strong>No full episodes loaded yet.</strong>Tap Refresh after the YouTube catalog update finishes.</div>`;
+
+    const loadMore = $('#loadMoreVideos');
+    if (loadMore) {
+      const remaining = Math.max(0, fullEpisodes.length - visibleFullEpisodes.length);
+      loadMore.hidden = remaining === 0;
+      loadMore.textContent = remaining
+        ? `Load ${Math.min(WATCH_BATCH_SIZE, remaining)} more episodes`
+        : 'All episodes loaded';
+    }
+  }
+
+  function savedBowlCardFromKey(key) {
+    const separator = key.indexOf(':');
+    if (separator < 1) return null;
+    const packId = key.slice(0, separator);
+    const cardId = key.slice(separator + 1);
+    const pack = bowlPackById(packId);
+    const card = pack?.cards?.find(item => item.id === cardId);
+    if (!pack || !card) return null;
+    return { key, pack, card };
+  }
+
+  function renderSavedBowlCards() {
+    const container = $('#savedBowlList');
+    const count = $('#savedBowlCount');
+    if (!container || !count) return;
+
+    const saved = [...state.bowlFavorites]
+      .map(savedBowlCardFromKey)
+      .filter(Boolean);
+
+    count.textContent = saved.length;
+    container.innerHTML = saved.length
+      ? saved.map(({ key, pack, card }) => {
+          const accent = BOWL_ACCENTS[pack.accent] || BOWL_ACCENTS.pink;
+          return `<article class="saved-bowl-card" style="--saved-bowl-accent:${accent}">
+            <span class="bowl-pack-pill" style="--card-accent:${accent}">${escapeHTML(pack.name).toUpperCase()}</span>
+            <p>${escapeHTML(card.text)}</p>
+            <small>${escapeHTML(pack.instruction || 'Read it out loud and let the chaos happen.')}</small>
+            <button class="saved-bowl-remove" type="button" data-remove-bowl-card="${escapeHTML(key)}" aria-label="Remove saved Bowl card">
+              <svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
+            </button>
+          </article>`;
+        }).join('')
+      : `<div class="saved-bowl-empty">Save a card during the Bowl and it will live here for the next party.</div>`;
+
+    $$('[data-remove-bowl-card]').forEach(button => {
+      button.onclick = () => {
+        state.bowlFavorites.delete(button.dataset.removeBowlCard);
+        safeStorageSet('tt:bowl-favorites', JSON.stringify([...state.bowlFavorites]));
+        renderSavedBowlCards();
+        showToast('Bowl card removed');
+        haptic('LIGHT');
+      };
+    });
   }
 
   function renderSaved() {
     const items = [];
     for (const key of state.favorites) {
-      const [type, id] = key.split(':');
+      const separator = key.indexOf(':');
+      const type = separator >= 0 ? key.slice(0, separator) : '';
+      const id = separator >= 0 ? key.slice(separator + 1) : '';
       if (type === 'episode') {
         const ep = state.content.episodes.find(x => x.id === id);
         if (ep) items.push(episodeCard(ep, true));
@@ -391,6 +512,7 @@
     }
     $('#savedCount').textContent = items.length;
     $('#savedList').innerHTML = items.length ? items.join('') : `<div class="empty-state">Tap the heart on an episode or video to keep it here.</div>`;
+    renderSavedBowlCards();
   }
 
   function renderStatus() {
@@ -439,9 +561,9 @@
   }
 
   function saveBowlSetup() {
-    localStorage.setItem('tt:bowl-player-count', String(state.bowl.playerCount));
-    localStorage.setItem('tt:bowl-player-names', JSON.stringify(state.bowl.playerNames));
-    localStorage.setItem('tt:bowl-selected-packs', JSON.stringify([...state.bowl.selectedPacks]));
+    safeStorageSet('tt:bowl-player-count', String(state.bowl.playerCount));
+    safeStorageSet('tt:bowl-player-names', JSON.stringify(state.bowl.playerNames));
+    safeStorageSet('tt:bowl-selected-packs', JSON.stringify([...state.bowl.selectedPacks]));
   }
 
   function shuffleCards(cards) {
@@ -521,8 +643,15 @@
 
     const shakeButton = $('#enableShakeButton');
     if (shakeButton) {
-      shakeButton.classList.toggle('enabled', state.bowl.shakeEnabled);
-      $('#shakeStatus').textContent = state.bowl.shakeEnabled ? 'Enabled — shake when the bowl is ready' : 'Tap to enable on iPhone';
+      const isVirtual = Boolean(state.deviceInfo.isVirtual);
+      shakeButton.disabled = isVirtual;
+      shakeButton.classList.toggle('enabled', state.bowl.shakeEnabled && !isVirtual);
+      shakeButton.classList.toggle('simulator-only-note', isVirtual);
+      $('#shakeStatus').textContent = isVirtual
+        ? 'Physical iPhone only — tap the bowl in Simulator'
+        : state.bowl.shakeEnabled
+          ? 'Enabled — shake when the bowl is ready'
+          : 'Tap to enable on iPhone';
     }
   }
 
@@ -577,12 +706,16 @@
     const captain = state.bowl.captain || players[Math.floor(Math.random() * players.length)];
     state.bowl.captain = captain;
 
-    $('#summaryCards').textContent = state.bowl.history.length;
+    const cardCount = state.bowl.history.length;
+    $('#summaryCards').textContent = cardCount;
     $('#summaryPlayers').textContent = players.length;
     $('#summaryPacks').textContent = selected.length;
+    $('#summaryCardsLabel').textContent = cardCount === 1 ? 'card drawn' : 'cards drawn';
+    $('#summaryPlayersLabel').textContent = players.length === 1 ? 'player' : 'players';
+    $('#summaryPacksLabel').textContent = selected.length === 1 ? 'pack mixed' : 'packs mixed';
     $('#chaosCaptain').textContent = captain;
-    $('#bowlSummaryLine').textContent = state.bowl.history.length
-      ? `${players.length} players survived ${state.bowl.history.length} cards without ending the friendship. Probably.`
+    $('#bowlSummaryLine').textContent = cardCount
+      ? `${players.length} ${players.length === 1 ? 'player' : 'players'} survived ${cardCount} ${cardCount === 1 ? 'card' : 'cards'} without ending the friendship. Probably.`
       : 'The game ended before the Bowl could expose anyone.';
   }
 
@@ -592,6 +725,7 @@
     renderBowlSetup();
     renderBowlGame();
     renderBowlSummary();
+    renderSavedBowlCards();
   }
 
   function buildBowlDeck() {
@@ -747,10 +881,11 @@
       showToast('Card removed from saved');
     } else {
       state.bowlFavorites.add(key);
-      showToast('Card saved');
+      showToast('Saved to More');
     }
-    localStorage.setItem('tt:bowl-favorites', JSON.stringify([...state.bowlFavorites]));
+    safeStorageSet('tt:bowl-favorites', JSON.stringify([...state.bowlFavorites]));
     renderBowlGame();
+    renderSavedBowlCards();
     haptic('MEDIUM');
   }
 
@@ -771,6 +906,10 @@
   }
 
   async function enableBowlShake() {
+    if (state.deviceInfo.isVirtual) {
+      showToast('Shake needs a physical iPhone — tap the bowl here');
+      return;
+    }
     try {
       if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
         const permission = await DeviceMotionEvent.requestPermission();
@@ -799,6 +938,29 @@
       lastShakeAt = now;
       drawBowlCard();
     }
+  }
+
+  async function initializeDeviceInfo() {
+    try {
+      const plugin = window.Capacitor?.Plugins?.Device;
+      if (window.Capacitor?.isNativePlatform?.() && plugin?.getInfo) {
+        const info = await plugin.getInfo();
+        state.deviceInfo = {
+          loaded: true,
+          isVirtual: Boolean(info?.isVirtual),
+          platform: info?.platform || 'ios'
+        };
+      } else {
+        state.deviceInfo = {
+          loaded: true,
+          isVirtual: true,
+          platform: 'web'
+        };
+      }
+    } catch (_) {
+      state.deviceInfo.loaded = true;
+    }
+    renderBowlSetup();
   }
 
   async function loadBowlInitialData() {
@@ -878,6 +1040,21 @@
     wireDynamicButtons();
   }
 
+  function renderAudioDependentViews() {
+    const scrollTop = window.scrollY;
+    renderHome();
+    renderEpisodes();
+    renderSaved();
+    wireDynamicButtons();
+    requestAnimationFrame(() => window.scrollTo({ top: scrollTop, behavior: 'auto' }));
+  }
+
+  function markEpisodePlayed(ep) {
+    if (!ep?.id) return;
+    state.lastPlayed[ep.id] = Date.now();
+    safeStorageSet('tt:last-played', JSON.stringify(state.lastPlayed));
+  }
+
   function wireDynamicButtons() {
     $$('[data-play-episode]').forEach(button => {
       button.onclick = () => {
@@ -905,11 +1082,16 @@
 
   async function playEpisode(ep) {
     if (state.currentEpisode?.id === ep.id) {
-      if (audio.paused) await audio.play();
-      else audio.pause();
+      if (audio.paused) {
+        markEpisodePlayed(ep);
+        await audio.play();
+      } else {
+        audio.pause();
+      }
       return;
     }
     state.currentEpisode = ep;
+    markEpisodePlayed(ep);
     audio.src = ep.audioUrl;
     $('#playerArtwork').src = FALLBACK_IMAGE;
     $('#playerTitle').textContent = displayTitle(ep.title);
@@ -925,7 +1107,7 @@
     } catch (_) {
       showToast('Tap play again to start audio');
     }
-    renderAll();
+    renderAudioDependentViews();
   }
 
   function setupMediaSession(ep) {
@@ -1067,6 +1249,7 @@
       return;
     }
 
+    showToast('Watch Party starts from 0:00 for everyone');
     state.watchParty.starting = true;
     openVideo(video.id, { party: true });
     updateWatchPartyUI();
@@ -1281,7 +1464,7 @@
   function closePlayer() {
     if (state.currentEpisode && Number.isFinite(audio.currentTime) && audio.currentTime > 0) {
       state.progress[state.currentEpisode.id] = Math.floor(audio.currentTime);
-      localStorage.setItem('tt:progress', JSON.stringify(state.progress));
+      safeStorageSet('tt:progress', JSON.stringify(state.progress));
     }
     audio.pause();
     audio.removeAttribute('src');
@@ -1293,7 +1476,7 @@
     $('#playerTime').textContent = '0:00 / 0:00';
     $('#playerSeek').value = 0;
     $('#playerArtwork').src = FALLBACK_IMAGE;
-    renderAll();
+    renderAudioDependentViews();
   }
 
   async function loadJSON(url, timeout = 8000) {
@@ -1326,7 +1509,6 @@
 
     const currentVideos = Array.isArray(current?.videos) ? current.videos : [];
     const remoteVideos = Array.isArray(remote?.videos) ? remote.videos : [];
-
     const remoteIsHealthy = remoteVideos.length >= 5;
     const remoteIsNotDegraded = (
       currentVideos.length < 5
@@ -1347,62 +1529,95 @@
       loadJSON('./data/app-config.json')
     ]);
 
-    const storedVersion = Number(localStorage.getItem('tt:content-cache-version') || 0);
-    let cached = null;
+    const storedVersion = Number(safeStorageGet('tt:content-cache-version') || 0);
+    const cached = storedVersion === CONTENT_CACHE_VERSION
+      ? safeJSON('tt:content-cache', null, value => value === null || isObjectValue(value))
+      : null;
 
-    if (storedVersion === CONTENT_CACHE_VERSION) {
-      try {
-        cached = JSON.parse(localStorage.getItem('tt:content-cache') || 'null');
-      } catch (_) {}
-    } else {
-      localStorage.removeItem('tt:content-cache');
-      localStorage.setItem('tt:content-cache-version', String(CONTENT_CACHE_VERSION));
+    if (storedVersion !== CONTENT_CACHE_VERSION) {
+      safeStorageRemove('tt:content-cache');
+      safeStorageSet('tt:content-cache-version', String(CONTENT_CACHE_VERSION));
     }
 
-    const cachedConfig = localStorage.getItem('tt:config-cache');
+    const cachedConfig = safeJSON('tt:config-cache', null, value => value === null || isObjectValue(value));
     state.content = bestCatalog(fallback, cached) || fallback;
-    state.config = cachedConfig ? JSON.parse(cachedConfig) : localConfig;
+    state.config = cachedConfig?.links ? cachedConfig : localConfig;
+    state.initialized = true;
     renderAll();
-    await refreshRemoteData(false);
+    await refreshRemoteData(false, { force: true });
   }
 
-  async function refreshRemoteData(showFeedback = true) {
+  async function refreshRemoteData(showFeedback = true, options = {}) {
+    const force = Boolean(options.force);
+    const now = Date.now();
+
+    if (state.refreshPromise) {
+      if (showFeedback) showToast('Refresh already in progress');
+      return state.refreshPromise;
+    }
+
+    if (!force && now - state.lastRefreshAttemptAt < REFRESH_COOLDOWN_MS) {
+      return null;
+    }
+
+    state.lastRefreshAttemptAt = now;
     const button = $('#refreshButton');
+    const moreButton = $('#moreRefresh');
+    const scrollTop = window.scrollY;
+    const tabAtStart = state.activeTab;
     button?.classList.add('spinning');
+    moreButton?.setAttribute('disabled', 'disabled');
+
+    state.refreshPromise = (async () => {
+      try {
+        const stamp = Date.now();
+        const [contentResult, configResult] = await Promise.allSettled([
+          loadJSON(`${REMOTE_BASE}/content.json?v=${stamp}`),
+          loadJSON(`${REMOTE_BASE}/app-config.json?v=${stamp}`)
+        ]);
+
+        if (contentResult.status === 'fulfilled' && contentResult.value?.episodes?.length) {
+          state.content = mergedRemoteContent(state.content, contentResult.value);
+          state.remoteLoaded = true;
+          safeStorageSet('tt:content-cache-version', String(CONTENT_CACHE_VERSION));
+          safeStorageSet('tt:content-cache', JSON.stringify(state.content));
+        }
+
+        if (configResult.status === 'fulfilled' && configResult.value?.links) {
+          state.config = configResult.value;
+          safeStorageSet('tt:config-cache', JSON.stringify(configResult.value));
+        }
+
+        renderAll();
+        requestAnimationFrame(() => {
+          if (state.activeTab === tabAtStart) {
+            window.scrollTo({ top: scrollTop, behavior: 'auto' });
+          }
+        });
+
+        if (showFeedback) {
+          const videos = state.content.videos || [];
+          const shorts = videos.filter(video => videoKind(video) === 'short').length;
+          const full = videos.filter(video => videoKind(video) === 'episode').length;
+          showToast(`${shorts} Shorts + ${full} full videos loaded`);
+        }
+
+        $('#offlineBanner').hidden = true;
+        return state.content;
+      } catch (_) {
+        if (showFeedback) showToast('Using the freshest saved copy');
+        if (!navigator.onLine) $('#offlineBanner').hidden = false;
+        return state.content;
+      } finally {
+        button?.classList.remove('spinning');
+        moreButton?.removeAttribute('disabled');
+      }
+    })();
+
     try {
-      const stamp = Date.now();
-      const [content, config] = await Promise.all([
-        loadJSON(`${REMOTE_BASE}/content.json?v=${stamp}`),
-        loadJSON(`${REMOTE_BASE}/app-config.json?v=${stamp}`)
-      ]);
-
-      if (content?.episodes?.length) {
-        state.content = mergedRemoteContent(state.content, content);
-        state.remoteLoaded = true;
-        localStorage.setItem('tt:content-cache-version', String(CONTENT_CACHE_VERSION));
-        localStorage.setItem('tt:content-cache', JSON.stringify(state.content));
-      }
-
-      if (config?.links) {
-        state.config = config;
-        localStorage.setItem('tt:config-cache', JSON.stringify(config));
-      }
-
-      renderAll();
-
-      if (showFeedback) {
-        const videos = state.content.videos || [];
-        const shorts = videos.filter(video => videoKind(video) === 'short').length;
-        const full = videos.filter(video => videoKind(video) === 'episode').length;
-        showToast(`${shorts} Shorts + ${full} full videos loaded`);
-      }
-
-      $('#offlineBanner').hidden = true;
-    } catch (error) {
-      if (showFeedback) showToast('Using the freshest saved copy');
-      if (!navigator.onLine) $('#offlineBanner').hidden = false;
+      return await state.refreshPromise;
     } finally {
-      button?.classList.remove('spinning');
+      state.refreshPromise = null;
     }
   }
 
@@ -1412,9 +1627,17 @@
     $$('[data-tab-jump]').forEach(button => button.addEventListener('click', () => setTab(button.dataset.tabJump)));
     $$('[data-open-config]').forEach(button => button.addEventListener('click', () => openURL(state.config.links[button.dataset.openConfig])));
     $$('[data-open-url]').forEach(button => button.addEventListener('click', () => openURL(button.dataset.openUrl)));
-    $('#refreshButton').addEventListener('click', () => refreshRemoteData(true));
-    $('#moreRefresh').addEventListener('click', () => refreshRemoteData(true));
+    $('#refreshButton').addEventListener('click', () => refreshRemoteData(true, { force: true }));
+    $('#moreRefresh').addEventListener('click', () => refreshRemoteData(true, { force: true }));
     $('#episodeSearch').addEventListener('input', () => { renderEpisodes(); wireDynamicButtons(); });
+    $('#loadMoreVideos').addEventListener('click', () => {
+      const scrollTop = window.scrollY;
+      state.watchFullLimit += WATCH_BATCH_SIZE;
+      renderVideos();
+      wireDynamicButtons();
+      requestAnimationFrame(() => window.scrollTo({ top: scrollTop, behavior: 'auto' }));
+      haptic('LIGHT');
+    });
     $('#surpriseMeButton').addEventListener('click', () => {
       const playable = state.content.episodes.filter(ep => ep.audioUrl);
       if (!playable.length) return showToast('No playable episodes loaded yet');
@@ -1448,22 +1671,32 @@
     window.addEventListener('focus', () => refreshRemoteData(false));
     document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshRemoteData(false); });
 
-    audio.addEventListener('play', () => { updatePlayerUI(); renderAll(); });
-    audio.addEventListener('pause', () => { updatePlayerUI(); renderAll(); });
+    audio.addEventListener('play', () => {
+      if (state.currentEpisode) markEpisodePlayed(state.currentEpisode);
+      updatePlayerUI();
+      renderAudioDependentViews();
+    });
+    audio.addEventListener('pause', () => {
+      updatePlayerUI();
+      renderAudioDependentViews();
+    });
+    let lastProgressSecond = -1;
     audio.addEventListener('timeupdate', () => {
       updatePlayerUI();
-      if (state.currentEpisode && Math.floor(audio.currentTime) % 5 === 0) {
-        state.progress[state.currentEpisode.id] = Math.floor(audio.currentTime);
-        localStorage.setItem('tt:progress', JSON.stringify(state.progress));
+      const second = Math.floor(audio.currentTime);
+      if (state.currentEpisode && second > 0 && second % 5 === 0 && second !== lastProgressSecond) {
+        lastProgressSecond = second;
+        state.progress[state.currentEpisode.id] = second;
+        safeStorageSet('tt:progress', JSON.stringify(state.progress));
       }
     });
     audio.addEventListener('ended', () => {
       if (state.currentEpisode) {
         delete state.progress[state.currentEpisode.id];
-        localStorage.setItem('tt:progress', JSON.stringify(state.progress));
+        safeStorageSet('tt:progress', JSON.stringify(state.progress));
       }
       updatePlayerUI();
-      renderAll();
+      renderAudioDependentViews();
     });
 
     try {
@@ -1485,6 +1718,7 @@
   if (initialHash) state.activeTab = initialHash;
   bindStaticEvents();
   bindBowlEvents();
+  initializeDeviceInfo();
   initializeWatchParty();
   setTab(state.activeTab, false);
   loadBowlInitialData();

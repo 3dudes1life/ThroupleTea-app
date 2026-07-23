@@ -129,7 +129,7 @@
         <div>
           <span class="eyebrow">WATCH TOGETHER</span>
           <strong>Turn any episode into a Watch Party.</strong>
-          <p>Tap Play, then choose <b>Start Watch Party</b> inside the video player.</p>
+          <p>Tap Play, then choose <b>Start Watch Party</b> inside the video player. Parties begin at 0:00 so everyone starts together.</p>
         </div>
       </section>
 
@@ -155,6 +155,7 @@
           <span id="fullVideosCount" class="count-pill">0</span>
         </div>
         <div id="fullVideoGrid" class="full-video-grid"></div>
+        <button id="loadMoreVideos" class="wide-outline-button load-more-videos" type="button" hidden>Load more episodes</button>
       </section>
 
       <button class="wide-outline-button channel-button" data-open-url="https://www.youtube.com/channel/UCswzye8bcm8bByqLlW0QaFQ">Open the full YouTube channel</button>
@@ -285,9 +286,9 @@
         <p id="bowlSummaryLine">You survived the Bowl of Chaos.</p>
 
         <div class="bowl-summary-stats">
-          <div><strong id="summaryCards">0</strong><span>cards drawn</span></div>
-          <div><strong id="summaryPlayers">0</strong><span>players</span></div>
-          <div><strong id="summaryPacks">0</strong><span>packs mixed</span></div>
+          <div><strong id="summaryCards">0</strong><span id="summaryCardsLabel">cards drawn</span></div>
+          <div><strong id="summaryPlayers">0</strong><span id="summaryPlayersLabel">players</span></div>
+          <div><strong id="summaryPacks">0</strong><span id="summaryPacksLabel">packs mixed</span></div>
         </div>
 
         <div class="chaos-captain-card">
@@ -342,7 +343,7 @@
       <div class="page-title">
         <span class="eyebrow">MORE THROUPLE TEA</span>
         <h1>Your little command center.</h1>
-        <p>Saved favorites, podcast links, show information, and app status.</p>
+        <p>Saved episodes, videos, Bowl cards, podcast links, show information, and app status.</p>
       </div>
 
       <section class="more-card update-card">
@@ -360,6 +361,14 @@
           <span id="savedCount" class="count-pill">0</span>
         </div>
         <div id="savedList" class="stack-list compact"></div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <div><span class="eyebrow">BOWL FAVORITES</span><h2>Saved Bowl cards</h2></div>
+          <span id="savedBowlCount" class="count-pill">0</span>
+        </div>
+        <div id="savedBowlList" class="saved-bowl-grid"></div>
       </section>
 
       <section class="link-group">
@@ -484,6 +493,7 @@
     <footer class="app-video-player__footer">
       <strong id="videoPlayerTitle">A Little Throuple Tea</strong>
       <p id="videoPlayerMeta"></p>
+      <p class="watch-party-start-note">Watch Parties begin this video at 0:00 so everyone joins together.</p>
       <div class="video-footer-actions">
         <button id="startCurrentWatchParty" class="watch-party-start-button" type="button">
           <svg viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM16 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/><path d="M2 21c0-4 2.4-6 6-6s6 2 6 6M13 16c4-1 8 1 8 5"/></svg>

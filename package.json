@@ -1,8 +1,8 @@
 {
   "name": "throupletea-app",
-  "version": "2.6.5",
+  "version": "2.7.0",
   "private": true,
-  "description": "UX7.5 combining the full YouTube Watch page with a clear Watch Party entry point.",
+  "description": "UX7.6 Superman stability pass for A Little Throuple Tea.",
   "scripts": {
     "ios:add": "npx cap add ios",
     "ios:sync": "npx cap sync ios",
@@ -10,18 +10,19 @@
     "ios": "npx cap sync ios && npx cap open ios"
   },
   "dependencies": {
-    "@capacitor/app": "^8.0.0",
-    "@capacitor/browser": "^8.0.0",
-    "@capacitor/core": "^8.4.2",
-    "@capacitor/haptics": "^8.0.0",
-    "@capacitor/ios": "^8.4.2",
-    "@capacitor/network": "^8.0.0",
-    "@capacitor/share": "^8.0.0",
-    "@capacitor/splash-screen": "^8.0.0",
-    "@capacitor/status-bar": "^8.0.0",
+    "@capacitor/app": "8.0.0",
+    "@capacitor/browser": "8.0.0",
+    "@capacitor/core": "8.4.2",
+    "@capacitor/device": "8.0.0",
+    "@capacitor/haptics": "8.0.0",
+    "@capacitor/ios": "8.4.2",
+    "@capacitor/network": "8.0.0",
+    "@capacitor/share": "8.0.0",
+    "@capacitor/splash-screen": "8.0.0",
+    "@capacitor/status-bar": "8.0.0",
     "throuple-watch-party": "file:plugins/throuple-watch-party"
   },
   "devDependencies": {
-    "@capacitor/cli": "^8.4.2"
+    "@capacitor/cli": "8.4.2"
   }
 }
