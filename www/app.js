@@ -4,8 +4,8 @@
 
   const REMOTE_BASE = 'https://raw.githubusercontent.com/3dudes1life/ThroupleTea-app/main/live-data';
   const FALLBACK_IMAGE = './assets/podcast-artwork.jpg';
-  const CONTENT_CACHE_VERSION = 13;
-  const EPISODE_FORMAT_CACHE_VERSION = '7.9.6';
+  const CONTENT_CACHE_VERSION = 14;
+  const EPISODE_FORMAT_CACHE_VERSION = '7.9.6.1';
   const episodeFormatter = window.ThroupleTeaEpisodeFormatter;
   const PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player/';
   const PARTY_PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player-party/';
@@ -568,7 +568,7 @@
         <h2>Got a question, confession, or chaotic life update?</h2>
         <p>Send it to the Throuple Hotline. It could become part of a future episode.</p>
         <button class="wide-gradient-button" type="button" data-native-hotline>Open the Throuple Hotline</button>
-        <div class="episode-detail-end">You reached the bottom of the tea. ☕</div>
+        <div class="episode-detail-end">You reached the bottom of the tea.</div>
       </footer>
     </article>`;
   }
@@ -1929,12 +1929,13 @@
 
   async function loadInitialData() {
     const migrationVersion = Number(safeStorageGet('tt:data-migration-version') || 0);
-    if (migrationVersion < 14) {
+    if (migrationVersion < 15) {
       safeStorageRemove('tt:content-cache');
       safeStorageRemove('tt:config-cache');
       safeStorageRemove('tt:episode-format-cache:v1');
+      safeStorageRemove('tt:episode-format-cache:v7.9.6');
       safeStorageSet('tt:content-cache-version', '0');
-      safeStorageSet('tt:data-migration-version', '14');
+      safeStorageSet('tt:data-migration-version', '15');
     }
 
     const [fallback, localConfig, localInfo] = await Promise.all([
@@ -1955,7 +1956,11 @@
 
     const cachedConfig = safeJSON('tt:config-cache', null, value => value === null || isObjectValue(value));
     const cachedInfo = safeJSON('tt:info-cache', null, value => value === null || isObjectValue(value));
-    state.content = bestCatalog(fallback, cached) || fallback;
+    const preferredCatalog = bestCatalog(fallback, cached) || fallback;
+    state.content = {
+      ...preferredCatalog,
+      episodes: mergeEpisodeMetadata(fallback?.episodes || [], preferredCatalog?.episodes || [])
+    };
     state.config = cachedConfig?.links ? cachedConfig : localConfig;
     state.info = cachedInfo?.meet && cachedInfo?.faq ? cachedInfo : localInfo;
     state.initialized = true;

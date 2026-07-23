@@ -5,7 +5,7 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
 
-  const VERSION = '7.9.6';
+  const VERSION = '7.9.6.1';
   const TOPIC_HEADING = /^(?:plus|also|also on the table|in this episode|topics?|what we cover|we also talk about|on the table|inside this episode|we spill|we get into|we break down|also inside)\s*:?\s*$/i;
   const INTRO_HEADING = /^(?:about this episode|episode description|episode summary|show notes?|this week(?:'s episode)?|full episode)\s*:?\s*$/i;
   const CLOSING_HEADING = /^(?:keep the tea going|listen(?: now)?|watch(?: now)?|follow us|subscribe|find us|connect with us|links?)\s*:?\s*$/i;
@@ -42,8 +42,17 @@
       .replace(/(?:https?:\/\/|www\.)\S+/gi, ' '));
   }
 
+  function markEmojiBullets(value) {
+    const emojiLead = /^(?:(?:\p{Extended_Pictographic}|\p{Regional_Indicator})[\uFE0E\uFE0F\u200D\p{Extended_Pictographic}\p{Regional_Indicator}]*)+\s*/u;
+    return String(value || '').split('\n').map(line => {
+      const leading = line.match(/^\s*/)?.[0] || '';
+      const body = line.slice(leading.length);
+      return emojiLead.test(body) ? `${leading}• ${body.replace(emojiLead, '')}` : line;
+    }).join('\n');
+  }
+
   function normalize(value) {
-    let text = stripMarkup(value)
+    let text = markEmojiBullets(stripMarkup(value))
       .replace(/\r\n?/g, '\n')
       .replace(/\u00a0/g, ' ')
       .replace(/[\uFFFD\u25A1\u2610\u2753]/g, ' ')
@@ -131,8 +140,8 @@
 
       const isBullet = BULLET_PREFIX.test(line);
       if (BOILERPLATE.test(clean)) { mode = 'closing'; continue; }
-      if (CLOSING_SIGNAL.test(clean)) mode = 'closing';
-      else if (isBullet) mode = 'topics';
+      if (isBullet) mode = 'topics';
+      else if (CLOSING_SIGNAL.test(clean)) mode = 'closing';
 
       if (mode === 'topics') {
         if (clean.length <= 190) uniquePush(topics, clean, seen);
