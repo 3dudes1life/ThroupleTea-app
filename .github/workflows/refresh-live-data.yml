@@ -1,0 +1,43 @@
+name: Refresh Live App Data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */2 * * *"
+  push:
+    paths:
+      - "scripts/update-live-data.py"
+      - ".github/workflows/refresh-live-data.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out app repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Refresh podcast and YouTube data
+        run: python scripts/update-live-data.py
+
+      - name: Commit updated data when it changed
+        run: |
+          if git diff --quiet -- live-data/content.json; then
+            echo "No content changes."
+            exit 0
+          fi
+
+          git config user.name "Throuple Tea App Bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          git add live-data/content.json
+          git commit -m "Auto-refresh live app content"
+          git push
