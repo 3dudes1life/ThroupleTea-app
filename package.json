@@ -1,8 +1,8 @@
 {
   "name": "throupletea-app",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "private": true,
-  "description": "Superman UX4 launch candidate for A Little Throuple Tea.",
+  "description": "Superman UX5 artwork-fit refinement for A Little Throuple Tea.",
   "scripts": {
     "ios:add": "npx cap add ios",
     "ios:sync": "npx cap sync ios",

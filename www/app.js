@@ -226,7 +226,7 @@
         <h3>${escapeHTML(displayTitle(video.title))}</h3>
         <p>${escapeHTML(videoLabel(video))}</p>
         <div class="video-actions">
-          <button class="primary" data-play-video="${escapeHTML(video.id)}">Play in app</button>
+          <button class="primary" data-play-video="${escapeHTML(video.id)}">Play</button>
           <button data-share-video="${escapeHTML(video.id)}">Share</button>
         </div>
       </div>
@@ -333,7 +333,7 @@
         <h2>${escapeHTML(displayTitle(featured.title))}</h2>
         <p>${escapeHTML(videoLabel(featured))}</p>
         <div class="watch-featured-actions">
-          <button class="primary" data-play-video="${escapeHTML(featured.id)}">Play in app</button>
+          <button class="primary" data-play-video="${escapeHTML(featured.id)}">Play</button>
           <button class="secondary" data-share-video="${escapeHTML(featured.id)}">Share</button>
         </div>
       </div>

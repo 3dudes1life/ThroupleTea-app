@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 4
+# A Little Throuple Tea — Superman UX 5
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -108,3 +108,12 @@ Those are intentionally not faked in this package.
 2. Keep GitHub Pages enabled for the repository.
 3. Run **Actions → Refresh Live App Data → Run workflow** once.
 4. After it succeeds, tap Refresh inside the app.
+
+
+## UX 5 refinements
+
+- Changed every Watch action from **Play in app** to simply **Play**.
+- Home hero episode artwork now displays the complete square episode flyer instead of cropping it.
+- Episode cards, Continue Listening, and starter cards now display the full flyer artwork.
+- Added a subtle branded backdrop behind square artwork so the complete flyer still feels intentional inside each card.
+- Watch thumbnails remain optimized for their landscape and vertical formats.

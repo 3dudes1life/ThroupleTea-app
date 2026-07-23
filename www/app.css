@@ -53,10 +53,10 @@ button{cursor:pointer}
 .page-title h1{margin:6px 0 9px;color:var(--white);font-size:clamp(2rem,9vw,2.85rem);line-height:1;letter-spacing:-.052em}
 .page-title p{margin:0;color:var(--muted);font-size:.96rem}
 .hero-card{position:relative;overflow:hidden;border:1px solid var(--line-hot);border-radius:28px;background:linear-gradient(145deg,rgba(255,35,111,.17),rgba(8,17,27,.95) 46%,rgba(32,220,228,.12));box-shadow:0 22px 55px rgba(0,0,0,.4)}
-.hero-card__art{height:188px;position:relative;overflow:hidden}
-.hero-card__art img{width:100%;height:100%;object-fit:cover;object-position:center 36%;display:block}
+.hero-card__art{height:260px;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 35%,rgba(255,35,111,.20),transparent 45%),linear-gradient(145deg,#160611,#07151d)}
+.hero-card__art img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;padding:8px}
 .hero-card__art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 32%,rgba(5,6,12,.95))}
-.hero-card__body{position:relative;margin-top:-48px;padding:0 18px 20px}
+.hero-card__body{position:relative;margin-top:-22px;padding:0 18px 20px}
 .hero-card__meta{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .live-pill,.count-pill{display:inline-flex;align-items:center;border:1px solid rgba(32,220,228,.3);background:rgba(2,24,30,.72);border-radius:999px;padding:5px 9px;color:var(--teal);font-size:.67rem;font-weight:900;letter-spacing:.06em}
 .hero-card h1{margin:0;color:var(--white);font-size:clamp(1.55rem,7.2vw,2.25rem);line-height:1.03;letter-spacing:-.042em}
@@ -92,7 +92,7 @@ button{cursor:pointer}
 .horizontal-rail{display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:12px;overflow-x:auto;padding:2px 2px 10px;scroll-snap-type:x mandatory;scrollbar-width:none}
 .horizontal-rail::-webkit-scrollbar{display:none}
 .rail-card{scroll-snap-align:start;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--panel)}
-.rail-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.rail-card img{width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:linear-gradient(145deg,#170711,#07151d);padding:8px}
 .rail-card__body{padding:13px}
 .rail-card h3{margin:4px 0 8px;color:var(--white);font-size:1rem;line-height:1.2}
 .announcement{border:1px solid var(--line-hot);border-radius:22px;padding:18px;background:linear-gradient(135deg,rgba(255,35,111,.14),rgba(255,122,24,.08),rgba(32,220,228,.1))}
@@ -104,7 +104,7 @@ button{cursor:pointer}
 .stack-list{display:flex;flex-direction:column;gap:12px}
 .stack-list.compact{gap:9px}
 .episode-card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(14,24,36,.95),rgba(8,13,20,.92));border-radius:21px;padding:12px;display:grid;grid-template-columns:92px 1fr;gap:13px;position:relative}
-.episode-card img{width:92px;height:92px;border-radius:15px;object-fit:cover}
+.episode-card img{width:92px;height:92px;border-radius:15px;object-fit:contain;background:linear-gradient(145deg,#170711,#07151d);padding:3px}
 .episode-card__copy{min-width:0}
 .card-meta{color:var(--yellow);font-size:.67rem;font-weight:900;letter-spacing:.04em}
 .episode-card h3{margin:4px 32px 6px 0;color:var(--white);font-size:1rem;line-height:1.17}
@@ -183,13 +183,13 @@ button{cursor:pointer}
   .app-main{padding-left:24px;padding-right:24px}
   .video-grid{grid-template-columns:repeat(2,1fr)}
   .horizontal-rail{grid-auto-columns:48%}
-  .hero-card__art{height:260px}
+  .hero-card__art{height:300px}
 }
 @media(max-width:390px){
   .app-header__brand strong{font-size:.88rem}
   .app-header__brand img{width:42px;height:42px}
-  .hero-card__art{height:172px}
-  .hero-card__body{margin-top:-42px;padding-left:15px;padding-right:15px}
+  .hero-card__art{height:235px}
+  .hero-card__body{margin-top:-18px;padding-left:15px;padding-right:15px}
   .action-row{grid-template-columns:1fr}
   .action-row .outline-button:last-child{grid-column:auto}
   .hotline-reassurance{grid-template-columns:1fr}
@@ -275,4 +275,19 @@ button{cursor:pointer}
 @media(min-width:600px){
   .shorts-rail{grid-auto-columns:38%}
   .full-video-grid{display:grid;grid-template-columns:repeat(2,1fr)}
+}
+
+.hero-card__art img,
+.episode-card img,
+.rail-card img{
+  filter:saturate(1.04) contrast(1.02);
+}
+.hero-card__art::before{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;
+  pointer-events:none;
+  z-index:1;
 }
