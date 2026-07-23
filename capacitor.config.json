@@ -3,7 +3,10 @@
   "appName": "A Little Throuple Tea",
   "webDir": "www",
   "server": {
-    "iosScheme": "capacitor",
-    "hostname": "localhost"
+    "url": "https://throupletea.com",
+    "cleartext": false
+  },
+  "ios": {
+    "preferredContentMode": "mobile"
   }
 }
