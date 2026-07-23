@@ -1,0 +1,808 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-23T03:54:37.369734+00:00",
+  "minPlayers": 2,
+  "maxPlayers": 9,
+  "packs": [
+    {
+      "id": "classic-chaos",
+      "name": "Classic Chaos",
+      "shortName": "Classic",
+      "description": "Questions, confessions and ridiculous challenges.",
+      "instruction": "Read it out loud. The active player answers or completes the challenge.",
+      "accent": "pink",
+      "cards": [
+        {
+          "id": "classic-1",
+          "type": "question",
+          "text": "What is the pettiest hill you would absolutely die on?"
+        },
+        {
+          "id": "classic-2",
+          "type": "question",
+          "text": "What is your most irrational everyday fear?"
+        },
+        {
+          "id": "classic-3",
+          "type": "challenge",
+          "text": "Give the group your best reality-show confessional about something that happened today."
+        },
+        {
+          "id": "classic-4",
+          "type": "question",
+          "text": "What purchase made you feel rich for absolutely no reason?"
+        },
+        {
+          "id": "classic-5",
+          "type": "challenge",
+          "text": "Do an impression of someone in the group until they guess who it is."
+        },
+        {
+          "id": "classic-6",
+          "type": "question",
+          "text": "What is the weirdest compliment you have ever received?"
+        },
+        {
+          "id": "classic-7",
+          "type": "question",
+          "text": "What is one completely useless skill you are strangely proud of?"
+        },
+        {
+          "id": "classic-8",
+          "type": "challenge",
+          "text": "Pitch your life as a trashy reality show in ten seconds."
+        },
+        {
+          "id": "classic-9",
+          "type": "question",
+          "text": "What is the most embarrassing song you know every word to?"
+        },
+        {
+          "id": "classic-10",
+          "type": "question",
+          "text": "What is something you pretend to understand but absolutely do not?"
+        },
+        {
+          "id": "classic-11",
+          "type": "challenge",
+          "text": "Read your last harmless text like it is a dramatic movie monologue."
+        },
+        {
+          "id": "classic-12",
+          "type": "question",
+          "text": "What is the dumbest way you have ever injured yourself?"
+        },
+        {
+          "id": "classic-13",
+          "type": "question",
+          "text": "What food opinion would get you kicked out of the group chat?"
+        },
+        {
+          "id": "classic-14",
+          "type": "challenge",
+          "text": "Create a new warning label for the player to your left."
+        },
+        {
+          "id": "classic-15",
+          "type": "question",
+          "text": "What is the strangest thing currently living in your Notes app?"
+        },
+        {
+          "id": "classic-16",
+          "type": "question",
+          "text": "Which celebrity would play you in a movie made for almost no budget?"
+        },
+        {
+          "id": "classic-17",
+          "type": "challenge",
+          "text": "Sell the nearest random object like you are on a late-night infomercial."
+        },
+        {
+          "id": "classic-18",
+          "type": "question",
+          "text": "What is your most chaotic travel story?"
+        },
+        {
+          "id": "classic-19",
+          "type": "question",
+          "text": "What tiny inconvenience turns you into a full villain?"
+        },
+        {
+          "id": "classic-20",
+          "type": "challenge",
+          "text": "Invent a fake scandal about yourself and hold a press conference."
+        },
+        {
+          "id": "classic-21",
+          "type": "question",
+          "text": "What is the longest you have avoided a task that took under five minutes?"
+        },
+        {
+          "id": "classic-22",
+          "type": "question",
+          "text": "What is your most dramatic overreaction that you can admit now?"
+        },
+        {
+          "id": "classic-23",
+          "type": "challenge",
+          "text": "Give everyone in the group a ridiculous award title."
+        },
+        {
+          "id": "classic-24",
+          "type": "question",
+          "text": "What trend did you swear you would never join and then absolutely joined?"
+        },
+        {
+          "id": "classic-25",
+          "type": "question",
+          "text": "What is something you believed for way too long?"
+        },
+        {
+          "id": "classic-26",
+          "type": "challenge",
+          "text": "Describe your dating personality using only three menu items."
+        },
+        {
+          "id": "classic-27",
+          "type": "question",
+          "text": "What is your most suspiciously specific red flag?"
+        },
+        {
+          "id": "classic-28",
+          "type": "question",
+          "text": "What would your personal warning siren announce?"
+        },
+        {
+          "id": "classic-29",
+          "type": "challenge",
+          "text": "Let the group rename you for the next three cards."
+        },
+        {
+          "id": "classic-30",
+          "type": "question",
+          "text": "What is the funniest thing you have done just to avoid an awkward conversation?"
+        }
+      ]
+    },
+    {
+      "id": "most-likely",
+      "name": "Most Likely To",
+      "shortName": "Most Likely",
+      "description": "Point, accuse and defend yourself immediately.",
+      "instruction": "Count to three. Everyone points to one player.",
+      "accent": "orange",
+      "cards": [
+        {
+          "id": "likely-1",
+          "type": "vote",
+          "text": "Who is most likely to accidentally start a group argument and then fall asleep?"
+        },
+        {
+          "id": "likely-2",
+          "type": "vote",
+          "text": "Who is most likely to survive a reality show the longest?"
+        },
+        {
+          "id": "likely-3",
+          "type": "vote",
+          "text": "Who is most likely to create a business after one compliment?"
+        },
+        {
+          "id": "likely-4",
+          "type": "vote",
+          "text": "Who is most likely to say “I’m fine” while clearly planning a dramatic exit?"
+        },
+        {
+          "id": "likely-5",
+          "type": "vote",
+          "text": "Who is most likely to get banned from a neighborhood Facebook group?"
+        },
+        {
+          "id": "likely-6",
+          "type": "vote",
+          "text": "Who is most likely to flirt their way out of trouble?"
+        },
+        {
+          "id": "likely-7",
+          "type": "vote",
+          "text": "Who is most likely to bring twelve unnecessary items on a two-day trip?"
+        },
+        {
+          "id": "likely-8",
+          "type": "vote",
+          "text": "Who is most likely to cry at a commercial and deny it?"
+        },
+        {
+          "id": "likely-9",
+          "type": "vote",
+          "text": "Who is most likely to investigate a stranger’s entire life online?"
+        },
+        {
+          "id": "likely-10",
+          "type": "vote",
+          "text": "Who is most likely to turn a simple dinner into a four-hour event?"
+        },
+        {
+          "id": "likely-11",
+          "type": "vote",
+          "text": "Who is most likely to become famous for something completely accidental?"
+        },
+        {
+          "id": "likely-12",
+          "type": "vote",
+          "text": "Who is most likely to have a secret second family in another reality?"
+        },
+        {
+          "id": "likely-13",
+          "type": "vote",
+          "text": "Who is most likely to start dancing in a public place?"
+        },
+        {
+          "id": "likely-14",
+          "type": "vote",
+          "text": "Who is most likely to make friends with the hotel staff?"
+        },
+        {
+          "id": "likely-15",
+          "type": "vote",
+          "text": "Who is most likely to lose their phone while holding it?"
+        },
+        {
+          "id": "likely-16",
+          "type": "vote",
+          "text": "Who is most likely to get into an argument with a self-checkout machine?"
+        },
+        {
+          "id": "likely-17",
+          "type": "vote",
+          "text": "Who is most likely to become the villain of a family group chat?"
+        },
+        {
+          "id": "likely-18",
+          "type": "vote",
+          "text": "Who is most likely to remember exactly what you said three years ago?"
+        },
+        {
+          "id": "likely-19",
+          "type": "vote",
+          "text": "Who is most likely to order the same meal every single time?"
+        },
+        {
+          "id": "likely-20",
+          "type": "vote",
+          "text": "Who is most likely to make a five-minute story last forty minutes?"
+        },
+        {
+          "id": "likely-21",
+          "type": "vote",
+          "text": "Who is most likely to plan a vacation before checking their bank account?"
+        },
+        {
+          "id": "likely-22",
+          "type": "vote",
+          "text": "Who is most likely to adopt another animal without asking?"
+        },
+        {
+          "id": "likely-23",
+          "type": "vote",
+          "text": "Who is most likely to win an argument using absolutely incorrect information?"
+        },
+        {
+          "id": "likely-24",
+          "type": "vote",
+          "text": "Who is most likely to send a risky text and immediately throw their phone?"
+        },
+        {
+          "id": "likely-25",
+          "type": "vote",
+          "text": "Who is most likely to turn a hobby into a full company?"
+        },
+        {
+          "id": "likely-26",
+          "type": "vote",
+          "text": "Who is most likely to have the most tabs open right now?"
+        },
+        {
+          "id": "likely-27",
+          "type": "vote",
+          "text": "Who is most likely to say they hate drama while standing directly inside it?"
+        },
+        {
+          "id": "likely-28",
+          "type": "vote",
+          "text": "Who is most likely to accidentally expose the group’s secret?"
+        },
+        {
+          "id": "likely-29",
+          "type": "vote",
+          "text": "Who is most likely to make the best emergency contact?"
+        },
+        {
+          "id": "likely-30",
+          "type": "vote",
+          "text": "Who is most likely to need a snack before making any major decision?"
+        }
+      ]
+    },
+    {
+      "id": "would-you-rather",
+      "name": "Would You Rather",
+      "shortName": "Would You Rather",
+      "description": "Two terrible options. No hiding in the middle.",
+      "instruction": "Everyone chooses one option, then explain the suspicious reasoning.",
+      "accent": "teal",
+      "cards": [
+        {
+          "id": "wyr-1",
+          "type": "choice",
+          "text": "Would you rather have your camera roll shown to the group or your search history read aloud?"
+        },
+        {
+          "id": "wyr-2",
+          "type": "choice",
+          "text": "Would you rather be trapped on a cruise with an ex or seated beside them on a ten-hour flight?"
+        },
+        {
+          "id": "wyr-3",
+          "type": "choice",
+          "text": "Would you rather lose your phone for a week or give up coffee for a month?"
+        },
+        {
+          "id": "wyr-4",
+          "type": "choice",
+          "text": "Would you rather always arrive thirty minutes early or twenty minutes late?"
+        },
+        {
+          "id": "wyr-5",
+          "type": "choice",
+          "text": "Would you rather have one amazing outfit forever or a closet full of questionable choices?"
+        },
+        {
+          "id": "wyr-6",
+          "type": "choice",
+          "text": "Would you rather be famous for a scandal or unknown for your greatest achievement?"
+        },
+        {
+          "id": "wyr-7",
+          "type": "choice",
+          "text": "Would you rather know every secret about your friends or have them know every secret about you?"
+        },
+        {
+          "id": "wyr-8",
+          "type": "choice",
+          "text": "Would you rather only communicate through voice notes or only through reaction GIFs?"
+        },
+        {
+          "id": "wyr-9",
+          "type": "choice",
+          "text": "Would you rather redo your worst date or relive your most embarrassing night out?"
+        },
+        {
+          "id": "wyr-10",
+          "type": "choice",
+          "text": "Would you rather have unlimited travel with terrible hotels or luxury hotels but never leave your state?"
+        },
+        {
+          "id": "wyr-11",
+          "type": "choice",
+          "text": "Would you rather let the group choose your haircut or your next vacation?"
+        },
+        {
+          "id": "wyr-12",
+          "type": "choice",
+          "text": "Would you rather never use social media again or have every post approved by the group?"
+        },
+        {
+          "id": "wyr-13",
+          "type": "choice",
+          "text": "Would you rather be the funniest person in every room or the hottest?"
+        },
+        {
+          "id": "wyr-14",
+          "type": "choice",
+          "text": "Would you rather always know when someone is lying or never know when they are annoyed?"
+        },
+        {
+          "id": "wyr-15",
+          "type": "choice",
+          "text": "Would you rather have your life narrated by a drag queen or a sports commentator?"
+        },
+        {
+          "id": "wyr-16",
+          "type": "choice",
+          "text": "Would you rather share one bathroom with eight people or one bedroom with four?"
+        },
+        {
+          "id": "wyr-17",
+          "type": "choice",
+          "text": "Would you rather have a rewind button for conversations or a mute button for people?"
+        },
+        {
+          "id": "wyr-18",
+          "type": "choice",
+          "text": "Would you rather accidentally like a ten-year-old photo or send a screenshot to the person in it?"
+        },
+        {
+          "id": "wyr-19",
+          "type": "choice",
+          "text": "Would you rather be able to teleport but always arrive sweaty or fly but only five feet above the ground?"
+        },
+        {
+          "id": "wyr-20",
+          "type": "choice",
+          "text": "Would you rather give up your favorite food or your favorite streaming show?"
+        },
+        {
+          "id": "wyr-21",
+          "type": "choice",
+          "text": "Would you rather have a perfect memory or be able to forget anything on command?"
+        },
+        {
+          "id": "wyr-22",
+          "type": "choice",
+          "text": "Would you rather live without music or without television?"
+        },
+        {
+          "id": "wyr-23",
+          "type": "choice",
+          "text": "Would you rather switch phones with the player on your right or closets with the player on your left?"
+        },
+        {
+          "id": "wyr-24",
+          "type": "choice",
+          "text": "Would you rather have your most dramatic thought appear as subtitles or be spoken by Siri?"
+        },
+        {
+          "id": "wyr-25",
+          "type": "choice",
+          "text": "Would you rather host every holiday or never be invited to one again?"
+        },
+        {
+          "id": "wyr-26",
+          "type": "choice",
+          "text": "Would you rather date someone exactly like you or your complete opposite?"
+        },
+        {
+          "id": "wyr-27",
+          "type": "choice",
+          "text": "Would you rather be stuck in traffic with no air conditioning or at brunch with no coffee?"
+        },
+        {
+          "id": "wyr-28",
+          "type": "choice",
+          "text": "Would you rather have unlimited money for travel or unlimited money for home projects?"
+        },
+        {
+          "id": "wyr-29",
+          "type": "choice",
+          "text": "Would you rather repeat the same amazing year forever or keep moving into completely unknown years?"
+        },
+        {
+          "id": "wyr-30",
+          "type": "choice",
+          "text": "Would you rather win every argument or always know when to stop arguing?"
+        }
+      ]
+    },
+    {
+      "id": "red-flag",
+      "name": "Red Flag or Just Gay?",
+      "shortName": "Red Flag",
+      "description": "A highly scientific investigation into questionable behavior.",
+      "instruction": "Vote: red flag, harmless chaos, or somehow both.",
+      "accent": "red",
+      "cards": [
+        {
+          "id": "redflag-1",
+          "type": "vote",
+          "text": "They have fourteen unread texts but post Stories all day."
+        },
+        {
+          "id": "redflag-2",
+          "type": "vote",
+          "text": "Their mattress is directly on the floor, but the lighting is incredible."
+        },
+        {
+          "id": "redflag-3",
+          "type": "vote",
+          "text": "They say all of their exes are crazy."
+        },
+        {
+          "id": "redflag-4",
+          "type": "vote",
+          "text": "They still share a streaming password with an ex."
+        },
+        {
+          "id": "redflag-5",
+          "type": "vote",
+          "text": "They call every friend “babe” and insist it means nothing."
+        },
+        {
+          "id": "redflag-6",
+          "type": "vote",
+          "text": "They have no top sheet and seem proud of it."
+        },
+        {
+          "id": "redflag-7",
+          "type": "vote",
+          "text": "They refuse to make plans more than two hours in advance."
+        },
+        {
+          "id": "redflag-8",
+          "type": "vote",
+          "text": "Their phone is always face down."
+        },
+        {
+          "id": "redflag-9",
+          "type": "vote",
+          "text": "They own twelve plants and every one of them is dying."
+        },
+        {
+          "id": "redflag-10",
+          "type": "vote",
+          "text": "They describe themselves as “brutally honest.”"
+        },
+        {
+          "id": "redflag-11",
+          "type": "vote",
+          "text": "They say they hate drama but know everyone’s business."
+        },
+        {
+          "id": "redflag-12",
+          "type": "vote",
+          "text": "They have matching tattoos with three different people."
+        },
+        {
+          "id": "redflag-13",
+          "type": "vote",
+          "text": "They disappear for six hours and return with a new hobby."
+        },
+        {
+          "id": "redflag-14",
+          "type": "vote",
+          "text": "They send seven-minute voice notes instead of answering one question."
+        },
+        {
+          "id": "redflag-15",
+          "type": "vote",
+          "text": "They use astrology to explain why they forgot your birthday."
+        },
+        {
+          "id": "redflag-16",
+          "type": "vote",
+          "text": "They have never replaced a roll of toilet paper."
+        },
+        {
+          "id": "redflag-17",
+          "type": "vote",
+          "text": "They want a joint vacation before they know your last name."
+        },
+        {
+          "id": "redflag-18",
+          "type": "vote",
+          "text": "They still have every dating app “just to look.”"
+        },
+        {
+          "id": "redflag-19",
+          "type": "vote",
+          "text": "They order for the table without asking."
+        },
+        {
+          "id": "redflag-20",
+          "type": "vote",
+          "text": "They clap when the plane lands."
+        },
+        {
+          "id": "redflag-21",
+          "type": "vote",
+          "text": "They have a close-friends list with more than two hundred people."
+        },
+        {
+          "id": "redflag-22",
+          "type": "vote",
+          "text": "They say “I don’t really do labels” after six months."
+        },
+        {
+          "id": "redflag-23",
+          "type": "vote",
+          "text": "They post inspirational quotes immediately after starting an argument."
+        },
+        {
+          "id": "redflag-24",
+          "type": "vote",
+          "text": "They know their rising sign but not their credit score."
+        },
+        {
+          "id": "redflag-25",
+          "type": "vote",
+          "text": "They own a ring light but no bedside lamp."
+        },
+        {
+          "id": "redflag-26",
+          "type": "vote",
+          "text": "They bring a full photo shoot to a casual brunch."
+        },
+        {
+          "id": "redflag-27",
+          "type": "vote",
+          "text": "They introduce you as “my friend” after telling everyone you are together."
+        },
+        {
+          "id": "redflag-28",
+          "type": "vote",
+          "text": "They insist every vacation needs a matching outfit."
+        },
+        {
+          "id": "redflag-29",
+          "type": "vote",
+          "text": "They have an unread email count over fifty thousand."
+        },
+        {
+          "id": "redflag-30",
+          "type": "vote",
+          "text": "They say “trust me” before every terrible idea."
+        }
+      ]
+    },
+    {
+      "id": "astrology-chaos",
+      "name": "Astrology Chaos",
+      "shortName": "Astrology",
+      "description": "Whose chart is it anyway? Point to the human embodiment.",
+      "instruction": "Everyone points to the player this sounds like.",
+      "accent": "purple",
+      "cards": [
+        {
+          "id": "astro-1",
+          "type": "guess",
+          "text": "Needs to be right even when they’re asking a question."
+        },
+        {
+          "id": "astro-2",
+          "type": "guess",
+          "text": "Loves chaos until it’s time to clean it up — then suddenly becomes a Virgo."
+        },
+        {
+          "id": "astro-3",
+          "type": "guess",
+          "text": "Has deep emotional intelligence but forgets to text back."
+        },
+        {
+          "id": "astro-4",
+          "type": "guess",
+          "text": "Can plan an entire trip in five minutes, but takes three weeks to unpack."
+        },
+        {
+          "id": "astro-5",
+          "type": "guess",
+          "text": "Is either everyone’s therapist or everyone’s problem — no middle ground."
+        },
+        {
+          "id": "astro-6",
+          "type": "guess",
+          "text": "Gets moody when the vibe feels off but calls it “intuition.”"
+        },
+        {
+          "id": "astro-7",
+          "type": "guess",
+          "text": "Says they hate attention, yet somehow ends up with the microphone."
+        },
+        {
+          "id": "astro-8",
+          "type": "guess",
+          "text": "Can’t focus until the environment looks like a Pinterest board."
+        },
+        {
+          "id": "astro-9",
+          "type": "guess",
+          "text": "Has the confidence of a fire sign but the anxiety of a water sign."
+        },
+        {
+          "id": "astro-10",
+          "type": "guess",
+          "text": "Will start a business because of one compliment."
+        },
+        {
+          "id": "astro-11",
+          "type": "guess",
+          "text": "Uses humor as both armor and weapon — often in the same sentence."
+        },
+        {
+          "id": "astro-12",
+          "type": "guess",
+          "text": "Feels deeply, but won’t admit it until three margaritas in."
+        },
+        {
+          "id": "astro-13",
+          "type": "guess",
+          "text": "Constantly “just checking in” but really wants to know the gossip."
+        },
+        {
+          "id": "astro-14",
+          "type": "guess",
+          "text": "Acts chill, secretly keeps receipts like a Scorpio with Wi-Fi."
+        },
+        {
+          "id": "astro-15",
+          "type": "guess",
+          "text": "Has an opinion about everything, including your rising sign."
+        },
+        {
+          "id": "astro-16",
+          "type": "guess",
+          "text": "Gives great advice they do not personally follow."
+        },
+        {
+          "id": "astro-17",
+          "type": "guess",
+          "text": "Starts every project with “This will be quick” — famous last words."
+        },
+        {
+          "id": "astro-18",
+          "type": "guess",
+          "text": "Emotionally reactive, recovers fast, then forgets the fight ever happened."
+        },
+        {
+          "id": "astro-19",
+          "type": "guess",
+          "text": "Attracts weird coincidences and blames it on the universe doing “bits.”"
+        },
+        {
+          "id": "astro-20",
+          "type": "guess",
+          "text": "Wants everyone to get along but low-key loves a little drama."
+        },
+        {
+          "id": "astro-21",
+          "type": "guess",
+          "text": "Says they’re spontaneous but actually researched it for two weeks."
+        },
+        {
+          "id": "astro-22",
+          "type": "guess",
+          "text": "Falls in love through shared playlists and eye contact."
+        },
+        {
+          "id": "astro-23",
+          "type": "guess",
+          "text": "Can’t let someone else drive without judging their route."
+        },
+        {
+          "id": "astro-24",
+          "type": "guess",
+          "text": "Is both the storm and the calm after it."
+        },
+        {
+          "id": "astro-25",
+          "type": "guess",
+          "text": "Looks chill in photos, full existential meltdown behind the scenes."
+        },
+        {
+          "id": "astro-26",
+          "type": "guess",
+          "text": "Will reorganize the kitchen to feel emotionally stable again."
+        },
+        {
+          "id": "astro-27",
+          "type": "guess",
+          "text": "Thinks being vulnerable is hot until someone actually does it."
+        },
+        {
+          "id": "astro-28",
+          "type": "guess",
+          "text": "Laughs in serious conversations to diffuse tension — it never works."
+        },
+        {
+          "id": "astro-29",
+          "type": "guess",
+          "text": "Gives main-character speeches in their head daily."
+        },
+        {
+          "id": "astro-30",
+          "type": "guess",
+          "text": "Once cried over something beautiful and blamed “Mercury retrograde.”"
+        }
+      ]
+    }
+  ]
+}

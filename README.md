@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 5
+# A Little Throuple Tea — Superman UX 6
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -117,3 +117,34 @@ Those are intentionally not faked in this package.
 - Episode cards, Continue Listening, and starter cards now display the full flyer artwork.
 - Added a subtle branded backdrop behind square artwork so the complete flyer still feels intentional inside each card.
 - Watch thumbnails remain optimized for their landscape and vertical formats.
+
+
+## UX 6 — Digital Bowl of Chaos
+
+The app now includes a complete app-exclusive Bowl of Chaos game.
+
+### Launch rules
+
+- 2–9 players
+- Optional player names
+- No accounts or login
+- Pick one pack or mix multiple packs
+- Tap the bowl or enable shake-to-draw on an iPhone
+- Pass-the-phone turns rotate automatically
+- Cards do not repeat during a game
+- Complete draw history
+- Save favorite cards
+- End-game summary and native sharing
+- Play again with the same setup or change players/packs
+
+### Launch packs
+
+- Classic Chaos
+- Most Likely To
+- Would You Rather
+- Red Flag or Just Gay?
+- Astrology Chaos
+
+The bundled launch contains 150 cards. `live-data/bowl-packs.json` is fetched remotely, so future packs and cards can be added through GitHub without requiring an App Store update.
+
+The Throuple Hotline remains available from Home and More. The center navigation tab is now the Bowl.

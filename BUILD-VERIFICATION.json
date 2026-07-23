@@ -1,13 +1,32 @@
 {
-  "version": "2.4.0",
+  "version": "2.5.0",
   "websiteModified": false,
-  "watchButtonLabel": "Play",
-  "fullEpisodeFlyersVisible": true,
-  "affectedArtwork": [
-    "Home hero",
-    "Episode list",
-    "Continue Listening",
-    "Starter episode cards"
+  "feature": "Digital Bowl of Chaos",
+  "players": {
+    "min": 2,
+    "max": 9
+  },
+  "packCount": 5,
+  "cardCount": 150,
+  "packs": [
+    "Classic Chaos",
+    "Most Likely To",
+    "Would You Rather",
+    "Red Flag or Just Gay?",
+    "Astrology Chaos"
+  ],
+  "features": [
+    "optional player names",
+    "multi-pack selection",
+    "shake or tap draw",
+    "haptics and rattle sound",
+    "automatic turn rotation",
+    "no repeated cards",
+    "draw history",
+    "saved cards",
+    "game summary",
+    "native sharing",
+    "remote pack updates"
   ],
   "checks": [
     {
