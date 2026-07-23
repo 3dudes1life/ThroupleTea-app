@@ -1,8 +1,8 @@
 {
   "name": "throupletea-app",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "private": true,
-  "description": "UX7.9.2 preserves the known-good full descriptions and only removes unsupported topic glyphs.",
+  "description": "UX7.9.3 keeps full descriptions and removes the false build blocker.",
   "scripts": {
     "ios:add": "npx cap add ios",
     "ios:sync": "npx cap sync ios",

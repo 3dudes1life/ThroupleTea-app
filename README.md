@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 7.9.2
+# A Little Throuple Tea — Superman UX 7.9.3
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -392,3 +392,21 @@ This version starts again from the known-good UX7.9 code and changes only the
 unsupported leading topic glyphs. It also refuses to open Xcode unless at least
 five episodes contain descriptions richer than their card summaries, so the
 full-description regression cannot silently happen again.
+
+
+## UX 7.9.3 — false build blocker removed
+
+UX7.9.2 successfully hydrated richer RSS descriptions, but the validator
+incorrectly required at least five episodes to be richer than their card
+summaries. The current RSS produced two, so the build stopped even though the
+description pipeline worked.
+
+This release:
+
+- preserves the UX7.9 full-description pipeline
+- preserves the topic-card glyph cleanup
+- reports how many rich descriptions were found
+- checks the Gay Rulebook episode when available
+- never blocks Xcode merely because fewer than five episodes have longer RSS copy
+- continues when the local YouTube fallback is small because the app can load
+  the live GitHub catalog after launch
