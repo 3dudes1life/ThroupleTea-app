@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 7.6
+# A Little Throuple Tea — Superman UX 7.6.1
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -293,3 +293,20 @@ No redesign. This release hardens the launch build.
 - Direct Capacitor versions are exact rather than floating ranges.
 - `package-lock.json` is retained and no longer deleted during builds.
 - Added the Capacitor Device plugin for reliable Simulator detection.
+
+
+## UX 7.6.1 — certificate-safe local build
+
+The first UX7.6 build correctly detected that only one fallback video was
+available, but it stopped the build. William's older Python 3.7 certificate
+store also prevented the local YouTube updater from reaching HTTPS sources.
+
+This maintenance release:
+
+- does not run yt-dlp or Python web requests during a local Xcode build
+- automatically recovers the healthy full catalog from the previous UX7.5
+  folder in Downloads
+- otherwise downloads the current GitHub catalog with macOS `curl`
+- continues to Xcode even when live catalog refresh is temporarily unavailable
+- keeps the in-app live-data refresh, GitHub Action updater, Watch layout,
+  SharePlay, Bowl fixes, saved cards, and all UX7.6 stability upgrades

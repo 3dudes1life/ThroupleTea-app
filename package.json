@@ -1,8 +1,8 @@
 {
   "name": "throupletea-app",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "private": true,
-  "description": "UX7.6 Superman stability pass for A Little Throuple Tea.",
+  "description": "UX7.6.1 certificate-safe Superman stability build.",
   "scripts": {
     "ios:add": "npx cap add ios",
     "ios:sync": "npx cap sync ios",

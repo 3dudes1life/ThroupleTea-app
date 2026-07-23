@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# NOTE: This updater is intended for GitHub Actions/current Python.
+# Local macOS builds use prepare-bundled-catalog.js so an older Python
+# certificate store cannot block Xcode.
 """Refresh live app JSON from the existing podcast RSS, website archive, and YouTube Atom feed.
 
 This only publishes DATA. It never changes the website and never downloads new app code.
