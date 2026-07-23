@@ -20,6 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "live-data" / "content.json"
+BUNDLED_OUT = ROOT / "www" / "data" / "fallback.json"
 RSS_URL = "https://anchor.fm/s/1087008c4/podcast/rss"
 EPISODE_ARCHIVE_URL = "https://throupletea.com/episodes/"
 YOUTUBE_FEED_URL = "https://www.youtube.com/feeds/videos.xml?channel_id=UCswzye8bcm8bByqLlW0QaFQ"
@@ -182,59 +183,100 @@ def _best_thumbnail(entry: dict, kind: str) -> str:
     return str(entry.get("thumbnail") or "")
 
 def _ensure_ytdlp() -> None:
+    """Install or upgrade yt-dlp in the current Python environment."""
     try:
         import yt_dlp  # noqa: F401
+        return
     except ImportError:
-        print("Installing yt-dlp for the YouTube catalog refresh...")
-        subprocess.run(
-            [sys.executable, "-m", "pip", "install", "--quiet", "yt-dlp"],
-            check=True,
-            timeout=180,
-        )
+        pass
+
+    print("Installing yt-dlp for the YouTube catalog refresh...")
+    subprocess.run(
+        [sys.executable, "-m", "pip", "install", "--quiet", "--upgrade", "yt-dlp"],
+        check=True,
+        timeout=240,
+    )
 
 def _ytdlp_channel_tab(tab: str, kind: str, limit: int) -> list[dict]:
     _ensure_ytdlp()
-    url = f"https://www.youtube.com/channel/UCswzye8bcm8bByqLlW0QaFQ/{tab}"
-    command = [
-        sys.executable, "-m", "yt_dlp",
-        "--flat-playlist",
-        "--dump-single-json",
-        "--playlist-end", str(limit),
-        "--no-warnings",
-        "--ignore-errors",
-        url,
+
+    candidates = [
+        f"https://www.youtube.com/channel/UCswzye8bcm8bByqLlW0QaFQ/{tab}",
+        f"https://www.youtube.com/@ThroupleTea/{tab}",
     ]
-    result = subprocess.run(command, capture_output=True, text=True, timeout=240)
-    if result.returncode != 0 or not result.stdout.strip():
-        raise RuntimeError(result.stderr.strip() or f"yt-dlp failed for {tab}")
+    last_error = ""
 
-    data = json.loads(result.stdout)
-    videos = []
-    for entry in data.get("entries") or []:
-        if not isinstance(entry, dict):
+    for url in candidates:
+        command = [
+            sys.executable, "-m", "yt_dlp",
+            "--flat-playlist",
+            "--dump-single-json",
+            "--playlist-end", str(limit),
+            "--no-warnings",
+            "--ignore-errors",
+            "--extractor-retries", "3",
+            "--socket-timeout", "30",
+            url,
+        ]
+        result = subprocess.run(command, capture_output=True, text=True, timeout=300)
+        if result.returncode != 0 or not result.stdout.strip():
+            last_error = result.stderr.strip() or f"yt-dlp failed for {url}"
             continue
 
-        video_id = str(entry.get("id") or "")
-        if not video_id:
-            continue
-
-        duration = entry.get("duration")
         try:
-            duration_seconds = int(float(duration)) if duration is not None else 0
-        except Exception:
-            duration_seconds = 0
+            data = json.loads(result.stdout)
+        except json.JSONDecodeError as exc:
+            last_error = f"Invalid yt-dlp JSON for {url}: {exc}"
+            continue
 
-        videos.append({
-            "id": video_id,
-            "title": str(entry.get("title") or "A Little Throuple Tea"),
-            "published": _published_iso(entry),
-            "thumbnail": _best_thumbnail(entry, kind) or f"https://i.ytimg.com/vi/{video_id}/hqdefault.jpg",
-            "url": f"https://www.youtube.com/watch?v={video_id}",
-            "kind": kind,
-            "durationSeconds": duration_seconds,
-        })
+        videos = []
+        for entry in data.get("entries") or []:
+            if not isinstance(entry, dict):
+                continue
 
-    return videos
+            video_id = str(entry.get("id") or "")
+            if not video_id:
+                continue
+
+            duration = entry.get("duration")
+            try:
+                duration_seconds = int(float(duration)) if duration is not None else 0
+            except Exception:
+                duration_seconds = 0
+
+            videos.append({
+                "id": video_id,
+                "title": str(entry.get("title") or "A Little Throuple Tea"),
+                "published": _published_iso(entry),
+                "thumbnail": _best_thumbnail(entry, kind) or f"https://i.ytimg.com/vi/{video_id}/hqdefault.jpg",
+                "url": f"https://www.youtube.com/watch?v={video_id}",
+                "kind": kind,
+                "durationSeconds": duration_seconds,
+            })
+
+        if videos:
+            return videos
+
+        last_error = f"No {kind} entries returned for {url}"
+
+    raise RuntimeError(last_error or f"Unable to load YouTube {tab} tab")
+
+def _oembed_kind(video_id: str, title_value: str) -> str:
+    """Use YouTube oEmbed dimensions to distinguish vertical Shorts."""
+    try:
+        url = (
+            "https://www.youtube.com/oembed"
+            f"?url=https://www.youtube.com/shorts/{video_id}&format=json"
+        )
+        data = json.loads(fetch(url).decode("utf-8", errors="replace"))
+        width = float(data.get("width") or 0)
+        height = float(data.get("height") or 0)
+        if height > width and height > 0:
+            return "short"
+    except Exception:
+        pass
+
+    return "short" if re.search(r"(^|\s)#?shorts?(\s|$)", title_value, flags=re.I) else "episode"
 
 def _atom_fallback() -> list[dict]:
     root = ET.fromstring(fetch(YOUTUBE_FEED_URL))
@@ -255,7 +297,7 @@ def _atom_fallback() -> list[dict]:
             if thumb is not None:
                 thumbnail = thumb.attrib.get("url", "")
 
-        kind = "short" if re.search(r"(^|\s)#?shorts?(\s|$)", title_value, flags=re.I) else "episode"
+        kind = _oembed_kind(video_id, title_value)
         videos.append({
             "id": video_id,
             "title": title_value,
@@ -268,42 +310,95 @@ def _atom_fallback() -> list[dict]:
     return videos
 
 def parse_youtube() -> list[dict]:
-    try:
-        full_videos = _ytdlp_channel_tab("videos", "episode", 50)
-        shorts = _ytdlp_channel_tab("shorts", "short", 50)
+    full_videos = []
+    shorts = []
 
-        deduped = {}
-        for video in full_videos + shorts:
+    try:
+        full_videos = _ytdlp_channel_tab("videos", "episode", 75)
+    except Exception as exc:
+        print(f"Full-video catalog warning: {exc}")
+
+    try:
+        shorts = _ytdlp_channel_tab("shorts", "short", 75)
+    except Exception as exc:
+        print(f"Shorts catalog warning: {exc}")
+
+    combined = full_videos + shorts
+
+    # Always merge in the latest Atom items so today's uploads appear even if
+    # YouTube temporarily blocks one of the channel-tab requests.
+    try:
+        combined.extend(_atom_fallback())
+    except Exception as exc:
+        print(f"YouTube Atom fallback warning: {exc}")
+
+    deduped = {}
+    for video in combined:
+        if not video.get("id"):
+            continue
+        current = deduped.get(video["id"])
+        if current is None:
+            deduped[video["id"]] = video
+            continue
+
+        # Prefer the richer entry with a duration and explicit tab kind.
+        current_score = int(bool(current.get("durationSeconds"))) + int(current.get("kind") in {"short", "episode"})
+        new_score = int(bool(video.get("durationSeconds"))) + int(video.get("kind") in {"short", "episode"})
+        if new_score > current_score:
             deduped[video["id"]] = video
 
-        videos = list(deduped.values())
-        videos.sort(key=lambda video: video.get("published") or "", reverse=True)
-        print(f"Loaded {len(shorts)} Shorts and {len(full_videos)} full videos from YouTube.")
-        return videos
-    except Exception as exc:
-        print(f"Full YouTube catalog warning: {exc}")
-        return _atom_fallback()
+    videos = list(deduped.values())
+    videos.sort(key=lambda video: video.get("published") or "", reverse=True)
+
+    short_count = sum(1 for video in videos if video.get("kind") == "short")
+    episode_count = sum(1 for video in videos if video.get("kind") == "episode")
+    print(f"Loaded {short_count} Shorts and {episode_count} full videos from YouTube.")
+    return videos
 
 def main():
     cards = parse_archive()
     existing = {}
-    if OUT.exists():
+
+    for candidate in (OUT, BUNDLED_OUT):
+        if not candidate.exists():
+            continue
         try:
-            existing = json.loads(OUT.read_text(encoding="utf-8"))
+            loaded = json.loads(candidate.read_text(encoding="utf-8"))
+            if len(loaded.get("videos", [])) > len(existing.get("videos", [])):
+                existing = loaded
         except Exception:
             pass
+
     episodes = parse_rss(cards)
     videos = parse_youtube()
+
+    # Never replace a healthy catalog with a degraded one-video response.
+    existing_videos = existing.get("videos", [])
+    if len(videos) < 5 and len(existing_videos) > len(videos):
+        print(
+            f"Catalog safeguard: preserving {len(existing_videos)} saved videos "
+            f"instead of accepting {len(videos)}."
+        )
+        videos = existing_videos
+
     payload = {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "generatedAt": dt.datetime.now(dt.timezone.utc).isoformat(),
-        "source": "rss+website+youtube",
+        "source": "rss+website+youtube-tabs+atom",
         "episodes": episodes or existing.get("episodes", []),
-        "videos": videos or existing.get("videos", []),
+        "videos": videos or existing_videos,
     }
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Wrote {len(payload['episodes'])} episodes and {len(payload['videos'])} videos to {OUT}")
+
+    for destination in (OUT, BUNDLED_OUT):
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(
+            json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        print(
+            f"Wrote {len(payload['episodes'])} episodes and "
+            f"{len(payload['videos'])} videos to {destination}"
+        )
 
 if __name__ == "__main__":
     import urllib.parse

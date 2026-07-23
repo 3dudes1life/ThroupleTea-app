@@ -4,6 +4,7 @@
 
   const REMOTE_BASE = 'https://raw.githubusercontent.com/3dudes1life/ThroupleTea-app/main/live-data';
   const FALLBACK_IMAGE = './assets/podcast-artwork.jpg';
+  const CONTENT_CACHE_VERSION = 3;
   const PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player/';
   const PARTY_PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player-party/';
   const state = {
@@ -369,11 +370,11 @@
 
     $('#shortsRail').innerHTML = shorts.length
       ? shorts.map(shortVideoCard).join('')
-      : `<div class="video-card-empty"><strong>No Shorts loaded yet.</strong>Run the live-data workflow once after uploading UX4.</div>`;
+      : `<div class="video-card-empty"><strong>No Shorts loaded yet.</strong>Tap Refresh after the YouTube catalog update finishes.</div>`;
 
     $('#fullVideoGrid').innerHTML = fullEpisodes.length
       ? fullEpisodes.map(fullVideoCard).join('')
-      : `<div class="video-card-empty"><strong>No full episodes loaded yet.</strong>Run the live-data workflow once after uploading UX4.</div>`;
+      : `<div class="video-card-empty"><strong>No full episodes loaded yet.</strong>Tap Refresh after the YouTube catalog update finishes.</div>`;
   }
 
   function renderSaved() {
@@ -1307,14 +1308,59 @@
     }
   }
 
+  function catalogQuality(content) {
+    const videos = Array.isArray(content?.videos) ? content.videos : [];
+    const shorts = videos.filter(video => videoKind(video) === 'short').length;
+    const full = videos.filter(video => videoKind(video) === 'episode').length;
+    return videos.length * 10 + Math.min(shorts, 10) * 2 + Math.min(full, 10) * 2;
+  }
+
+  function bestCatalog(...catalogs) {
+    return catalogs
+      .filter(item => item?.episodes?.length)
+      .sort((a, b) => catalogQuality(b) - catalogQuality(a))[0] || catalogs.find(Boolean);
+  }
+
+  function mergedRemoteContent(current, remote) {
+    if (!remote?.episodes?.length) return current;
+
+    const currentVideos = Array.isArray(current?.videos) ? current.videos : [];
+    const remoteVideos = Array.isArray(remote?.videos) ? remote.videos : [];
+
+    const remoteIsHealthy = remoteVideos.length >= 5;
+    const remoteIsNotDegraded = (
+      currentVideos.length < 5
+      || remoteVideos.length >= Math.max(5, Math.floor(currentVideos.length * .55))
+    );
+
+    return {
+      ...remote,
+      episodes: remote.episodes,
+      videos: remoteIsHealthy && remoteIsNotDegraded ? remoteVideos : currentVideos,
+      catalogSafeguardUsed: !(remoteIsHealthy && remoteIsNotDegraded),
+    };
+  }
+
   async function loadInitialData() {
     const [fallback, localConfig] = await Promise.all([
       loadJSON('./data/fallback.json'),
       loadJSON('./data/app-config.json')
     ]);
-    const cached = localStorage.getItem('tt:content-cache');
+
+    const storedVersion = Number(localStorage.getItem('tt:content-cache-version') || 0);
+    let cached = null;
+
+    if (storedVersion === CONTENT_CACHE_VERSION) {
+      try {
+        cached = JSON.parse(localStorage.getItem('tt:content-cache') || 'null');
+      } catch (_) {}
+    } else {
+      localStorage.removeItem('tt:content-cache');
+      localStorage.setItem('tt:content-cache-version', String(CONTENT_CACHE_VERSION));
+    }
+
     const cachedConfig = localStorage.getItem('tt:config-cache');
-    state.content = cached ? JSON.parse(cached) : fallback;
+    state.content = bestCatalog(fallback, cached) || fallback;
     state.config = cachedConfig ? JSON.parse(cachedConfig) : localConfig;
     renderAll();
     await refreshRemoteData(false);
@@ -1329,17 +1375,28 @@
         loadJSON(`${REMOTE_BASE}/content.json?v=${stamp}`),
         loadJSON(`${REMOTE_BASE}/app-config.json?v=${stamp}`)
       ]);
+
       if (content?.episodes?.length) {
-        state.content = content;
+        state.content = mergedRemoteContent(state.content, content);
         state.remoteLoaded = true;
-        localStorage.setItem('tt:content-cache', JSON.stringify(content));
+        localStorage.setItem('tt:content-cache-version', String(CONTENT_CACHE_VERSION));
+        localStorage.setItem('tt:content-cache', JSON.stringify(state.content));
       }
+
       if (config?.links) {
         state.config = config;
         localStorage.setItem('tt:config-cache', JSON.stringify(config));
       }
+
       renderAll();
-      if (showFeedback) showToast('Fresh tea loaded');
+
+      if (showFeedback) {
+        const videos = state.content.videos || [];
+        const shorts = videos.filter(video => videoKind(video) === 'short').length;
+        const full = videos.filter(video => videoKind(video) === 'episode').length;
+        showToast(`${shorts} Shorts + ${full} full videos loaded`);
+      }
+
       $('#offlineBanner').hidden = true;
     } catch (error) {
       if (showFeedback) showToast('Using the freshest saved copy');

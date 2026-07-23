@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 7.2
+# A Little Throuple Tea — Superman UX 7.3
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -207,3 +207,18 @@ The build script now runs `scripts/configure-shareplay-ios.py` automatically aft
 - Normal videos and Shorts again use the proven UX6 player.
 - SharePlay uses a separate `/player-party/` player only after Watch Party starts.
 - Watch Party remains available inside the in-app video player.
+
+
+## UX 7.3 — full YouTube catalog restoration
+
+- Keeps the preferred UX6 Watch design.
+- Pulls up to 75 Shorts and 75 full videos from the YouTube channel.
+- Tries both the channel ID and `@ThroupleTea` channel routes.
+- Merges the latest Atom-feed uploads as a safety net.
+- Uses YouTube oEmbed dimensions to identify vertical Shorts when the tab pull is unavailable.
+- Writes refreshed data to both the GitHub live-data endpoint and the app's bundled fallback.
+- The local build command refreshes YouTube before syncing into Xcode.
+- Clears the old one-video cache.
+- Refuses to let a stale or degraded remote response replace a healthy catalog.
+- Refresh feedback reports the actual Shorts and full-video totals.
+- SharePlay Watch Party remains available inside the video player.
