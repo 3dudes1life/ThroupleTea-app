@@ -103,41 +103,41 @@
       <button class="wide-gradient-button" data-open-url="https://www.youtube.com/channel/UCswzye8bcm8bByqLlW0QaFQ">Open the full YouTube channel</button>
     </section>
 
-    <section class="app-view" data-view="hotline" aria-label="Throuple Hotline">
+    <section class="app-view hotline-view" data-view="hotline" aria-label="Throuple Hotline">
       <div class="page-title">
         <span class="eyebrow">THROUPLE HOTLINE</span>
         <h1>Okay, spill.</h1>
         <p>Dating disaster? Friendship mess? Throuple question? Life chaos? Send it before we record.</p>
       </div>
 
-      <form id="hotlineForm" class="hotline-form">
-        <label>
-          <span>Name or nickname <small>optional</small></span>
-          <input id="hotlineName" type="text" autocomplete="name" placeholder="Anonymous icon is also acceptable">
-        </label>
-        <label>
-          <span>What kind of tea is this?</span>
-          <select id="hotlineCategory">
-            <option>Throuple question</option>
-            <option>Dating disaster</option>
-            <option>Relationship advice</option>
-            <option>Friendship chaos</option>
-            <option>Life question</option>
-            <option>Something unhinged</option>
-          </select>
-        </label>
-        <label>
-          <span>Your question or story</span>
-          <textarea id="hotlineQuestion" rows="8" required placeholder="Give us the details. Names can absolutely be changed to protect the guilty."></textarea>
-        </label>
-        <label class="check-row">
-          <input id="hotlineAnonymous" type="checkbox">
-          <span>Keep me anonymous on the podcast</span>
-        </label>
-        <button type="submit" class="wide-gradient-button">Send to the Throuple Hotline</button>
-        <button type="button" class="wide-outline-button" data-open-config="hotlineForm">Use the private web form instead</button>
-        <p class="form-note">Submitting opens your email app with everything prefilled. Nothing is posted publicly.</p>
-      </form>
+      <section class="hotline-launch-card">
+        <div class="hotline-launch-card__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3l2 5-2 1c1.4 3 3 4.6 6 6l1-2 5 2v3c0 1.1-.9 2-2 2C10.3 21 3 13.7 3 6c0-1.1.9-2 2-2z"/></svg>
+        </div>
+        <span class="eyebrow">PRIVATE + DASHBOARD READY</span>
+        <h2>Your submission goes to the same Hotline inbox.</h2>
+        <p>
+          The secure form opens inside the app. When it is submitted, the message is emailed to
+          <strong>throupletea@gmail.com</strong> so your existing dashboard keeps working exactly as it does now.
+        </p>
+
+        <button id="openHotlineForm" type="button" class="wide-gradient-button hotline-primary">
+          Open the Throuple Hotline
+        </button>
+
+        <div class="hotline-reassurance">
+          <span><svg viewBox="0 0 24 24"><path d="M6 10V8a6 6 0 0 1 12 0v2"/><rect x="4" y="10" width="16" height="11" rx="2"/></svg> Private submission</span>
+          <span><svg viewBox="0 0 24 24"><path d="m4 6 8 6 8-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg> Sent to your inbox</span>
+        </div>
+      </section>
+
+      <section class="hotline-help-card">
+        <div>
+          <strong>Prefer regular email?</strong>
+          <p>That still works too. This opens a new message addressed to the Hotline inbox.</p>
+        </div>
+        <button id="emailHotline" type="button" class="wide-outline-button">Email the Hotline</button>
+      </section>
     </section>
 
     <section class="app-view" data-view="more" aria-label="More">
@@ -227,13 +227,6 @@
       <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg><span>More</span>
     </button>
   </nav>
-
-  <div id="videoModal" class="video-modal" hidden>
-    <button id="closeVideoModal" class="modal-close" aria-label="Close video">
-      <svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
-    </button>
-    <div class="video-modal__frame"><iframe id="videoFrame" title="YouTube video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
-  </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="./app.js"></script>

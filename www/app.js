@@ -28,6 +28,14 @@
     return String(text).trim();
   }
 
+  function displayTitle(text = '') {
+    return String(text)
+      .replace(/\p{Extended_Pictographic}/gu, '')
+      .replace(/[\uFE0E\uFE0F]/g, '')
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+  }
+
   function formatDate(value) {
     if (!value) return '';
     const date = new Date(value);
@@ -141,7 +149,7 @@
       <img src="${escapeHTML(ep.image || FALLBACK_IMAGE)}" alt="" loading="lazy" onerror="this.src='${FALLBACK_IMAGE}'">
       <div class="episode-card__copy">
         <div class="card-meta">${escapeHTML(episodeMeta(ep))}</div>
-        <h3>${escapeHTML(ep.title)}</h3>
+        <h3>${escapeHTML(displayTitle(ep.title))}</h3>
         ${compact ? '' : `<p>${escapeHTML(ep.summary || '')}</p>`}
         ${resume}
       </div>
@@ -162,7 +170,7 @@
       </div>
       <div class="video-card__body">
         <div class="card-meta">${escapeHTML(formatDate(video.published))}</div>
-        <h3>${escapeHTML(video.title)}</h3>
+        <h3>${escapeHTML(displayTitle(video.title))}</h3>
         <div class="video-actions">
           <button class="primary" data-play-video="${escapeHTML(video.id)}">Watch</button>
           <button data-share-video="${escapeHTML(video.id)}">Share</button>
@@ -184,7 +192,7 @@
       <div class="hero-card__art"><img src="${escapeHTML(latest.image || FALLBACK_IMAGE)}" alt="" onerror="this.src='${FALLBACK_IMAGE}'"></div>
       <div class="hero-card__body">
         <div class="hero-card__meta"><span class="live-pill">LATEST EPISODE</span><span class="card-meta">${escapeHTML(episodeMeta(latest))}</span></div>
-        <h1>${escapeHTML(latest.title)}</h1>
+        <h1>${escapeHTML(displayTitle(latest.title))}</h1>
         <p>${escapeHTML(latest.summary || '')}</p>
         <div class="action-row">
           ${latest.audioUrl ? `<button class="gradient-button" data-play-episode="${escapeHTML(latest.id)}"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>${savedSeconds > 15 ? `Resume ${formatTime(savedSeconds)}` : 'Play episode'}</button>` : ''}
@@ -202,7 +210,7 @@
       </div>
       <div class="feature-video__copy">
         <span class="card-meta">${escapeHTML(formatDate(latestVideo.published))}</span>
-        <h3>${escapeHTML(latestVideo.title)}</h3>
+        <h3>${escapeHTML(displayTitle(latestVideo.title))}</h3>
         <button class="small-button" data-play-video="${escapeHTML(latestVideo.id)}">Watch now</button>
       </div>
     </article>` : `<div class="empty-state">Latest YouTube videos will appear after the first live-data refresh.</div>`;
@@ -214,7 +222,7 @@
       <img src="${escapeHTML(ep.image || FALLBACK_IMAGE)}" alt="" loading="lazy">
       <div class="rail-card__body">
         <span class="card-meta">${escapeHTML(episodeMeta(ep))}</span>
-        <h3>${escapeHTML(ep.title)}</h3>
+        <h3>${escapeHTML(displayTitle(ep.title))}</h3>
         <button class="small-button" data-play-episode="${escapeHTML(ep.id)}">${ep.audioUrl ? 'Play episode' : 'Open episode'}</button>
       </div>
     </article>`).join('');
@@ -346,18 +354,49 @@
     miniPlayer.classList.toggle('playing', !audio.paused);
   }
 
-  function openVideo(id) {
+  async function openVideo(id) {
     if (!id) return;
-    haptic();
-    $('#videoFrame').src = `https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&playsinline=1`;
-    $('#videoModal').hidden = false;
-    document.body.style.overflow = 'hidden';
+    await haptic('MEDIUM');
+    const url = `https://www.youtube.com/watch?v=${encodeURIComponent(id)}`;
+    try {
+      const browser = window.Capacitor?.Plugins?.Browser;
+      if (window.Capacitor?.isNativePlatform?.() && browser) {
+        await browser.open({
+          url,
+          presentationStyle: 'fullscreen',
+          toolbarColor: '#080610'
+        });
+        return;
+      }
+    } catch (error) {
+      console.warn('In-app YouTube browser failed, using system browser.', error);
+    }
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
 
-  function closeVideo() {
-    $('#videoFrame').src = '';
-    $('#videoModal').hidden = true;
-    document.body.style.overflow = '';
+  async function openHotlineForm() {
+    const url = state.config.links.hotlineForm || 'https://OutAtInc.wixforms.com/f/7470927459844621419';
+    await haptic('MEDIUM');
+    try {
+      const browser = window.Capacitor?.Plugins?.Browser;
+      if (window.Capacitor?.isNativePlatform?.() && browser) {
+        await browser.open({
+          url,
+          presentationStyle: 'fullscreen',
+          toolbarColor: '#080610'
+        });
+        return;
+      }
+    } catch (error) {
+      console.warn('Hotline form browser failed, using system browser.', error);
+    }
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
+
+  function emailHotline() {
+    const email = state.config.links.email || 'throupletea@gmail.com';
+    const subject = 'Throuple Hotline';
+    location.href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}`;
   }
 
   async function loadJSON(url, timeout = 8000) {
@@ -414,30 +453,6 @@
     }
   }
 
-  function handleHotline(event) {
-    event.preventDefault();
-    const name = $('#hotlineName').value.trim();
-    const category = $('#hotlineCategory').value;
-    const question = $('#hotlineQuestion').value.trim();
-    const anonymous = $('#hotlineAnonymous').checked;
-    if (question.length < 10) {
-      showToast('Give us at least a little more tea');
-      return;
-    }
-    const subject = `Throuple Hotline — ${category}`;
-    const body = [
-      `Name/Nickname: ${name || 'Not provided'}`,
-      `Anonymous on podcast: ${anonymous ? 'Yes' : 'No'}`,
-      `Category: ${category}`,
-      '',
-      'Question / Story:',
-      question,
-      '',
-      'Sent from the A Little Throuple Tea app'
-    ].join('\n');
-    const email = state.config.links.email || 'throupletea@gmail.com';
-    location.href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  }
 
   function bindStaticEvents() {
     $$('.tab-bar button').forEach(button => button.addEventListener('click', () => setTab(button.dataset.tab)));
@@ -447,15 +462,14 @@
     $('#refreshButton').addEventListener('click', () => refreshRemoteData(true));
     $('#moreRefresh').addEventListener('click', () => refreshRemoteData(true));
     $('#episodeSearch').addEventListener('input', () => { renderEpisodes(); wireDynamicButtons(); });
-    $('#hotlineForm').addEventListener('submit', handleHotline);
+    $('#openHotlineForm').addEventListener('click', openHotlineForm);
+    $('#emailHotline').addEventListener('click', emailHotline);
     $('#playPauseButton').addEventListener('click', () => audio.paused ? audio.play() : audio.pause());
     $('#rewindButton').addEventListener('click', () => audio.currentTime = Math.max(0, audio.currentTime - 15));
     $('#forwardButton').addEventListener('click', () => audio.currentTime = Math.min(audio.duration || Infinity, audio.currentTime + 30));
     $('#playerSeek').addEventListener('input', event => {
       if (Number.isFinite(audio.duration)) audio.currentTime = (Number(event.target.value) / 100) * audio.duration;
     });
-    $('#closeVideoModal').addEventListener('click', closeVideo);
-    $('#videoModal').addEventListener('click', event => { if (event.target.id === 'videoModal') closeVideo(); });
     window.addEventListener('online', () => { $('#offlineBanner').hidden = true; refreshRemoteData(false); });
     window.addEventListener('offline', () => { $('#offlineBanner').hidden = false; });
     window.addEventListener('focus', () => refreshRemoteData(false));

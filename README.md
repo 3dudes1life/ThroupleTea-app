@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman App
+# A Little Throuple Tea — Superman UX 2
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -64,3 +64,15 @@ The UI and repository are ready for the next step, but Apple push still requires
 - Notification Service Extension
 
 Those are intentionally not faked in this package.
+
+
+## UX 2 fixes
+
+- Removed the YouTube iframe that caused Error 153.
+- Video buttons now open YouTube in Capacitor's secure in-app browser.
+- Replaced the confusing app-only Hotline fields with the existing secure Wix Hotline form.
+- Hotline submissions continue emailing `throupletea@gmail.com`, preserving the dashboard workflow.
+- Added a regular-email fallback.
+- Increased top and bottom safe spacing so headings and buttons are not covered.
+- Tightened the Home hero crop, title sizing, and action-button layout.
+- Strips unsupported leading emoji from visible episode/video titles while preserving source data.
