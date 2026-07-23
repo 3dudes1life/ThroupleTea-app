@@ -18,7 +18,9 @@ const checks = [
   [css.includes('.episode-topic-card'), 'topic cards are styled'],
   [css.includes('.episode-read-toggle'), 'read toggle is styled'],
   [build.includes('UX7.9.6'), 'build identifies UX7.9.6'],
-  [build.includes('npm test'), 'build runs tests']
+  [build.includes('python3 scripts/hydrate-episode-pages.py'), 'build hydrates full descriptions before testing'],
+  [build.includes('npm test'), 'build runs tests'],
+  [app.includes("mergeEpisodeMetadata(fallback?.episodes || [], preferredCatalog?.episodes || [])"), 'bundled full descriptions are merged into cached catalogs']
 ];
 for (const [passed, message] of checks) assert.ok(passed, message);
 assert.equal((app.match(/ABOUT THIS EPISODE/g) || []).length, 0, 'duplicate About this episode labels are removed');

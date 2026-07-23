@@ -1,7 +1,7 @@
 'use strict';
 const assert = require('node:assert/strict');
 const formatter = require('../www/episode-smart-formatter.js');
-assert.equal(formatter.VERSION, '7.9.6');
+assert.equal(formatter.VERSION, '7.9.6.1');
 {
   const result = formatter.parse(`<h2>About this episode</h2><p>This week we're talking about love, travel, and chaos. It got weird fast.</p><p>Plus:</p><ul><li>Daniel's online boyfriend</li><li>Hair removal reality check</li><li>Hawaii synchronicity</li></ul><p>Listen on Spotify: https://example.com/episode</p><p>Thanks for listening.</p>`);
   assert.deepEqual(result.paragraphs, ["This week we're talking about love, travel, and chaos. It got weird fast."]);
@@ -44,4 +44,22 @@ assert.equal(formatter.VERSION, '7.9.6');
   assert.equal(JSON.stringify(result).includes('@throupletea'), false);
   assert.equal(JSON.stringify(result).includes('gmail.com'), false);
 }
-console.log('✓ UX7.9.6 smart episode formatter tests passed');
+{
+  const result = formatter.parse(`Full intro paragraph about the episode.
+
+📞 Is this the first hotline question?
+📞 Is this the second hotline question?
+
+🌈 Main topic
+🔮 Sassy Astrology
+😂 Dad Joke of the Week`);
+  assert.deepEqual(result.paragraphs, ['Full intro paragraph about the episode.']);
+  assert.deepEqual(result.topics, [
+    'Is this the first hotline question?',
+    'Is this the second hotline question?',
+    'Main topic',
+    'Sassy Astrology',
+    'Dad Joke of the Week'
+  ]);
+}
+console.log('✓ UX7.9.6.1 smart episode formatter tests passed');

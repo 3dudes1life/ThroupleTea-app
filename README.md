@@ -448,3 +448,13 @@ lets YouTube recovery replace episode records.
 - Caches formatted descriptions by episode and source hash for faster repeat opens and clears the old cache through data migration version 14.
 - Adds a native loading skeleton, cleaner spacing and typography, polished play/resume/save/share controls, and a **Keep the Tea Going** footer.
 - Adds formatter unit tests, catalog-wide parsing checks, integration verification, JavaScript syntax checks, and runs them automatically in the Superman build.
+
+
+## UX 7.9.6 full-description repair
+
+- Rebuilds all 37 native descriptions from the complete bundled episode pages, offline, before tests and Capacitor sync.
+- Keeps short card summaries separate from the full Episode Detail show notes.
+- Merges full bundled descriptions into any previously cached or freshly downloaded catalog instead of allowing shorter data to win.
+- Converts emoji-led question/topic lines into numbered **Also on the Table** cards before unsupported emoji are removed.
+- Advances the content and formatter cache versions so devices cannot keep the broken truncated copy.
+- Adds a hard regression test for all 74 bundled catalog records and specifically verifies the complete Gay Rulebook description.

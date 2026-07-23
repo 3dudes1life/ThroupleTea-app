@@ -38,7 +38,10 @@ fi
 echo "📦 Installing locked Capacitor dependencies..."
 npm install --no-audit --no-fund
 
-echo "🧪 Running UX7.9.6 tests..."
+echo "📖 Rebuilding every native episode description from the bundled episode pages..."
+python3 scripts/hydrate-episode-pages.py
+
+echo "🧪 Running UX7.9.6 full-description regression tests..."
 npm test
 
 if [ ! -f ios/App/App.xcodeproj/project.pbxproj ]; then

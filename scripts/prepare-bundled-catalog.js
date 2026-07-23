@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 
@@ -19,15 +21,24 @@ function readCatalog(file) {
 
 function videoCounts(catalog) {
   const videos = catalog?.videos || [];
-  const shorts = videos.filter(v => v && v.kind === 'short').length;
-  const full = videos.filter(v => v && v.kind === 'episode').length;
+  const shorts = videos.filter(video => video?.kind === 'short').length;
+  const full = videos.filter(video => video?.kind === 'episode').length;
   return { total: videos.length, shorts, full };
+}
+
+function richerText(...values) {
+  return values
+    .map(value => String(value || '').trim())
+    .filter(Boolean)
+    .sort((a, b) => b.length - a.length)[0] || '';
 }
 
 function episodeQuality(catalog) {
   const episodes = catalog?.episodes || [];
-  const descriptionCount = episodes.filter(ep => String(ep?.description || '').length > String(ep?.summary || '').length).length;
-  return episodes.length * 100 + descriptionCount;
+  const rich = episodes.filter(episode =>
+    String(episode?.description || '').length > String(episode?.summary || '').length + 40
+  ).length;
+  return episodes.length * 100 + rich;
 }
 
 function candidateFiles() {
@@ -42,7 +53,7 @@ function candidateFiles() {
       const folder = path.join(parent, entry.name);
       files.push(
         path.join(folder, 'www', 'data', 'fallback.json'),
-        path.join(folder, 'live-data', 'content.json'),
+        path.join(folder, 'live-data', 'content.json')
       );
     }
   }
@@ -51,20 +62,35 @@ function candidateFiles() {
   return [...new Set(files)];
 }
 
-function mergeEpisodeMetadata(primaryEpisodes, backupEpisodes) {
-  const backups = new Map(
-    (backupEpisodes || []).filter(ep => ep?.id).map(ep => [ep.id, ep])
-  );
+function mergeEpisodeCatalog(primaryEpisodes, catalogs) {
+  const byId = new Map();
+  for (const catalog of catalogs) {
+    for (const episode of catalog?.episodes || []) {
+      if (!episode?.id) continue;
+      const previous = byId.get(episode.id) || {};
+      byId.set(episode.id, {
+        ...previous,
+        ...episode,
+        summary: previous.summary || episode.summary || '',
+        description: richerText(
+          previous.description,
+          episode.description,
+          previous.summary,
+          episode.summary
+        )
+      });
+    }
+  }
 
-  return (primaryEpisodes || []).map(ep => {
-    const backup = backups.get(ep.id) || {};
-    return {
-      ...backup,
-      ...ep,
-      description: ep.description || backup.description || ep.summary || backup.summary || '',
-      summary: ep.summary || backup.summary || ep.description || backup.description || '',
-    };
-  });
+  return (primaryEpisodes || []).map(episode => ({
+    ...(byId.get(episode.id) || {}),
+    ...episode,
+    description: richerText(
+      byId.get(episode.id)?.description,
+      episode.description,
+      episode.summary
+    )
+  }));
 }
 
 const catalogs = candidateFiles()
@@ -80,25 +106,29 @@ const bestEpisodeCatalog = [...catalogs].sort(
   (a, b) => episodeQuality(b) - episodeQuality(a)
 )[0] || null;
 
-const current = readCatalog(destinationLive) || readCatalog(destinationFallback) || {};
+const current = readCatalog(destinationLive) || readCatalog(destinationFallback) || null;
+const counts = videoCounts(bestVideoCatalog);
 
 if (!bestVideoCatalog || counts.total < 5) {
-  console.log(`⚠️ No healthy saved video catalog found yet (${counts.total || 0} videos).`);
+  console.log(`⚠️ No healthy saved video catalog found yet (${counts.total} videos).`);
   process.exitCode = 2;
 } else {
-  const episodes = Array.isArray(current.episodes) ? current.episodes : [];
+  const primaryEpisodes = bestEpisodeCatalog?.episodes || current?.episodes || [];
+  const episodes = mergeEpisodeCatalog(primaryEpisodes, catalogs);
+  const metadataSource = bestEpisodeCatalog?.parsed || current?.parsed || bestVideoCatalog.parsed || {};
 
   const payload = {
-    ...(current.parsed || bestVideoCatalog.parsed || {}),
+    ...metadataSource,
     schemaVersion: Math.max(
-      Number(current.parsed?.schemaVersion || 0),
+      Number(metadataSource.schemaVersion || 0),
       Number(bestVideoCatalog.parsed?.schemaVersion || 0),
-      4
+      6
     ),
     generatedAt: new Date().toISOString(),
-    source: 'video-recovery-preserving-current-episodes',
+    source: 'video-recovery-preserving-richest-episode-descriptions',
+    descriptionSource: metadataSource.descriptionSource || 'bundled-episode-pages',
     episodes,
-    videos: bestVideoCatalog.videos,
+    videos: bestVideoCatalog.videos
   };
 
   fs.mkdirSync(path.dirname(destinationLive), { recursive: true });
@@ -107,8 +137,12 @@ if (!bestVideoCatalog || counts.total < 5) {
   fs.writeFileSync(destinationLive, text);
   fs.writeFileSync(destinationFallback, text);
 
+  const rich = episodes.filter(episode =>
+    String(episode.description || '').length > String(episode.summary || '').length + 40
+  ).length;
+
   console.log(`✅ Recovered videos from: ${bestVideoCatalog.file}`);
-  console.log(`✅ Preserved ${episodes.length} current episode records without replacing descriptions.`);
+  console.log(`✅ Preserved the richest descriptions for ${episodes.length} episodes.`);
+  console.log(`📖 ${rich}/${episodes.length} episodes have full show notes.`);
   console.log(`📺 ${counts.shorts} Shorts + ${counts.full} full videos bundled.`);
-  console.log(`🎙️ ${episodes.length} native episode detail pages preserved.`);
 }
