@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 7.1
+# A Little Throuple Tea — Superman UX 7.2
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -195,3 +195,15 @@ The build script now runs `scripts/configure-shareplay-ios.py` automatically aft
 - Forces the app and Bowl screens to remain within the device width.
 - Stacks the Save and Pass buttons on narrow iPhones so nothing is clipped.
 - Blurs the keyboard input and resets scroll before starting a game.
+
+
+## UX 7.2
+
+- Uses the uploaded official Bowl of Chaos logo and real mosaic bowl.
+- The logo and bowl are separated into transparent app assets.
+- The generated pink bowl is removed from setup and gameplay.
+- The Bowl heading hides once gameplay starts to maximize usable screen space.
+- The full UX6 Watch page is restored exactly, including the featured upload, Shorts rail, full episodes, Play and Share buttons.
+- Normal videos and Shorts again use the proven UX6 player.
+- SharePlay uses a separate `/player-party/` player only after Watch Party starts.
+- Watch Party remains available inside the in-app video player.

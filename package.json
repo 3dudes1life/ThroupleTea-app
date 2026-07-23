@@ -1,8 +1,8 @@
 {
   "name": "throupletea-app",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "private": true,
-  "description": "UX7.1 with Bowl zoom prevention and narrow-screen layout fixes.",
+  "description": "UX7.2 with official Bowl artwork and restored UX6 Watch behavior.",
   "scripts": {
     "ios:add": "npx cap add ios",
     "ios:sync": "npx cap sync ios",

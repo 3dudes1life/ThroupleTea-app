@@ -10,126 +10,41 @@
     *{box-sizing:border-box}
     html,body{width:100%;height:100%;margin:0;background:#000;overflow:hidden}
     body{display:flex;align-items:center;justify-content:center}
-    #player{width:100%;height:100%;background:#000}
+    #player{width:100%;height:100%;border:0;background:#000}
     body.short #player{max-width:560px}
     .error{font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff;text-align:center;padding:24px}
   </style>
 </head>
 <body>
-  <div id="player"></div>
   <div id="error" class="error" hidden>That video could not be loaded.</div>
-
   <script>
     (() => {
       const params = new URLSearchParams(location.search);
-      const videoId = (params.get('v') || '').replace(/[^A-Za-z0-9_-]/g, '');
+      const id = (params.get('v') || '').replace(/[^A-Za-z0-9_-]/g, '');
       const kind = params.get('kind') === 'short' ? 'short' : 'episode';
-      const inParty = params.get('party') === '1';
-      let player = null;
-      let lastState = -999;
-      let lastPosition = -1;
-      let heartbeat = null;
-      let suppressEventsUntil = 0;
-
       if (kind === 'short') document.body.classList.add('short');
-      if (!videoId) {
+      if (!id) {
         document.getElementById('error').hidden = false;
         return;
       }
 
-      function notify(event, extra = {}) {
-        window.parent.postMessage({
-          source: 'throupletea-player',
-          event,
-          videoId,
-          ...extra
-        }, '*');
-      }
+      const iframe = document.createElement('iframe');
+      iframe.id = 'player';
+      iframe.title = params.get('title') || 'A Little Throuple Tea video';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
 
-      function currentPayload(action) {
-        if (!player || typeof player.getCurrentTime !== 'function') return {};
-        const state = player.getPlayerState();
-        return {
-          action,
-          position: Number(player.getCurrentTime() || 0),
-          duration: Number(player.getDuration() || 0),
-          playing: state === 1,
-          state
-        };
-      }
+      const embed = new URL(`https://www.youtube-nocookie.com/embed/${id}`);
+      embed.searchParams.set('autoplay', '1');
+      embed.searchParams.set('playsinline', '1');
+      embed.searchParams.set('rel', '0');
+      embed.searchParams.set('enablejsapi', '1');
+      embed.searchParams.set('origin', location.origin);
+      embed.searchParams.set('widget_referrer', location.href);
+      iframe.src = embed.toString();
 
-      function sendState(action = 'heartbeat', force = false) {
-        if (!player) return;
-        const payload = currentPayload(action);
-        const rounded = Math.round((payload.position || 0) * 2) / 2;
-        const changed = payload.state !== lastState || Math.abs(rounded - lastPosition) >= .5;
-        if (!force && !changed) return;
-        lastState = payload.state;
-        lastPosition = rounded;
-        notify('state', payload);
-      }
-
-      window.onYouTubeIframeAPIReady = () => {
-        player = new YT.Player('player', {
-          width: '100%',
-          height: '100%',
-          videoId,
-          playerVars: {
-            autoplay: 1,
-            playsinline: 1,
-            rel: 0,
-            enablejsapi: 1,
-            origin: location.origin,
-            widget_referrer: location.href
-          },
-          events: {
-            onReady: () => {
-              notify('ready', currentPayload('ready'));
-              heartbeat = setInterval(() => sendState('heartbeat', true), inParty ? 1800 : 3500);
-            },
-            onStateChange: event => {
-              if (Date.now() < suppressEventsUntil) return;
-              const action = event.data === 1 ? 'play' :
-                event.data === 2 ? 'pause' :
-                event.data === 0 ? 'ended' : 'state';
-              sendState(action, true);
-            },
-            onError: event => {
-              notify('error', { code: event.data });
-            }
-          }
-        });
-      };
-
-      window.addEventListener('message', event => {
-        const data = event.data;
-        if (!data || data.source !== 'throupletea-app' || !player) return;
-
-        if (data.command === 'requestState') {
-          sendState('sync', true);
-          return;
-        }
-
-        if (data.command === 'sync') {
-          suppressEventsUntil = Date.now() + 900;
-          const position = Number(data.position || 0);
-          const localPosition = Number(player.getCurrentTime() || 0);
-          if (Math.abs(localPosition - position) > 1.1) {
-            player.seekTo(position, true);
-          }
-          if (data.playing) player.playVideo();
-          else player.pauseVideo();
-          setTimeout(() => sendState('synced', true), 950);
-        }
-      });
-
-      window.addEventListener('beforeunload', () => {
-        if (heartbeat) clearInterval(heartbeat);
-      });
-
-      const script = document.createElement('script');
-      script.src = 'https://www.youtube.com/iframe_api';
-      document.head.appendChild(script);
+      document.body.appendChild(iframe);
     })();
   </script>
 </body>

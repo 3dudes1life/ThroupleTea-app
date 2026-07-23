@@ -553,3 +553,65 @@ select{
     min-height:52px;
   }
 }
+
+
+/* UX7.2 — official Bowl artwork */
+.bowl-branded-title{padding-top:2px;text-align:center}
+.bowl-brand-logo{
+  width:min(100%,520px);
+  height:auto;
+  max-height:190px;
+  object-fit:contain;
+  display:block;
+  margin:0 auto 4px;
+  filter:drop-shadow(0 13px 27px rgba(0,0,0,.42));
+}
+.bowl-branded-title p{max-width:540px;margin:3px auto 0}
+.real-bowl-hero{height:126px;align-items:center;overflow:visible}
+.real-bowl-hero img{
+  width:122px;
+  max-height:126px;
+  object-fit:contain;
+  display:block;
+  filter:drop-shadow(0 13px 16px rgba(0,0,0,.42));
+}
+.real-bowl-stage-visual{
+  width:292px;
+  height:260px;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  margin-bottom:-4px;
+}
+.real-bowl-stage-visual>img{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-height:245px;
+  object-fit:contain;
+  display:block;
+  filter:drop-shadow(0 25px 28px rgba(0,0,0,.48));
+}
+.real-bowl-stage-visual .real-bowl-cards{
+  z-index:1;
+  left:27%;
+  right:27%;
+  top:0;
+  height:48%;
+}
+.real-bowl-stage-visual .real-bowl-cards i{width:39px;height:72px}
+.bowl-game-active .bowl-page-title{display:none}
+.bowl-game-active .bowl-view{padding-top:calc(var(--safe-top) + 8px)}
+.bowl-stage.shaking .real-bowl-stage-visual{
+  animation:bowlShake .62s cubic-bezier(.36,.07,.19,.97);
+}
+
+/* Keep the Watch catalog exactly like UX6 */
+.watch-party-banner{display:none!important}
+.watch-featured-actions,.video-actions{grid-template-columns:1.25fr 1fr}
+
+@media(max-width:390px){
+  .bowl-brand-logo{max-height:155px}
+  .real-bowl-stage-visual{width:265px;height:235px}
+}

@@ -5,6 +5,7 @@
   const REMOTE_BASE = 'https://raw.githubusercontent.com/3dudes1life/ThroupleTea-app/main/live-data';
   const FALLBACK_IMAGE = './assets/podcast-artwork.jpg';
   const PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player/';
+  const PARTY_PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player-party/';
   const state = {
     content: { episodes: [], videos: [], generatedAt: null, source: 'fallback' },
     config: { links: {}, starterEpisodeIds: [], announcement: {} },
@@ -229,10 +230,9 @@
       <div class="short-video-card__body">
         ${newBadge}
         <h3>${escapeHTML(displayTitle(video.title))}</h3>
-        <div class="video-actions three">
+        <div class="video-actions">
           <button class="primary" data-play-video="${escapeHTML(video.id)}">Watch</button>
           <button data-share-video="${escapeHTML(video.id)}">Share</button>
-          <button class="party-button" data-watch-party-video="${escapeHTML(video.id)}"><svg viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM16 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/><path d="M2 21c0-4 2.4-6 6-6s6 2 6 6M13 16c4-1 8 1 8 5"/></svg>Party</button>
         </div>
       </div>
       ${favoriteButton('video', video.id)}
@@ -252,10 +252,9 @@
         ${newBadge}
         <h3>${escapeHTML(displayTitle(video.title))}</h3>
         <p>${escapeHTML(videoLabel(video))}</p>
-        <div class="video-actions three">
+        <div class="video-actions">
           <button class="primary" data-play-video="${escapeHTML(video.id)}">Play</button>
           <button data-share-video="${escapeHTML(video.id)}">Share</button>
-          <button class="party-button" data-watch-party-video="${escapeHTML(video.id)}"><svg viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM16 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/><path d="M2 21c0-4 2.4-6 6-6s6 2 6 6M13 16c4-1 8 1 8 5"/></svg>Party</button>
         </div>
       </div>
       ${favoriteButton('video', video.id)}
@@ -360,10 +359,9 @@
         <span class="video-kind-pill ${isNewVideo(featured) ? 'new' : ''}">${isNewVideo(featured) ? 'LATEST DROP' : videoKind(featured) === 'short' ? 'SHORT' : 'FULL EPISODE'}</span>
         <h2>${escapeHTML(displayTitle(featured.title))}</h2>
         <p>${escapeHTML(videoLabel(featured))}</p>
-        <div class="watch-featured-actions three">
+        <div class="watch-featured-actions">
           <button class="primary" data-play-video="${escapeHTML(featured.id)}">Play</button>
           <button class="secondary" data-share-video="${escapeHTML(featured.id)}">Share</button>
-          <button class="secondary party-button" data-watch-party-video="${escapeHTML(featured.id)}"><svg viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM16 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/><path d="M2 21c0-4 2.4-6 6-6s6 2 6 6M13 16c4-1 8 1 8 5"/></svg>Party</button>
         </div>
       </div>
       ${favoriteButton('video', featured.id)}
@@ -901,10 +899,6 @@
       event.stopPropagation();
       openVideo(button.dataset.playVideo);
     });
-    $$('[data-watch-party-video]').forEach(button => button.onclick = event => {
-      event.stopPropagation();
-      startWatchParty(button.dataset.watchPartyVideo);
-    });
     $$('[data-favorite-type]').forEach(button => button.onclick = () => toggleFavorite(button.dataset.favoriteType, button.dataset.favoriteId));
   }
 
@@ -1005,11 +999,12 @@
     const stage = $('#videoPlayerStage');
     const frame = $('#videoPlayerFrame');
     const kind = videoKind(video);
-    const playerUrl = new URL(PLAYER_PAGE);
+    const usePartyPlayer = Boolean(state.watchParty.active || options.party);
+    const playerUrl = new URL(usePartyPlayer ? PARTY_PLAYER_PAGE : PLAYER_PAGE);
     playerUrl.searchParams.set('v', video.id);
     playerUrl.searchParams.set('kind', kind);
     playerUrl.searchParams.set('title', displayTitle(video.title));
-    playerUrl.searchParams.set('party', state.watchParty.active || options.party ? '1' : '0');
+    if (usePartyPlayer) playerUrl.searchParams.set('party', '1');
 
     $('#videoPlayerHeaderTitle').textContent = displayTitle(video.title);
     $('#videoPlayerTitle').textContent = displayTitle(video.title);
@@ -1093,6 +1088,7 @@
     } catch (error) {
       state.watchParty.starting = false;
       updateWatchPartyUI();
+      openVideo(video.id);
       showToast('Watch Party was canceled');
     }
   }
@@ -1107,6 +1103,7 @@
     state.watchParty.participants = 1;
     state.watchParty.videoId = null;
     updateWatchPartyUI();
+    if (state.currentVideo) openVideo(state.currentVideo.id);
     showToast('You left the Watch Party');
   }
 
