@@ -26,7 +26,7 @@
       </div>
     </div>
     <button class="icon-button" id="refreshButton" aria-label="Refresh live content">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0 2 5.3M20 4v7h-7"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 3v6h-6"/></svg>
     </button>
   </header>
 
@@ -112,31 +112,30 @@
 
       <section class="hotline-launch-card">
         <div class="hotline-launch-card__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3l2 5-2 1c1.4 3 3 4.6 6 6l1-2 5 2v3c0 1.1-.9 2-2 2C10.3 21 3 13.7 3 6c0-1.1.9-2 2-2z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 6 8 6 8-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
         </div>
-        <span class="eyebrow">PRIVATE + DASHBOARD READY</span>
-        <h2>Your submission goes to the same Hotline inbox.</h2>
+        <span class="eyebrow">DIRECT TO THE HOTLINE INBOX</span>
+        <h2>Email us your question or story.</h2>
         <p>
-          The secure form opens inside the app. When it is submitted, the message is emailed to
-          <strong>throupletea@gmail.com</strong> so your existing dashboard keeps working exactly as it does now.
+          This opens a new email addressed to <strong>throupletea@gmail.com</strong> with the subject
+          <strong>Throuple Tea Submission</strong> already filled in, so it continues syncing with your existing dashboard.
         </p>
 
-        <button id="openHotlineForm" type="button" class="wide-gradient-button hotline-primary">
-          Open the Throuple Hotline
+        <button id="emailHotline" type="button" class="wide-gradient-button hotline-primary">
+          Email the Throuple Hotline
         </button>
 
         <div class="hotline-reassurance">
-          <span><svg viewBox="0 0 24 24"><path d="M6 10V8a6 6 0 0 1 12 0v2"/><rect x="4" y="10" width="16" height="11" rx="2"/></svg> Private submission</span>
-          <span><svg viewBox="0 0 24 24"><path d="m4 6 8 6 8-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg> Sent to your inbox</span>
+          <span><svg viewBox="0 0 24 24"><path d="m4 6 8 6 8-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg> Subject prefilled</span>
+          <span><svg viewBox="0 0 24 24"><path d="M4 12h5l2 3 3-7 2 4h4"/><path d="M4 5h16v14H4z"/></svg> Dashboard synced</span>
         </div>
       </section>
 
       <section class="hotline-help-card">
         <div>
-          <strong>Prefer regular email?</strong>
-          <p>That still works too. This opens a new message addressed to the Hotline inbox.</p>
+          <strong>What should they include?</strong>
+          <p>Name or nickname, whether they want to stay anonymous, and all the messy details.</p>
         </div>
-        <button id="emailHotline" type="button" class="wide-outline-button">Email the Hotline</button>
       </section>
     </section>
 
@@ -191,7 +190,7 @@
   </main>
 
   <section id="miniPlayer" class="mini-player" hidden>
-    <img id="playerArtwork" src="./assets/podcast-artwork.jpg" alt="">
+    <img id="playerArtwork" src="./assets/podcast-artwork.jpg" alt="A Little Throuple Tea artwork" onerror="this.src='./assets/podcast-artwork.jpg'">
     <div class="mini-player__copy">
       <strong id="playerTitle">Episode</strong>
       <span id="playerTime">0:00 / 0:00</span>
@@ -206,6 +205,9 @@
     </button>
     <button class="player-button" id="forwardButton" aria-label="Forward 30 seconds">
       <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v6h-6"/><text x="7" y="16">30</text></svg>
+    </button>
+    <button class="player-close-button" id="closePlayerButton" aria-label="Close player">
+      <svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
     </button>
     <audio id="audioPlayer" preload="metadata"></audio>
   </section>

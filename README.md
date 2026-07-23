@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 2
+# A Little Throuple Tea — Superman UX 3
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -76,3 +76,14 @@ Those are intentionally not faked in this package.
 - Increased top and bottom safe spacing so headings and buttons are not covered.
 - Tightened the Home hero crop, title sizing, and action-button layout.
 - Strips unsupported leading emoji from visible episode/video titles while preserving source data.
+
+
+## UX 3 fixes
+
+- Hotline now opens a direct email to `throupletea@gmail.com`.
+- Hotline subject is prefilled exactly as `Throuple Tea Submission`.
+- Email body includes prompts for nickname, anonymity, and the listener's story.
+- Removed the incorrect Wix email-signup form from the Hotline.
+- Mini player now always displays the bundled official podcast artwork.
+- Added a visible X button that closes the mini player while preserving listening progress.
+- Rebuilt the header refresh button so the icon is precisely centered inside its box.

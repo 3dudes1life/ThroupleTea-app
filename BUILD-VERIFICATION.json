@@ -1,18 +1,12 @@
 {
-  "version": "2.1.0",
+  "version": "2.2.0",
   "websiteModified": false,
-  "youtubePlayback": "Capacitor Browser / SFSafariViewController",
-  "hotlinePrimary": "Existing secure Wix form",
-  "hotlineDestination": "throupletea@gmail.com via existing form notification workflow",
-  "hotlineFallback": "mailto",
-  "uxFixes": [
-    "bottom navigation overlap",
-    "top title clipping",
-    "hero artwork crop",
-    "button layout",
-    "unsupported title emoji",
-    "YouTube Error 153"
-  ],
+  "hotlineDestination": "throupletea@gmail.com",
+  "hotlineSubject": "Throuple Tea Submission",
+  "hotlineMethod": "mailto composer",
+  "playerArtwork": "bundled official podcast artwork",
+  "playerCloseButton": true,
+  "refreshButtonCentered": true,
   "checks": [
     {
       "name": "app.js syntax",

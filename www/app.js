@@ -313,7 +313,7 @@
     }
     state.currentEpisode = ep;
     audio.src = ep.audioUrl;
-    $('#playerArtwork').src = ep.image || FALLBACK_IMAGE;
+    $('#playerArtwork').src = FALLBACK_IMAGE;
     $('#playerTitle').textContent = ep.title;
     miniPlayer.hidden = false;
     const saved = Number(state.progress[ep.id] || 0);
@@ -374,29 +374,39 @@
     window.open(url, '_blank', 'noopener,noreferrer');
   }
 
-  async function openHotlineForm() {
-    const url = state.config.links.hotlineForm || 'https://OutAtInc.wixforms.com/f/7470927459844621419';
-    await haptic('MEDIUM');
-    try {
-      const browser = window.Capacitor?.Plugins?.Browser;
-      if (window.Capacitor?.isNativePlatform?.() && browser) {
-        await browser.open({
-          url,
-          presentationStyle: 'fullscreen',
-          toolbarColor: '#080610'
-        });
-        return;
-      }
-    } catch (error) {
-      console.warn('Hotline form browser failed, using system browser.', error);
-    }
-    window.open(url, '_blank', 'noopener,noreferrer');
-  }
 
   function emailHotline() {
     const email = state.config.links.email || 'throupletea@gmail.com';
-    const subject = 'Throuple Hotline';
-    location.href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}`;
+    const subject = 'Throuple Tea Submission';
+    const body = [
+      'Name or nickname:',
+      '',
+      'Keep me anonymous on the podcast: Yes / No',
+      '',
+      'My question or story:',
+      '',
+      '',
+      'Sent from the A Little Throuple Tea app'
+    ].join('\n');
+    location.href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
+  function closePlayer() {
+    if (state.currentEpisode && Number.isFinite(audio.currentTime) && audio.currentTime > 0) {
+      state.progress[state.currentEpisode.id] = Math.floor(audio.currentTime);
+      localStorage.setItem('tt:progress', JSON.stringify(state.progress));
+    }
+    audio.pause();
+    audio.removeAttribute('src');
+    audio.load();
+    state.currentEpisode = null;
+    miniPlayer.hidden = true;
+    miniPlayer.classList.remove('playing');
+    $('#playerTitle').textContent = 'Episode';
+    $('#playerTime').textContent = '0:00 / 0:00';
+    $('#playerSeek').value = 0;
+    $('#playerArtwork').src = FALLBACK_IMAGE;
+    renderAll();
   }
 
   async function loadJSON(url, timeout = 8000) {
@@ -462,8 +472,8 @@
     $('#refreshButton').addEventListener('click', () => refreshRemoteData(true));
     $('#moreRefresh').addEventListener('click', () => refreshRemoteData(true));
     $('#episodeSearch').addEventListener('input', () => { renderEpisodes(); wireDynamicButtons(); });
-    $('#openHotlineForm').addEventListener('click', openHotlineForm);
     $('#emailHotline').addEventListener('click', emailHotline);
+    $('#closePlayerButton').addEventListener('click', closePlayer);
     $('#playPauseButton').addEventListener('click', () => audio.paused ? audio.play() : audio.pause());
     $('#rewindButton').addEventListener('click', () => audio.currentTime = Math.max(0, audio.currentTime - 15));
     $('#forwardButton').addEventListener('click', () => audio.currentTime = Math.min(audio.duration || Infinity, audio.currentTime + 30));
