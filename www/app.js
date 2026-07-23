@@ -4,7 +4,7 @@
 
   const REMOTE_BASE = 'https://raw.githubusercontent.com/3dudes1life/ThroupleTea-app/main/live-data';
   const FALLBACK_IMAGE = './assets/podcast-artwork.jpg';
-  const CONTENT_CACHE_VERSION = 6;
+  const CONTENT_CACHE_VERSION = 7;
   const PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player/';
   const PARTY_PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player-party/';
   function safeStorageGet(key) {
@@ -331,123 +331,135 @@
     state.nativePage = { type: null, id: null };
   }
 
-  const EPISODE_PROMO_MARKERS = [
-    'Whether you’re driving',
-    "Whether you're driving",
-    'Thank you for spending part of your week',
-    'Full video on Spotify',
-    'Full video on YouTube',
-    'Audio everywhere you stream podcasts',
-    'Instagram:',
-    'Website:',
-    'Sign up for notifications',
-    'Listen on Spotify',
-    'Watch on YouTube',
-  ];
-
   function episodeDescription(ep) {
     const full = String(ep?.description || '').trim();
     const summary = String(ep?.summary || '').trim();
-
-    // Prefer the full RSS description only when it is meaningfully more
-    // complete than the card summary.
-    const source = full.length > Math.max(220, summary.length + 60)
-      ? full
-      : summary || full;
-
-    return source.replace(/\s*\u2026\s*$/, '').trim();
+    return full || summary;
   }
 
-  function cleanEpisodeCopy(textValue) {
+  function normalizeEpisodeText(textValue) {
     let text = String(textValue || '')
       .replace(/\r\n?/g, '\n')
       .replace(/\u00a0/g, ' ')
       .replace(/[\uFFFD\u25A1\u2610\u2753]/g, ' ')
       .replace(/[\u200B-\u200D\uFEFF]/g, '')
-      .replace(/https?:\/\/\S+/gi, ' ')
-      .replace(/\bwww\.\S+/gi, ' ');
-
-    // Emoji were used as separators in several RSS descriptions. Preserve
-    // their structural purpose without showing unsupported boxes.
-    try {
-      text = text.replace(/\p{Extended_Pictographic}+/gu, '\n');
-    } catch (_) {}
-
-    const markerPositions = EPISODE_PROMO_MARKERS
-      .map(marker => ({ marker, index: text.toLowerCase().indexOf(marker.toLowerCase()) }))
-      .filter(item => item.index >= 0)
-      .sort((a, b) => a.index - b.index);
-
-    if (markerPositions.length) {
-      text = text.slice(0, markerPositions[0].index);
-    }
-
-    return text
       .replace(/[ \t]+\n/g, '\n')
       .replace(/\n[ \t]+/g, '\n')
       .replace(/[ \t]{2,}/g, ' ')
       .replace(/\n{3,}/g, '\n\n')
       .replace(/\s+([,.;!?])/g, '$1')
       .trim();
+
+    try {
+      text = text.replace(/\p{Extended_Pictographic}+/gu, '\n');
+    } catch (_) {}
+
+    return text
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
   }
 
-  function sentenceParagraphs(textValue) {
-    const text = cleanEpisodeCopy(textValue);
-    if (!text) return [];
+  function classifyEpisodeLine(line) {
+    const clean = line.trim();
 
-    const explicit = text
+    if (!clean) return { type: 'blank', text: '' };
+
+    if (/^(plus|also|in this episode|topics|we also talk about)\s*:?\s*$/i.test(clean)) {
+      return { type: 'heading', text: clean.replace(/:$/, '') };
+    }
+
+    if (/^(full video on|audio everywhere|instagram:|website:|sign up for notifications|listen on|watch on)/i.test(clean)) {
+      return { type: 'promo', text: clean };
+    }
+
+    if (/^[•\-–—✦]\s*/.test(clean)) {
+      return { type: 'topic', text: clean.replace(/^[•\-–—✦]\s*/, '') };
+    }
+
+    if (clean.length < 70 && /[&,+/]/.test(clean) && !/[.!?]$/.test(clean)) {
+      return { type: 'topic', text: clean };
+    }
+
+    return { type: 'paragraph', text: clean };
+  }
+
+  function splitParagraphs(text) {
+    const normalized = normalizeEpisodeText(text);
+    if (!normalized) return [];
+
+    const explicit = normalized
       .split(/\n{2,}/)
       .map(block => block.replace(/\n+/g, ' ').trim())
       .filter(Boolean);
 
     if (explicit.length > 1) return explicit;
 
-    const sentences = text
+    const sentences = normalized
       .split(/(?<=[.!?])\s+(?=[A-Z0-9“"'])/u)
       .map(sentence => sentence.trim())
       .filter(Boolean);
 
-    if (sentences.length <= 3) return [text];
+    if (sentences.length <= 3) return [normalized];
 
     const paragraphs = [];
-    for (let index = 0; index < sentences.length; index += 2) {
-      paragraphs.push(sentences.slice(index, index + 2).join(' '));
+    for (let index = 0; index < sentences.length; index += 3) {
+      paragraphs.push(sentences.slice(index, index + 3).join(' '));
     }
     return paragraphs;
   }
 
-  function topicItems(textValue) {
-    return cleanEpisodeCopy(textValue)
-      .split(/\n+|[•|·]+|;\s+| {2,}/)
-      .map(item => item.replace(/^[-–—:,\s]+|[-–—:,\s]+$/g, '').trim())
-      .filter(item => item.length > 2)
-      .filter(item => !/^plus:?$/i.test(item))
-      .slice(0, 14);
-  }
-
   function episodeDescriptionHTML(textValue) {
-    const cleaned = cleanEpisodeCopy(textValue);
-    if (!cleaned) {
+    const normalized = normalizeEpisodeText(textValue);
+    if (!normalized) {
       return `<div class="episode-copy-block"><p>No episode description is available yet.</p></div>`;
     }
 
-    const plusMatch = cleaned.match(/\bPlus:\s*/i);
-    const introText = plusMatch ? cleaned.slice(0, plusMatch.index).trim() : cleaned;
-    const topicText = plusMatch
-      ? cleaned.slice((plusMatch.index || 0) + plusMatch[0].length).trim()
-      : '';
+    const lines = normalized
+      .split('\n')
+      .map(classifyEpisodeLine)
+      .filter(item => item.type !== 'blank');
 
-    const introParagraphs = sentenceParagraphs(introText);
-    const topics = topicText ? topicItems(topicText) : [];
+    const intro = [];
+    const topics = [];
+    const promo = [];
+    let collectingTopics = false;
+
+    for (const item of lines) {
+      if (item.type === 'heading') {
+        collectingTopics = true;
+        continue;
+      }
+
+      if (item.type === 'topic') {
+        collectingTopics = true;
+        topics.push(item.text);
+        continue;
+      }
+
+      if (item.type === 'promo') {
+        promo.push(item.text);
+        continue;
+      }
+
+      if (collectingTopics) topics.push(item.text);
+      else intro.push(item.text);
+    }
+
+    const introText = intro.join('\n\n') || normalized;
+    const paragraphs = splitParagraphs(introText);
 
     return `
       <div class="episode-copy-block">
         <span class="episode-copy-label">IN THIS EPISODE</span>
-        ${introParagraphs.map(part => `<p>${escapeHTML(part)}</p>`).join('')}
+        ${paragraphs.map(part => `<p>${escapeHTML(part)}</p>`).join('')}
       </div>
       ${topics.length ? `<div class="episode-topics-block">
         <span class="episode-copy-label">ALSO ON THE TABLE</span>
         <ul>${topics.map(item => `<li>${escapeHTML(item)}</li>`).join('')}</ul>
+      </div>` : ''}
+      ${promo.length ? `<div class="episode-promo-block">
+        <span class="episode-copy-label">KEEP THE TEA GOING</span>
+        ${promo.map(item => `<p>${escapeHTML(item)}</p>`).join('')}
       </div>` : ''}
     `;
   }

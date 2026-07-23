@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 7.8
+# A Little Throuple Tea — Superman UX 7.8.1
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -346,3 +346,17 @@ This maintenance release:
   `Season 2`, and `Episode 26`.
 - Keeps artwork, native pages, progress, favorites, sharing, Watch Party,
   the full YouTube catalog, Bowl of Chaos, and every UX7.7/UX7.6 fix.
+
+
+## UX 7.8.1 — preserve the full description
+
+UX7.8 cleaned the RSS copy too aggressively and cut off valid episode details.
+
+This patch:
+
+- always preserves the full RSS episode description when one exists
+- only removes unsupported replacement characters and invisible junk
+- no longer truncates at promotional phrases
+- formats intro copy, topic lines, and promo/footer lines into separate sections
+- keeps Play/Resume and Share in normal flow above the description
+- preserves all UX7.8 native layout and every prior app feature

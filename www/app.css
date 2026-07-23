@@ -1197,3 +1197,21 @@ select{
 .episode-detail-description *{
   overflow-wrap:anywhere;
 }
+
+
+/* UX7.8.1 — preserve the complete episode description */
+.episode-promo-block{
+  padding:17px;
+  border-radius:20px;
+  border:1px solid rgba(32,220,228,.14);
+  background:rgba(32,220,228,.04);
+}
+.episode-promo-block p{
+  margin:0 0 8px;
+  color:var(--muted);
+  font-size:.78rem;
+  line-height:1.5;
+}
+.episode-promo-block p:last-child{
+  margin-bottom:0;
+}
