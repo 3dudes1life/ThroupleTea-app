@@ -1,6 +1,6 @@
 {
   "appId": "com.throupletea.app",
-  "appName": "Throuple Tea",
+  "appName": "A Little Throuple Tea",
   "webDir": "www",
   "server": {
     "iosScheme": "capacitor",

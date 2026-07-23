@@ -63,23 +63,8 @@ if "com.apple.GroupActivities" not in text:
         )
         text = text[:target_match.start()] + capability + text[target_match.end():]
 
-
-# Keep the App Store / Home Screen display name locked to exactly "Throuple Tea".
-# Capacitor can regenerate the Xcode project, so enforce this after every sync.
-if 'INFOPLIST_KEY_CFBundleDisplayName = "Throuple Tea";' not in text:
-    text = text.replace(
-        'INFOPLIST_KEY_CFBundleDisplayName = "$(PRODUCT_NAME)";',
-        'INFOPLIST_KEY_CFBundleDisplayName = "Throuple Tea";'
-    )
-    if 'INFOPLIST_KEY_CFBundleDisplayName = "Throuple Tea";' not in text:
-        text = text.replace(
-            'INFOPLIST_KEY_CFBundleIconName = AppIcon;',
-            'INFOPLIST_KEY_CFBundleDisplayName = "Throuple Tea";\n\t\t\t\tINFOPLIST_KEY_CFBundleIconName = AppIcon;'
-        )
-
 project.write_text(text, encoding="utf-8")
 
 print("✅ Existing iOS entitlements preserved.")
 print("✅ Group Activities entitlement configured.")
 print("✅ Throuple Tea Watch Party native bridge ready.")
-print("✅ App display name locked to Throuple Tea.")
