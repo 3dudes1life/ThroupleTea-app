@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 7.7
+# A Little Throuple Tea — Superman UX 7.8
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -330,3 +330,19 @@ This maintenance release:
   retaining short card summaries.
 - External platform links and the optional main website link still open outside
   the app by design.
+
+
+## UX 7.8 — clean native episode details
+
+- Removes unsupported RSS symbols, replacement boxes, invisible characters,
+  raw links, and social/promotional boilerplate from native episode details.
+- Converts long descriptions into readable two-sentence paragraphs.
+- Converts the RSS `Plus:` area into a polished **Also on the table** topic list.
+- Keeps full episode information while avoiding a giant wall of text.
+- Moves Play/Resume and Share directly beneath metadata in normal document
+  flow; the controls no longer float over or hide description text.
+- Adds a true bottom-of-content marker and extra scroll breathing room.
+- Removes duplicate metadata chips such as simultaneous `S2 Ep26`,
+  `Season 2`, and `Episode 26`.
+- Keeps artwork, native pages, progress, favorites, sharing, Watch Party,
+  the full YouTube catalog, Bowl of Chaos, and every UX7.7/UX7.6 fix.

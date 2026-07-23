@@ -4,7 +4,7 @@
 
   const REMOTE_BASE = 'https://raw.githubusercontent.com/3dudes1life/ThroupleTea-app/main/live-data';
   const FALLBACK_IMAGE = './assets/podcast-artwork.jpg';
-  const CONTENT_CACHE_VERSION = 5;
+  const CONTENT_CACHE_VERSION = 6;
   const PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player/';
   const PARTY_PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player-party/';
   function safeStorageGet(key) {
@@ -331,35 +331,140 @@
     state.nativePage = { type: null, id: null };
   }
 
+  const EPISODE_PROMO_MARKERS = [
+    'Whether you’re driving',
+    "Whether you're driving",
+    'Thank you for spending part of your week',
+    'Full video on Spotify',
+    'Full video on YouTube',
+    'Audio everywhere you stream podcasts',
+    'Instagram:',
+    'Website:',
+    'Sign up for notifications',
+    'Listen on Spotify',
+    'Watch on YouTube',
+  ];
+
   function episodeDescription(ep) {
-    return String(ep?.description || ep?.summary || '')
-      .replace(/\s*\u2026\s*$/, '')
+    const full = String(ep?.description || '').trim();
+    const summary = String(ep?.summary || '').trim();
+
+    // Prefer the full RSS description only when it is meaningfully more
+    // complete than the card summary.
+    const source = full.length > Math.max(220, summary.length + 60)
+      ? full
+      : summary || full;
+
+    return source.replace(/\s*\u2026\s*$/, '').trim();
+  }
+
+  function cleanEpisodeCopy(textValue) {
+    let text = String(textValue || '')
+      .replace(/\r\n?/g, '\n')
+      .replace(/\u00a0/g, ' ')
+      .replace(/[\uFFFD\u25A1\u2610\u2753]/g, ' ')
+      .replace(/[\u200B-\u200D\uFEFF]/g, '')
+      .replace(/https?:\/\/\S+/gi, ' ')
+      .replace(/\bwww\.\S+/gi, ' ');
+
+    // Emoji were used as separators in several RSS descriptions. Preserve
+    // their structural purpose without showing unsupported boxes.
+    try {
+      text = text.replace(/\p{Extended_Pictographic}+/gu, '\n');
+    } catch (_) {}
+
+    const markerPositions = EPISODE_PROMO_MARKERS
+      .map(marker => ({ marker, index: text.toLowerCase().indexOf(marker.toLowerCase()) }))
+      .filter(item => item.index >= 0)
+      .sort((a, b) => a.index - b.index);
+
+    if (markerPositions.length) {
+      text = text.slice(0, markerPositions[0].index);
+    }
+
+    return text
+      .replace(/[ \t]+\n/g, '\n')
+      .replace(/\n[ \t]+/g, '\n')
+      .replace(/[ \t]{2,}/g, ' ')
+      .replace(/\n{3,}/g, '\n\n')
+      .replace(/\s+([,.;!?])/g, '$1')
       .trim();
   }
 
-  function paragraphHTML(textValue) {
-    const text = String(textValue || '').trim();
-    if (!text) return '<p>No episode description is available yet.</p>';
+  function sentenceParagraphs(textValue) {
+    const text = cleanEpisodeCopy(textValue);
+    if (!text) return [];
 
-    const blocks = text
+    const explicit = text
       .split(/\n{2,}/)
-      .map(part => part.trim())
+      .map(block => block.replace(/\n+/g, ' ').trim())
       .filter(Boolean);
 
-    if (blocks.length > 1) {
-      return blocks.map(part => `<p>${escapeHTML(part)}</p>`).join('');
+    if (explicit.length > 1) return explicit;
+
+    const sentences = text
+      .split(/(?<=[.!?])\s+(?=[A-Z0-9“"'])/u)
+      .map(sentence => sentence.trim())
+      .filter(Boolean);
+
+    if (sentences.length <= 3) return [text];
+
+    const paragraphs = [];
+    for (let index = 0; index < sentences.length; index += 2) {
+      paragraphs.push(sentences.slice(index, index + 2).join(' '));
+    }
+    return paragraphs;
+  }
+
+  function topicItems(textValue) {
+    return cleanEpisodeCopy(textValue)
+      .split(/\n+|[•|·]+|;\s+| {2,}/)
+      .map(item => item.replace(/^[-–—:,\s]+|[-–—:,\s]+$/g, '').trim())
+      .filter(item => item.length > 2)
+      .filter(item => !/^plus:?$/i.test(item))
+      .slice(0, 14);
+  }
+
+  function episodeDescriptionHTML(textValue) {
+    const cleaned = cleanEpisodeCopy(textValue);
+    if (!cleaned) {
+      return `<div class="episode-copy-block"><p>No episode description is available yet.</p></div>`;
     }
 
-    const sentences = text.split(/(?<=[.!?])\s+(?=[A-Z0-9🌈🎙️📞✨🎲🔮])/u);
-    if (sentences.length > 5) {
-      const grouped = [];
-      for (let index = 0; index < sentences.length; index += 3) {
-        grouped.push(sentences.slice(index, index + 3).join(' '));
-      }
-      return grouped.map(part => `<p>${escapeHTML(part)}</p>`).join('');
-    }
+    const plusMatch = cleaned.match(/\bPlus:\s*/i);
+    const introText = plusMatch ? cleaned.slice(0, plusMatch.index).trim() : cleaned;
+    const topicText = plusMatch
+      ? cleaned.slice((plusMatch.index || 0) + plusMatch[0].length).trim()
+      : '';
 
-    return `<p>${escapeHTML(text)}</p>`;
+    const introParagraphs = sentenceParagraphs(introText);
+    const topics = topicText ? topicItems(topicText) : [];
+
+    return `
+      <div class="episode-copy-block">
+        <span class="episode-copy-label">IN THIS EPISODE</span>
+        ${introParagraphs.map(part => `<p>${escapeHTML(part)}</p>`).join('')}
+      </div>
+      ${topics.length ? `<div class="episode-topics-block">
+        <span class="episode-copy-label">ALSO ON THE TABLE</span>
+        <ul>${topics.map(item => `<li>${escapeHTML(item)}</li>`).join('')}</ul>
+      </div>` : ''}
+    `;
+  }
+
+  function episodeMetaItems(ep, duration) {
+    const items = [];
+    const label = String(ep?.label || '').trim();
+
+    if (label) items.push(label);
+    else if (ep?.season && ep?.episode) items.push(`S${ep.season} Ep${ep.episode}`);
+
+    if (duration) items.push(duration);
+
+    const date = ep?.published || ep?.date;
+    if (date) items.push(formatDate(date));
+
+    return [...new Set(items.filter(Boolean))];
   }
 
   function nativeMeetHTML() {
@@ -440,14 +545,9 @@
       .replace(/M/, 'm ')
       .replace(/S/, 's')
       .trim() : '';
-    const meta = [
-      ep.label || '',
-      duration,
-      ep.season ? `Season ${ep.season}` : '',
-      ep.episode ? `Episode ${ep.episode}` : ''
-    ].filter(Boolean);
+    const meta = episodeMetaItems(ep, duration);
 
-    return `<article>
+    return `<article class="episode-detail-page">
       <div class="episode-detail-art">
         <img src="${escapeHTML(ep.image || FALLBACK_IMAGE)}" alt="${escapeHTML(displayTitle(ep.title))}" onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}'">
       </div>
@@ -456,18 +556,22 @@
       <div class="episode-detail-meta">
         ${meta.map(item => `<span class="episode-detail-chip">${escapeHTML(item)}</span>`).join('')}
       </div>
-      <section class="episode-detail-description">
-        ${paragraphHTML(episodeDescription(ep))}
-      </section>
-      <button class="wide-outline-button episode-detail-favorite" type="button" data-detail-favorite="${escapeHTML(ep.id)}">
-        ${state.favorites.has(itemKey('episode', ep.id)) ? '♥ Saved to favorites' : '♡ Save episode'}
-      </button>
+
       <div class="episode-detail-actions">
         <button class="wide-gradient-button" type="button" data-detail-play="${escapeHTML(ep.id)}">
           ${state.currentEpisode?.id === ep.id && !audio.paused ? 'Pause' : savedSeconds > 15 ? `Resume ${formatTime(savedSeconds)}` : 'Play episode'}
         </button>
         <button class="wide-outline-button" type="button" data-detail-share="${escapeHTML(ep.id)}">Share</button>
       </div>
+
+      <section class="episode-detail-description">
+        ${episodeDescriptionHTML(episodeDescription(ep))}
+      </section>
+
+      <button class="wide-outline-button episode-detail-favorite" type="button" data-detail-favorite="${escapeHTML(ep.id)}">
+        ${state.favorites.has(itemKey('episode', ep.id)) ? '♥ Saved to favorites' : '♡ Save episode'}
+      </button>
+      <div class="episode-detail-end">You reached the bottom of the tea. ☕</div>
     </article>`;
   }
 

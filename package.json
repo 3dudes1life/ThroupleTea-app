@@ -1,8 +1,8 @@
 {
   "name": "throupletea-app",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "private": true,
-  "description": "UX7.7 native About, FAQ, and episode detail experience.",
+  "description": "UX7.8 cleaned native episode descriptions and non-overlapping player controls.",
   "scripts": {
     "ios:add": "npx cap add ios",
     "ios:sync": "npx cap sync ios",

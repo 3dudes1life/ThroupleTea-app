@@ -1095,47 +1095,105 @@ select{
   font-size:.68rem;
   font-weight:820;
 }
+.episode-detail-page{
+  padding-bottom:24px;
+}
 .episode-detail-description{
+  display:grid;
+  gap:12px;
+  margin-top:15px;
+}
+.episode-copy-block,
+.episode-topics-block{
   padding:17px;
   border-radius:20px;
   border:1px solid rgba(255,255,255,.09);
-  background:rgba(255,255,255,.035);
+  background:
+    radial-gradient(circle at 95% 5%,rgba(255,35,111,.08),transparent 34%),
+    rgba(255,255,255,.035);
 }
-.episode-detail-description p{
-  margin:0 0 12px;
+.episode-copy-label{
+  display:block;
+  margin-bottom:11px;
+  color:var(--yellow);
+  font-size:.65rem;
+  font-weight:950;
+  letter-spacing:.13em;
+}
+.episode-copy-block p{
+  margin:0 0 13px;
   color:#d4d7e0;
   font-size:.88rem;
-  line-height:1.62;
+  line-height:1.64;
 }
-.episode-detail-description p:last-child{
+.episode-copy-block p:last-child{
   margin-bottom:0;
 }
+.episode-topics-block ul{
+  display:grid;
+  gap:9px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.episode-topics-block li{
+  position:relative;
+  padding:10px 11px 10px 34px;
+  border-radius:14px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.055);
+  color:#d8dbe4;
+  font-size:.8rem;
+  line-height:1.42;
+}
+.episode-topics-block li::before{
+  content:"✦";
+  position:absolute;
+  left:12px;
+  top:10px;
+  color:var(--teal);
+  font-size:.76rem;
+}
 .episode-detail-actions{
-  position:sticky;
-  bottom:calc(8px + env(safe-area-inset-bottom));
-  z-index:2;
+  position:relative;
+  z-index:1;
   display:grid;
   grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
   gap:9px;
-  margin-top:16px;
+  margin:4px 0 0;
   padding:9px;
   border-radius:21px;
   border:1px solid rgba(255,255,255,.1);
-  background:rgba(8,9,18,.88);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  box-shadow:0 16px 45px rgba(0,0,0,.35);
+  background:rgba(8,9,18,.84);
+  box-shadow:0 14px 36px rgba(0,0,0,.24);
 }
 .episode-detail-actions button{
   min-height:48px;
   border-radius:15px;
 }
 .episode-detail-favorite{
-  margin-top:10px;
+  margin-top:12px;
   width:100%;
+}
+.episode-detail-end{
+  margin-top:18px;
+  padding:15px;
+  color:var(--muted);
+  font-size:.72rem;
+  text-align:center;
 }
 @media(min-width:600px){
   .native-values-grid{
     grid-template-columns:repeat(2,minmax(0,1fr));
   }
+}
+
+
+/* UX7.8 — episode copy safety */
+.native-page-scroll{
+  scroll-padding-bottom:calc(48px + env(safe-area-inset-bottom));
+}
+.episode-detail-description,
+.episode-detail-description *{
+  overflow-wrap:anywhere;
 }
