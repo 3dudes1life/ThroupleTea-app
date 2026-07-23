@@ -34,6 +34,8 @@ fi
 
 node scripts/verify-bundled-catalog.js || true
 
+node scripts/verify-rich-descriptions.js
+
 echo "📦 Installing the locked app dependencies..."
 npm install --no-audit --no-fund
 

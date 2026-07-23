@@ -4,7 +4,7 @@
 
   const REMOTE_BASE = 'https://raw.githubusercontent.com/3dudes1life/ThroupleTea-app/main/live-data';
   const FALLBACK_IMAGE = './assets/podcast-artwork.jpg';
-  const CONTENT_CACHE_VERSION = 10;
+  const CONTENT_CACHE_VERSION = 11;
   const PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player/';
   const PARTY_PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player-party/';
   function safeStorageGet(key) {
@@ -360,16 +360,10 @@
   }
 
   function cleanEpisodeTopicLabel(value) {
-    let text = String(value || '')
-      .replace(/[\uFFFD\u25A1\u2610\u2753\uFE0F]/g, ' ')
+    return String(value || '')
+      .replace(/[\uFFFD\u25A1\u2610\u2753\uFE0F]/g, '')
       .replace(/^[^A-Za-z0-9]+/, '')
       .trim();
-
-    try {
-      text = text.replace(/^\p{Extended_Pictographic}+\s*/u, '');
-    } catch (_) {}
-
-    return text.trim();
   }
 
   function classifyEpisodeLine(line) {
@@ -1925,11 +1919,11 @@
 
   async function loadInitialData() {
     const migrationVersion = Number(safeStorageGet('tt:data-migration-version') || 0);
-    if (migrationVersion < 10) {
+    if (migrationVersion < 11) {
       safeStorageRemove('tt:content-cache');
       safeStorageRemove('tt:config-cache');
       safeStorageSet('tt:content-cache-version', '0');
-      safeStorageSet('tt:data-migration-version', '10');
+      safeStorageSet('tt:data-migration-version', '11');
     }
 
     const [fallback, localConfig, localInfo] = await Promise.all([

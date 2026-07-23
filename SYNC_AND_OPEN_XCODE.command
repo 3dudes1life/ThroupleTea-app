@@ -10,6 +10,7 @@ rm -f "$RSS_FILE" 2>/dev/null || true
 
 node scripts/prepare-bundled-catalog.js || true
 node scripts/verify-bundled-catalog.js || true
+node scripts/verify-rich-descriptions.js
 
 npm install --no-audit --no-fund
 npx cap sync ios

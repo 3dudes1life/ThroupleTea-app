@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 7.9.1
+# A Little Throuple Tea — Superman UX 7.9.2
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -384,8 +384,11 @@ UX7.9 fixes the data pipeline itself:
   stability feature
 
 
-## UX 7.9.1 — clean topic cards
+## UX 7.9.2 — regression-proof topic cleanup
 
-- Removes unsupported emoji/replacement boxes from episode topic cards.
-- Adds no bullets, dots, or dashes.
-- Keeps the full RSS description and every UX7.9 feature.
+UX7.9.1 accidentally allowed a truncated catalog to win during the rebuild.
+
+This version starts again from the known-good UX7.9 code and changes only the
+unsupported leading topic glyphs. It also refuses to open Xcode unless at least
+five episodes contain descriptions richer than their card summaries, so the
+full-description regression cannot silently happen again.

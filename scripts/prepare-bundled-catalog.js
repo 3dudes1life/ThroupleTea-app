@@ -81,13 +81,16 @@ const bestEpisodeCatalog = [...catalogs].sort(
 )[0] || null;
 
 const current = readCatalog(destinationLive) || readCatalog(destinationFallback) || {};
+const currentRichCount = (current.episodes || []).filter(ep => String(ep.description || '').length > String(ep.summary || '').length + 40).length;
 const counts = videoCounts(bestVideoCatalog);
 
 if (!bestVideoCatalog || counts.total < 5) {
   console.log(`⚠️ No healthy saved video catalog found yet (${counts.total || 0} videos).`);
   process.exitCode = 2;
 } else {
-  const primaryEpisodes = bestEpisodeCatalog?.episodes || current.episodes || [];
+  const primaryEpisodes = currentRichCount >= 5
+    ? (current.episodes || [])
+    : (bestEpisodeCatalog?.episodes || current.episodes || []);
   const backupEpisodes = current.episodes || [];
   const episodes = mergeEpisodeMetadata(primaryEpisodes, backupEpisodes);
 
