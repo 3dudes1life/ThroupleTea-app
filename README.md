@@ -437,3 +437,14 @@ useful show notes from JSON-LD, page metadata, and article content.
 Video recovery runs first, RSS hydration runs second, and website hydration
 runs last. The app always prefers the longest episode description and never
 lets YouTube recovery replace episode records.
+
+
+## UX 7.9.6 — smart native Episode Detail
+
+- Adds a reusable smart description formatter that strips HTML, raw links, unsupported characters, and website/social boilerplate.
+- Automatically separates the episode intro, topic list, and useful closing copy without repeating an **About this episode** heading.
+- Rebuilds **Also on the Table** as numbered topic cards.
+- Adds **Read More / Read Less** for long show notes while preserving the reader's expanded state during play, save, and share actions.
+- Caches formatted descriptions by episode and source hash for faster repeat opens and clears the old cache through data migration version 14.
+- Adds a native loading skeleton, cleaner spacing and typography, polished play/resume/save/share controls, and a **Keep the Tea Going** footer.
+- Adds formatter unit tests, catalog-wide parsing checks, integration verification, JavaScript syntax checks, and runs them automatically in the Superman build.

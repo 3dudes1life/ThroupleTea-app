@@ -1,13 +1,19 @@
 {
   "name": "throupletea-app",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "private": true,
-  "description": "UX7.9.5 hydrates full episode descriptions from website episode pages.",
+  "description": "UX7.9.6 smart native Episode Detail formatting and polish.",
   "scripts": {
     "ios:add": "npx cap add ios",
     "ios:sync": "npx cap sync ios",
     "ios:open": "npx cap open ios",
-    "ios": "npx cap sync ios && npx cap open ios"
+    "ios": "npx cap sync ios && npx cap open ios",
+    "test:syntax": "node --check www/episode-smart-formatter.js && node --check www/app.js",
+    "test:formatter": "node tests/episode-smart-formatter.test.js",
+    "test:catalog": "node tests/bundled-episode-descriptions.test.js",
+    "test:ux796": "node scripts/verify-ux796.js",
+    "test:build-scripts": "bash -n BUILD_SUPERMAN_AND_OPEN_XCODE.command && node --check scripts/prepare-bundled-catalog.js && node --check scripts/verify-bundled-catalog.js && node --check scripts/verify-rich-descriptions.js && python3 -m py_compile scripts/hydrate-episode-descriptions.py scripts/hydrate-episode-pages.py scripts/update-live-data.py scripts/configure-shareplay-ios.py",
+    "test": "npm run test:syntax && npm run test:formatter && npm run test:catalog && npm run test:ux796 && npm run test:build-scripts"
   },
   "dependencies": {
     "@capacitor/app": "8.0.0",

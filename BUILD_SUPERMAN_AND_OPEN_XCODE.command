@@ -3,7 +3,7 @@ set -e
 cd "$(dirname "$0")"
 
 echo ""
-echo "🦸 Building UX7.9.5 — Certificate-Safe Superman Build..."
+echo "🦸 Building UX7.9.6 — Certificate-Safe Superman Build..."
 echo ""
 
 chmod -R u+rwX .
@@ -44,6 +44,9 @@ node scripts/verify-rich-descriptions.js || true
 
 echo "📦 Installing the locked app dependencies..."
 npm install --no-audit --no-fund
+
+echo "🧪 Testing UX7.9.6 formatter and native Episode Detail..."
+npm test
 
 if [ ! -d "ios" ]; then
   echo "📱 Creating the iOS project..."
