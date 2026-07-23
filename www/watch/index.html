@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Watch A Little Throuple Tea — Full Episodes &amp; Shorts</title>
+<meta content="Binge A Little Throuple Tea on YouTube — full video episodes and shorts from 3Dudes1Life." name="description"/>
+<meta content="Watch A Little Throuple Tea" property="og:title"/>
+<meta content="Full episodes and shorts from 3Dudes1Life: A Little Throuple Tea." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="../images/og-cover.jpg" property="og:image"/>
+<meta content="https://throupletea.com/watch/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="#020204" name="theme-color"/>
+<link href="../images/favicon.png" rel="icon"/>
+<link href="../styles.css?v=7" rel="stylesheet"/>
+<link href="../manifest.json" rel="manifest"/>
+<meta content="#020204" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="Throuple Tea" name="apple-mobile-web-app-title"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<link href="../app-icon.png" rel="apple-touch-icon"/>
+<style>
+    :root{
+      --black:#020204;
+      --deep:#071321;
+      --hot-pink:#ff005d;
+      --orange:#ff7a18;
+      --sun:#ffb13b;
+      --teal:#00d7e8;
+      --white:#ffffff;
+      --soft:#dff8ff;
+    }
+
+    body{
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255,0,93,.20), transparent 28%),
+        radial-gradient(circle at 88% 10%, rgba(0,215,232,.18), transparent 28%),
+        linear-gradient(180deg,#020204 0%,#071321 50%,#020204 100%);
+      color: var(--soft);
+    }
+
+    .simple-header {
+      background:
+        linear-gradient(90deg, rgba(255,0,93,.18), rgba(0,215,232,.16)),
+        linear-gradient(180deg,#020204 0%,#071321 100%);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,42,127,.35);
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      box-shadow: 0 8px 30px rgba(0,0,0,.45);
+    }
+
+    .simple-header .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .simple-header .brand img {
+      height: 54px;
+      width: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 18px rgba(255,0,93,.35);
+    }
+
+    .simple-nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .simple-nav a {
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    .simple-nav a:hover,
+    .simple-nav a.active {
+      color: var(--hot-pink);
+      text-shadow: 0 0 12px rgba(255,0,93,.8);
+    }
+
+    .watch-hero {
+      text-align: center;
+      padding: 90px 20px 60px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,0,93,.22), transparent 34%),
+        radial-gradient(circle at 75% 25%, rgba(0,215,232,.16), transparent 30%);
+      color: var(--white);
+    }
+
+    .watch-hero h1 {
+      font-size: clamp(2.4rem, 3vw + 1.4rem, 3.6rem);
+      margin-bottom: 16px;
+      color: var(--white);
+      text-shadow: 0 0 24px rgba(255,0,93,.35);
+    }
+
+    .watch-hero p {
+      font-size: 1.1rem;
+      color: var(--soft);
+      max-width: 720px;
+      margin: 0 auto 24px;
+      line-height: 1.7;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg,var(--hot-pink),var(--orange));
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 8px 24px rgba(255,0,93,.35);
+    }
+
+    .btn {
+      border: 1px solid rgba(0,215,232,.55);
+      color: #ffffff;
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      font-weight: 800;
+    }
+
+    .watch-section {
+      padding: 55px 0;
+    }
+
+    .watch-section .wrap {
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(0,215,232,.18);
+      border-radius: 22px;
+      padding: 34px;
+      box-shadow: 0 14px 38px rgba(0,0,0,.42);
+    }
+
+    .watch-section h2 {
+      color: var(--sun);
+      font-size: 2rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 14px rgba(255,122,24,.35);
+    }
+
+    .section-subtitle {
+      color: var(--soft);
+      margin-bottom: 26px;
+      line-height: 1.6;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 26px;
+      width: 100%;
+    }
+
+    /* 🔥 SHORTS ARE ALWAYS A SWIPE ROW */
+    #shorts-grid {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      gap: 22px;
+      scroll-snap-type: x mandatory;
+      padding: 6px 4px 22px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    #shorts-grid .video-card {
+      flex: 0 0 calc((100% - 44px) / 3);
+      max-width: calc((100% - 44px) / 3);
+      min-width: 300px;
+      scroll-snap-align: start;
+    }
+
+    #episodes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 26px;
+    }
+
+    .video-card {
+      background: linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
+      border-radius: 18px;
+      border: 1px solid rgba(0,215,232,.25);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,.45);
+      display: flex;
+      flex-direction: column;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 38px rgba(0,0,0,.55),0 0 24px rgba(255,0,93,.28);
+      border-color: var(--hot-pink);
+    }
+
+    .video-thumb {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .video-thumb iframe {
+      position: absolute;
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      border: 0;
+    }
+
+    .video-meta {
+      padding: 14px 16px 16px;
+    }
+
+    .video-title {
+      font-size: 1rem;
+      font-weight: 800;
+      margin: 0 0 6px;
+      color: var(--white);
+      line-height: 1.35;
+    }
+
+    .video-extra {
+      font-size: .82rem;
+      color: #bfefff;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .site-footer {
+      background:#020204;
+      border-top:1px solid rgba(255,42,127,.28);
+      color:#cdeff5;
+    }
+
+    .site-footer a {
+      color: var(--sun);
+    }
+
+    @media (max-width: 700px) {
+      .simple-header .wrap {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .simple-nav {
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .simple-nav a {
+        font-size: 0.92rem;
+      }
+
+      .simple-header .brand img {
+        height: 50px;
+      }
+
+      .watch-hero {
+        padding: 60px 18px 40px;
+      }
+
+      .watch-section .wrap {
+        padding: 24px;
+      }
+
+      #shorts-grid .video-card {
+        flex: 0 0 260px;
+        min-width: 260px;
+        max-width: 260px;
+      }
+
+      #episodes-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  
+
+/* THROUPLE HOTLINE HEADER FIX */
+.simple-nav a.hotline-nav-link {
+  color: #fff;
+  background: linear-gradient(135deg, var(--hot-pink, #ff005d), var(--orange, #ff7a18));
+  padding: .45rem .85rem;
+  border-radius: 999px;
+  box-shadow: 0 0 18px rgba(255,0,93,.38);
+}
+
+.simple-nav a.hotline-nav-link:hover,
+.simple-nav a.hotline-nav-link.active {
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 0 24px rgba(255,0,93,.58);
+}
+
+.hotline-hero-cta {
+  animation: hotlinePulse 2.4s ease-in-out infinite;
+}
+
+@keyframes hotlinePulse {
+  0%, 100% { box-shadow: 0 8px 24px rgba(255,0,93,.35); }
+  50% { box-shadow: 0 10px 32px rgba(255,0,93,.68), 0 0 18px rgba(255,122,24,.45); }
+}
+
+@media(max-width:760px) {
+  .simple-nav a.hotline-nav-link {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    font-size: 1rem;
+  }
+}
+
+</style>
+<link href="https://throupletea.com/watch/" rel="canonical"/><meta content="dark" name="color-scheme"/></head>
+<body><header class="simple-header">
+<div class="wrap">
+<a class="brand" href="../">
+<img alt="A Little Throuple Tea logo" decoding="async" fetchpriority="high" height="900" loading="eager" src="../throuple-tea-logo-new.jpg?v=3" width="900"/>
+</a>
+<button aria-controls="mainNav" aria-expanded="false" aria-label="Open navigation menu" class="nav-toggle" id="navToggle">☰</button>
+<nav aria-label="Primary navigation" class="simple-nav" id="mainNav">
+<a href="../#listen">Listen</a><a href="../start-here/">Start Here</a>
+<a href="./">Watch</a>
+<a class="active" href="../episodes/">Episodes</a>
+<a href="../what-is-a-throuple/">What Is a Throuple?</a>
+<a href="../meet-the-throuple/">Meet the Throuple</a>
+<a href="../throuple-faq/">FAQ</a>
+<a href="../gay-throuple-podcast/">Gay Throuple Podcast</a>
+<a href="../guest/">Be a Guest</a>
+</nav>
+</div>
+<div class="hotline-row">
+<a class="hotline-nav-link" href="../#social-tea">☎️ Throuple Hotline</a>
+</div>
+</header>
+<main id="main-content">
+<section class="hero watch-hero">
+<div class="wrap">
+<h1>Watch A Little Throuple Tea</h1>
+<p>Season 1 &amp; 2 in full color — binge the chaos with video episodes and quick-hit shorts from the 3Dudes1Life throuple.</p>
+<div class="cta-row">
+<a class="btn primary" href="#episodes">Watch Full Episodes</a>
+<a class="btn" href="#shorts">Watch Shorts</a>
+</div>
+</div>
+</section>
+<section class="watch-section" id="shorts">
+<div class="wrap">
+<h2>Shorts</h2>
+<p class="section-subtitle">Sip-size chaos — quick clips, unfiltered moments, and the mess between episodes.</p>
+<div class="video-grid" id="shorts-grid"></div>
+<p class="watch-note" id="shorts-note"></p>
+<p class="watch-error" id="shorts-error" style="display:none;"></p>
+</div>
+</section>
+<section class="watch-section" id="episodes">
+<div class="wrap">
+<h2>Full Video Episodes</h2>
+<p class="section-subtitle">Settle in — full-length video episodes of A Little Throuple Tea.</p>
+<div class="video-grid" id="episodes-grid"></div>
+<p class="watch-note" id="episodes-note"></p>
+<p class="watch-error" id="episodes-error" style="display:none;"></p>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<p>© <span id="year"></span> A Little Throuple Tea · A 3Dudes1Life Creative project · 
+      <a href="mailto:3dudes1lifecreative@outatinc.com">3dudes1lifecreative@outatinc.com</a>
+</p>
+</div>
+</footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<script defer="" src="watch.js"></script>
+<script src="/capacitor-app.js"></script>
+</body>
+<script src="../analytics-config.js?v=61"></script>
+<script src="../script.js?v=9"></script>
+</html>

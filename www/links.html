@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A Little Throuple Tea — Official Links</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050812">
+  <meta name="description" content="Official links for A Little Throuple Tea — send the Throuple Hotline, start with the podcast, listen, watch, meet the throuple and join the tea.">
+  <link rel="canonical" href="https://throupletea.com/links.html">
+
+  <meta property="og:title" content="A Little Throuple Tea — Official Links">
+  <meta property="og:description" content="Send the Throuple Hotline, start listening, watch full episodes and meet William, Caleb and Daniel.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://throupletea.com/links.html">
+  <meta property="og:site_name" content="A Little Throuple Tea">
+  <meta property="og:image" content="https://throupletea.com/podcastartwork.jpg?v=4">
+  <meta property="og:image:secure_url" content="https://throupletea.com/podcastartwork.jpg?v=4">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A Little Throuple Tea — Official Links">
+  <meta name="twitter:description" content="Send the Hotline, listen, watch and explore A Little Throuple Tea.">
+  <meta name="twitter:image" content="https://throupletea.com/podcastartwork.jpg?v=4">
+
+  <link rel="icon" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="app-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
+
+  <script src="analytics-config.js" defer></script>
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function (OneSignal) {
+      await OneSignal.init({
+        appId: "ab9bc131-fe14-4de7-ad30-8671d7cae438"
+      });
+      updateNotificationButton(OneSignal);
+    });
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V8PDTZFJHE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "G-V8PDTZFJHE");
+  </script>
+
+  <style>
+    :root{
+      --black:#020204;
+      --night:#050812;
+      --deep:#071321;
+      --hot-pink:#ff005d;
+      --pink:#ff2a7f;
+      --orange:#ff7a18;
+      --sun:#ffb13b;
+      --teal:#00d7e8;
+      --white:#fff;
+      --soft:#dff8ff;
+      --muted:#a9cbd6;
+      --border:rgba(0,215,232,.25);
+      --shadow:0 16px 42px rgba(0,0,0,.48);
+      --glow:0 0 28px rgba(255,0,93,.23);
+      --header-h:88px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    html,body{margin:0;padding:0}
+    body{
+      min-height:100vh;
+      color:var(--soft);
+      background:
+        radial-gradient(circle at 8% 2%,rgba(255,0,93,.27),transparent 29%),
+        radial-gradient(circle at 92% 5%,rgba(0,215,232,.21),transparent 31%),
+        radial-gradient(circle at 50% 100%,rgba(255,122,24,.11),transparent 34%),
+        linear-gradient(180deg,#020204 0%,#071321 56%,#020204 100%);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
+      line-height:1.5;
+      overflow-x:hidden;
+      padding-top:calc(var(--header-h) + env(safe-area-inset-top));
+    }
+
+    button,a{font:inherit}
+    a:focus-visible,button:focus-visible{
+      outline:3px solid var(--sun);
+      outline-offset:4px;
+    }
+
+    .site-header{
+      position:fixed;
+      z-index:1000;
+      inset:0 0 auto;
+      height:calc(var(--header-h) + env(safe-area-inset-top));
+      padding-top:env(safe-area-inset-top);
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:16px;
+      padding-inline:max(18px,env(safe-area-inset-left)) max(18px,env(safe-area-inset-right));
+      border-bottom:1px solid rgba(255,0,93,.52);
+      background:linear-gradient(90deg,rgba(38,4,25,.96),rgba(4,24,34,.96));
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      box-shadow:0 8px 30px rgba(0,0,0,.28);
+    }
+
+    .header-logo{
+      justify-self:start;
+      display:block;
+      width:54px;
+      height:54px;
+      border-radius:15px;
+      overflow:hidden;
+      box-shadow:0 0 20px rgba(255,0,93,.35);
+    }
+
+    .header-logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .hotline-button{
+      justify-self:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      min-height:48px;
+      padding:0 22px;
+      border-radius:999px;
+      text-decoration:none;
+      color:#fff;
+      font-family:"Baloo 2",sans-serif;
+      font-weight:800;
+      font-size:1.02rem;
+      background:linear-gradient(135deg,var(--hot-pink),var(--orange));
+      box-shadow:0 0 24px rgba(255,0,93,.34);
+      white-space:nowrap;
+    }
+
+    .menu-toggle{
+      justify-self:end;
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      border-radius:17px;
+      border:1px solid rgba(0,215,232,.6);
+      background:rgba(4,19,30,.82);
+      color:#fff;
+      cursor:pointer;
+      font-size:1.55rem;
+    }
+
+    .menu-panel{
+      position:fixed;
+      z-index:999;
+      top:calc(var(--header-h) + env(safe-area-inset-top));
+      right:18px;
+      width:min(340px,calc(100vw - 36px));
+      padding:12px;
+      border:1px solid rgba(0,215,232,.3);
+      border-radius:20px;
+      background:rgba(3,12,20,.98);
+      box-shadow:var(--shadow),var(--glow);
+      transform:translateY(-12px);
+      opacity:0;
+      visibility:hidden;
+      transition:.18s ease;
+    }
+
+    .menu-panel.open{
+      transform:none;
+      opacity:1;
+      visibility:visible;
+    }
+
+    .menu-panel a{
+      display:flex;
+      align-items:center;
+      min-height:48px;
+      padding:10px 14px;
+      color:var(--soft);
+      text-decoration:none;
+      border-radius:13px;
+      font-weight:800;
+    }
+
+    .menu-panel a:hover{background:rgba(255,255,255,.07);color:#fff}
+
+    .wrap{
+      width:min(100%,680px);
+      margin:0 auto;
+      padding:28px clamp(16px,5vw,28px) 38px;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero{text-align:center;padding:18px 0 10px}
+
+    .hero-logo{
+      width:112px;
+      height:112px;
+      margin:0 auto 16px;
+      border-radius:26px;
+      object-fit:cover;
+      box-shadow:var(--shadow),0 0 30px rgba(255,0,93,.32);
+    }
+
+    .eyebrow{
+      margin:0 0 6px;
+      color:var(--sun);
+      font-family:"Baloo 2",sans-serif;
+      font-weight:800;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      font-size:.82rem;
+    }
+
+    h1{
+      margin:0;
+      color:#fff;
+      font-family:"Baloo 2",sans-serif;
+      font-size:clamp(2.25rem,9vw,3.7rem);
+      line-height:.95;
+      text-shadow:0 0 24px rgba(255,0,93,.28);
+    }
+
+    .hero-copy{
+      max-width:560px;
+      margin:14px auto 0;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .ranked-card,.hotline-card{
+      margin:18px 0;
+      padding:18px;
+      border-radius:22px;
+      background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));
+      border:1px solid rgba(255,42,127,.35);
+      box-shadow:var(--shadow);
+    }
+
+    .ranked-card{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+    }
+
+    .badge-icon{
+      width:42px;
+      height:42px;
+      flex:0 0 auto;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:rgba(255,177,59,.11);
+      font-size:1.5rem;
+    }
+
+    .ranked-card h2,.hotline-card h2{
+      margin:0 0 4px;
+      color:#fff;
+      font-family:"Baloo 2",sans-serif;
+      font-size:1.22rem;
+      line-height:1.08;
+    }
+
+    .ranked-card p,.hotline-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin:28px 0 10px;
+      color:var(--sun);
+      font-family:"Baloo 2",sans-serif;
+      font-size:1.35rem;
+      font-weight:800;
+    }
+
+    .section-title::before{
+      content:"";
+      width:30px;
+      height:2px;
+      background:linear-gradient(90deg,var(--hot-pink),var(--orange));
+      border-radius:999px;
+    }
+
+    .stack{display:grid;gap:12px}
+
+    .btn{
+      display:flex;
+      align-items:center;
+      gap:13px;
+      width:100%;
+      min-height:62px;
+      padding:14px 18px;
+      border-radius:20px;
+      border:1px solid var(--border);
+      background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
+      color:#fff;
+      text-decoration:none;
+      font-weight:850;
+      letter-spacing:.1px;
+      text-align:left;
+      box-shadow:0 10px 26px rgba(0,0,0,.3);
+      transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease;
+      cursor:pointer;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      border-color:var(--hot-pink);
+      box-shadow:var(--shadow),var(--glow);
+    }
+
+    .btn.primary{
+      background:linear-gradient(135deg,var(--hot-pink),var(--orange));
+      border-color:transparent;
+      box-shadow:0 12px 30px rgba(255,0,93,.32);
+    }
+
+    .btn.secondary{
+      color:#021219;
+      background:linear-gradient(135deg,#08c9dc,#ff4a91);
+      border-color:transparent;
+    }
+
+    .btn.notification-enabled{
+      background:linear-gradient(135deg,#007c9c,var(--teal));
+      border-color:transparent;
+    }
+
+    .btn.notification-blocked{
+      color:var(--sun);
+      border-color:rgba(255,177,59,.55);
+    }
+
+    .icon{
+      width:34px;
+      height:34px;
+      flex:0 0 auto;
+      display:grid;
+      place-items:center;
+      font-size:1.45rem;
+    }
+
+    .icon img{
+      width:30px;
+      height:30px;
+      object-fit:contain;
+      display:block;
+    }
+
+    .btn-copy{
+      display:flex;
+      flex-direction:column;
+      line-height:1.15;
+    }
+
+    .btn-copy small{
+      margin-top:4px;
+      color:rgba(223,248,255,.66);
+      font-size:.78rem;
+      font-weight:650;
+    }
+
+    .btn.secondary .btn-copy small{color:rgba(2,18,25,.68)}
+
+    footer{
+      padding:34px 0 16px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.88rem;
+      font-weight:700;
+    }
+
+    .drop-item{
+      position:fixed;
+      top:-60px;
+      z-index:1;
+      opacity:0;
+      pointer-events:none;
+      user-select:none;
+      animation:dropFall linear forwards;
+      will-change:transform,opacity;
+    }
+
+    @keyframes dropFall{
+      0%{transform:translate3d(0,-60px,0) rotate(0);opacity:0}
+      10%{opacity:1}
+      100%{transform:translate3d(var(--drift,0),110vh,0) rotate(var(--spin,360deg));opacity:0}
+    }
+
+    @media(max-width:560px){
+      :root{--header-h:82px}
+      .site-header{gap:10px;padding-inline:18px}
+      .header-logo{width:48px;height:48px;border-radius:14px}
+      .hotline-button{min-height:46px;padding:0 16px;font-size:.95rem}
+      .menu-toggle{width:50px;height:50px}
+      .wrap{padding-top:20px}
+      .hero-logo{width:96px;height:96px}
+      .ranked-card{align-items:center}
+      .btn{min-height:60px;border-radius:18px}
+    }
+
+    @media(max-width:390px){
+      .hotline-button{padding:0 12px;font-size:.87rem}
+      .hotline-button .hotline-label{display:none}
+      .hotline-button::after{content:"Hotline"}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .drop-item{display:none}
+      .btn,.menu-panel{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="header-logo" href="./" aria-label="A Little Throuple Tea home">
+      <img src="throuple-tea-logo-new.jpg?v=4" alt="">
+    </a>
+    <a class="hotline-button" href="mailto:throupletea@gmail.com?subject=Throuple%20Hotline" data-event="hotline_click">
+      <span aria-hidden="true">☎️</span>
+      <span class="hotline-label">Throuple Hotline</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Open website menu" aria-expanded="false" aria-controls="linksMenu">☰</button>
+  </header>
+
+  <nav id="linksMenu" class="menu-panel" aria-label="Website menu">
+    <a href="./">Full Website</a>
+    <a href="start-here/">Start Here</a>
+    <a href="episodes/">Episodes</a>
+    <a href="watch/">Watch</a>
+  </nav>
+
+  <main class="wrap">
+    <section class="hero">
+      <img class="hero-logo" src="throuple-tea-logo-new.jpg?v=4" alt="A Little Throuple Tea logo" width="112" height="112">
+      <p class="eyebrow">The official link hub</p>
+      <h1>All the Tea.<br>One Place.</h1>
+      <p class="hero-copy">Listen, watch, send the Hotline, turn on episode alerts and visit the full A Little Throuple Tea website.</p>
+    </section>
+
+    <div class="ranked-card">
+      <div class="badge-icon" aria-hidden="true">🏆</div>
+      <div>
+        <h2>Ranked #1 Throuple Podcast by Feedspot</h2>
+        <p>A real-life gay throuple hosted by William, Caleb and Daniel. New episodes every Friday.</p>
+      </div>
+    </div>
+
+    <section>
+      <h2 class="section-title">Start Here</h2>
+      <div class="stack">
+        <a class="btn primary" href="start-here/" data-event="start_here_click">
+          <span class="icon" aria-hidden="true">🌈</span>
+          <span class="btn-copy">New Here? Start Here<small>Meet us and find your first episode</small></span>
+        </a>
+
+        <a class="btn" href="./" data-event="cta_click">
+          <span class="icon" aria-hidden="true">🌐</span>
+          <span class="btn-copy">Visit the Full Website<small>Episodes, stories and everything Throuple Tea</small></span>
+        </a>
+
+        <a class="btn secondary" href="episodes/" data-event="start_listening_click">
+          <span class="icon" aria-hidden="true">🎙️</span>
+          <span class="btn-copy">Start Listening<small>Browse every episode</small></span>
+        </a>
+
+        <a class="btn primary" href="mailto:throupletea@gmail.com?subject=Throuple%20Hotline" data-event="hotline_click">
+          <span class="icon" aria-hidden="true">☎️</span>
+          <span class="btn-copy">Send the Throuple Hotline<small>Questions, confessions and chaos welcome</small></span>
+        </a>
+
+        <button id="notificationButton" class="btn" type="button" onclick="turnOnNotifications()">
+          <span id="notificationIcon" class="icon" aria-hidden="true">🔔</span>
+          <span id="notificationText" class="btn-copy">Get New Episode Alerts<small>Turn on podcast and giveaway notifications</small></span>
+        </button>
+      </div>
+    </section>
+
+    <div class="hotline-card">
+      <h2>The Hotline is always open.</h2>
+      <p>Send us a confession, dating disaster, throuple question or pure chaos at <strong>throupletea@gmail.com</strong>. We may read it on the show.</p>
+    </div>
+
+    <section>
+      <h2 class="section-title">Listen & Watch</h2>
+      <div class="stack">
+        <a class="btn" href="https://open.spotify.com/show/6cb9Y7qcyDO1L7O15X2oL5" target="_blank" rel="noopener noreferrer" data-event="platform_click" data-platform="Spotify">
+          <span class="icon"><img src="images/spotify.png" alt=""></span>
+          <span class="btn-copy">Spotify<small>Listen or watch the full video podcast</small></span>
+        </a>
+        <a class="btn" href="https://www.youtube.com/channel/UCswzye8bcm8bByqLlW0QaFQ" target="_blank" rel="noopener noreferrer" data-event="platform_click" data-platform="YouTube">
+          <span class="icon"><img src="images/youtube.png" alt=""></span>
+          <span class="btn-copy">YouTube<small>Watch full episodes and Shorts</small></span>
+        </a>
+        <a class="btn" href="https://podcasts.apple.com/us/podcast/3dudes1life-a-little-throuple-tea/id1837237399" target="_blank" rel="noopener noreferrer" data-event="platform_click" data-platform="Apple Podcasts">
+          <span class="icon"><img src="images/apple_podcasts.png" alt=""></span>
+          <span class="btn-copy">Apple Podcasts<small>Follow and listen on Apple</small></span>
+        </a>
+        <a class="btn" href="https://www.iheart.com/podcast/1333-a-little-throuple-tea-gay-291849404" target="_blank" rel="noopener noreferrer" data-event="platform_click" data-platform="iHeartRadio">
+          <span class="icon"><img src="images/iheartradio.png" alt=""></span>
+          <span class="btn-copy">iHeartRadio</span>
+        </a>
+        <a class="btn" href="https://music.amazon.com/podcasts/2a3cfc8f-2a79-4aac-b48b-625a20f08421/3dudes1life-a-little-throuple-tea" target="_blank" rel="noopener noreferrer" data-event="platform_click" data-platform="Amazon Music">
+          <span class="icon"><img src="images/amazon_music.png" alt=""></span>
+          <span class="btn-copy">Amazon Music</span>
+        </a>
+        <a class="btn" href="https://anchor.fm/s/1087008c4/podcast/rss" target="_blank" rel="noopener noreferrer" data-event="platform_click" data-platform="RSS">
+          <span class="icon"><img src="images/rss.png" alt=""></span>
+          <span class="btn-copy">RSS Feed</span>
+        </a>
+
+        <a class="btn" href="https://www.instagram.com/throupletea/" target="_blank" rel="noopener noreferrer" data-event="instagram_click">
+          <span class="icon" aria-hidden="true">📸</span>
+          <span class="btn-copy">Follow @ThroupleTea on Instagram</span>
+        </a>
+      </div>
+    </section>
+<footer>
+      © <span id="year"></span> A Little Throuple Tea · 3Dudes1Life Creative
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const menuPanel = document.getElementById("linksMenu");
+
+    function closeMenu(){
+      menuPanel.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded","false");
+    }
+
+    menuToggle.addEventListener("click",function(){
+      const opening = !menuPanel.classList.contains("open");
+      menuPanel.classList.toggle("open",opening);
+      menuToggle.setAttribute("aria-expanded",String(opening));
+    });
+
+    document.addEventListener("click",function(event){
+      if(!menuPanel.contains(event.target) && !menuToggle.contains(event.target)) closeMenu();
+    });
+
+    document.addEventListener("keydown",function(event){
+      if(event.key === "Escape") closeMenu();
+    });
+
+    async function updateNotificationButton(OneSignal){
+      const button = document.getElementById("notificationButton");
+      const icon = document.getElementById("notificationIcon");
+      const text = document.getElementById("notificationText");
+      if(!button || !icon || !text) return;
+
+      if(!("Notification" in window)){
+        icon.textContent="⚠️";
+        text.innerHTML='Notifications Not Supported<small>This browser cannot receive alerts</small>';
+        button.className="btn notification-blocked";
+        return;
+      }
+
+      const permission = Notification.permission;
+      if(permission === "granted" || OneSignal.Notifications.permission){
+        icon.textContent="✅";
+        text.innerHTML='Episode Alerts Are On<small>You are on the Tea List</small>';
+        button.className="btn notification-enabled";
+        return;
+      }
+
+      if(permission === "denied"){
+        icon.textContent="🔕";
+        text.innerHTML='Notifications Are Blocked<small>Enable them in browser settings</small>';
+        button.className="btn notification-blocked";
+        return;
+      }
+
+      icon.textContent="🔔";
+      text.innerHTML='Get New Episode Alerts<small>Turn on podcast and giveaway notifications</small>';
+      button.className="btn";
+    }
+
+    function turnOnNotifications(){
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal){
+        try{
+          await OneSignal.Notifications.requestPermission();
+          updateNotificationButton(OneSignal);
+        }catch(error){
+          console.error("Notification permission error:",error);
+        }
+      });
+    }
+
+    function trackLink(eventName, properties){
+      if(typeof window.ttTrack === "function"){
+        window.ttTrack(eventName,properties || {});
+      }else if(typeof window.gtag === "function"){
+        window.gtag("event",eventName,properties || {});
+      }
+    }
+
+    document.addEventListener("click",function(event){
+      const link = event.target.closest("[data-event]");
+      if(!link) return;
+      trackLink(link.dataset.event,{
+        platform:link.dataset.platform || "",
+        link_text:(link.textContent || "").trim().slice(0,120),
+        link_url:link.href || ""
+      });
+    });
+
+    const partyItems=["🎉","✨","🍹","🍸","🍋","🍈","🧂"];
+    let partyTriggered=false;
+
+    function createDropItem(){
+      const item=document.createElement("div");
+      item.className="drop-item";
+      item.textContent=partyItems[Math.floor(Math.random()*partyItems.length)];
+      item.style.left=Math.random()*100+"vw";
+      item.style.fontSize=22+Math.random()*18+"px";
+      item.style.animationDuration=3.5+Math.random()*2.5+"s";
+      item.style.animationDelay=Math.random()*.5+"s";
+      item.style.setProperty("--drift",Math.random()*160-80+"px");
+      item.style.setProperty("--spin",Math.random()*720-360+"deg");
+      document.body.appendChild(item);
+      item.addEventListener("animationend",()=>item.remove());
+    }
+
+    function launchPartyOnce(){
+      if(partyTriggered || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      partyTriggered=true;
+      for(let i=0;i<24;i++) createDropItem();
+      setTimeout(()=>{for(let i=0;i<12;i++) createDropItem()},650);
+    }
+
+    addEventListener("load",()=>setTimeout(launchPartyOnce,250));
+  </script>
+  <script src="script.js?v=9" defer></script>
+<script src="/capacitor-app.js"></script>
+</body>
+</html>

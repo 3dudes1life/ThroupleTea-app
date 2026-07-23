@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "site_version": "6.0.0",
+  "events": {
+    "start_here_click": "Visitor opens the new-listener guide.",
+    "starter_episode_click": "Visitor selects a recommended starter episode.",
+    "start_listening_click": "Visitor activates a primary listening CTA.",
+    "meet_hosts_click": "Visitor opens host information.",
+    "instagram_click": "Visitor opens the official Instagram profile.",
+    "hotline_click": "Visitor opens the Throuple Hotline submission flow.",
+    "tea_list_click": "Visitor opens the Tea List signup flow.",
+    "platform_click": "Visitor selects a listening platform.",
+    "podcast_platform_click": "Visitor selects Spotify, Apple, Amazon, YouTube, or iHeart.",
+    "podcast_play": "Visitor starts embedded audio.",
+    "video_play": "Visitor starts embedded video.",
+    "episode_share": "Visitor shares or copies an episode URL.",
+    "outbound_click": "Visitor follows an external link.",
+    "form_submit": "Visitor submits a form.",
+    "scroll_depth": "Visitor reaches a tracked page-depth milestone.",
+    "pwa_install_available": "Browser reports that installation is available.",
+    "pwa_installed": "Visitor completes installation.",
+    "pwa_standalone_launch": "Visitor launches the saved app experience.",
+    "push_entry_click": "Visitor activates the existing push-notification entry point.",
+    "newsletter_open": "Visitor opens the newsletter or Tea List interface.",
+    "cta_click": "Generic CTA fallback event."
+  },
+  "common_dimensions": [
+    "event_time", "event_name", "page_path", "page_title", "device_type",
+    "installed_app", "visitor_id", "session_id", "utm_source", "utm_medium", "utm_campaign"
+  ]
+}
