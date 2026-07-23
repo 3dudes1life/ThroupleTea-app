@@ -71,6 +71,8 @@
       lastPlaybackSentAt: 0,
       lastPlaybackSignature: '',
       recentMessages: new Set(),
+      startAttemptId: 0,
+      startWatchdog: null,
     },
     activeTab: safeStorageGet('tt:tab') || 'home',
     remoteLoaded: false,
@@ -1524,9 +1526,12 @@
     $('#watchPartyParticipantCount').textContent = `${participants} ${participants === 1 ? 'person' : 'people'}`;
 
     const startButton = $('#startCurrentWatchParty');
+    if (!startButton) return;
+    startButton.disabled = Boolean(state.watchParty.starting);
+    startButton.setAttribute('aria-busy', state.watchParty.starting ? 'true' : 'false');
     if (state.watchParty.active) {
       startButton.classList.add('active');
-      startButton.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM16 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/><path d="M2 21c0-4 2.4-6 6-6s6 2 6 6M13 16c4-1 8 1 8 5"/></svg>Watch Party Live';
+      startButton.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM16 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/><path d="M2 21c0-4 2.4-6 6-6s6 2 6 6M13 16c4-1 8 1 8 5"/></svg>Back to Watch Party';
     } else if (state.watchParty.starting) {
       startButton.classList.remove('active');
       startButton.textContent = 'Opening SharePlay…';
@@ -1599,6 +1604,44 @@
     openURL(video.url || `https://www.youtube.com/watch?v=${video.id}`);
   }
 
+  function clearWatchPartyStartWatchdog() {
+    if (state.watchParty.startWatchdog) {
+      clearTimeout(state.watchParty.startWatchdog);
+      state.watchParty.startWatchdog = null;
+    }
+  }
+
+  function resetWatchPartyStart(message = '') {
+    clearWatchPartyStartWatchdog();
+    state.watchParty.starting = false;
+    updateWatchPartyUI();
+    if (state.currentVideo && !state.watchParty.active) openVideo(state.currentVideo.id);
+    if (message) showToast(message);
+  }
+
+  async function reconcileWatchPartyState({ quiet = true } = {}) {
+    const plugin = watchPartyPlugin();
+    if (!plugin?.getState) return false;
+    try {
+      const current = await plugin.getState();
+      const active = Boolean(current?.active);
+      if (active) {
+        clearWatchPartyStartWatchdog();
+        state.watchParty.active = true;
+        state.watchParty.starting = false;
+        state.watchParty.participants = Number(current.participants || 1);
+        state.watchParty.videoId = current.videoId || state.watchParty.videoId;
+        updateWatchPartyUI();
+        return true;
+      }
+      if (state.watchParty.starting) resetWatchPartyStart(quiet ? '' : 'Watch Party was not started');
+      return false;
+    } catch (_) {
+      if (state.watchParty.starting) resetWatchPartyStart(quiet ? '' : 'SharePlay did not finish opening');
+      return false;
+    }
+  }
+
   async function startWatchParty(videoId = state.currentVideo?.id) {
     const video = state.content.videos.find(item => item.id === videoId);
     if (!video) return;
@@ -1614,9 +1657,16 @@
       return;
     }
 
+    if (state.watchParty.starting) {
+      showToast('SharePlay is already opening');
+      return;
+    }
+
     if (state.watchParty.active) {
       if (state.watchParty.videoId === video.id) {
-        showToast('This Watch Party is already live');
+        openVideo(video.id, { party: true });
+        postPlayerCommand('requestState');
+        showToast('Back in the live Watch Party');
         return;
       }
       showToast('Leave the current Watch Party first');
@@ -1624,6 +1674,8 @@
     }
 
     showToast('Watch Party starts from 0:00 for everyone');
+    clearWatchPartyStartWatchdog();
+    const attemptId = ++state.watchParty.startAttemptId;
     state.watchParty.starting = true;
     openVideo(video.id, { party: true });
     updateWatchPartyUI();
@@ -1643,16 +1695,26 @@
         kind: videoKind(video),
         thumbnail: video.thumbnail || ''
       });
+
+      // Presenting Apple's SharePlay sheet does not guarantee that a session
+      // was actually started. Recover automatically if the sheet is canceled.
+      state.watchParty.startWatchdog = setTimeout(async () => {
+        if (attemptId !== state.watchParty.startAttemptId || state.watchParty.active) return;
+        const becameActive = await reconcileWatchPartyState({ quiet: true });
+        if (!becameActive && attemptId === state.watchParty.startAttemptId) {
+          resetWatchPartyStart('Watch Party was canceled');
+        }
+      }, 18000);
     } catch (error) {
-      state.watchParty.starting = false;
-      updateWatchPartyUI();
-      openVideo(video.id);
-      showToast('Watch Party was canceled');
+      if (attemptId !== state.watchParty.startAttemptId) return;
+      resetWatchPartyStart('Watch Party was canceled');
     }
   }
 
   async function leaveWatchParty() {
     const plugin = watchPartyPlugin();
+    ++state.watchParty.startAttemptId;
+    clearWatchPartyStartWatchdog();
     try {
       await plugin?.leave?.();
     } catch (_) {}
@@ -1660,6 +1722,10 @@
     state.watchParty.starting = false;
     state.watchParty.participants = 1;
     state.watchParty.videoId = null;
+    state.watchParty.suppressBroadcastUntil = 0;
+    state.watchParty.lastPlaybackSentAt = 0;
+    state.watchParty.lastPlaybackSignature = '';
+    state.watchParty.recentMessages.clear();
     updateWatchPartyUI();
     if (state.currentVideo) openVideo(state.currentVideo.id);
     showToast('You left the Watch Party');
@@ -1778,6 +1844,7 @@
       state.watchParty.available = Boolean(availability?.available);
 
       plugin.addListener('sessionStarted', data => {
+        clearWatchPartyStartWatchdog();
         state.watchParty.active = true;
         state.watchParty.starting = false;
         state.watchParty.participants = Number(data.participants || 1);
@@ -1798,11 +1865,18 @@
       plugin.addListener('partyMessage', handlePartyMessage);
 
       plugin.addListener('sessionEnded', () => {
+        ++state.watchParty.startAttemptId;
+        clearWatchPartyStartWatchdog();
         state.watchParty.active = false;
         state.watchParty.starting = false;
         state.watchParty.participants = 1;
         state.watchParty.videoId = null;
+        state.watchParty.suppressBroadcastUntil = 0;
+        state.watchParty.lastPlaybackSentAt = 0;
+        state.watchParty.lastPlaybackSignature = '';
+        state.watchParty.recentMessages.clear();
         updateWatchPartyUI();
+        if (state.currentVideo) openVideo(state.currentVideo.id);
         showToast('Watch Party ended');
       });
 
@@ -2099,8 +2173,8 @@
     });
     window.addEventListener('online', () => { $('#offlineBanner').hidden = true; refreshRemoteData(false); });
     window.addEventListener('offline', () => { $('#offlineBanner').hidden = false; });
-    window.addEventListener('focus', () => refreshRemoteData(false));
-    document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshRemoteData(false); });
+    window.addEventListener('focus', () => { refreshRemoteData(false); reconcileWatchPartyState({ quiet: true }); });
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) { refreshRemoteData(false); reconcileWatchPartyState({ quiet: true }); } });
 
     audio.addEventListener('play', () => {
       if (state.currentEpisode) markEpisodePlayed(state.currentEpisode);
