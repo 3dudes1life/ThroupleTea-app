@@ -1,8 +1,8 @@
 {
   "name": "throupletea-app",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "private": true,
-  "description": "UX7.9.6 smart native Episode Detail formatting and polish.",
+  "description": "UX7.9.6.2 Watch Party recovery and repeat-use hardening.",
   "scripts": {
     "ios:add": "npx cap add ios",
     "ios:sync": "npx cap sync ios",

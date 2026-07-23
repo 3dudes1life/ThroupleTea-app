@@ -18,7 +18,7 @@ from pathlib import Path
 
 config = json.loads(Path('capacitor.config.json').read_text())
 assert config.get('appId') == 'com.throupletea.app', config
-assert config.get('appName') == 'A Little Throuple Tea', config
+assert config.get('appName') == 'Throuple Tea', config
 assert config.get('webDir') == 'www', config
 assert not config.get('server', {}).get('url'), 'Bundled build must not use a remote server URL.'
 assert Path('www/index.html').exists()
@@ -71,7 +71,7 @@ if not config_path.exists() or not project_path.exists():
 config = json.loads(config_path.read_text())
 if config.get('appId') != 'com.throupletea.app':
     raise SystemExit(f"❌ Wrong native app ID: {config.get('appId')!r}")
-if config.get('appName') != 'A Little Throuple Tea':
+if config.get('appName') != 'Throuple Tea':
     raise SystemExit(f"❌ Wrong native app name: {config.get('appName')!r}")
 if config.get('server', {}).get('url'):
     raise SystemExit('❌ Native build unexpectedly points at a remote website.')
@@ -80,7 +80,7 @@ project = project_path.read_text(errors='ignore')
 if 'com.throupletea.app' not in project:
     raise SystemExit('❌ Xcode target does not contain the Throuple Tea bundle identifier.')
 
-print('✅ Native target verified: A Little Throuple Tea / com.throupletea.app')
+print('✅ Native target verified: Throuple Tea / com.throupletea.app')
 PY
 
 WORKSPACE="$ROOT/ios/App/App.xcworkspace"
