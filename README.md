@@ -1,37 +1,46 @@
-# A Little Throuple Tea — Capacitor iOS App
+# A Little Throuple Tea — Live Dynamic Capacitor App
 
-This folder is ready to become the separate `ThroupleTea-App` GitHub repository.
+This version is configured to load the current production website:
 
-## First launch on the Mac
+`https://throupletea.com`
 
-1. Unzip this folder.
-2. Double-click `BUILD_AND_OPEN_IOS.command`.
-3. The script installs the required packages, creates `ios/`, syncs the complete website from `www/`, and opens Xcode.
-4. Select an iPhone simulator and press Play.
+That means the Friday episode-page automation continues to update the app automatically. A new App Store version is **not** required every Friday.
 
-## Later website/app updates
+## First build
 
-Edit or replace files inside `www/`, then double-click:
+1. Download or clone this repository.
+2. Double-click `BUILD_LIVE_APP_AND_OPEN_XCODE.command`.
+3. Select an iPhone simulator in Xcode.
+4. Press Play.
 
-`SYNC_AND_OPEN_IOS.command`
+## Normal website updates
 
-## GitHub
+Keep updating the regular `ThroupleTea` website repository exactly as you do now. Once GitHub Pages deploys the website update, the app displays it automatically.
 
-Upload the entire project folder to the new repository after the first build. Include:
-- `www/`
-- `ios/`
-- `package.json`
-- `package-lock.json`
-- `capacitor.config.json`
-- the two `.command` files
-- `.gitignore`
+You do not need to edit this app repository or resubmit to Apple for:
+- new episodes
+- Friday-generated episode pages
+- updated homepage copy
+- ordinary website content changes
 
-Do not upload `node_modules/`.
+## When an App Store update is needed
 
-## What was fixed
+Update and resubmit the native app only for changes such as:
+- native push notifications
+- app icon or launch screen
+- new native permissions or plugins
+- major native navigation
+- Apple-required maintenance
 
-- The current uploaded Throuple Tea website is correctly placed inside `www/`.
-- Internal pages and buttons remain inside the packaged app.
-- External podcast/social links open outside the app.
-- The old unrelated landing-page bundle is not included.
-- GitHub Pages-only deployment files were removed from the app bundle.
+## Two configurations included
+
+- `capacitor.config.live.json` — current default; loads the live site.
+- `capacitor.config.bundled.json` — keeps a packaged `www/` copy for later App Store hardening or offline support.
+
+To return to live mode and open Xcode:
+
+`npm run live:ios`
+
+## Important App Store note
+
+This live version is ideal for development and TestFlight prototyping. Before final public App Store submission, add native value such as native push notifications, sharing, saved episodes, or a native Hotline screen so the app is more than a simple website wrapper.

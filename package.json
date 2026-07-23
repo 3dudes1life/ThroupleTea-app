@@ -6,7 +6,11 @@
   "scripts": {
     "sync:ios": "npx cap sync ios",
     "open:ios": "npx cap open ios",
-    "update:ios": "npx cap sync ios && npx cap open ios"
+    "update:ios": "npx cap sync ios && npx cap open ios",
+    "mode:live": "cp capacitor.config.live.json capacitor.config.json",
+    "mode:bundled": "cp capacitor.config.bundled.json capacitor.config.json",
+    "live:ios": "cp capacitor.config.live.json capacitor.config.json && npx cap sync ios && npx cap open ios",
+    "bundled:ios": "cp capacitor.config.bundled.json capacitor.config.json && npx cap sync ios && npx cap open ios"
   },
   "dependencies": {
     "@capacitor/core": "^8.0.0",
