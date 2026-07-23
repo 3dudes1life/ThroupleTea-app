@@ -1,16 +1,11 @@
 {
-  "version": "2.6.3",
-  "watchLayout": "UX6 restored layout",
-  "youtubeLimits": {
-    "shorts": 75,
-    "fullVideos": 75
-  },
-  "localBuildRefresh": true,
-  "githubActionRefresh": true,
-  "staleCacheInvalidated": true,
-  "degradedRemoteSafeguard": true,
+  "version": "2.6.5",
+  "watchLayoutPreserved": true,
+  "watchPartyNoteAdded": true,
+  "watchPartyControlsLocation": "inside video player",
+  "fullYouTubeCatalogPreserved": true,
+  "bowlLogoFixIncluded": true,
   "watchPartyPreserved": true,
-  "officialBowlArtworkPreserved": true,
   "checks": [
     {
       "name": "app.js syntax",

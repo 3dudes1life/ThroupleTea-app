@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 7.3
+# A Little Throuple Tea — Superman UX 7.5
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -222,3 +222,26 @@ The build script now runs `scripts/configure-shareplay-ios.py` automatically aft
 - Refuses to let a stale or degraded remote response replace a healthy catalog.
 - Refresh feedback reports the actual Shorts and full-video totals.
 - SharePlay Watch Party remains available inside the video player.
+
+
+## UX 7.4 — Bowl logo crop fix
+
+- Adds transparent breathing room around the official Bowl of Chaos logo.
+- The left side of the C is no longer flush against the image boundary.
+- Keeps the real bowl completely out of the logo asset.
+- Prevents the Bowl page title container from clipping the logo or drop shadow.
+- Preserves all UX7.3 YouTube catalog, Bowl, zoom, and Watch Party code.
+
+
+## UX 7.5 — Watch page + Watch Party together
+
+- Preserves the complete YouTube Watch page:
+  - featured latest video
+  - horizontal Shorts rail
+  - full video episode catalog
+  - Play and Share buttons
+- Adds a compact note near the top:
+  - **Turn any episode into a Watch Party**
+  - tells users to tap Play and then Start Watch Party
+- Watch Party controls remain inside the video player, where they make sense.
+- Includes the UX7.4 Bowl logo crop fix and all previous Bowl, YouTube, and SharePlay work.
