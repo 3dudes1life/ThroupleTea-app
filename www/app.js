@@ -5,6 +5,8 @@
   const REMOTE_BASE = 'https://raw.githubusercontent.com/3dudes1life/ThroupleTea-app/main/live-data';
   const FALLBACK_IMAGE = './assets/podcast-artwork.jpg';
   const CONTENT_CACHE_VERSION = 13;
+  const EPISODE_FORMAT_CACHE_VERSION = '7.9.6';
+  const episodeFormatter = window.ThroupleTeaEpisodeFormatter;
   const PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player/';
   const PARTY_PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player-party/';
   function safeStorageGet(key) {
@@ -53,6 +55,7 @@
     config: { links: {}, starterEpisodeIds: [], announcement: {} },
     info: { meet: {}, faq: {} },
     nativePage: { type: null, id: null },
+    expandedEpisodeDescriptions: new Set(),
     favorites: new Set(safeJSON('tt:favorites', [], isArrayValue)),
     progress: safeJSON('tt:progress', {}, isObjectValue),
     lastPlayed: safeJSON('tt:last-played', {}, isObjectValue),
@@ -98,6 +101,7 @@
   const audio = $('#audioPlayer');
   const miniPlayer = $('#miniPlayer');
   const toast = $('#toast');
+  let nativePageRenderToken = 0;
 
   const escapeHTML = (value = '') => String(value).replace(/[&<>"']/g, ch => ({
     '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
@@ -329,143 +333,86 @@
     modal.hidden = true;
     document.body.classList.remove('native-page-open');
     state.nativePage = { type: null, id: null };
+    nativePageRenderToken += 1;
   }
 
   function episodeDescription(ep) {
     return richerText(ep?.description, ep?.summary);
   }
 
-  function normalizeEpisodeText(textValue) {
-    let text = String(textValue || '')
-      .replace(/\r\n?/g, '\n')
-      .replace(/\u00a0/g, ' ')
-      .replace(/[\uFFFD\u25A1\u2610\u2753]/g, ' ')
-      .replace(/[\u200B-\u200D\uFEFF]/g, '')
-      .replace(/[ \t]+\n/g, '\n')
-      .replace(/\n[ \t]+/g, '\n')
-      .replace(/[ \t]{2,}/g, ' ')
-      .replace(/\n{3,}/g, '\n\n')
-      .replace(/\s+([,.;!?])/g, '$1')
-      .trim();
-
-    try {
-      text = text.replace(/\p{Extended_Pictographic}+/gu, '\n');
-    } catch (_) {}
-
-    return text
-      .replace(/\n{3,}/g, '\n\n')
-      .trim();
+  function episodeFormatCache() {
+    return safeJSON(`tt:episode-format-cache:v${EPISODE_FORMAT_CACHE_VERSION}`, {}, isObjectValue);
   }
 
-  function cleanEpisodeTopicLabel(value) {
-    return String(value || '')
-      .replace(/[\uFFFD\u25A1\u2610\u2753\uFE0F]/g, '')
-      .replace(/^[^A-Za-z0-9]+/, '')
-      .trim();
+  function saveEpisodeFormatCache(cache) {
+    const entries = Object.entries(cache || {});
+    const trimmed = entries.length > 80 ? Object.fromEntries(entries.slice(-80)) : (cache || {});
+    safeStorageSet(`tt:episode-format-cache:v${EPISODE_FORMAT_CACHE_VERSION}`, JSON.stringify(trimmed));
   }
 
-  function classifyEpisodeLine(line) {
-    const clean = line.trim();
+  function formattedEpisodeDescription(ep) {
+    const source = episodeDescription(ep);
+    const sourceHash = episodeFormatter?.hash ? episodeFormatter.hash(source) : String(source.length);
+    const cacheKey = `${ep?.id || 'episode'}:${sourceHash}`;
+    const cache = episodeFormatCache();
+    const cached = cache[cacheKey];
 
-    if (!clean) return { type: 'blank', text: '' };
+    if (cached?.version === episodeFormatter?.VERSION && Array.isArray(cached.paragraphs)) return cached;
 
-    if (/^(plus|also|in this episode|topics|we also talk about)\s*:?\s*$/i.test(clean)) {
-      return { type: 'heading', text: clean.replace(/:$/, '') };
-    }
+    const parsed = episodeFormatter?.parse ? episodeFormatter.parse(source) : {
+      version: 'fallback',
+      hash: sourceHash,
+      paragraphs: source ? [source] : [],
+      topics: [],
+      closing: [],
+      isLong: String(source || '').length > 650,
+      wordCount: String(source || '').split(/\s+/).filter(Boolean).length,
+      empty: !source
+    };
 
-    if (/^(full video on|audio everywhere|instagram:|website:|sign up for notifications|listen on|watch on)/i.test(clean)) {
-      return { type: 'promo', text: clean };
-    }
-
-    if (/^[•\-–—✦]\s*/.test(clean)) {
-      return { type: 'topic', text: cleanEpisodeTopicLabel(clean.replace(/^[•\-–—✦]\s*/, '')) };
-    }
-
-    if (clean.length < 70 && /[&,+/]/.test(clean) && !/[.!?]$/.test(clean)) {
-      return { type: 'topic', text: cleanEpisodeTopicLabel(clean) };
-    }
-
-    return { type: 'paragraph', text: clean };
+    cache[cacheKey] = parsed;
+    saveEpisodeFormatCache(cache);
+    return parsed;
   }
 
-  function splitParagraphs(text) {
-    const normalized = normalizeEpisodeText(text);
-    if (!normalized) return [];
-
-    const explicit = normalized
-      .split(/\n{2,}/)
-      .map(block => block.replace(/\n+/g, ' ').trim())
-      .filter(Boolean);
-
-    if (explicit.length > 1) return explicit;
-
-    const sentences = normalized
-      .split(/(?<=[.!?])\s+(?=[A-Z0-9“"'])/u)
-      .map(sentence => sentence.trim())
-      .filter(Boolean);
-
-    if (sentences.length <= 3) return [normalized];
-
-    const paragraphs = [];
-    for (let index = 0; index < sentences.length; index += 3) {
-      paragraphs.push(sentences.slice(index, index + 3).join(' '));
-    }
-    return paragraphs;
-  }
-
-  function episodeDescriptionHTML(textValue) {
-    const normalized = normalizeEpisodeText(textValue);
-    if (!normalized) {
-      return `<div class="episode-copy-block"><p>No episode description is available yet.</p></div>`;
+  function episodeDescriptionHTML(ep) {
+    const formatted = formattedEpisodeDescription(ep);
+    if (formatted.empty) {
+      return `<div class="episode-copy-block episode-copy-empty">
+        <span class="episode-copy-label">IN THIS EPISODE</span>
+        <p>The show notes are still brewing. The episode is ready whenever you are.</p>
+      </div>`;
     }
 
-    const lines = normalized
-      .split('\n')
-      .map(classifyEpisodeLine)
-      .filter(item => item.type !== 'blank');
-
-    const intro = [];
-    const topics = [];
-    const promo = [];
-    let collectingTopics = false;
-
-    for (const item of lines) {
-      if (item.type === 'heading') {
-        collectingTopics = true;
-        continue;
-      }
-
-      if (item.type === 'topic') {
-        collectingTopics = true;
-        topics.push(item.text);
-        continue;
-      }
-
-      if (item.type === 'promo') {
-        promo.push(item.text);
-        continue;
-      }
-
-      if (collectingTopics) topics.push(cleanEpisodeTopicLabel(item.text));
-      else intro.push(item.text);
-    }
-
-    const introText = intro.join('\n\n') || normalized;
-    const paragraphs = splitParagraphs(introText);
+    const paragraphs = formatted.paragraphs || [];
+    const topics = formatted.topics || [];
+    const closing = formatted.closing || [];
+    const isExpanded = state.expandedEpisodeDescriptions.has(ep?.id);
 
     return `
-      <div class="episode-copy-block">
-        <span class="episode-copy-label">IN THIS EPISODE</span>
-        ${paragraphs.map(part => `<p>${escapeHTML(part)}</p>`).join('')}
+      <div class="episode-description-content${formatted.isLong && !isExpanded ? ' is-collapsed' : ''}" data-description-content>
+        <div class="episode-copy-block">
+          <span class="episode-copy-label">IN THIS EPISODE</span>
+          ${paragraphs.map(part => `<p>${escapeHTML(part)}</p>`).join('')}
+        </div>
+        ${topics.length ? `<div class="episode-topics-block">
+          <span class="episode-copy-label">ALSO ON THE TABLE</span>
+          <div class="episode-topic-grid">
+            ${topics.map((item, index) => `<article class="episode-topic-card">
+              <span>${String(index + 1).padStart(2, '0')}</span>
+              <p>${escapeHTML(item)}</p>
+            </article>`).join('')}
+          </div>
+        </div>` : ''}
+        ${closing.length ? `<div class="episode-closing-block">
+          ${closing.map(item => `<p>${escapeHTML(item)}</p>`).join('')}
+        </div>` : ''}
+        ${formatted.isLong && !isExpanded ? '<div class="episode-description-fade" aria-hidden="true"></div>' : ''}
       </div>
-      ${topics.length ? `<div class="episode-topics-block">
-        <span class="episode-copy-label">ALSO ON THE TABLE</span>
-        <ul>${topics.filter(Boolean).map(item => `<li>${escapeHTML(item)}</li>`).join('')}</ul>
-      </div>` : ''}
-      ${promo.length ? `<div class="episode-promo-block">
-        <span class="episode-copy-label">KEEP THE TEA GOING</span>
-        ${promo.map(item => `<p>${escapeHTML(item)}</p>`).join('')}
-      </div>` : ''}
+      ${formatted.isLong ? `<button class="episode-read-toggle${isExpanded ? ' is-expanded' : ''}" type="button" data-description-toggle="${escapeHTML(ep?.id || '')}" aria-expanded="${isExpanded}">
+        <span>${isExpanded ? 'Read less' : 'Read more'}</span>
+        <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+      </button>` : ''}
     `;
   }
 
@@ -554,8 +501,23 @@
     </article>`;
   }
 
+  function nativeEpisodeLoadingHTML() {
+    return `<article class="episode-detail-page episode-detail-loading" aria-busy="true" aria-label="Loading episode details">
+      <div class="episode-loading-art shimmer"></div>
+      <div class="episode-loading-line shimmer short"></div>
+      <div class="episode-loading-line shimmer title"></div>
+      <div class="episode-loading-line shimmer title second"></div>
+      <div class="episode-loading-chips"><span class="shimmer"></span><span class="shimmer"></span><span class="shimmer"></span></div>
+      <div class="episode-loading-actions"><span class="shimmer"></span><span class="shimmer"></span></div>
+      <div class="episode-loading-copy shimmer"></div>
+      <p>Brewing the episode details…</p>
+    </article>`;
+  }
+
   function nativeEpisodeHTML(ep) {
     const savedSeconds = Number(state.progress[ep.id] || 0);
+    const isPlaying = state.currentEpisode?.id === ep.id && !audio.paused;
+    const isSaved = state.favorites.has(itemKey('episode', ep.id));
     const duration = ep.duration ? String(ep.duration)
       .replace(/^PT/, '')
       .replace(/H/, 'h ')
@@ -563,6 +525,8 @@
       .replace(/S/, 's')
       .trim() : '';
     const meta = episodeMetaItems(ep, duration);
+    const playLabel = isPlaying ? 'Pause episode' : savedSeconds > 15 ? `Resume at ${formatTime(savedSeconds)}` : 'Play episode';
+    const playKicker = isPlaying ? 'NOW PLAYING' : savedSeconds > 15 ? 'PICK UP WHERE YOU LEFT OFF' : 'START LISTENING';
 
     return `<article class="episode-detail-page">
       <div class="episode-detail-art">
@@ -575,20 +539,37 @@
       </div>
 
       <div class="episode-detail-actions">
-        <button class="wide-gradient-button" type="button" data-detail-play="${escapeHTML(ep.id)}">
-          ${state.currentEpisode?.id === ep.id && !audio.paused ? 'Pause' : savedSeconds > 15 ? `Resume ${formatTime(savedSeconds)}` : 'Play episode'}
+        <button class="episode-primary-action" type="button" data-detail-play="${escapeHTML(ep.id)}">
+          <span class="episode-action-icon" aria-hidden="true">
+            ${isPlaying
+              ? '<svg viewBox="0 0 24 24"><path d="M8 6v12M16 6v12"/></svg>'
+              : '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>'}
+          </span>
+          <span class="episode-action-copy"><small>${playKicker}</small><strong>${playLabel}</strong></span>
         </button>
-        <button class="wide-outline-button" type="button" data-detail-share="${escapeHTML(ep.id)}">Share</button>
+        <div class="episode-secondary-actions">
+          <button type="button" data-detail-favorite="${escapeHTML(ep.id)}" aria-pressed="${isSaved}">
+            <svg viewBox="0 0 24 24"><path d="M12 20.5 4.6 13.4a5.2 5.2 0 0 1 7.4-7.3 5.2 5.2 0 0 1 7.4 7.3z"/></svg>
+            <span>${isSaved ? 'Saved' : 'Save'}</span>
+          </button>
+          <button type="button" data-detail-share="${escapeHTML(ep.id)}">
+            <svg viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 13v7h14v-7"/></svg>
+            <span>Share</span>
+          </button>
+        </div>
       </div>
 
-      <section class="episode-detail-description">
-        ${episodeDescriptionHTML(episodeDescription(ep))}
+      <section class="episode-detail-description" aria-label="Episode description">
+        ${episodeDescriptionHTML(ep)}
       </section>
 
-      <button class="wide-outline-button episode-detail-favorite" type="button" data-detail-favorite="${escapeHTML(ep.id)}">
-        ${state.favorites.has(itemKey('episode', ep.id)) ? '♥ Saved to favorites' : '♡ Save episode'}
-      </button>
-      <div class="episode-detail-end">You reached the bottom of the tea. ☕</div>
+      <footer class="episode-detail-footer">
+        <span class="episode-footer-kicker">KEEP THE TEA GOING</span>
+        <h2>Got a question, confession, or chaotic life update?</h2>
+        <p>Send it to the Throuple Hotline. It could become part of a future episode.</p>
+        <button class="wide-gradient-button" type="button" data-native-hotline>Open the Throuple Hotline</button>
+        <div class="episode-detail-end">You reached the bottom of the tea. ☕</div>
+      </footer>
     </article>`;
   }
 
@@ -633,9 +614,31 @@
         renderNativePage();
       };
     });
+
+    $$('[data-description-toggle]').forEach(button => {
+      button.onclick = () => {
+        const episodeId = button.dataset.descriptionToggle;
+        const content = button.previousElementSibling;
+        const willExpand = !state.expandedEpisodeDescriptions.has(episodeId);
+
+        if (willExpand) state.expandedEpisodeDescriptions.add(episodeId);
+        else state.expandedEpisodeDescriptions.delete(episodeId);
+
+        content?.classList.toggle('is-collapsed', !willExpand);
+        content?.querySelector('.episode-description-fade')?.remove();
+        if (!willExpand && content && !content.querySelector('.episode-description-fade')) {
+          content.insertAdjacentHTML('beforeend', '<div class="episode-description-fade" aria-hidden="true"></div>');
+        }
+        button.setAttribute('aria-expanded', String(willExpand));
+        button.querySelector('span').textContent = willExpand ? 'Read less' : 'Read more';
+        button.classList.toggle('is-expanded', willExpand);
+        if (!willExpand) content?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        haptic('LIGHT');
+      };
+    });
   }
 
-  function renderNativePage() {
+  function renderNativePage(options = {}) {
     const modal = $('#nativePageModal');
     if (!modal || modal.hidden || !state.nativePage.type) return;
 
@@ -655,14 +658,23 @@
       content.innerHTML = nativeFaqHTML();
     } else if (type === 'episode') {
       const ep = state.content.episodes.find(item => item.id === state.nativePage.id);
-      if (!ep) {
-        closeNativePage();
-        return;
-      }
+      if (!ep) { closeNativePage(); return; }
+
       $('#nativePageKicker').textContent = ep.label || 'FULL EPISODE';
       $('#nativePageHeaderTitle').textContent = displayTitle(ep.title);
       shareButton.hidden = false;
       shareButton.onclick = () => shareItem(ep.title, ep.webUrl || state.config.links.episodes, 'Listen to this episode of A Little Throuple Tea');
+
+      if (options.showLoading) {
+        const renderToken = ++nativePageRenderToken;
+        content.innerHTML = nativeEpisodeLoadingHTML();
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          if (renderToken !== nativePageRenderToken || modal.hidden || state.nativePage.id !== ep.id) return;
+          content.innerHTML = nativeEpisodeHTML(ep);
+          wireNativePageContent();
+        }));
+        return;
+      }
       content.innerHTML = nativeEpisodeHTML(ep);
     }
 
@@ -676,7 +688,7 @@
     modal.hidden = false;
     document.body.classList.add('native-page-open');
     $('#nativePageScroll').scrollTop = 0;
-    renderNativePage();
+    renderNativePage({ showLoading: type === 'episode' });
     haptic('LIGHT');
   }
 
@@ -1917,11 +1929,12 @@
 
   async function loadInitialData() {
     const migrationVersion = Number(safeStorageGet('tt:data-migration-version') || 0);
-    if (migrationVersion < 13) {
+    if (migrationVersion < 14) {
       safeStorageRemove('tt:content-cache');
       safeStorageRemove('tt:config-cache');
+      safeStorageRemove('tt:episode-format-cache:v1');
       safeStorageSet('tt:content-cache-version', '0');
-      safeStorageSet('tt:data-migration-version', '13');
+      safeStorageSet('tt:data-migration-version', '14');
     }
 
     const [fallback, localConfig, localInfo] = await Promise.all([
