@@ -4,7 +4,7 @@
 
   const REMOTE_BASE = 'https://raw.githubusercontent.com/3dudes1life/ThroupleTea-app/main/live-data';
   const FALLBACK_IMAGE = './assets/podcast-artwork.jpg';
-  const CONTENT_CACHE_VERSION = 12;
+  const CONTENT_CACHE_VERSION = 13;
   const PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player/';
   const PARTY_PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player-party/';
   function safeStorageGet(key) {
@@ -332,9 +332,7 @@
   }
 
   function episodeDescription(ep) {
-    const full = String(ep?.description || '').trim();
-    const summary = String(ep?.summary || '').trim();
-    return full || summary;
+    return richerText(ep?.description, ep?.summary);
   }
 
   function normalizeEpisodeText(textValue) {
@@ -1919,11 +1917,11 @@
 
   async function loadInitialData() {
     const migrationVersion = Number(safeStorageGet('tt:data-migration-version') || 0);
-    if (migrationVersion < 12) {
+    if (migrationVersion < 13) {
       safeStorageRemove('tt:content-cache');
       safeStorageRemove('tt:config-cache');
       safeStorageSet('tt:content-cache-version', '0');
-      safeStorageSet('tt:data-migration-version', '12');
+      safeStorageSet('tt:data-migration-version', '13');
     }
 
     const [fallback, localConfig, localInfo] = await Promise.all([

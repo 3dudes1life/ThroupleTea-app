@@ -3,7 +3,7 @@ set -e
 cd "$(dirname "$0")"
 
 echo ""
-echo "🦸 Building UX7.9.4 — Certificate-Safe Superman Build..."
+echo "🦸 Building UX7.9.5 — Certificate-Safe Superman Build..."
 echo ""
 
 chmod -R u+rwX .
@@ -33,6 +33,10 @@ else
   echo "⚠️ RSS download failed. Preserving the richest saved episode descriptions."
 fi
 rm -f "$RSS_FILE" 2>/dev/null || true
+
+echo "🌐 Pulling complete show notes from episode pages..."
+python3 scripts/hydrate-episode-pages.py || true
+
 
 
 

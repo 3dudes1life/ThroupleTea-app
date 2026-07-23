@@ -11,6 +11,10 @@ if curl -fL --retry 3 --connect-timeout 20   "https://anchor.fm/s/1087008c4/podc
 fi
 rm -f "$RSS_FILE" 2>/dev/null || true
 
+echo "🌐 Pulling complete show notes from episode pages..."
+python3 scripts/hydrate-episode-pages.py || true
+
+
 
 node scripts/verify-rich-descriptions.js || true
 

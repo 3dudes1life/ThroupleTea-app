@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 7.9.4
+# A Little Throuple Tea — Superman UX 7.9.5
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -426,3 +426,14 @@ This release fixes that exact bug:
 - video recovery never replaces `episodes` or their descriptions
 - the app still uses the longest description during remote merges
 - topic-card replacement glyphs remain removed
+
+
+## UX 7.9.5 — Superman full-description source fix
+
+The RSS only exposes rich descriptions for a small number of episodes. This
+release also downloads the website episode pages and extracts the longest
+useful show notes from JSON-LD, page metadata, and article content.
+
+Video recovery runs first, RSS hydration runs second, and website hydration
+runs last. The app always prefers the longest episode description and never
+lets YouTube recovery replace episode records.
