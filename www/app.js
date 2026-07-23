@@ -4,7 +4,7 @@
 
   const REMOTE_BASE = 'https://raw.githubusercontent.com/3dudes1life/ThroupleTea-app/main/live-data';
   const FALLBACK_IMAGE = './assets/podcast-artwork.jpg';
-  const CONTENT_CACHE_VERSION = 7;
+  const CONTENT_CACHE_VERSION = 9;
   const PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player/';
   const PARTY_PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player-party/';
   function safeStorageGet(key) {
@@ -1861,6 +1861,13 @@
       .sort((a, b) => catalogQuality(b) - catalogQuality(a))[0] || catalogs.find(Boolean);
   }
 
+  function richerText(...values) {
+    return values
+      .map(value => String(value || '').trim())
+      .filter(Boolean)
+      .sort((a, b) => b.length - a.length)[0] || '';
+  }
+
   function mergeEpisodeMetadata(currentEpisodes, remoteEpisodes) {
     const currentById = new Map(
       (currentEpisodes || []).filter(ep => ep?.id).map(ep => [ep.id, ep])
@@ -1871,8 +1878,13 @@
       return {
         ...saved,
         ...ep,
-        summary: ep.summary || saved.summary || ep.description || saved.description || '',
-        description: ep.description || saved.description || ep.summary || saved.summary || '',
+        summary: ep.summary || saved.summary || '',
+        description: richerText(
+          ep.description,
+          saved.description,
+          ep.summary,
+          saved.summary
+        ),
         image: ep.image || saved.image || FALLBACK_IMAGE,
         webUrl: ep.webUrl || saved.webUrl || state.config.links.episodes || '',
       };
@@ -1899,6 +1911,14 @@
   }
 
   async function loadInitialData() {
+    const migrationVersion = Number(safeStorageGet('tt:data-migration-version') || 0);
+    if (migrationVersion < 9) {
+      safeStorageRemove('tt:content-cache');
+      safeStorageRemove('tt:config-cache');
+      safeStorageSet('tt:content-cache-version', '0');
+      safeStorageSet('tt:data-migration-version', '9');
+    }
+
     const [fallback, localConfig, localInfo] = await Promise.all([
       loadJSON('./data/fallback.json'),
       loadJSON('./data/app-config.json'),

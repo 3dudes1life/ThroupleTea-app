@@ -9,6 +9,15 @@ echo ""
 chmod -R u+rwX .
 xattr -dr com.apple.quarantine . 2>/dev/null || true
 
+echo "🎙️ Downloading the full podcast RSS with macOS curl..."
+RSS_FILE="$(mktemp -t throupletea-rss).xml"
+if curl -fL --retry 3 --connect-timeout 20   "https://anchor.fm/s/1087008c4/podcast/rss?$(date +%s)"   -o "$RSS_FILE"; then
+  python3 scripts/hydrate-episode-descriptions.py "$RSS_FILE" || true
+else
+  echo "⚠️ RSS download failed. Preserving the richest saved episode descriptions."
+fi
+rm -f "$RSS_FILE" 2>/dev/null || true
+
 echo "📺 Recovering the healthiest saved YouTube catalog..."
 if ! node scripts/prepare-bundled-catalog.js; then
   echo "🌐 Trying the live GitHub catalog with macOS curl..."

@@ -1,8 +1,8 @@
 {
   "name": "throupletea-app",
-  "version": "2.9.1",
+  "version": "3.0.0",
   "private": true,
-  "description": "UX7.8.1 preserves the full native episode description while cleaning formatting.",
+  "description": "UX7.9 rebuilds rich episode descriptions from the full RSS and permanently evicts truncated caches.",
   "scripts": {
     "ios:add": "npx cap add ios",
     "ios:sync": "npx cap sync ios",

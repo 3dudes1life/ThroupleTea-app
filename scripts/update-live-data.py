@@ -150,7 +150,21 @@ def _parse_rss_unprotected(cards: list[dict]) -> list[dict]:
         if not slug:
             slug = re.sub(r"[^a-z0-9]+", "-", title_value.lower()).strip("-")
         description = text(item, "description")
-        full_description = clean_html(description)
+        content_encoded = text(item, "{http://purl.org/rss/1.0/modules/content/}encoded")
+        itunes_summary = text(item, "{http://www.itunes.com/dtds/podcast-1.0.dtd}summary")
+
+        description_candidates = [
+            clean_html(content_encoded),
+            clean_html(itunes_summary),
+            clean_html(description),
+            (match.get("summary", "") if match else ""),
+        ]
+        full_description = max(
+            (candidate for candidate in description_candidates if candidate),
+            key=len,
+            default="",
+        )
+
         result.append({
             "id": slug or re.sub(r"[^a-z0-9]+", "-", guid.lower()).strip("-"),
             "title": title_value,

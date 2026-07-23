@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 7.8.1
+# A Little Throuple Tea — Superman UX 7.9
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -360,3 +360,25 @@ This patch:
 - formats intro copy, topic lines, and promo/footer lines into separate sections
 - keeps Play/Resume and Share in normal flow above the description
 - preserves all UX7.8 native layout and every prior app feature
+
+
+## UX 7.9 — true full-description rebuild
+
+The root problem was confirmed in the packaged data: both `summary` and
+`description` already contained the same truncated ellipsis copy. No display
+formatter could restore text that was not present.
+
+UX7.9 fixes the data pipeline itself:
+
+- reads `content:encoded`, `itunes:summary`, and ordinary RSS `description`
+- selects the longest valid RSS field as the native episode description
+- downloads RSS during the local build with macOS `curl`, avoiding old Python
+  SSL certificate problems
+- parses the downloaded local XML with Python—no Python HTTPS request required
+- preserves rich descriptions when the YouTube catalog recovery script merges
+  data from previous builds
+- prevents a shorter remote description from overwriting a longer bundled one
+- force-clears all old truncated content caches through data migration version 9
+- keeps the UX7.8.1 formatting and non-overlapping controls
+- keeps every prior Watch, Watch Party, Bowl, Hotline, native page, and
+  stability feature

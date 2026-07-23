@@ -2,6 +2,12 @@
 set -e
 cd "$(dirname "$0")"
 
+RSS_FILE="$(mktemp -t throupletea-rss).xml"
+if curl -fL --retry 3 --connect-timeout 20   "https://anchor.fm/s/1087008c4/podcast/rss?$(date +%s)"   -o "$RSS_FILE"; then
+  python3 scripts/hydrate-episode-descriptions.py "$RSS_FILE" || true
+fi
+rm -f "$RSS_FILE" 2>/dev/null || true
+
 node scripts/prepare-bundled-catalog.js || true
 node scripts/verify-bundled-catalog.js || true
 
