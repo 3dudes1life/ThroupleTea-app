@@ -483,3 +483,73 @@ button{cursor:pointer}
   .video-actions.three .party-button{grid-column:1/-1}
   .video-footer-actions{grid-template-columns:1fr}
 }
+
+/* UX7.1 — iPhone zoom and overflow hardening */
+html{
+  width:100%;
+  min-width:100%;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  touch-action:manipulation;
+}
+body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+  overscroll-behavior-x:none;
+}
+button,
+a,
+[role="button"]{
+  touch-action:manipulation;
+}
+input,
+textarea,
+select{
+  font-size:16px!important;
+}
+.app-shell,
+.app-view,
+.bowl-view,
+.bowl-game,
+.bowl-panel,
+.bowl-card-reveal,
+.bowl-history-panel{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  overflow-x:hidden;
+}
+.bowl-card-reveal h2,
+.bowl-card-reveal>p,
+.bowl-history-item p{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+.bowl-card-actions{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+}
+.bowl-card-actions button{
+  width:100%;
+  min-width:0;
+  padding-left:10px;
+  padding-right:10px;
+  white-space:normal;
+  line-height:1.15;
+}
+.bowl-card-actions .gradient-button{
+  font-size:.82rem;
+}
+.bowl-game-header>*,
+.bowl-progress>*{
+  min-width:0;
+}
+@media(max-width:440px){
+  .bowl-card-actions{
+    grid-template-columns:1fr;
+  }
+  .bowl-card-actions button{
+    min-height:52px;
+  }
+}

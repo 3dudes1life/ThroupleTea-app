@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 7
+# A Little Throuple Tea — Superman UX 7.1
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -185,3 +185,13 @@ SharePlay cannot be tested meaningfully in the iOS Simulator. Use two physical i
 6. Verify play, pause, seeking, participant count, and reactions.
 
 The build script now runs `scripts/configure-shareplay-ios.py` automatically after Capacitor sync.
+
+
+## UX 7.1 Bowl display fix
+
+- Prevents iOS from zooming after editing player names.
+- Player-name inputs now use iPhone-safe 16px text.
+- Disables accidental double-tap zoom inside the Bowl.
+- Forces the app and Bowl screens to remain within the device width.
+- Stacks the Save and Pass buttons on narrow iPhones so nothing is clipped.
+- Blurs the keyboard input and resets scroll before starting a game.

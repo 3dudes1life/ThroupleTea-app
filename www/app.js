@@ -608,6 +608,11 @@
   }
 
   function startBowlGame(useSameSetup = true) {
+    const focused = document.activeElement;
+    if (focused && typeof focused.blur === 'function') focused.blur();
+    document.body.classList.add('bowl-game-active');
+    window.scrollTo(0, 0);
+
     if (!state.bowlData.packs.length) {
       showToast('The Bowl is still loading');
       return;
@@ -707,6 +712,7 @@
   }
 
   function endBowlGame() {
+    document.body.classList.remove('bowl-game-active');
     state.bowl.phase = 'summary';
     state.bowl.currentCard = null;
     state.bowl.drawing = false;
@@ -722,6 +728,7 @@
   }
 
   function resetBowlSetup() {
+    document.body.classList.remove('bowl-game-active');
     state.bowl.phase = 'setup';
     state.bowl.deck = [];
     state.bowl.history = [];
@@ -819,6 +826,15 @@
     } catch (_) {}
   }
 
+
+  let lastBowlTouchEnd = 0;
+  function preventBowlDoubleTapZoom(event) {
+    if (state.activeTab !== 'bowl') return;
+    const now = Date.now();
+    if (now - lastBowlTouchEnd < 320) event.preventDefault();
+    lastBowlTouchEnd = now;
+  }
+
   function bindBowlEvents() {
     $('#selectAllPacks')?.addEventListener('click', () => {
       const allIds = state.bowlData.packs.map(pack => pack.id);
@@ -850,6 +866,7 @@
     $('#playBowlAgain')?.addEventListener('click', () => startBowlGame(true));
     $('#changeBowlSetup')?.addEventListener('click', resetBowlSetup);
     window.addEventListener('devicemotion', handleBowlMotion);
+    document.querySelector('[data-view="bowl"]')?.addEventListener('touchend', preventBowlDoubleTapZoom, { passive: false });
   }
 
   function renderAll() {

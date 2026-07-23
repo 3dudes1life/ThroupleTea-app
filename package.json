@@ -1,8 +1,8 @@
 {
   "name": "throupletea-app",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "private": true,
-  "description": "Superman UX7 with native Throuple Tea Watch Party powered by SharePlay.",
+  "description": "UX7.1 with Bowl zoom prevention and narrow-screen layout fixes.",
   "scripts": {
     "ios:add": "npx cap add ios",
     "ios:sync": "npx cap sync ios",
