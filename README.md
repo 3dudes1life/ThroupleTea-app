@@ -1,46 +1,66 @@
-# A Little Throuple Tea — Live Dynamic Capacitor App
+# A Little Throuple Tea — Superman App
 
-This version is configured to load the current production website:
+This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
-`https://throupletea.com`
+## What is built
 
-That means the Friday episode-page automation continues to update the app automatically. A new App Store version is **not** required every Friday.
+- App-only Home, Listen, Watch, Hotline, and More tabs
+- Fixed native-style bottom navigation
+- Inline SVG icons, eliminating the missing phone/menu glyphs visible in the prior simulator build
+- Full in-app podcast audio player
+- Resume listening positions
+- Lock-screen / Control Center media metadata where supported
+- Episode search
+- Saved episode and video favorites
+- In-app YouTube player
+- Native-style share actions with web fallbacks
+- Offline cached data
+- Automatic refresh when the app launches, returns to the foreground, reconnects, or remains open
+- Live JSON content updates without modifying `throupletea.com`
+- GitHub Action refreshing RSS + website episode metadata + YouTube uploads every two hours
+- Dedicated Hotline composer that opens a prefilled email
+- Exact locked podcast artwork and branding
 
-## First build
+## The update system
 
-1. Download or clone this repository.
-2. Double-click `BUILD_LIVE_APP_AND_OPEN_XCODE.command`.
-3. Select an iPhone simulator in Xcode.
-4. Press Play.
+The bundled app code stays reviewed and self-contained.
 
-## Normal website updates
+The app downloads only JSON content from:
 
-Keep updating the regular `ThroupleTea` website repository exactly as you do now. Once GitHub Pages deploys the website update, the app displays it automatically.
+`https://raw.githubusercontent.com/3dudes1life/ThroupleTea-app/main/live-data/`
 
-You do not need to edit this app repository or resubmit to Apple for:
-- new episodes
-- Friday-generated episode pages
-- updated homepage copy
-- ordinary website content changes
+The workflow `.github/workflows/refresh-live-data.yml` refreshes that JSON every two hours. New episodes and YouTube uploads can therefore appear without a weekly Xcode/App Store rebuild.
 
-## When an App Store update is needed
+## First run on the Mac
 
-Update and resubmit the native app only for changes such as:
-- native push notifications
-- app icon or launch screen
-- new native permissions or plugins
-- major native navigation
-- Apple-required maintenance
+After replacing the repository contents with this package:
 
-## Two configurations included
+```bash
+cd ~/Documents/ThroupleTea-app
+chmod +x BUILD_SUPERMAN_AND_OPEN_XCODE.command
+./BUILD_SUPERMAN_AND_OPEN_XCODE.command
+```
 
-- `capacitor.config.live.json` — current default; loads the live site.
-- `capacitor.config.bundled.json` — keeps a packaged `www/` copy for later App Store hardening or offline support.
+If your local folder is connected to GitHub, pull or replace the files there first.
 
-To return to live mode and open Xcode:
+## Run the live-data workflow once
 
-`npm run live:ios`
+On GitHub:
 
-## Important App Store note
+1. Open **Actions**
+2. Open **Refresh Live App Data**
+3. Click **Run workflow**
 
-This live version is ideal for development and TestFlight prototyping. Before final public App Store submission, add native value such as native push notifications, sharing, saved episodes, or a native Hotline screen so the app is more than a simple website wrapper.
+The scheduled two-hour refreshes begin automatically after the workflow is on the `main` branch.
+
+## Native push notifications
+
+The UI and repository are ready for the next step, but Apple push still requires:
+
+- OneSignal Capacitor SDK
+- Apple/APNs credentials
+- Push Notifications capability
+- Background Modes → Remote notifications
+- Notification Service Extension
+
+Those are intentionally not faked in this package.

@@ -3,11 +3,19 @@
   "appName": "A Little Throuple Tea",
   "webDir": "www",
   "server": {
-    "url": "https://throupletea.com",
-    "iosScheme": "https",
-    "allowNavigation": [
-      "throupletea.com",
-      "*.throupletea.com"
-    ]
+    "iosScheme": "capacitor",
+    "hostname": "localhost"
+  },
+  "ios": {
+    "preferredContentMode": "mobile",
+    "backgroundColor": "#05060c"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1200,
+      "launchAutoHide": true,
+      "backgroundColor": "#05060c",
+      "showSpinner": false
+    }
   }
 }

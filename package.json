@@ -1,22 +1,26 @@
 {
   "name": "throupletea-app",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "A Little Throuple Tea iOS app built with Capacitor.",
+  "description": "Superman-mode native app shell for A Little Throuple Tea.",
   "scripts": {
-    "sync:ios": "npx cap sync ios",
-    "open:ios": "npx cap open ios",
-    "update:ios": "npx cap sync ios && npx cap open ios",
-    "mode:live": "cp capacitor.config.live.json capacitor.config.json",
-    "mode:bundled": "cp capacitor.config.bundled.json capacitor.config.json",
-    "live:ios": "cp capacitor.config.live.json capacitor.config.json && npx cap sync ios && npx cap open ios",
-    "bundled:ios": "cp capacitor.config.bundled.json capacitor.config.json && npx cap sync ios && npx cap open ios"
+    "ios:add": "npx cap add ios",
+    "ios:sync": "npx cap sync ios",
+    "ios:open": "npx cap open ios",
+    "ios": "npx cap sync ios && npx cap open ios"
   },
   "dependencies": {
-    "@capacitor/core": "^8.0.0",
-    "@capacitor/ios": "^8.0.0"
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/browser": "^8.0.0",
+    "@capacitor/core": "^8.4.2",
+    "@capacitor/haptics": "^8.0.0",
+    "@capacitor/ios": "^8.4.2",
+    "@capacitor/network": "^8.0.0",
+    "@capacitor/share": "^8.0.0",
+    "@capacitor/splash-screen": "^8.0.0",
+    "@capacitor/status-bar": "^8.0.0"
   },
   "devDependencies": {
-    "@capacitor/cli": "^8.0.0"
+    "@capacitor/cli": "^8.4.2"
   }
 }

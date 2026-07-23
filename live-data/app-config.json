@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "announcement": {
+    "eyebrow": "THE TEA NEVER STOPS",
+    "headline": "New episode Fridays. New YouTube chaos daily.",
+    "message": "The app refreshes live episode and YouTube data without changing the podcast website or requiring a weekly App Store update.",
+    "ctaLabel": "Open YouTube",
+    "ctaUrl": "https://www.youtube.com/channel/UCswzye8bcm8bByqLlW0QaFQ"
+  },
+  "links": {
+    "website": "https://throupletea.com",
+    "episodes": "https://throupletea.com/episodes/",
+    "startHere": "https://throupletea.com/start-here/",
+    "watch": "https://throupletea.com/watch/",
+    "hotlineForm": "https://OutAtInc.wixforms.com/f/7470927459844621419",
+    "guest": "https://throupletea.com/guest/",
+    "meet": "https://throupletea.com/meet-the-throuple/",
+    "faq": "https://throupletea.com/throuple-faq/",
+    "instagram": "https://instagram.com/ThroupleTea",
+    "youtube": "https://www.youtube.com/channel/UCswzye8bcm8bByqLlW0QaFQ",
+    "spotify": "https://open.spotify.com/show/6cb9Y7qcyDO1L7O15X2oL5",
+    "apple": "https://podcasts.apple.com/us/podcast/3dudes1life-a-little-throuple-tea/id1837237399",
+    "email": "throupletea@gmail.com"
+  },
+  "starterEpisodeIds": [
+    "s1-ep1-meet-the-gay-throuple-how-our-3-person-relationship-works",
+    "s2-ep9-what-10-years-together-actually-looks-like-not-what-you-think",
+    "s2-ep12-what-we-dont-post-online-the-truth-about-our-relationship",
+    "s2-ep16-red-flag-or-just-gay"
+  ]
+}
