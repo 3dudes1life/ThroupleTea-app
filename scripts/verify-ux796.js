@@ -4,7 +4,7 @@ const assert = require('node:assert/strict');
 const app = fs.readFileSync('www/app.js', 'utf8');
 const css = fs.readFileSync('www/app.css', 'utf8');
 const html = fs.readFileSync('www/index.html', 'utf8');
-const build = fs.readFileSync('BUILD_SUPERMAN_AND_OPEN_XCODE.command', 'utf8');
+const build = fs.readFileSync('BUILD_UX7.9.6_AND_OPEN_XCODE.command', 'utf8');
 const checks = [
   [html.indexOf('episode-smart-formatter.js') < html.indexOf('app.js'), 'formatter loads before app.js'],
   [app.includes('formattedEpisodeDescription'), 'smart formatter is integrated'],

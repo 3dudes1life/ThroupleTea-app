@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
-cd "$(dirname "$0")"
-npx cap sync ios
-npx cap open ios
+set -euo pipefail
+ROOT="$(cd -- "$(dirname -- "$0")" && pwd -P)"
+exec "$ROOT/SYNC_AND_OPEN_XCODE.command"

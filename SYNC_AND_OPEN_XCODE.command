@@ -1,24 +1,13 @@
 #!/bin/bash
-set -e
-cd "$(dirname "$0")"
+set -euo pipefail
+ROOT="$(cd -- "$(dirname -- "$0")" && pwd -P)"
+cd "$ROOT"
 
-node scripts/prepare-bundled-catalog.js || true
-node scripts/verify-bundled-catalog.js || true
-
-RSS_FILE="$(mktemp -t throupletea-rss).xml"
-if curl -fL --retry 3 --connect-timeout 20   "https://anchor.fm/s/1087008c4/podcast/rss?$(date +%s)"   -o "$RSS_FILE"; then
-  python3 scripts/hydrate-episode-descriptions.py "$RSS_FILE" || true
+if [ ! -f ios/App/App.xcodeproj/project.pbxproj ]; then
+  echo "The iOS target has not been generated yet. Running the full UX7.9.6 build."
+  exec "$ROOT/BUILD_UX7.9.6_AND_OPEN_XCODE.command"
 fi
-rm -f "$RSS_FILE" 2>/dev/null || true
 
-echo "🌐 Pulling complete show notes from episode pages..."
-python3 scripts/hydrate-episode-pages.py || true
-
-
-
-node scripts/verify-rich-descriptions.js || true
-
-npm install --no-audit --no-fund
 npx cap sync ios
 python3 scripts/configure-shareplay-ios.py
-npx cap open ios
+open -a Xcode "$ROOT/ios/App/App.xcworkspace"
