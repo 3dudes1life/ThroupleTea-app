@@ -24,7 +24,7 @@ public struct ThroupleWatchActivity: GroupActivity, Codable, Sendable {
         var metadata = GroupActivityMetadata()
         metadata.type = .watchTogether
         metadata.title = title
-        metadata.subtitle = "A Little Throuple Tea Watch Party"
+        metadata.subtitle = "Throuple Tea Watch Party"
         metadata.fallbackURL = URL(string: "https://throupletea.com")
         return metadata
     }

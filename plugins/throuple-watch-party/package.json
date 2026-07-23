@@ -1,7 +1,7 @@
 {
   "name": "throuple-watch-party",
   "version": "1.0.0",
-  "description": "Private native SharePlay bridge for A Little Throuple Tea.",
+  "description": "Private native SharePlay bridge for Throuple Tea.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",

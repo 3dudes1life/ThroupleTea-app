@@ -458,3 +458,14 @@ lets YouTube recovery replace episode records.
 - Converts emoji-led question/topic lines into numbered **Also on the Table** cards before unsupported emoji are removed.
 - Advances the content and formatter cache versions so devices cannot keep the broken truncated copy.
 - Adds a hard regression test for all 74 bundled catalog records and specifically verifies the complete Gay Rulebook description.
+
+## UX 7.9.7 — branded TestFlight Watch Party build
+
+- Changes the installed iOS app name to **Throuple Tea**.
+- Sets App Store version/build to **1.0 (3)** by default.
+- Installs the supplied square artwork as a complete nontransparent iPhone/iPad AppIcon catalog.
+- Adds a safe black margin to protect the corner creative badge from the iOS icon mask.
+- Installs the supplied portrait artwork as an aspect-fit launch screen on black, avoiding stretch and crop across devices.
+- Reapplies the icon, launch screen, display name, build number, Group Activities entitlement, and Watch Party capability after every Capacitor sync.
+- Strengthens Watch Party setup so the build fails instead of claiming success when the Xcode capability was not written.
+- Preserves the complete UX7.9.6 smart Episode Detail formatter and all 37 full episode descriptions.

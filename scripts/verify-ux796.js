@@ -4,7 +4,7 @@ const assert = require('node:assert/strict');
 const app = fs.readFileSync('www/app.js', 'utf8');
 const css = fs.readFileSync('www/app.css', 'utf8');
 const html = fs.readFileSync('www/index.html', 'utf8');
-const build = fs.readFileSync('BUILD_UX7.9.6_AND_OPEN_XCODE.command', 'utf8');
+const build = fs.readFileSync('BUILD_UX7.9.7_AND_OPEN_XCODE.command', 'utf8');
 const checks = [
   [html.indexOf('episode-smart-formatter.js') < html.indexOf('app.js'), 'formatter loads before app.js'],
   [app.includes('formattedEpisodeDescription'), 'smart formatter is integrated'],
@@ -17,11 +17,11 @@ const checks = [
   [css.includes('UX7.9.6 — smart native Episode Detail'), 'UX7.9.6 styles exist'],
   [css.includes('.episode-topic-card'), 'topic cards are styled'],
   [css.includes('.episode-read-toggle'), 'read toggle is styled'],
-  [build.includes('UX7.9.6'), 'build identifies UX7.9.6'],
+  [build.includes('UX7.9.7'), 'build identifies UX7.9.7'],
   [build.includes('python3 scripts/hydrate-episode-pages.py'), 'build hydrates full descriptions before testing'],
   [build.includes('npm test'), 'build runs tests'],
   [app.includes("mergeEpisodeMetadata(fallback?.episodes || [], preferredCatalog?.episodes || [])"), 'bundled full descriptions are merged into cached catalogs']
 ];
 for (const [passed, message] of checks) assert.ok(passed, message);
 assert.equal((app.match(/ABOUT THIS EPISODE/g) || []).length, 0, 'duplicate About this episode labels are removed');
-console.log('✓ UX7.9.6 integration verification passed');
+console.log('✓ UX7.9.7 integration verification passed (UX7.9.6 Episode Detail preserved)');

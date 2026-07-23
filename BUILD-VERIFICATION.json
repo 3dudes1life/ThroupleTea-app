@@ -1,27 +1,21 @@
 {
-  "version": "3.0.7",
-  "release": "UX7.9.6 Full Description Repair",
-  "rootCause": "The native catalog bundled the truncated episode-card summary instead of the complete show notes already present in each local episode page.",
-  "fixes": [
-    "Hydrate all descriptions from www/episodes/<id>/index.html before tests and Capacitor sync",
-    "Keep card summary and full Episode Detail description as separate fields",
-    "Merge bundled full descriptions into cached and remote catalogs using the longest-text rule",
-    "Advance content, migration, and formatter cache versions",
-    "Convert emoji-led show-note lines into Also on the Table topic cards",
-    "Remove the unsupported footer emoji box"
-  ],
-  "verification": {
-    "episodes": 37,
-    "fullDescriptions": 37,
-    "gayRulebookDescriptionCharacters": 1275,
-    "gayRulebookSummaryCharacters": 154,
-    "catalogSource": "bundled-episode-pages",
-    "testsPassed": [
-      "JavaScript syntax",
-      "smart formatter unit tests",
-      "74-record full-description regression test",
-      "Episode Detail integration checks",
-      "build-script syntax and Python compilation"
-    ]
+  "release": "UX7.9.7",
+  "appName": "Throuple Tea",
+  "bundleId": "com.throupletea.app",
+  "marketingVersion": "1.0",
+  "defaultBuildNumber": "3",
+  "packageVersion": "3.0.8",
+  "generatedAtUTC": "2026-07-23T21:59:23.225558+00:00",
+  "checks": {
+    "fullEpisodeDescriptions": "37/37",
+    "bundledEpisodeRecords": 74,
+    "appIconCatalogImages": 18,
+    "appStoreIcon": "1024x1024 PNG RGB",
+    "splashArtwork": "1536x2732 PNG RGB, aspect-fit launch screen",
+    "watchPartyNativePlugin": true,
+    "groupActivitiesEntitlement": true,
+    "xcodeGroupActivitiesCapability": true,
+    "remoteServerURL": false,
+    "automatedTestSuite": "passed"
   }
 }

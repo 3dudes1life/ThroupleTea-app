@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
+"""Preserve entitlements and enable the native Group Activities capability."""
 from pathlib import Path
+import os
 import plistlib
 import re
 import sys
 
-root = Path(__file__).resolve().parents[1]
+root = Path(os.environ.get("THROUPLETEA_PROJECT_ROOT", Path(__file__).resolve().parents[1])).resolve()
 ios_app = root / "ios" / "App"
 project = ios_app / "App.xcodeproj" / "project.pbxproj"
 entitlements = ios_app / "App" / "App.entitlements"
@@ -28,43 +30,53 @@ if entitlements.exists():
         print(f"⚠️ Existing entitlements could not be read: {exc}")
 
 existing["com.apple.developer.group-session"] = True
-
 with entitlements.open("wb") as handle:
-    plistlib.dump(
-        existing,
-        handle,
-        fmt=plistlib.FMT_XML,
-        sort_keys=True,
-    )
+    plistlib.dump(existing, handle, fmt=plistlib.FMT_XML, sort_keys=True)
 
 text = project.read_text(encoding="utf-8")
 
+# Add the entitlements file to every automatically signed app configuration.
 if "CODE_SIGN_ENTITLEMENTS = App/App.entitlements;" not in text:
-    text = text.replace(
-        "CODE_SIGN_STYLE = Automatic;",
-        "CODE_SIGN_ENTITLEMENTS = App/App.entitlements;\n"
-        "\t\t\t\tCODE_SIGN_STYLE = Automatic;"
+    text = re.sub(
+        r"(?m)^(\s*)CODE_SIGN_STYLE = Automatic;",
+        r"\1CODE_SIGN_ENTITLEMENTS = App/App.entitlements;\n\1CODE_SIGN_STYLE = Automatic;",
+        text,
     )
 
+# Xcode records the UI capability under the app target's TargetAttributes.
+# Insert directly after the first automatic provisioning line; this is stable
+# across current Capacitor/Xcode project templates and avoids brittle brace counting.
 if "com.apple.GroupActivities" not in text:
-    target_match = re.search(
-        r'(ProvisioningStyle = Automatic;\n)(\s*};\n\s*};\n\s*};)',
-        text
+    capability = (
+        "\n"
+        "\t\t\t\t\tSystemCapabilities = {\n"
+        "\t\t\t\t\t\tcom.apple.GroupActivities = {\n"
+        "\t\t\t\t\t\t\tenabled = 1;\n"
+        "\t\t\t\t\t\t};\n"
+        "\t\t\t\t\t};"
     )
-    if target_match:
-        capability = (
-            target_match.group(1)
-            + "\t\t\t\t\tSystemCapabilities = {\n"
-            + "\t\t\t\t\t\tcom.apple.GroupActivities = {\n"
-            + "\t\t\t\t\t\t\tenabled = 1;\n"
-            + "\t\t\t\t\t\t};\n"
-            + "\t\t\t\t\t};\n"
-            + target_match.group(2)
-        )
-        text = text[:target_match.start()] + capability + text[target_match.end():]
+    text, count = re.subn(
+        r"(ProvisioningStyle = Automatic;)",
+        r"\1" + capability,
+        text,
+        count=1,
+    )
+    if count != 1:
+        raise SystemExit("❌ Could not locate the Xcode target provisioning settings for Group Activities.")
 
 project.write_text(text, encoding="utf-8")
 
+# Fail loudly instead of telling the user the native setup succeeded when it did not.
+with entitlements.open("rb") as handle:
+    check_entitlements = plistlib.load(handle)
+check_project = project.read_text(encoding="utf-8")
+if check_entitlements.get("com.apple.developer.group-session") is not True:
+    raise SystemExit("❌ Group Activities entitlement did not persist.")
+if "CODE_SIGN_ENTITLEMENTS = App/App.entitlements;" not in check_project:
+    raise SystemExit("❌ Xcode is not linked to App.entitlements.")
+if "com.apple.GroupActivities" not in check_project or "enabled = 1;" not in check_project:
+    raise SystemExit("❌ Group Activities capability did not persist in the Xcode project.")
+
 print("✅ Existing iOS entitlements preserved.")
-print("✅ Group Activities entitlement configured.")
+print("✅ Group Activities entitlement configured and verified.")
 print("✅ Throuple Tea Watch Party native bridge ready.")

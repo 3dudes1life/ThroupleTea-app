@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name = 'ThroupleWatchParty'
   s.version = '1.0.0'
-  s.summary = 'Native SharePlay bridge for A Little Throuple Tea.'
+  s.summary = 'Native SharePlay bridge for Throuple Tea.'
   s.license = { :type => 'Proprietary', :text => 'Private project code.' }
   s.homepage = 'https://throupletea.com'
   s.author = { '3Dudes1Life Creative' => 'throupletea@gmail.com' }

@@ -1,8 +1,8 @@
 {
   "name": "throupletea-app",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "private": true,
-  "description": "UX7.9.6 smart native Episode Detail formatting and polish.",
+  "description": "UX7.9.7 branded iOS icon and splash screen with native Watch Party fixes.",
   "scripts": {
     "ios:add": "npx cap add ios",
     "ios:sync": "npx cap sync ios",
@@ -12,8 +12,10 @@
     "test:formatter": "node tests/episode-smart-formatter.test.js",
     "test:catalog": "node tests/bundled-episode-descriptions.test.js",
     "test:ux796": "node scripts/verify-ux796.js",
-    "test:build-scripts": "bash -n BUILD_UX7.9.6_AND_OPEN_XCODE.command BUILD_SUPERMAN_AND_OPEN_XCODE.command BUILD_AND_OPEN_IOS.command SYNC_AND_OPEN_XCODE.command SYNC_AND_OPEN_IOS.command && node --check scripts/prepare-bundled-catalog.js && node --check scripts/verify-bundled-catalog.js && node --check scripts/verify-rich-descriptions.js && python3 -m py_compile scripts/hydrate-episode-descriptions.py scripts/hydrate-episode-pages.py scripts/update-live-data.py scripts/configure-shareplay-ios.py",
-    "test": "npm run test:syntax && npm run test:formatter && npm run test:catalog && npm run test:ux796 && npm run test:build-scripts"
+    "test:build-scripts": "bash -n BUILD_UX7.9.7_AND_OPEN_XCODE.command BUILD_SUPERMAN_AND_OPEN_XCODE.command BUILD_AND_OPEN_IOS.command SYNC_AND_OPEN_XCODE.command SYNC_AND_OPEN_IOS.command && node --check scripts/prepare-bundled-catalog.js && node --check scripts/verify-bundled-catalog.js && node --check scripts/verify-rich-descriptions.js && python3 -m py_compile scripts/hydrate-episode-descriptions.py scripts/hydrate-episode-pages.py scripts/update-live-data.py scripts/configure-shareplay-ios.py scripts/configure-ios-branding.py scripts/verify-ios-branding.py scripts/verify-watch-party-package.py",
+    "test": "npm run test:syntax && npm run test:formatter && npm run test:catalog && npm run test:ux796 && npm run test:branding && npm run test:watch-party && npm run test:build-scripts",
+    "test:branding": "python3 scripts/verify-ios-branding.py",
+    "test:watch-party": "python3 scripts/verify-watch-party-package.py"
   },
   "dependencies": {
     "@capacitor/app": "8.0.0",

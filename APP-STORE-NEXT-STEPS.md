@@ -1,15 +1,19 @@
-# App Store / Native Push Next Steps
+# Throuple Tea — TestFlight Build 3
 
-The Superman repository is the real app shell. Before public App Store submission:
+This package is prepared as App Store version **1.0**, build **3**, with bundle ID `com.throupletea.app`.
 
-1. Run and test every tab in the iPhone simulator.
-2. Test audio playback on a physical iPhone.
-3. Configure signing in Xcode.
-4. Generate final AppIcon and launch assets from the locked official artwork.
-5. Add the OneSignal native Capacitor SDK.
-6. Configure APNs, Push Notifications, Background Modes, and the Notification Service Extension.
-7. Add a privacy policy URL and App Store metadata.
-8. Test notifications and deep links through TestFlight.
-9. Upload the first App Store build.
+## Before uploading
 
-New episodes, YouTube uploads, announcements, and link changes remain remote JSON content and do not require routine App Store updates.
+1. Run `BUILD_UX7.9.7_AND_OPEN_XCODE.command` from this exact folder.
+2. Confirm Xcode target → Signing & Capabilities:
+   - Team: OutAt Inc.
+   - Automatically manage signing: On
+   - Bundle ID: `com.throupletea.app`
+   - Group Activities: enabled
+3. Run on a physical iPhone.
+4. Confirm the Home Screen label is **Throuple Tea**.
+5. Confirm the supplied app icon and splash screen appear.
+6. Test Watch Party with two physical iPhones in FaceTime.
+7. Select **Any iOS Device (arm64)** → Product → Archive → Distribute App → App Store Connect → Upload.
+
+Builds 1 and 2 can remain in App Store Connect. Select build 3 for testing and eventual review.
