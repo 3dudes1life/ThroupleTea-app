@@ -491,7 +491,9 @@
       "title": "A Little Throuple Tea — Start Here",
       "published": "",
       "thumbnail": "https://i.ytimg.com/vi/fqCHTiXzCMA/hqdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=fqCHTiXzCMA"
+      "url": "https://www.youtube.com/watch?v=fqCHTiXzCMA",
+      "kind": "episode",
+      "durationSeconds": 0
     }
   ]
 }

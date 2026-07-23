@@ -1,12 +1,22 @@
 {
-  "version": "2.2.0",
+  "version": "2.3.0",
   "websiteModified": false,
-  "hotlineDestination": "throupletea@gmail.com",
-  "hotlineSubject": "Throuple Tea Submission",
-  "hotlineMethod": "mailto composer",
-  "playerArtwork": "bundled official podcast artwork",
-  "playerCloseButton": true,
-  "refreshButtonCentered": true,
+  "watchSections": [
+    "Shorts",
+    "Full video episodes"
+  ],
+  "inAppVideoPlayback": true,
+  "playerHost": "GitHub Pages HTTPS wrapper",
+  "youtubeCatalog": "Up to 50 Shorts and 50 full videos",
+  "youtubeApiKeyEmbedded": false,
+  "miniPlayerQuestionMarkRemoved": true,
+  "launchFeatures": [
+    "Continue Listening",
+    "Surprise Me",
+    "Favorites",
+    "Sharing",
+    "New badges"
+  ],
   "checks": [
     {
       "name": "app.js syntax",

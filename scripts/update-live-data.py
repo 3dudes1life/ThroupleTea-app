@@ -10,6 +10,9 @@ import email.utils
 import html
 import json
 import re
+import os
+import subprocess
+import sys
 import urllib.request
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
@@ -146,7 +149,94 @@ def parse_rss(cards: list[dict]) -> list[dict]:
         })
     return result[:60]
 
-def parse_youtube() -> list[dict]:
+def _published_iso(entry: dict) -> str:
+    timestamp = entry.get("timestamp") or entry.get("release_timestamp")
+    if timestamp:
+        try:
+            return dt.datetime.fromtimestamp(float(timestamp), tz=dt.timezone.utc).isoformat()
+        except Exception:
+            pass
+    upload_date = str(entry.get("upload_date") or "")
+    if len(upload_date) == 8 and upload_date.isdigit():
+        try:
+            return dt.datetime.strptime(upload_date, "%Y%m%d").replace(tzinfo=dt.timezone.utc).isoformat()
+        except Exception:
+            pass
+    return str(entry.get("published") or "")
+
+def _best_thumbnail(entry: dict, kind: str) -> str:
+    thumbnails = entry.get("thumbnails") or []
+    if isinstance(thumbnails, list) and thumbnails:
+        usable = [thumb for thumb in thumbnails if isinstance(thumb, dict) and thumb.get("url")]
+        if usable:
+            if kind == "short":
+                def portrait_score(thumb):
+                    width = float(thumb.get("width") or 1)
+                    height = float(thumb.get("height") or 1)
+                    return abs((width / height) - (9 / 16))
+                return min(usable, key=portrait_score).get("url", "")
+            return max(
+                usable,
+                key=lambda thumb: float(thumb.get("width") or 0) * float(thumb.get("height") or 0)
+            ).get("url", "")
+    return str(entry.get("thumbnail") or "")
+
+def _ensure_ytdlp() -> None:
+    try:
+        import yt_dlp  # noqa: F401
+    except ImportError:
+        print("Installing yt-dlp for the YouTube catalog refresh...")
+        subprocess.run(
+            [sys.executable, "-m", "pip", "install", "--quiet", "yt-dlp"],
+            check=True,
+            timeout=180,
+        )
+
+def _ytdlp_channel_tab(tab: str, kind: str, limit: int) -> list[dict]:
+    _ensure_ytdlp()
+    url = f"https://www.youtube.com/channel/UCswzye8bcm8bByqLlW0QaFQ/{tab}"
+    command = [
+        sys.executable, "-m", "yt_dlp",
+        "--flat-playlist",
+        "--dump-single-json",
+        "--playlist-end", str(limit),
+        "--no-warnings",
+        "--ignore-errors",
+        url,
+    ]
+    result = subprocess.run(command, capture_output=True, text=True, timeout=240)
+    if result.returncode != 0 or not result.stdout.strip():
+        raise RuntimeError(result.stderr.strip() or f"yt-dlp failed for {tab}")
+
+    data = json.loads(result.stdout)
+    videos = []
+    for entry in data.get("entries") or []:
+        if not isinstance(entry, dict):
+            continue
+
+        video_id = str(entry.get("id") or "")
+        if not video_id:
+            continue
+
+        duration = entry.get("duration")
+        try:
+            duration_seconds = int(float(duration)) if duration is not None else 0
+        except Exception:
+            duration_seconds = 0
+
+        videos.append({
+            "id": video_id,
+            "title": str(entry.get("title") or "A Little Throuple Tea"),
+            "published": _published_iso(entry),
+            "thumbnail": _best_thumbnail(entry, kind) or f"https://i.ytimg.com/vi/{video_id}/hqdefault.jpg",
+            "url": f"https://www.youtube.com/watch?v={video_id}",
+            "kind": kind,
+            "durationSeconds": duration_seconds,
+        })
+
+    return videos
+
+def _atom_fallback() -> list[dict]:
     root = ET.fromstring(fetch(YOUTUBE_FEED_URL))
     ns = {
         "atom": "http://www.w3.org/2005/Atom",
@@ -164,14 +254,35 @@ def parse_youtube() -> list[dict]:
             thumb = media_group.find("media:thumbnail", ns)
             if thumb is not None:
                 thumbnail = thumb.attrib.get("url", "")
+
+        kind = "short" if re.search(r"(^|\s)#?shorts?(\s|$)", title_value, flags=re.I) else "episode"
         videos.append({
             "id": video_id,
             "title": title_value,
             "published": published,
             "thumbnail": thumbnail or f"https://i.ytimg.com/vi/{video_id}/hqdefault.jpg",
             "url": f"https://www.youtube.com/watch?v={video_id}",
+            "kind": kind,
+            "durationSeconds": 0,
         })
-    return videos[:20]
+    return videos
+
+def parse_youtube() -> list[dict]:
+    try:
+        full_videos = _ytdlp_channel_tab("videos", "episode", 50)
+        shorts = _ytdlp_channel_tab("shorts", "short", 50)
+
+        deduped = {}
+        for video in full_videos + shorts:
+            deduped[video["id"]] = video
+
+        videos = list(deduped.values())
+        videos.sort(key=lambda video: video.get("published") or "", reverse=True)
+        print(f"Loaded {len(shorts)} Shorts and {len(full_videos)} full videos from YouTube.")
+        return videos
+    except Exception as exc:
+        print(f"Full YouTube catalog warning: {exc}")
+        return _atom_fallback()
 
 def main():
     cards = parse_archive()

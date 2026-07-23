@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 3
+# A Little Throuple Tea — Superman UX 4
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -87,3 +87,24 @@ Those are intentionally not faked in this package.
 - Mini player now always displays the bundled official podcast artwork.
 - Added a visible X button that closes the mini player while preserving listening progress.
 - Rebuilt the header refresh button so the icon is precisely centered inside its box.
+
+
+## UX 4 launch upgrades
+
+- Restored the complete Watch page with separate **Shorts** and **Full Video Episodes** sections.
+- Shorts use a swipeable vertical-video rail.
+- Full episodes use large binge-friendly cards.
+- Playback stays inside the app in a fullscreen player.
+- Added an HTTPS GitHub Pages player wrapper to provide YouTube's required referrer identity.
+- The updater collects up to 50 Shorts and 50 full videos from the channel.
+- Added **Continue Listening** to Home.
+- Added a fun **Surprise Me** episode button.
+- Added new-video badges, duration labels, sharing, and favorites.
+- Removed the unsupported question-mark symbol from the audio player title.
+
+### After uploading UX4
+
+1. Upload the UX4 files and folders to `ThroupleTea-app`.
+2. Keep GitHub Pages enabled for the repository.
+3. Run **Actions → Refresh Live App Data → Run workflow** once.
+4. After it succeeds, tap Refresh inside the app.

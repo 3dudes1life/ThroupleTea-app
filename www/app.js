@@ -4,12 +4,14 @@
 
   const REMOTE_BASE = 'https://raw.githubusercontent.com/3dudes1life/ThroupleTea-app/main/live-data';
   const FALLBACK_IMAGE = './assets/podcast-artwork.jpg';
+  const PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player/';
   const state = {
     content: { episodes: [], videos: [], generatedAt: null, source: 'fallback' },
     config: { links: {}, starterEpisodeIds: [], announcement: {} },
     favorites: new Set(JSON.parse(localStorage.getItem('tt:favorites') || '[]')),
     progress: JSON.parse(localStorage.getItem('tt:progress') || '{}'),
     currentEpisode: null,
+    currentVideo: null,
     activeTab: localStorage.getItem('tt:tab') || 'home',
     remoteLoaded: false,
   };
@@ -49,6 +51,33 @@
     const m = Math.floor((value % 3600) / 60);
     const s = Math.floor(value % 60);
     return h ? `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}` : `${m}:${String(s).padStart(2,'0')}`;
+  }
+
+  function videoKind(video) {
+    if (video.kind === 'short' || video.kind === 'episode') return video.kind;
+    const duration = Number(video.durationSeconds || 0);
+    if (duration > 0) return duration < 180 ? 'short' : 'episode';
+    return /(^|\s)#?shorts?(\s|$)/i.test(video.title || '') ? 'short' : 'episode';
+  }
+
+  function videoDuration(video) {
+    const seconds = Number(video.durationSeconds || 0);
+    if (!seconds) return video.durationText || '';
+    return formatTime(seconds);
+  }
+
+  function isNewVideo(video) {
+    const timestamp = new Date(video.published || '').getTime();
+    if (!Number.isFinite(timestamp)) return false;
+    return Date.now() - timestamp < 7 * 24 * 60 * 60 * 1000;
+  }
+
+  function videoLabel(video) {
+    const bits = [];
+    const duration = videoDuration(video);
+    if (duration) bits.push(duration);
+    if (video.published) bits.push(formatDate(video.published));
+    return bits.join(' · ');
   }
 
   function itemKey(type, id) { return `${type}:${id}`; }
@@ -162,14 +191,17 @@
     </article>`;
   }
 
-  function videoCard(video) {
-    return `<article class="video-card">
-      <div class="video-card__thumb" data-play-video="${escapeHTML(video.id)}">
+  function shortVideoCard(video) {
+    const newBadge = isNewVideo(video) ? `<span class="video-kind-pill new">NEW SHORT</span>` : `<span class="video-kind-pill">SHORT</span>`;
+    const duration = videoDuration(video);
+    return `<article class="short-video-card">
+      <div class="short-video-card__thumb" data-play-video="${escapeHTML(video.id)}">
         <img src="${escapeHTML(video.thumbnail || `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`)}" alt="" loading="lazy">
         <div class="play-badge"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+        ${duration ? `<span class="video-duration-pill">${escapeHTML(duration)}</span>` : ''}
       </div>
-      <div class="video-card__body">
-        <div class="card-meta">${escapeHTML(formatDate(video.published))}</div>
+      <div class="short-video-card__body">
+        ${newBadge}
         <h3>${escapeHTML(displayTitle(video.title))}</h3>
         <div class="video-actions">
           <button class="primary" data-play-video="${escapeHTML(video.id)}">Watch</button>
@@ -178,6 +210,32 @@
       </div>
       ${favoriteButton('video', video.id)}
     </article>`;
+  }
+
+  function fullVideoCard(video) {
+    const newBadge = isNewVideo(video) ? `<span class="video-kind-pill new">NEW EPISODE</span>` : `<span class="video-kind-pill">FULL EPISODE</span>`;
+    const duration = videoDuration(video);
+    return `<article class="full-video-card">
+      <div class="full-video-card__thumb" data-play-video="${escapeHTML(video.id)}">
+        <img src="${escapeHTML(video.thumbnail || `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`)}" alt="" loading="lazy">
+        <div class="play-badge"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+        ${duration ? `<span class="video-duration-pill">${escapeHTML(duration)}</span>` : ''}
+      </div>
+      <div class="full-video-card__body">
+        ${newBadge}
+        <h3>${escapeHTML(displayTitle(video.title))}</h3>
+        <p>${escapeHTML(videoLabel(video))}</p>
+        <div class="video-actions">
+          <button class="primary" data-play-video="${escapeHTML(video.id)}">Play in app</button>
+          <button data-share-video="${escapeHTML(video.id)}">Share</button>
+        </div>
+      </div>
+      ${favoriteButton('video', video.id)}
+    </article>`;
+  }
+
+  function videoCard(video) {
+    return videoKind(video) === 'short' ? shortVideoCard(video) : fullVideoCard(video);
   }
 
   function renderHome() {
@@ -201,6 +259,19 @@
         </div>
       </div>
     </article>`;
+
+    const progressed = state.content.episodes
+      .map(ep => ({ ep, seconds: Number(state.progress[ep.id] || 0) }))
+      .filter(item => item.seconds > 15)
+      .sort((a, b) => b.seconds - a.seconds)[0];
+    const continueSection = $('#continueSection');
+    if (progressed) {
+      continueSection.hidden = false;
+      $('#continueCard').innerHTML = episodeCard(progressed.ep, true);
+    } else {
+      continueSection.hidden = true;
+      $('#continueCard').innerHTML = '';
+    }
 
     const latestVideo = state.content.videos[0];
     $('#homeVideo').innerHTML = latestVideo ? `<article class="feature-video" data-play-video="${escapeHTML(latestVideo.id)}">
@@ -243,9 +314,39 @@
   }
 
   function renderVideos() {
-    $('#videoGrid').innerHTML = state.content.videos.length
-      ? state.content.videos.map(videoCard).join('')
-      : `<div class="empty-state">YouTube data will appear after the live-data workflow runs.</div>`;
+    const videos = [...(state.content.videos || [])];
+    const shorts = videos.filter(video => videoKind(video) === 'short');
+    const fullEpisodes = videos.filter(video => videoKind(video) === 'episode');
+    const featured = videos[0] || null;
+
+    $('#shortsCount').textContent = shorts.length;
+    $('#fullVideosCount').textContent = fullEpisodes.length;
+
+    $('#watchFeatured').innerHTML = featured ? `<article class="watch-featured-card">
+      <div class="watch-featured-card__thumb" data-play-video="${escapeHTML(featured.id)}">
+        <img src="${escapeHTML(featured.thumbnail || `https://i.ytimg.com/vi/${featured.id}/hqdefault.jpg`)}" alt="">
+        <div class="play-badge"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+        ${videoDuration(featured) ? `<span class="video-duration-pill">${escapeHTML(videoDuration(featured))}</span>` : ''}
+      </div>
+      <div class="watch-featured-card__body">
+        <span class="video-kind-pill ${isNewVideo(featured) ? 'new' : ''}">${isNewVideo(featured) ? 'LATEST DROP' : videoKind(featured) === 'short' ? 'SHORT' : 'FULL EPISODE'}</span>
+        <h2>${escapeHTML(displayTitle(featured.title))}</h2>
+        <p>${escapeHTML(videoLabel(featured))}</p>
+        <div class="watch-featured-actions">
+          <button class="primary" data-play-video="${escapeHTML(featured.id)}">Play in app</button>
+          <button class="secondary" data-share-video="${escapeHTML(featured.id)}">Share</button>
+        </div>
+      </div>
+      ${favoriteButton('video', featured.id)}
+    </article>` : `<div class="video-card-empty"><strong>The Watch page is refreshing.</strong>Your full YouTube catalog will appear after the live-data updater runs.</div>`;
+
+    $('#shortsRail').innerHTML = shorts.length
+      ? shorts.map(shortVideoCard).join('')
+      : `<div class="video-card-empty"><strong>No Shorts loaded yet.</strong>Run the live-data workflow once after uploading UX4.</div>`;
+
+    $('#fullVideoGrid').innerHTML = fullEpisodes.length
+      ? fullEpisodes.map(fullVideoCard).join('')
+      : `<div class="video-card-empty"><strong>No full episodes loaded yet.</strong>Run the live-data workflow once after uploading UX4.</div>`;
   }
 
   function renderSaved() {
@@ -314,7 +415,7 @@
     state.currentEpisode = ep;
     audio.src = ep.audioUrl;
     $('#playerArtwork').src = FALLBACK_IMAGE;
-    $('#playerTitle').textContent = ep.title;
+    $('#playerTitle').textContent = displayTitle(ep.title);
     miniPlayer.hidden = false;
     const saved = Number(state.progress[ep.id] || 0);
     audio.addEventListener('loadedmetadata', () => {
@@ -334,7 +435,7 @@
     if (!('mediaSession' in navigator)) return;
     try {
       navigator.mediaSession.metadata = new MediaMetadata({
-        title: stripEmojiForMeta(ep.title),
+        title: displayTitle(ep.title),
         artist: 'William, Caleb + Daniel',
         album: 'A Little Throuple Tea',
         artwork: [{ src: ep.image || new URL(FALLBACK_IMAGE, location.href).href, sizes:'512x512', type:'image/jpeg' }]
@@ -355,23 +456,48 @@
   }
 
   async function openVideo(id) {
-    if (!id) return;
+    const video = state.content.videos.find(item => item.id === id);
+    if (!video) return;
     await haptic('MEDIUM');
-    const url = `https://www.youtube.com/watch?v=${encodeURIComponent(id)}`;
-    try {
-      const browser = window.Capacitor?.Plugins?.Browser;
-      if (window.Capacitor?.isNativePlatform?.() && browser) {
-        await browser.open({
-          url,
-          presentationStyle: 'fullscreen',
-          toolbarColor: '#080610'
-        });
-        return;
-      }
-    } catch (error) {
-      console.warn('In-app YouTube browser failed, using system browser.', error);
-    }
-    window.open(url, '_blank', 'noopener,noreferrer');
+
+    state.currentVideo = video;
+    const modal = $('#videoPlayerModal');
+    const stage = $('#videoPlayerStage');
+    const frame = $('#videoPlayerFrame');
+    const kind = videoKind(video);
+    const playerUrl = new URL(PLAYER_PAGE);
+    playerUrl.searchParams.set('v', video.id);
+    playerUrl.searchParams.set('kind', kind);
+    playerUrl.searchParams.set('title', displayTitle(video.title));
+
+    $('#videoPlayerHeaderTitle').textContent = displayTitle(video.title);
+    $('#videoPlayerTitle').textContent = displayTitle(video.title);
+    $('#videoPlayerKind').textContent = kind === 'short' ? 'WATCHING A SHORT' : 'WATCHING A FULL EPISODE';
+    $('#videoPlayerMeta').textContent = videoLabel(video);
+    stage.classList.toggle('is-short', kind === 'short');
+    frame.src = playerUrl.toString();
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeVideoPlayer() {
+    const modal = $('#videoPlayerModal');
+    $('#videoPlayerFrame').src = 'about:blank';
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    state.currentVideo = null;
+  }
+
+  function shareCurrentVideo() {
+    const video = state.currentVideo;
+    if (!video) return;
+    shareItem(displayTitle(video.title), video.url || `https://youtu.be/${video.id}`, 'Watch this from A Little Throuple Tea');
+  }
+
+  function openCurrentVideoOnYouTube() {
+    const video = state.currentVideo;
+    if (!video) return;
+    openURL(video.url || `https://www.youtube.com/watch?v=${video.id}`);
   }
 
 
@@ -472,6 +598,19 @@
     $('#refreshButton').addEventListener('click', () => refreshRemoteData(true));
     $('#moreRefresh').addEventListener('click', () => refreshRemoteData(true));
     $('#episodeSearch').addEventListener('input', () => { renderEpisodes(); wireDynamicButtons(); });
+    $('#surpriseMeButton').addEventListener('click', () => {
+      const playable = state.content.episodes.filter(ep => ep.audioUrl);
+      if (!playable.length) return showToast('No playable episodes loaded yet');
+      const episode = playable[Math.floor(Math.random() * playable.length)];
+      playEpisode(episode);
+      showToast('The universe chose this one');
+    });
+    $('#closeVideoPlayer').addEventListener('click', closeVideoPlayer);
+    $('#shareCurrentVideo').addEventListener('click', shareCurrentVideo);
+    $('#youtubeFallbackButton').addEventListener('click', openCurrentVideoOnYouTube);
+    $('#videoPlayerFrame').addEventListener('load', () => {
+      $('#videoPlayerStage')?.classList.add('loaded');
+    });
     $('#emailHotline').addEventListener('click', emailHotline);
     $('#closePlayerButton').addEventListener('click', closePlayer);
     $('#playPauseButton').addEventListener('click', () => audio.paused ? audio.play() : audio.pause());
@@ -479,6 +618,9 @@
     $('#forwardButton').addEventListener('click', () => audio.currentTime = Math.min(audio.duration || Infinity, audio.currentTime + 30));
     $('#playerSeek').addEventListener('input', event => {
       if (Number.isFinite(audio.duration)) audio.currentTime = (Number(event.target.value) / 100) * audio.duration;
+    });
+    window.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !$('#videoPlayerModal').hidden) closeVideoPlayer();
     });
     window.addEventListener('online', () => { $('#offlineBanner').hidden = true; refreshRemoteData(false); });
     window.addEventListener('offline', () => { $('#offlineBanner').hidden = false; });

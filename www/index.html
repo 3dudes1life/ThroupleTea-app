@@ -34,6 +34,16 @@
     <section class="app-view active" data-view="home" aria-label="Home">
       <div id="homeHero"></div>
 
+      <section id="continueSection" class="section-block" hidden>
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">PICK UP WHERE YOU LEFT OFF</span>
+            <h2>Continue listening</h2>
+          </div>
+        </div>
+        <div id="continueCard"></div>
+      </section>
+
       <section class="section-block">
         <div class="section-heading">
           <div>
@@ -85,22 +95,52 @@
         <h1>Listen to the tea.</h1>
         <p>Play inside the app, resume where you left off, save favorites, or open the full episode page.</p>
       </div>
-      <label class="search-box">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
-        <input id="episodeSearch" type="search" placeholder="Search episodes, chaos, travel, astrology…">
-      </label>
+      <div class="listen-tools">
+        <label class="search-box">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
+          <input id="episodeSearch" type="search" placeholder="Search episodes, chaos, travel, astrology…">
+        </label>
+        <button id="surpriseMeButton" class="surprise-button" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3c4 0 5 10 9 10h4"/><path d="m17 14 3 3-3 3M4 17h3c1.5 0 2.6-1.4 3.5-3M14 7c.7-.8 1.5-1 2.5-1H20M17 3l3 3-3 3"/></svg>
+          Surprise me
+        </button>
+      </div>
       <div id="episodeList" class="stack-list"></div>
       <button class="wide-outline-button" data-open-url="https://throupletea.com/episodes/">Browse the complete website archive</button>
     </section>
 
-    <section class="app-view" data-view="watch" aria-label="Watch">
-      <div class="page-title">
-        <span class="eyebrow">NEW VIDEOS DAILY</span>
+    <section class="app-view watch-view" data-view="watch" aria-label="Watch">
+      <div class="page-title watch-title">
+        <span class="eyebrow">FULL EPISODES + DAILY SHORTS</span>
         <h1>Watch the chaos.</h1>
-        <p>The latest channel uploads refresh automatically from YouTube.</p>
+        <p>Binge the full video podcast, then swipe through the daily clips without leaving the app.</p>
       </div>
-      <div id="videoGrid" class="video-grid"></div>
-      <button class="wide-gradient-button" data-open-url="https://www.youtube.com/channel/UCswzye8bcm8bByqLlW0QaFQ">Open the full YouTube channel</button>
+
+      <div id="watchFeatured"></div>
+
+      <section class="watch-section-block">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">QUICK-HIT CHAOS</span>
+            <h2>Shorts</h2>
+          </div>
+          <span id="shortsCount" class="count-pill">0</span>
+        </div>
+        <div id="shortsRail" class="shorts-rail"></div>
+      </section>
+
+      <section class="watch-section-block">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">BINGE THE WHOLE THING</span>
+            <h2>Full video episodes</h2>
+          </div>
+          <span id="fullVideosCount" class="count-pill">0</span>
+        </div>
+        <div id="fullVideoGrid" class="full-video-grid"></div>
+      </section>
+
+      <button class="wide-outline-button channel-button" data-open-url="https://www.youtube.com/channel/UCswzye8bcm8bByqLlW0QaFQ">Open the full YouTube channel</button>
     </section>
 
     <section class="app-view hotline-view" data-view="hotline" aria-label="Throuple Hotline">
@@ -229,6 +269,41 @@
       <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg><span>More</span>
     </button>
   </nav>
+
+  <section id="videoPlayerModal" class="app-video-player" hidden aria-modal="true" role="dialog" aria-label="Video player">
+    <header class="app-video-player__header">
+      <button id="closeVideoPlayer" class="video-player-close" type="button" aria-label="Close video">
+        <svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+      <div>
+        <span id="videoPlayerKind" class="eyebrow">WATCHING</span>
+        <strong id="videoPlayerHeaderTitle">A Little Throuple Tea</strong>
+      </div>
+      <button id="shareCurrentVideo" class="video-player-share" type="button" aria-label="Share video">
+        <svg viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 13v7h14v-7"/></svg>
+      </button>
+    </header>
+
+    <div id="videoPlayerStage" class="app-video-player__stage">
+      <div class="video-player-loading">
+        <span></span>
+        Brewing the video…
+      </div>
+      <iframe
+        id="videoPlayerFrame"
+        title="A Little Throuple Tea video"
+        allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <footer class="app-video-player__footer">
+      <strong id="videoPlayerTitle">A Little Throuple Tea</strong>
+      <p id="videoPlayerMeta"></p>
+      <button id="youtubeFallbackButton" class="wide-outline-button" type="button">Having trouble? Open on YouTube</button>
+    </footer>
+  </section>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="./app.js"></script>
