@@ -1,8 +1,8 @@
 {
   "name": "throupletea-app",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
-  "description": "UX7.9 rebuilds rich episode descriptions from the full RSS and permanently evicts truncated caches.",
+  "description": "UX7.9.1 removes unsupported replacement boxes from episode topic cards.",
   "scripts": {
     "ios:add": "npx cap add ios",
     "ios:sync": "npx cap sync ios",
