@@ -64,7 +64,7 @@
             <span class="quick-icon"><svg viewBox="0 0 24 24"><path d="M5 4h3l2 5-2 1c1.4 3 3 4.6 6 6l1-2 5 2v3c0 1.1-.9 2-2 2C10.3 21 3 13.7 3 6c0-1.1.9-2 2-2z"/></svg></span>
             <strong>Hotline</strong><small>Spill the tea</small>
           </button>
-          <button class="quick-card" data-open-url="https://throupletea.com/start-here/">
+          <button class="quick-card" data-native-page="meet">
             <span class="quick-icon"><svg viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="m5 12 7 4 7-4M5 16l7 4 7-4"/></svg></span>
             <strong>Start Here</strong><small>Meet the throuple</small>
           </button>
@@ -93,7 +93,7 @@
       <div class="page-title">
         <span class="eyebrow">EVERY FRIDAY</span>
         <h1>Listen to the tea.</h1>
-        <p>Play inside the app, resume where you left off, save favorites, or open the full episode page.</p>
+        <p>Play inside the app, resume where you left off, save favorites, or open polished episode details.</p>
       </div>
       <div class="listen-tools">
         <label class="search-box">
@@ -106,7 +106,7 @@
         </button>
       </div>
       <div id="episodeList" class="stack-list"></div>
-      <button class="wide-outline-button" data-open-url="https://throupletea.com/episodes/">Browse the complete website archive</button>
+      <div class="native-archive-note"><strong>The complete archive is already here.</strong><span>New episodes appear automatically every Friday.</span></div>
     </section>
 
     <section class="app-view watch-view" data-view="watch" aria-label="Watch">
@@ -374,9 +374,8 @@
       <section class="link-group">
         <h2>About the show</h2>
         <button data-tab-jump="hotline"><span>Throuple Hotline</span><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
-        <button data-open-config="meet"><span>Meet William, Caleb + Daniel</span><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
-        <button data-open-config="faq"><span>Throuple FAQ</span><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
-        <button data-open-config="guest"><span>Be a guest</span><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+        <button data-native-page="meet"><span>Meet William, Caleb + Daniel</span><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+        <button data-native-page="faq"><span>Throuple FAQ</span><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
         <button data-open-config="website"><span>Open throupletea.com</span><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
       </section>
 
@@ -441,6 +440,25 @@
       <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg><span>More</span>
     </button>
   </nav>
+
+
+  <section id="nativePageModal" class="native-page-modal" hidden aria-modal="true" role="dialog" aria-label="A Little Throuple Tea information">
+    <header class="native-page-header">
+      <button id="closeNativePage" class="native-page-back" type="button" aria-label="Go back">
+        <svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div>
+        <span id="nativePageKicker" class="eyebrow">A LITTLE THROUPLE TEA</span>
+        <strong id="nativePageHeaderTitle">Inside the app</strong>
+      </div>
+      <button id="shareNativePage" class="native-page-share" type="button" aria-label="Share" hidden>
+        <svg viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 13v7h14v-7"/></svg>
+      </button>
+    </header>
+    <div id="nativePageScroll" class="native-page-scroll">
+      <div id="nativePageContent" class="native-page-content"></div>
+    </div>
+  </section>
 
   <section id="videoPlayerModal" class="app-video-player" hidden aria-modal="true" role="dialog" aria-label="Video player">
     <header class="app-video-player__header">

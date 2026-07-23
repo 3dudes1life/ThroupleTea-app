@@ -150,11 +150,13 @@ def _parse_rss_unprotected(cards: list[dict]) -> list[dict]:
         if not slug:
             slug = re.sub(r"[^a-z0-9]+", "-", title_value.lower()).strip("-")
         description = text(item, "description")
+        full_description = clean_html(description)
         result.append({
             "id": slug or re.sub(r"[^a-z0-9]+", "-", guid.lower()).strip("-"),
             "title": title_value,
             "label": match.get("label", "") if match else "",
-            "summary": (match.get("summary", "") if match else "") or clean_html(description),
+            "summary": (match.get("summary", "") if match else "") or full_description,
+            "description": full_description or (match.get("summary", "") if match else ""),
             "image": (image.attrib.get("href", "") if image is not None else "") or (match.get("image", "") if match else ""),
             "webUrl": web_url,
             "audioUrl": enclosure.attrib.get("url", "") if enclosure is not None else "",
@@ -419,7 +421,7 @@ def _merge_episode_metadata(fresh: list[dict], existing: list[dict]) -> list[dic
     for episode in fresh:
         previous = by_id.get(episode.get("id")) or by_title.get(normalize(episode.get("title", ""))) or {}
         result = dict(episode)
-        for key in ("label", "summary", "image", "webUrl"):
+        for key in ("label", "summary", "description", "image", "webUrl"):
             if not result.get(key) and previous.get(key):
                 result[key] = previous[key]
         merged.append(result)

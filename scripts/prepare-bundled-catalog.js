@@ -24,18 +24,15 @@ function videoCounts(catalog) {
   return { total: videos.length, shorts, full };
 }
 
-function candidateFiles() {
-  const files = [
-    destinationLive,
-    destinationFallback,
-  ];
+function episodeQuality(catalog) {
+  const episodes = catalog?.episodes || [];
+  const descriptionCount = episodes.filter(ep => String(ep?.description || '').length > String(ep?.summary || '').length).length;
+  return episodes.length * 100 + descriptionCount;
+}
 
-  // The previous successful UX7.5 build is normally beside this folder in
-  // Downloads. Reuse its already-downloaded full catalog automatically.
-  const parents = new Set([
-    path.dirname(root),
-    path.dirname(path.dirname(root)),
-  ]);
+function candidateFiles() {
+  const files = [destinationLive, destinationFallback];
+  const parents = new Set([path.dirname(root), path.dirname(path.dirname(root))]);
 
   for (const parent of parents) {
     if (!fs.existsSync(parent)) continue;
@@ -50,36 +47,72 @@ function candidateFiles() {
     }
   }
 
-  // Optional file downloaded by curl in the build command.
-  for (const arg of process.argv.slice(2)) {
-    files.push(path.resolve(arg));
-  }
-
+  for (const arg of process.argv.slice(2)) files.push(path.resolve(arg));
   return [...new Set(files)];
+}
+
+function mergeEpisodeMetadata(primaryEpisodes, backupEpisodes) {
+  const backups = new Map(
+    (backupEpisodes || []).filter(ep => ep?.id).map(ep => [ep.id, ep])
+  );
+
+  return (primaryEpisodes || []).map(ep => {
+    const backup = backups.get(ep.id) || {};
+    return {
+      ...backup,
+      ...ep,
+      description: ep.description || backup.description || ep.summary || backup.summary || '',
+      summary: ep.summary || backup.summary || ep.description || backup.description || '',
+    };
+  });
 }
 
 const catalogs = candidateFiles()
   .filter(file => fs.existsSync(file))
   .map(readCatalog)
-  .filter(Boolean)
-  .sort((a, b) => {
-    const av = videoCounts(a).total;
-    const bv = videoCounts(b).total;
-    return (bv - av) || (b.episodes.length - a.episodes.length);
-  });
+  .filter(Boolean);
 
-const best = catalogs[0] || null;
-const counts = videoCounts(best);
+const bestVideoCatalog = [...catalogs].sort(
+  (a, b) => videoCounts(b).total - videoCounts(a).total
+)[0] || null;
 
-if (!best || counts.total < 5) {
-  console.log(`⚠️ No healthy saved catalog found yet (${counts.total || 0} videos).`);
+const bestEpisodeCatalog = [...catalogs].sort(
+  (a, b) => episodeQuality(b) - episodeQuality(a)
+)[0] || null;
+
+const current = readCatalog(destinationLive) || readCatalog(destinationFallback) || {};
+const counts = videoCounts(bestVideoCatalog);
+
+if (!bestVideoCatalog || counts.total < 5) {
+  console.log(`⚠️ No healthy saved video catalog found yet (${counts.total || 0} videos).`);
   process.exitCode = 2;
 } else {
+  const primaryEpisodes = bestEpisodeCatalog?.episodes || current.episodes || [];
+  const backupEpisodes = current.episodes || [];
+  const episodes = mergeEpisodeMetadata(primaryEpisodes, backupEpisodes);
+
+  const payload = {
+    ...(current.parsed || bestEpisodeCatalog?.parsed || bestVideoCatalog.parsed || {}),
+    schemaVersion: Math.max(
+      Number(current.parsed?.schemaVersion || 0),
+      Number(bestEpisodeCatalog?.parsed?.schemaVersion || 0),
+      Number(bestVideoCatalog.parsed?.schemaVersion || 0),
+      3
+    ),
+    generatedAt: new Date().toISOString(),
+    source: 'certificate-safe-merged-catalog',
+    episodes,
+    videos: bestVideoCatalog.videos,
+  };
+
   fs.mkdirSync(path.dirname(destinationLive), { recursive: true });
   fs.mkdirSync(path.dirname(destinationFallback), { recursive: true });
-  const payload = JSON.stringify(best.parsed, null, 2) + '\n';
-  fs.writeFileSync(destinationLive, payload);
-  fs.writeFileSync(destinationFallback, payload);
-  console.log(`✅ Recovered catalog from: ${best.file}`);
+  const text = JSON.stringify(payload, null, 2) + '\n';
+  fs.writeFileSync(destinationLive, text);
+  fs.writeFileSync(destinationFallback, text);
+
+  console.log(`✅ Recovered videos from: ${bestVideoCatalog.file}`);
+  console.log(`✅ Preserved episode details from: ${bestEpisodeCatalog?.file || 'current build'}`);
   console.log(`📺 ${counts.shorts} Shorts + ${counts.full} full videos bundled.`);
+  console.log(`🎙️ ${episodes.length} native episode detail pages preserved.`);
 }

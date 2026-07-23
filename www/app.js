@@ -4,7 +4,7 @@
 
   const REMOTE_BASE = 'https://raw.githubusercontent.com/3dudes1life/ThroupleTea-app/main/live-data';
   const FALLBACK_IMAGE = './assets/podcast-artwork.jpg';
-  const CONTENT_CACHE_VERSION = 4;
+  const CONTENT_CACHE_VERSION = 5;
   const PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player/';
   const PARTY_PLAYER_PAGE = 'https://3dudes1life.github.io/ThroupleTea-app/player-party/';
   function safeStorageGet(key) {
@@ -51,6 +51,8 @@
   const state = {
     content: { episodes: [], videos: [], generatedAt: null, source: 'fallback' },
     config: { links: {}, starterEpisodeIds: [], announcement: {} },
+    info: { meet: {}, faq: {} },
+    nativePage: { type: null, id: null },
     favorites: new Set(safeJSON('tt:favorites', [], isArrayValue)),
     progress: safeJSON('tt:progress', {}, isObjectValue),
     lastPlayed: safeJSON('tt:last-played', {}, isObjectValue),
@@ -268,7 +270,7 @@
       ${favoriteButton('episode', ep.id)}
       <div class="card-actions">
         ${ep.audioUrl ? `<button class="primary" data-play-episode="${escapeHTML(ep.id)}">${state.currentEpisode?.id === ep.id && !audio.paused ? 'Pause' : savedSeconds > 15 ? 'Resume' : 'Play'}</button>` : ''}
-        <button data-open-url="${escapeHTML(ep.webUrl || state.config.links.episodes || '')}">Details</button>
+        <button data-open-episode="${escapeHTML(ep.id)}">Details</button>
         <button data-share-episode="${escapeHTML(ep.id)}">Share</button>
       </div>
     </article>`;
@@ -321,6 +323,242 @@
     return videoKind(video) === 'short' ? shortVideoCard(video) : fullVideoCard(video);
   }
 
+  function closeNativePage() {
+    const modal = $('#nativePageModal');
+    if (!modal || modal.hidden) return;
+    modal.hidden = true;
+    document.body.classList.remove('native-page-open');
+    state.nativePage = { type: null, id: null };
+  }
+
+  function episodeDescription(ep) {
+    return String(ep?.description || ep?.summary || '')
+      .replace(/\s*\u2026\s*$/, '')
+      .trim();
+  }
+
+  function paragraphHTML(textValue) {
+    const text = String(textValue || '').trim();
+    if (!text) return '<p>No episode description is available yet.</p>';
+
+    const blocks = text
+      .split(/\n{2,}/)
+      .map(part => part.trim())
+      .filter(Boolean);
+
+    if (blocks.length > 1) {
+      return blocks.map(part => `<p>${escapeHTML(part)}</p>`).join('');
+    }
+
+    const sentences = text.split(/(?<=[.!?])\s+(?=[A-Z0-9🌈🎙️📞✨🎲🔮])/u);
+    if (sentences.length > 5) {
+      const grouped = [];
+      for (let index = 0; index < sentences.length; index += 3) {
+        grouped.push(sentences.slice(index, index + 3).join(' '));
+      }
+      return grouped.map(part => `<p>${escapeHTML(part)}</p>`).join('');
+    }
+
+    return `<p>${escapeHTML(text)}</p>`;
+  }
+
+  function nativeMeetHTML() {
+    const meet = state.info?.meet || {};
+    const timeline = Array.isArray(meet.timeline) ? meet.timeline : [];
+    const values = Array.isArray(meet.values) ? meet.values : [];
+
+    return `<article>
+      <header class="native-hero">
+        <span class="eyebrow">${escapeHTML(meet.eyebrow || 'MEET THE THROUPLE')}</span>
+        <h1>${escapeHTML(meet.title || 'Meet William, Caleb & Daniel')}</h1>
+        <p>${escapeHTML(meet.intro || '')}</p>
+        ${meet.tagline ? `<span class="native-tagline">${escapeHTML(meet.tagline)}</span>` : ''}
+      </header>
+
+      <section class="native-content-section">
+        <h2>How we got here</h2>
+        <div class="native-timeline">
+          ${timeline.map(item => `<div class="native-timeline-item">
+            <span class="native-timeline-year">${escapeHTML(item.year || '')}</span>
+            <div><strong>${escapeHTML(item.title || '')}</strong><p>${escapeHTML(item.text || '')}</p></div>
+          </div>`).join('')}
+        </div>
+      </section>
+
+      <section class="native-content-section">
+        <h2>What makes our relationship ours</h2>
+        <div class="native-values-grid">
+          ${values.map(item => `<article class="native-value-card">
+            <strong>${escapeHTML(item.title || '')}</strong>
+            <p>${escapeHTML(item.text || '')}</p>
+          </article>`).join('')}
+        </div>
+      </section>
+
+      <section class="native-cta-card">
+        <h2>Still curious?</h2>
+        <p>Send your question to the Throuple Hotline and it may become part of a future episode.</p>
+        <button class="wide-gradient-button" type="button" data-native-hotline>Ask the Throuple</button>
+      </section>
+    </article>`;
+  }
+
+  function nativeFaqHTML() {
+    const faq = state.info?.faq || {};
+    const items = Array.isArray(faq.items) ? faq.items : [];
+
+    return `<article>
+      <header class="native-hero">
+        <span class="eyebrow">${escapeHTML(faq.eyebrow || 'THROUPLE FAQ')}</span>
+        <h1>${escapeHTML(faq.title || 'The questions people ask us.')}</h1>
+        <p>${escapeHTML(faq.intro || '')}</p>
+      </header>
+
+      <div class="native-faq-list">
+        ${items.map((item, index) => `<article class="native-faq-item${index === 0 ? ' open' : ''}">
+          <button class="native-faq-question" type="button" aria-expanded="${index === 0 ? 'true' : 'false'}">
+            <span>${escapeHTML(item.question || '')}</span>
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="native-faq-answer">${escapeHTML(item.answer || '')}</div>
+        </article>`).join('')}
+      </div>
+
+      <section class="native-cta-card">
+        <h2>Did we miss yours?</h2>
+        <p>Ask it anonymously through the Hotline. The messy questions are usually the best ones.</p>
+        <button class="wide-gradient-button" type="button" data-native-hotline>Open the Hotline</button>
+      </section>
+    </article>`;
+  }
+
+  function nativeEpisodeHTML(ep) {
+    const savedSeconds = Number(state.progress[ep.id] || 0);
+    const duration = ep.duration ? String(ep.duration)
+      .replace(/^PT/, '')
+      .replace(/H/, 'h ')
+      .replace(/M/, 'm ')
+      .replace(/S/, 's')
+      .trim() : '';
+    const meta = [
+      ep.label || '',
+      duration,
+      ep.season ? `Season ${ep.season}` : '',
+      ep.episode ? `Episode ${ep.episode}` : ''
+    ].filter(Boolean);
+
+    return `<article>
+      <div class="episode-detail-art">
+        <img src="${escapeHTML(ep.image || FALLBACK_IMAGE)}" alt="${escapeHTML(displayTitle(ep.title))}" onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}'">
+      </div>
+      <span class="eyebrow">FULL EPISODE</span>
+      <h1 class="episode-detail-title">${escapeHTML(displayTitle(ep.title))}</h1>
+      <div class="episode-detail-meta">
+        ${meta.map(item => `<span class="episode-detail-chip">${escapeHTML(item)}</span>`).join('')}
+      </div>
+      <section class="episode-detail-description">
+        ${paragraphHTML(episodeDescription(ep))}
+      </section>
+      <button class="wide-outline-button episode-detail-favorite" type="button" data-detail-favorite="${escapeHTML(ep.id)}">
+        ${state.favorites.has(itemKey('episode', ep.id)) ? '♥ Saved to favorites' : '♡ Save episode'}
+      </button>
+      <div class="episode-detail-actions">
+        <button class="wide-gradient-button" type="button" data-detail-play="${escapeHTML(ep.id)}">
+          ${state.currentEpisode?.id === ep.id && !audio.paused ? 'Pause' : savedSeconds > 15 ? `Resume ${formatTime(savedSeconds)}` : 'Play episode'}
+        </button>
+        <button class="wide-outline-button" type="button" data-detail-share="${escapeHTML(ep.id)}">Share</button>
+      </div>
+    </article>`;
+  }
+
+  function wireNativePageContent() {
+    $$('.native-faq-question').forEach(button => {
+      button.onclick = () => {
+        const item = button.closest('.native-faq-item');
+        const willOpen = !item.classList.contains('open');
+        item.classList.toggle('open', willOpen);
+        button.setAttribute('aria-expanded', String(willOpen));
+        haptic('LIGHT');
+      };
+    });
+
+    $$('[data-native-hotline]').forEach(button => {
+      button.onclick = () => {
+        closeNativePage();
+        setTab('hotline');
+      };
+    });
+
+    $$('[data-detail-play]').forEach(button => {
+      button.onclick = () => {
+        const ep = state.content.episodes.find(item => item.id === button.dataset.detailPlay);
+        if (!ep) return;
+        if (!ep.audioUrl) return showToast('Audio is not available yet');
+        playEpisode(ep);
+        renderNativePage();
+      };
+    });
+
+    $$('[data-detail-share]').forEach(button => {
+      button.onclick = () => {
+        const ep = state.content.episodes.find(item => item.id === button.dataset.detailShare);
+        if (ep) shareItem(ep.title, ep.webUrl || state.config.links.episodes, 'Listen to this episode of A Little Throuple Tea');
+      };
+    });
+
+    $$('[data-detail-favorite]').forEach(button => {
+      button.onclick = () => {
+        toggleFavorite('episode', button.dataset.detailFavorite);
+        renderNativePage();
+      };
+    });
+  }
+
+  function renderNativePage() {
+    const modal = $('#nativePageModal');
+    if (!modal || modal.hidden || !state.nativePage.type) return;
+
+    const type = state.nativePage.type;
+    const content = $('#nativePageContent');
+    const shareButton = $('#shareNativePage');
+
+    if (type === 'meet') {
+      $('#nativePageKicker').textContent = 'ABOUT THE SHOW';
+      $('#nativePageHeaderTitle').textContent = 'Meet the Throuple';
+      shareButton.hidden = true;
+      content.innerHTML = nativeMeetHTML();
+    } else if (type === 'faq') {
+      $('#nativePageKicker').textContent = 'ABOUT THE SHOW';
+      $('#nativePageHeaderTitle').textContent = 'Throuple FAQ';
+      shareButton.hidden = true;
+      content.innerHTML = nativeFaqHTML();
+    } else if (type === 'episode') {
+      const ep = state.content.episodes.find(item => item.id === state.nativePage.id);
+      if (!ep) {
+        closeNativePage();
+        return;
+      }
+      $('#nativePageKicker').textContent = ep.label || 'FULL EPISODE';
+      $('#nativePageHeaderTitle').textContent = displayTitle(ep.title);
+      shareButton.hidden = false;
+      shareButton.onclick = () => shareItem(ep.title, ep.webUrl || state.config.links.episodes, 'Listen to this episode of A Little Throuple Tea');
+      content.innerHTML = nativeEpisodeHTML(ep);
+    }
+
+    wireNativePageContent();
+  }
+
+  function openNativePage(type, id = null) {
+    const modal = $('#nativePageModal');
+    if (!modal) return;
+    state.nativePage = { type, id };
+    modal.hidden = false;
+    document.body.classList.add('native-page-open');
+    $('#nativePageScroll').scrollTop = 0;
+    renderNativePage();
+    haptic('LIGHT');
+  }
+
   function renderHome() {
     const latest = state.content.episodes[0];
     const hero = $('#homeHero');
@@ -337,7 +575,7 @@
         <p>${escapeHTML(latest.summary || '')}</p>
         <div class="action-row">
           ${latest.audioUrl ? `<button class="gradient-button" data-play-episode="${escapeHTML(latest.id)}"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>${savedSeconds > 15 ? `Resume ${formatTime(savedSeconds)}` : 'Play episode'}</button>` : ''}
-          <button class="outline-button" data-open-url="${escapeHTML(latest.webUrl || state.config.links.episodes || '')}">Episode page</button>
+          <button class="outline-button" data-open-episode="${escapeHTML(latest.id)}">Episode details</button>
           <button class="outline-button" data-share-episode="${escapeHTML(latest.id)}"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 13v7h14v-7"/></svg>Share</button>
         </div>
       </div>
@@ -1038,6 +1276,7 @@
     renderStatus();
     renderBowl();
     wireDynamicButtons();
+    renderNativePage();
   }
 
   function renderAudioDependentViews() {
@@ -1046,6 +1285,7 @@
     renderEpisodes();
     renderSaved();
     wireDynamicButtons();
+    renderNativePage();
     requestAnimationFrame(() => window.scrollTo({ top: scrollTop, behavior: 'auto' }));
   }
 
@@ -1065,6 +1305,7 @@
       };
     });
     $$('[data-open-url]').forEach(button => button.onclick = () => openURL(button.dataset.openUrl));
+    $$('[data-open-episode]').forEach(button => button.onclick = () => openNativePage('episode', button.dataset.openEpisode));
     $$('[data-share-episode]').forEach(button => button.onclick = () => {
       const ep = state.content.episodes.find(x => x.id === button.dataset.shareEpisode);
       if (ep) shareItem(ep.title, ep.webUrl || state.config.links.episodes, 'Listen to this episode of A Little Throuple Tea');
@@ -1504,6 +1745,24 @@
       .sort((a, b) => catalogQuality(b) - catalogQuality(a))[0] || catalogs.find(Boolean);
   }
 
+  function mergeEpisodeMetadata(currentEpisodes, remoteEpisodes) {
+    const currentById = new Map(
+      (currentEpisodes || []).filter(ep => ep?.id).map(ep => [ep.id, ep])
+    );
+
+    return (remoteEpisodes || []).map(ep => {
+      const saved = currentById.get(ep.id) || {};
+      return {
+        ...saved,
+        ...ep,
+        summary: ep.summary || saved.summary || ep.description || saved.description || '',
+        description: ep.description || saved.description || ep.summary || saved.summary || '',
+        image: ep.image || saved.image || FALLBACK_IMAGE,
+        webUrl: ep.webUrl || saved.webUrl || state.config.links.episodes || '',
+      };
+    });
+  }
+
   function mergedRemoteContent(current, remote) {
     if (!remote?.episodes?.length) return current;
 
@@ -1517,16 +1776,17 @@
 
     return {
       ...remote,
-      episodes: remote.episodes,
+      episodes: mergeEpisodeMetadata(current?.episodes || [], remote.episodes),
       videos: remoteIsHealthy && remoteIsNotDegraded ? remoteVideos : currentVideos,
       catalogSafeguardUsed: !(remoteIsHealthy && remoteIsNotDegraded),
     };
   }
 
   async function loadInitialData() {
-    const [fallback, localConfig] = await Promise.all([
+    const [fallback, localConfig, localInfo] = await Promise.all([
       loadJSON('./data/fallback.json'),
-      loadJSON('./data/app-config.json')
+      loadJSON('./data/app-config.json'),
+      loadJSON('./data/info-content.json')
     ]);
 
     const storedVersion = Number(safeStorageGet('tt:content-cache-version') || 0);
@@ -1540,8 +1800,10 @@
     }
 
     const cachedConfig = safeJSON('tt:config-cache', null, value => value === null || isObjectValue(value));
+    const cachedInfo = safeJSON('tt:info-cache', null, value => value === null || isObjectValue(value));
     state.content = bestCatalog(fallback, cached) || fallback;
     state.config = cachedConfig?.links ? cachedConfig : localConfig;
+    state.info = cachedInfo?.meet && cachedInfo?.faq ? cachedInfo : localInfo;
     state.initialized = true;
     renderAll();
     await refreshRemoteData(false, { force: true });
@@ -1571,9 +1833,10 @@
     state.refreshPromise = (async () => {
       try {
         const stamp = Date.now();
-        const [contentResult, configResult] = await Promise.allSettled([
+        const [contentResult, configResult, infoResult] = await Promise.allSettled([
           loadJSON(`${REMOTE_BASE}/content.json?v=${stamp}`),
-          loadJSON(`${REMOTE_BASE}/app-config.json?v=${stamp}`)
+          loadJSON(`${REMOTE_BASE}/app-config.json?v=${stamp}`),
+          loadJSON(`${REMOTE_BASE}/info-content.json?v=${stamp}`)
         ]);
 
         if (contentResult.status === 'fulfilled' && contentResult.value?.episodes?.length) {
@@ -1586,6 +1849,11 @@
         if (configResult.status === 'fulfilled' && configResult.value?.links) {
           state.config = configResult.value;
           safeStorageSet('tt:config-cache', JSON.stringify(configResult.value));
+        }
+
+        if (infoResult.status === 'fulfilled' && infoResult.value?.meet && infoResult.value?.faq) {
+          state.info = infoResult.value;
+          safeStorageSet('tt:info-cache', JSON.stringify(infoResult.value));
         }
 
         renderAll();
@@ -1626,6 +1894,7 @@
     $$('.tab-bar button').forEach(button => button.addEventListener('click', () => setTab(button.dataset.tab)));
     $$('[data-tab-jump]').forEach(button => button.addEventListener('click', () => setTab(button.dataset.tabJump)));
     $$('[data-open-config]').forEach(button => button.addEventListener('click', () => openURL(state.config.links[button.dataset.openConfig])));
+    $$('[data-native-page]').forEach(button => button.addEventListener('click', () => openNativePage(button.dataset.nativePage)));
     $$('[data-open-url]').forEach(button => button.addEventListener('click', () => openURL(button.dataset.openUrl)));
     $('#refreshButton').addEventListener('click', () => refreshRemoteData(true, { force: true }));
     $('#moreRefresh').addEventListener('click', () => refreshRemoteData(true, { force: true }));
@@ -1645,6 +1914,7 @@
       playEpisode(episode);
       showToast('The universe chose this one');
     });
+    $('#closeNativePage').addEventListener('click', closeNativePage);
     $('#closeVideoPlayer').addEventListener('click', closeVideoPlayer);
     $('#shareCurrentVideo').addEventListener('click', shareCurrentVideo);
     $('#startCurrentWatchParty').addEventListener('click', () => startWatchParty());
@@ -1664,7 +1934,9 @@
       if (Number.isFinite(audio.duration)) audio.currentTime = (Number(event.target.value) / 100) * audio.duration;
     });
     window.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && !$('#videoPlayerModal').hidden) closeVideoPlayer();
+      if (event.key !== 'Escape') return;
+      if (!$('#nativePageModal').hidden) closeNativePage();
+      else if (!$('#videoPlayerModal').hidden) closeVideoPlayer();
     });
     window.addEventListener('online', () => { $('#offlineBanner').hidden = true; refreshRemoteData(false); });
     window.addEventListener('offline', () => { $('#offlineBanner').hidden = false; });

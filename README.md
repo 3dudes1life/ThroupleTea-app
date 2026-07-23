@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 7.6.1
+# A Little Throuple Tea — Superman UX 7.7
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -310,3 +310,23 @@ This maintenance release:
 - continues to Xcode even when live catalog refresh is temporarily unavailable
 - keeps the in-app live-data refresh, GitHub Action updater, Watch layout,
   SharePlay, Bowl fixes, saved cards, and all UX7.6 stability upgrades
+
+
+## UX 7.7 — native show pages and episode details
+
+- Replaces the browser versions of **Meet William, Caleb + Daniel** and
+  **Throuple FAQ** with polished, full-screen native app pages.
+- Adds structured `info-content.json` to both the bundled app and `live-data`,
+  so About/FAQ copy can be edited from GitHub without a new App Store build.
+- Removes **Be a guest** from the More menu.
+- Changes Home → Start Here to open the native Meet page.
+- Replaces every audio episode **Details / Episode page** button with a native
+  episode-detail screen.
+- Native episode detail includes artwork, season/episode/date/duration chips,
+  full description, play/resume, favorite, and share.
+- Removes the ugly website archive button because the complete feed is already
+  available inside the app.
+- Updates the live-data generator to store full RSS episode descriptions while
+  retaining short card summaries.
+- External platform links and the optional main website link still open outside
+  the app by design.

@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-23T06:01:44.188953+00:00",
+  "meet": {
+    "eyebrow": "MEET WILLIAM, CALEB & DANIEL",
+    "title": "Meet the Throuple Behind A Little Throuple Tea",
+    "intro": "We’re William, Caleb, and Daniel — three men in love, one real-life gay throuple, and the hosts of A Little Throuple Tea. Our podcast is where LGBTQ+ relationship stories, throuple life, chaos, humor, honesty, and chosen family all spill into one very caffeinated cup.",
+    "tagline": "3 dudes. 1 life. All the tea.",
+    "timeline": [
+      {
+        "year": "2006",
+        "title": "William + Caleb meet",
+        "text": "The first side of the triangle started in 2006. William and Caleb built a life together long before they knew it would eventually grow into something bigger."
+      },
+      {
+        "year": "2010",
+        "title": "Daniel enters the story",
+        "text": "Daniel came into their lives later. The path was not a perfect movie plot — there were messy beginnings, timing issues, and a second chance."
+      },
+      {
+        "year": "2016",
+        "title": "The throuple begins",
+        "text": "The relationship became the three of us in 2016. That is when our committed triad truly started — not in 2006."
+      },
+      {
+        "year": "2025",
+        "title": "The podcast launches",
+        "text": "A Little Throuple Tea gave us a place to tell the funny, complicated, honest stories behind our relationship and the life we built together."
+      }
+    ],
+    "values": [
+      {
+        "title": "The triangle of support",
+        "text": "The best part of three is the extra support. When one person is having a hard day, the relationship does not collapse onto one other person."
+      },
+      {
+        "title": "Communication over perfection",
+        "text": "We are not conflict-free. We talk, regroup, apologize, set boundaries, and keep learning how to make sure every person is heard."
+      },
+      {
+        "title": "Committed, not open",
+        "text": "Our relationship is a monogamous triad. The three of us are the relationship; we are not dating outside of it."
+      },
+      {
+        "title": "Chosen family with a sense of humor",
+        "text": "Real life is serious enough. We believe love can be deeply committed and still include roasting each other, weird debates, and a lot of chaos."
+      }
+    ]
+  },
+  "faq": {
+    "eyebrow": "THROUPLE FAQ",
+    "title": "The questions people actually ask us.",
+    "intro": "Curious how a throuple works? These are our real answers about three-person relationships, communication, jealousy, living together, and life as three men in love.",
+    "items": [
+      {
+        "question": "What is a throuple?",
+        "answer": "A throuple is a relationship involving three people. In our case, all three of us are in one committed relationship with one another — a triad."
+      },
+      {
+        "question": "Are all three of you dating each other?",
+        "answer": "Yes. This is not one person dating two separate people. Every side of the triangle matters, and the relationship belongs to all three of us."
+      },
+      {
+        "question": "How long have you been together?",
+        "answer": "We have been a throuple since 2016. William and Caleb met in 2006, Daniel entered the story later, and the three-person relationship began in 2016."
+      },
+      {
+        "question": "Are you open?",
+        "answer": "No. We are a monogamous triad. The relationship is the three of us, and we are not dating or hooking up outside of it."
+      },
+      {
+        "question": "Do you all live together?",
+        "answer": "Yes. We share a home, responsibilities, pets, routines, bills, projects, and all the ordinary chaos that comes with building one life together."
+      },
+      {
+        "question": "How did you meet?",
+        "answer": "William and Caleb met first. Daniel later became part of our lives. It took time, communication, some messy beginnings, and a second chance before the relationship became the three of us."
+      },
+      {
+        "question": "Are you married?",
+        "answer": "Not as a trio. Our commitment is real, but the paperwork does not recognize all three of us equally."
+      },
+      {
+        "question": "How do decisions work with three people?",
+        "answer": "Major relationship and household decisions involve all three of us. Not every tiny choice needs a formal vote, but everyone needs a real voice."
+      },
+      {
+        "question": "Do you get jealous?",
+        "answer": "Of course jealousy can happen. We treat it as information, not proof that the relationship is broken. Usually there is an insecurity, fear, or unmet need underneath it that needs an honest conversation."
+      },
+      {
+        "question": "Does anyone ever feel left out?",
+        "answer": "That can happen in any three-person dynamic, so we pay attention to it. We make space for one-on-one connection and also protect the relationship as a trio."
+      },
+      {
+        "question": "What is the hardest part?",
+        "answer": "Balancing three people’s feelings, communication styles, schedules, and needs without letting one person become the automatic odd man out."
+      },
+      {
+        "question": "What is the best part?",
+        "answer": "The triangle of support. There is more love, more perspective, more help, and usually at least one person available to explain why the other two are being ridiculous."
+      }
+    ]
+  }
+}
