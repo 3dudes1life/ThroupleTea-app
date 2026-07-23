@@ -81,29 +81,22 @@ const bestEpisodeCatalog = [...catalogs].sort(
 )[0] || null;
 
 const current = readCatalog(destinationLive) || readCatalog(destinationFallback) || {};
-const currentRichCount = (current.episodes || []).filter(ep => String(ep.description || '').length > String(ep.summary || '').length + 40).length;
-const counts = videoCounts(bestVideoCatalog);
 
 if (!bestVideoCatalog || counts.total < 5) {
   console.log(`⚠️ No healthy saved video catalog found yet (${counts.total || 0} videos).`);
   process.exitCode = 2;
 } else {
-  const primaryEpisodes = currentRichCount >= 5
-    ? (current.episodes || [])
-    : (bestEpisodeCatalog?.episodes || current.episodes || []);
-  const backupEpisodes = current.episodes || [];
-  const episodes = mergeEpisodeMetadata(primaryEpisodes, backupEpisodes);
+  const episodes = Array.isArray(current.episodes) ? current.episodes : [];
 
   const payload = {
-    ...(current.parsed || bestEpisodeCatalog?.parsed || bestVideoCatalog.parsed || {}),
+    ...(current.parsed || bestVideoCatalog.parsed || {}),
     schemaVersion: Math.max(
       Number(current.parsed?.schemaVersion || 0),
-      Number(bestEpisodeCatalog?.parsed?.schemaVersion || 0),
       Number(bestVideoCatalog.parsed?.schemaVersion || 0),
-      3
+      4
     ),
     generatedAt: new Date().toISOString(),
-    source: 'certificate-safe-merged-catalog',
+    source: 'video-recovery-preserving-current-episodes',
     episodes,
     videos: bestVideoCatalog.videos,
   };
@@ -115,7 +108,7 @@ if (!bestVideoCatalog || counts.total < 5) {
   fs.writeFileSync(destinationFallback, text);
 
   console.log(`✅ Recovered videos from: ${bestVideoCatalog.file}`);
-  console.log(`✅ Preserved episode details from: ${bestEpisodeCatalog?.file || 'current build'}`);
+  console.log(`✅ Preserved ${episodes.length} current episode records without replacing descriptions.`);
   console.log(`📺 ${counts.shorts} Shorts + ${counts.full} full videos bundled.`);
   console.log(`🎙️ ${episodes.length} native episode detail pages preserved.`);
 }

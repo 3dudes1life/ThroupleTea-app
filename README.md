@@ -1,4 +1,4 @@
-# A Little Throuple Tea — Superman UX 7.9.3
+# A Little Throuple Tea — Superman UX 7.9.4
 
 This is a dedicated app experience. It does **not** modify or visually reuse the podcast website.
 
@@ -410,3 +410,19 @@ This release:
 - never blocks Xcode merely because fewer than five episodes have longer RSS copy
 - continues when the local YouTube fallback is small because the app can load
   the live GitHub catalog after launch
+
+
+## UX 7.9.4 — full descriptions permanently preserved
+
+The regression was caused by the build order: RSS hydration successfully added
+full descriptions, then YouTube catalog recovery replaced the episode records
+with older truncated copies.
+
+This release fixes that exact bug:
+
+- YouTube/video recovery runs first
+- RSS hydration runs last
+- video recovery may replace only `videos`
+- video recovery never replaces `episodes` or their descriptions
+- the app still uses the longest description during remote merges
+- topic-card replacement glyphs remain removed
