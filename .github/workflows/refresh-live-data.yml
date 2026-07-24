@@ -3,7 +3,15 @@ name: Refresh Live App Data
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 */2 * * *"
+    # Normal hourly safety refresh, offset from the top of the hour to reduce
+    # the chance of GitHub Actions scheduling delays.
+    - cron: "23 * * * *"
+
+    # Friday release window: every 15 minutes from midnight through 8:59 AM
+    # in the podcast's local Pacific time.
+    - cron: "5,20,35,50 0-8 * * 5"
+      timezone: "America/Los_Angeles"
+
   push:
     paths:
       - "scripts/update-live-data.py"
@@ -25,8 +33,79 @@ jobs:
         with:
           python-version: "3.13"
 
+      - name: Preserve current live catalog
+        run: cp live-data/content.json /tmp/previous-content.json
+
       - name: Refresh podcast and YouTube data
         run: python scripts/update-live-data.py
+
+      - name: Prevent temporary podcast-feed regressions
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+
+          current_path = Path("live-data/content.json")
+          previous_path = Path("/tmp/previous-content.json")
+
+          current = json.loads(current_path.read_text(encoding="utf-8"))
+          previous = json.loads(previous_path.read_text(encoding="utf-8"))
+
+          fresh = list(current.get("episodes") or [])
+          saved = list(previous.get("episodes") or [])
+
+          def normalized_title(episode):
+              value = str(episode.get("title") or "").lower()
+              value = re.sub(r"[^\w\s]", " ", value, flags=re.UNICODE)
+              return re.sub(r"\s+", " ", value).strip()
+
+          seen_ids = {str(ep.get("id")) for ep in fresh if ep.get("id")}
+          seen_titles = {
+              normalized_title(ep)
+              for ep in fresh
+              if normalized_title(ep)
+          }
+          preserved = []
+
+          for episode in saved:
+              episode_id = str(episode.get("id") or "")
+              title_key = normalized_title(episode)
+
+              if episode_id and episode_id in seen_ids:
+                  continue
+              if title_key and title_key in seen_titles:
+                  continue
+
+              preserved.append(episode)
+
+              if episode_id:
+                  seen_ids.add(episode_id)
+              if title_key:
+                  seen_titles.add(title_key)
+
+          if preserved:
+              current["episodes"] = fresh + preserved
+              current["episodes"].sort(
+                  key=lambda episode: str(episode.get("date") or ""),
+                  reverse=True,
+              )
+              current.setdefault("sourceStatus", {})[
+                  "podcastCatalogSafeguard"
+              ] = f"preserved-{len(preserved)}-missing-episodes"
+
+              current_path.write_text(
+                  json.dumps(current, ensure_ascii=False, indent=2) + "\n",
+                  encoding="utf-8",
+              )
+
+              print(
+                  f"Podcast safeguard preserved {len(preserved)} episode(s) "
+                  "that were missing from a temporary source snapshot."
+              )
+          else:
+              print("Podcast catalog is complete; no safeguard needed.")
+          PY
 
       - name: Commit updated data when it changed
         run: |
