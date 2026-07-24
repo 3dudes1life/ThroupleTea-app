@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-07-24T18:50:10.145083+00:00",
+  "generatedAt": "2026-07-24T20:42:18.615841+00:00",
   "source": "resilient-rss+website+youtube-tabs+atom",
   "sourceStatus": {
     "websiteArchive": "fresh",
@@ -885,6 +885,15 @@
       "durationSeconds": 40
     },
     {
+      "id": "YAyxVfxfN7Y",
+      "title": "Your Weekly Astrology Reading 🔮 | July 24–30 | S2 Ep27",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/YAyxVfxfN7Y/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAayyB0oE4fzlZys-CGYekSOfffKw&usqp=CCk",
+      "url": "https://www.youtube.com/watch?v=YAyxVfxfN7Y",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
       "id": "VBbKY1WW_Jw",
       "title": "We Thought Two-Story Houses Meant You Were Rich 😂🏡 | S2 Ep27",
       "published": "",
@@ -1547,15 +1556,6 @@
       "published": "",
       "thumbnail": "https://i.ytimg.com/vi/87QvY_FeB1Y/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAFFopbsNi90dmI0kMFIuLRaBAt0Q&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=87QvY_FeB1Y",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "hqJV5doUsh8",
-      "title": "HGTV But Completely Unqualified 😂 | S2 Ep16",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/hqJV5doUsh8/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBy6uaHC1aTpWgPvDjkMgswRujgaA&usqp=CCk",
-      "url": "https://www.youtube.com/watch?v=hqJV5doUsh8",
       "kind": "short",
       "durationSeconds": 0
     }
