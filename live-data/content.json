@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-07-30T20:37:41.931398+00:00",
+  "generatedAt": "2026-07-30T22:29:48.989271+00:00",
   "source": "resilient-rss+website+youtube-tabs+atom",
   "sourceStatus": {
     "websiteArchive": "fresh",
@@ -885,6 +885,15 @@
       "durationSeconds": 40
     },
     {
+      "id": "CxKnFU2boAU",
+      "title": "His Mustache Didn’t Turn White From Age… 💀 | S2 Ep28",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/CxKnFU2boAU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAx78F0g8Ykwj_F7jrnVgsufSvhvQ&usqp=CCk",
+      "url": "https://www.youtube.com/watch?v=CxKnFU2boAU",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
       "id": "h4aKj8AOyA8",
       "title": "Pocahontas… or “Poke Your”? 💀😂 | S2 Ep27",
       "published": "",
@@ -1547,15 +1556,6 @@
       "published": "",
       "thumbnail": "https://i.ytimg.com/vi/EumpG-b47fY/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDCBhfV60yzJCYNWukC7bGnyvcLjg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=EumpG-b47fY",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "jNvepNLtL2o",
-      "title": "Growing Up With WHITE Carpet Was Trauma 😭 | S2 Ep17",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/jNvepNLtL2o/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB26bReXsh60iFqQU3ap8-Wh6w0kg&usqp=CCk",
-      "url": "https://www.youtube.com/watch?v=jNvepNLtL2o",
       "kind": "short",
       "durationSeconds": 0
     }
