@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-08-03T19:00:19.945489+00:00",
+  "generatedAt": "2026-08-03T20:40:25.349564+00:00",
   "source": "resilient-rss+website+youtube-tabs+atom",
   "sourceStatus": {
     "websiteArchive": "fresh",
@@ -908,6 +908,15 @@
       "durationSeconds": 40
     },
     {
+      "id": "ZCQJQW4pvDM",
+      "title": "Why Do We Sound Like The View…  🐔😂 | EP 28",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/ZCQJQW4pvDM/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDJAECXR3tdyNV7WNCdb0hgKjrnjA&usqp=CCk",
+      "url": "https://www.youtube.com/watch?v=ZCQJQW4pvDM",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
       "id": "ykwBU4V6CKY",
       "title": "Flat Earthers vs. Gemini Logic 🌎😂 | S2 Ep28",
       "published": "",
@@ -1570,15 +1579,6 @@
       "published": "",
       "thumbnail": "https://i.ytimg.com/vi/Ru3ihezpLgo/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD472GZSTt3C3ePY29uKRH8aq6UWQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=Ru3ihezpLgo",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "-yIFwK_vViA",
-      "title": "Did We Play Yahtzee Or Not?! 💀 | S2 Ep18",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/-yIFwK_vViA/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDgJn0kA80I59d6M4t48LL8BHQBgQ&usqp=CCk",
-      "url": "https://www.youtube.com/watch?v=-yIFwK_vViA",
       "kind": "short",
       "durationSeconds": 0
     }
