@@ -1,12 +1,11 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-08-07T16:09:04.844835+00:00",
+  "generatedAt": "2026-08-07T16:11:34.454151+00:00",
   "source": "resilient-rss+website+youtube-tabs+atom",
   "sourceStatus": {
     "websiteArchive": "fresh",
     "podcastRss": "fresh",
-    "youtube": "fresh",
-    "podcastCatalogSafeguard": "preserved-1-missing-episodes"
+    "youtube": "fresh"
   },
   "episodes": [
     {
