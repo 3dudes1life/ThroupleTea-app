@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-08-19T20:48:25.711518+00:00",
+  "generatedAt": "2026-08-19T21:44:27.825658+00:00",
   "source": "resilient-rss+website+youtube-tabs+atom",
   "sourceStatus": {
     "websiteArchive": "fresh",
@@ -954,6 +954,15 @@
       "durationSeconds": 40
     },
     {
+      "id": "gAIVx89PD-U",
+      "title": "Somehow Below Deck Became About Bottoming 💀⚓️ | S2 Ep30",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/gAIVx89PD-U/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAScnT_HgOqnXEBgJJ37rGuExXx4g&usqp=CCk",
+      "url": "https://www.youtube.com/watch?v=gAIVx89PD-U",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
       "id": "o3FJgFSY2jo",
       "title": "The Fastest Way to Ruin Brunch? 💀🥞 | S2 Ep30",
       "published": "",
@@ -1616,15 +1625,6 @@
       "published": "",
       "thumbnail": "https://i.ytimg.com/vi/d916rdz8QGA/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD7eZEwTkvDgbZQ0UwR9kpa-EKmVQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=d916rdz8QGA",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "lThMD2DVA8Q",
-      "title": "Mom Picked the Worst Possible Time to Call 💀 | S2 Ep21",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/lThMD2DVA8Q/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA-lLXWpJZn1rbNWBfFRWOPH-qugQ&usqp=CCk",
-      "url": "https://www.youtube.com/watch?v=lThMD2DVA8Q",
       "kind": "short",
       "durationSeconds": 0
     }
