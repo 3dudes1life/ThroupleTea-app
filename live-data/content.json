@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-08-21T13:33:35.416593+00:00",
+  "generatedAt": "2026-08-21T14:01:28.889401+00:00",
   "source": "resilient-rss+website+youtube-tabs+atom",
   "sourceStatus": {
     "websiteArchive": "fresh",
@@ -598,6 +598,15 @@
     }
   ],
   "videos": [
+    {
+      "id": "uXEW9HN5erA",
+      "title": "Collective Energy • August 21–27 🔮✨ | S2 Ep31",
+      "published": "2026-08-21T14:00:10+00:00",
+      "thumbnail": "https://i2.ytimg.com/vi/uXEW9HN5erA/hqdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=uXEW9HN5erA",
+      "kind": "short",
+      "durationSeconds": 0
+    },
     {
       "id": "-dGCM_cGwFg",
       "title": "The Gay Bucket List | S2 Ep31",
