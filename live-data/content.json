@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-08-22T17:40:08.500559+00:00",
+  "generatedAt": "2026-08-22T18:51:43.784761+00:00",
   "source": "resilient-rss+website+youtube-tabs+atom",
   "sourceStatus": {
     "websiteArchive": "fresh",
@@ -977,6 +977,15 @@
       "durationSeconds": 40
     },
     {
+      "id": "FmudiRMyYYg",
+      "title": "Apparently a Nude Bar Has Rules 🍑😂 | S2 Ep31",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/FmudiRMyYYg/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLABG8l6C9J2_m7jwaCxYMkNBh7gqw&usqp=CCk",
+      "url": "https://www.youtube.com/watch?v=FmudiRMyYYg",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
       "id": "uXEW9HN5erA",
       "title": "Collective Energy • August 21–27 🔮✨ | S2 Ep31",
       "published": "",
@@ -1639,15 +1648,6 @@
       "published": "",
       "thumbnail": "https://i.ytimg.com/vi/39CV-eYoWpM/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCiOF3PploJQSBNdZDWqjWc-iJvUg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=39CV-eYoWpM",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "Cq2BGhXccgk",
-      "title": "This Alaska Camping Story Gets Worse 🤣 | S2 Ep21",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/Cq2BGhXccgk/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBmE1SS7p5EFohANou7aaOMayT8Ag&usqp=CCk",
-      "url": "https://www.youtube.com/watch?v=Cq2BGhXccgk",
       "kind": "short",
       "durationSeconds": 0
     }
