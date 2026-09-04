@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-09-04T04:41:59.545127+00:00",
+  "generatedAt": "2026-09-04T09:43:13.451526+00:00",
   "source": "resilient-rss+website+youtube-tabs+atom",
   "sourceStatus": {
     "websiteArchive": "fresh",
@@ -8,6 +8,20 @@
     "youtube": "fresh"
   },
   "episodes": [
+    {
+      "id": "the-throuple-bible-labor-day-chaos-s2-ep33",
+      "title": "The Throuple Bible & Labor Day Chaos | S2 Ep33",
+      "label": "",
+      "summary": "What happens when your new book is so massive it can’t even become a hardcover? This week on A Little Throuple Tea, we’re celebrating Labor Day, revealing how Fault Lines became the 730-page “Throuple Bible” and explaining why formatting the book nearly broke us—or inspired us to build something completely new. We also prepare for Southern California rain like a hurricane is coming, revisit one of the worst rescue plans in history and let Bowl of Chaos expose which one of us becomes dangerously confident after watching a single YouTube tutorial. Then, the Throuple Hotline brings us a relationship problem involving a three-year boyfriend who is still being introduced to the family as “the friend.” How long do you keep the peace before it becomes disrespect? Plus, Sassy Astrology, an emotional family tribute and one host ending the entire Labor Day episode with the wrong holiday. Tell us: Would you read a 730-page Throuple Bible—and how long would you tolerate being called “the friend”? Submit your questions, stories, relationship chaos and confessions through the Throuple Hotline. Download the FREE Throuple Tea app on Apple and Android to watch and listen, play Bowl of Chaos, enter Win a Book Wednesday and keep up with everything happening in our world. Visit ThroupleTea.com and read our weekly companion article with the Los Angeles Blade. Follow, subscribe, rate, review and share the show. Throuple life. It doesn’t suck.",
+      "description": "What happens when your new book is so massive it can’t even become a hardcover? This week on A Little Throuple Tea, we’re celebrating Labor Day, revealing how Fault Lines became the 730-page “Throuple Bible” and explaining why formatting the book nearly broke us—or inspired us to build something completely new. We also prepare for Southern California rain like a hurricane is coming, revisit one of the worst rescue plans in history and let Bowl of Chaos expose which one of us becomes dangerously confident after watching a single YouTube tutorial. Then, the Throuple Hotline brings us a relationship problem involving a three-year boyfriend who is still being introduced to the family as “the friend.” How long do you keep the peace before it becomes disrespect? Plus, Sassy Astrology, an emotional family tribute and one host ending the entire Labor Day episode with the wrong holiday. Tell us: Would you read a 730-page Throuple Bible—and how long would you tolerate being called “the friend”? Submit your questions, stories, relationship chaos and confessions through the Throuple Hotline. Download the FREE Throuple Tea app on Apple and Android to watch and listen, play Bowl of Chaos, enter Win a Book Wednesday and keep up with everything happening in our world. Visit ThroupleTea.com and read our weekly companion article with the Los Angeles Blade. Follow, subscribe, rate, review and share the show. Throuple life. It doesn’t suck.",
+      "image": "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/44265273/44265273-1788472202658-e5a705843865e.jpg",
+      "webUrl": "https://podcasters.spotify.com/pod/show/3dudes1life/episodes/The-Throuple-Bible--Labor-Day-Chaos--S2-Ep33-e3oahf8",
+      "audioUrl": "https://anchor.fm/s/1087008c4/podcast/play/125174696/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-3%2F431143920-44100-2-2e10d7db1184a.mp3",
+      "date": "2026-09-04T07:00:00+00:00",
+      "duration": "01:10:43",
+      "season": 2,
+      "episode": 33
+    },
     {
       "id": "s2-ep32-big-brother-beach-burns-shots-fired",
       "title": "Big Brother, Beach Burns & Shots Fired | S2 Ep32",
@@ -613,6 +627,15 @@
   ],
   "videos": [
     {
+      "id": "_U052evCU80",
+      "title": "The Throuple Bible & Labor Day Chaos | S2 Ep33",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/_U052evCU80/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhTIFUoZTAP&rs=AOn4CLA1_Oa3y3MLPvla1qBdi0-42P575A",
+      "url": "https://www.youtube.com/watch?v=_U052evCU80",
+      "kind": "episode",
+      "durationSeconds": 4244
+    },
+    {
       "id": "_RTy6fkUSM8",
       "title": "Big Brother, Beach Burns & Shots Fired | S2 Ep32",
       "published": "",
@@ -1039,7 +1062,7 @@
       "id": "hCzVO3n5dac",
       "title": "South Dakota State Has… Right? 🌴💀 | S2 Ep32",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/hCzVO3n5dac/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLACe4GK9wheKwUUwG9tX2Xp-QIPcw&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/hCzVO3n5dac/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBGgDEqAd9BsJ4a73fbmWhUPMdBNw&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=hCzVO3n5dac",
       "kind": "short",
       "durationSeconds": 0
@@ -1048,7 +1071,7 @@
       "id": "mh4f5pidOR8",
       "title": "The Beach Was FOUR Tents Deep?! 🏖️💀 | S2 Ep32",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/mh4f5pidOR8/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDV6zavqDMrKHfrbM2Xz8qROUzQow&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/mh4f5pidOR8/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDSoGRSjqKdE0eoESNaAvFkECnd_w&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=mh4f5pidOR8",
       "kind": "short",
       "durationSeconds": 0
@@ -1066,7 +1089,7 @@
       "id": "EVBKfC9mHgc",
       "title": "Collective Energy • August 28–September 3 🔮✨ | S2 Ep32",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/EVBKfC9mHgc/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBZ54007G-Pj9cUVRSDs6BSxT-Dvg&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/EVBKfC9mHgc/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBkJDd9sqwFnG_9rrMWJCaCAk7Cnw&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=EVBKfC9mHgc",
       "kind": "short",
       "durationSeconds": 0
@@ -1138,7 +1161,7 @@
       "id": "uXEW9HN5erA",
       "title": "Collective Energy • August 21–27 🔮✨ | S2 Ep31",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/uXEW9HN5erA/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDlvZWH-7NdMFwxb30h_TmccfhihA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/uXEW9HN5erA/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB8qTI8tPKVBI3gBNnpA_NM3BVB4g&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=uXEW9HN5erA",
       "kind": "short",
       "durationSeconds": 0
@@ -1147,7 +1170,7 @@
       "id": "IS56KuYmOuM",
       "title": "Daniel Apparently Has a Spider-Man Setting 🕸️💀 | S2 Ep31",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/IS56KuYmOuM/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAhJaQLk__RIpGgLoVK7nBp6wtyYA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/IS56KuYmOuM/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDLYym40iJqv7B4z8Hgr2aNP3Ldxw&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=IS56KuYmOuM",
       "kind": "short",
       "durationSeconds": 0
@@ -1165,7 +1188,7 @@
       "id": "o3FJgFSY2jo",
       "title": "The Fastest Way to Ruin Brunch? 💀🥞 | S2 Ep30",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/o3FJgFSY2jo/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAEEO3qMVJRCE4fghqsI114NrWtjQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/o3FJgFSY2jo/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDIpjaiN-FtNMhYPQ9N_qINdTkEPQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=o3FJgFSY2jo",
       "kind": "short",
       "durationSeconds": 0
@@ -1174,7 +1197,7 @@
       "id": "_FxtgS52s5I",
       "title": "We Accidentally Invented a Mark Consuelos Scandal 💀😂 | S2 Ep30",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/_FxtgS52s5I/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC1touZRy4q_RxkU2lunkinXar2JA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/_FxtgS52s5I/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBWRxDPRNjjytG7AaLB7L6yo1yyDg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=_FxtgS52s5I",
       "kind": "short",
       "durationSeconds": 0
@@ -1183,7 +1206,7 @@
       "id": "j0SozobMxPw",
       "title": "Syndicated One Episode Ago… Already Unhinged 😂 | S2 Ep30",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/j0SozobMxPw/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA8qInuuOLZ9jLwW0MaIuxKFy2qlg&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/j0SozobMxPw/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAhMggf8I7D7l3jxEWkQ1iTHuc5rA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=j0SozobMxPw",
       "kind": "short",
       "durationSeconds": 0
@@ -1192,7 +1215,7 @@
       "id": "bB75DNqkvlU",
       "title": "Numbers Are Confusing… It’s Like Math & Stuff 😂 | S2 Ep30",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/bB75DNqkvlU/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB9_WMFiSYKTu9oizhgJBD2ITKQ8g&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/bB75DNqkvlU/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBA2-WX5ia6Wx1ddqSenBc7NbTbLA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=bB75DNqkvlU",
       "kind": "short",
       "durationSeconds": 0
@@ -1210,7 +1233,7 @@
       "id": "_7A3fvYE7s0",
       "title": "Collective Energy • August 14–20 🔮✨| S2 Ep30",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/_7A3fvYE7s0/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD9Xzxpqcq-WnnHQLRX-7U4JyqBbQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/_7A3fvYE7s0/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAZZUekpLMqDK4jFqKF_lpT0RydYA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=_7A3fvYE7s0",
       "kind": "short",
       "durationSeconds": 0
@@ -1219,7 +1242,7 @@
       "id": "yDuXuLtm5Lg",
       "title": "We Finally Named the Hamster in Will’s Brain 🤖💀 | S2 Ep30",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/yDuXuLtm5Lg/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA0CKdwEQnjM3DC9dRTbzQIwQtL6g&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/yDuXuLtm5Lg/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCXO4w5lUnkdSQZFh3ru36LWOxrkw&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=yDuXuLtm5Lg",
       "kind": "short",
       "durationSeconds": 0
@@ -1246,7 +1269,7 @@
       "id": "yHhY24xTrQU",
       "title": "Never Mix Cutwater & Fireball… Trust Us. 🥃💀 | S2 Ep29",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/yHhY24xTrQU/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDqPZ3XnzwAEIrisQ8G45Wzd-3KPg&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/yHhY24xTrQU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD6f6EYQmc9D_TkcBCM8UzvZBZXiA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=yHhY24xTrQU",
       "kind": "short",
       "durationSeconds": 0
@@ -1255,7 +1278,7 @@
       "id": "NU_iOdkoBzg",
       "title": "I Got Replaced by an iPad at the Gay Bar 😂📱 | S2 Ep 29",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/NU_iOdkoBzg/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBMvp3fXlMzuwNXcj5g5_0CI6b69A&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/NU_iOdkoBzg/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDHJN6yBr7eAe5S6VxRBPqZjnQN_Q&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=NU_iOdkoBzg",
       "kind": "short",
       "durationSeconds": 0
@@ -1318,7 +1341,7 @@
       "id": "ZCQJQW4pvDM",
       "title": "Why Do We Sound Like The View…  🐔😂 | EP 28",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/ZCQJQW4pvDM/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCAF7Yy4660q4XpjIT8oH6jMdVcvQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/ZCQJQW4pvDM/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDJAECXR3tdyNV7WNCdb0hgKjrnjA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=ZCQJQW4pvDM",
       "kind": "short",
       "durationSeconds": 0
@@ -1327,7 +1350,7 @@
       "id": "ykwBU4V6CKY",
       "title": "Flat Earthers vs. Gemini Logic 🌎😂 | S2 Ep28",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/ykwBU4V6CKY/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAJF9gH7AUvnAXVP4_j72wuCGwnKw&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/ykwBU4V6CKY/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAqFVrsUd7jsONggNMZnLbLMn0ldA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=ykwBU4V6CKY",
       "kind": "short",
       "durationSeconds": 0
@@ -1345,7 +1368,7 @@
       "id": "h-0hdpLdEPM",
       "title": "He Said “Wrong Throat”… 💀🐐 | S2 Ep28",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/h-0hdpLdEPM/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCF0gSU9S0TyiPwY881WdnfDERmMQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/h-0hdpLdEPM/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDbohTN_if6hoNiedc2KkCfM1P9zQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=h-0hdpLdEPM",
       "kind": "short",
       "durationSeconds": 0
@@ -1390,7 +1413,7 @@
       "id": "HkeVoAqErmw",
       "title": "The Deli Meat Upgrade 😂🥪 | S2 Ep27",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/HkeVoAqErmw/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDAyADROMR3fzcAPfR_YNbtJJVPIQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/HkeVoAqErmw/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCVuuqIbQq-lTFsJlWMsjydBik-og&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=HkeVoAqErmw",
       "kind": "short",
       "durationSeconds": 0
@@ -1435,7 +1458,7 @@
       "id": "VBbKY1WW_Jw",
       "title": "We Thought Two-Story Houses Meant You Were Rich 😂🏡 | S2 Ep27",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/VBbKY1WW_Jw/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCH9kcyHznUGdLi6_tvS-ZJH6xcbg&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/VBbKY1WW_Jw/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD9ZUCdYVeqSxsqHoFffVnDOROnZg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=VBbKY1WW_Jw",
       "kind": "short",
       "durationSeconds": 0
@@ -1444,7 +1467,7 @@
       "id": "RkDMc_u_e2s",
       "title": "Dear Throuple Hotline 😭",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/RkDMc_u_e2s/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB-chHaB50hOJyt21WwRzC-IMw_Lg&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/RkDMc_u_e2s/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB_W7Q0OPzMY134Rmpe-neFTO18QQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=RkDMc_u_e2s",
       "kind": "short",
       "durationSeconds": 0
@@ -1453,7 +1476,7 @@
       "id": "DabXxEnmfjk",
       "title": "How Did We Go From Tacos to a Hole Pic?! 🌮💀 | S2 Ep26",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/DabXxEnmfjk/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAIgBTgSwQm02miHd0uSR_RVFA_cg&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/DabXxEnmfjk/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA1k2xPtGtO9rBuAEy9bpRl9LUTWQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=DabXxEnmfjk",
       "kind": "short",
       "durationSeconds": 0
@@ -1507,7 +1530,7 @@
       "id": "rI_NI9zLhH4",
       "title": "Sassy Astrology 🔮 Collective Energy | July 17–23 | S2 Ep26",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/rI_NI9zLhH4/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAghMsQoDVXwf1tLGB7rP4Mr0oYnQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/rI_NI9zLhH4/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC7DvGrB7i78JzGZfQUOsv-lDgOQg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=rI_NI9zLhH4",
       "kind": "short",
       "durationSeconds": 0
@@ -1525,7 +1548,7 @@
       "id": "zYbgryzBa4U",
       "title": "There’s a Bird That Says CHEESEBURGER?! 🍔🐦 | S2 Ep25",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/zYbgryzBa4U/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBLMqpXstwD3GVyyQ55Zgf0Z6g5aA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/zYbgryzBa4U/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAlAJlmDxR3WrPwO49MdB7AZU_Vzg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=zYbgryzBa4U",
       "kind": "short",
       "durationSeconds": 0
@@ -1534,7 +1557,7 @@
       "id": "RjB9eCdIwF8",
       "title": "Tahoe Trees Ruined Our Lives 🌲😭 | S2 Ep25",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/RjB9eCdIwF8/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA6XxsmbLT0yNEym6dj8cRtgWSchQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/RjB9eCdIwF8/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCkerZb9bNnPgjovppYNSUAPtC1cA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=RjB9eCdIwF8",
       "kind": "short",
       "durationSeconds": 0
@@ -1606,7 +1629,7 @@
       "id": "o-52NLY8PvQ",
       "title": "Why Gay Men Love Summer 😂 | S2 Ep24",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/o-52NLY8PvQ/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC2CCRxB5O_N9ns7Wqj2QdR7fUhKg&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/o-52NLY8PvQ/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBGFengFjEQrm064mm-3fdvI76KSg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=o-52NLY8PvQ",
       "kind": "short",
       "durationSeconds": 0
@@ -1615,7 +1638,7 @@
       "id": "T5ecVJTtQKE",
       "title": "The Gayest Halloween Ever 🎃🌈😂 | S2 Ep24",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/T5ecVJTtQKE/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDcccx32TggOAHswCuxX0FzWiZFaA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/T5ecVJTtQKE/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA1bdku8cPRaqAiiRRanrXWxVwVgg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=T5ecVJTtQKE",
       "kind": "short",
       "durationSeconds": 0
@@ -1633,7 +1656,7 @@
       "id": "gXJqcKcBNBM",
       "title": "🔮 Stop Avoiding The Answer… You Already Know It 😳 | S2 Ep24",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/gXJqcKcBNBM/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBF3rMnn6rTByWqTAyjP5_9JrVYVQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/gXJqcKcBNBM/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCeLfa3oj-WrQBt55l2rOYVyQpvWg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=gXJqcKcBNBM",
       "kind": "short",
       "durationSeconds": 0
@@ -1660,7 +1683,7 @@
       "id": "Th3GaoUiCus",
       "title": "The Vons Meat Counter Was CHAOS 😂🥩 | S2 Ep23",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/Th3GaoUiCus/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBXSm877bnoXBu95KbJpdlvx3eVpA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/Th3GaoUiCus/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBBGEjDXI7cA2Km09z2ljatsOB8pg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=Th3GaoUiCus",
       "kind": "short",
       "durationSeconds": 0
@@ -1669,7 +1692,7 @@
       "id": "6PKptjB5BVI",
       "title": "“Pull Beads” Took A Weird Turn 🫘😂 | S2 Ep23",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/6PKptjB5BVI/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBXMrHbMwniSi4Kf3v3XBOOd96Ewg&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/6PKptjB5BVI/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCXXN-njmcuNcBvRpqEwDwI6g4xlg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=6PKptjB5BVI",
       "kind": "short",
       "durationSeconds": 0
