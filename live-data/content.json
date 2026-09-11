@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-09-11T04:48:48.631407+00:00",
+  "generatedAt": "2026-09-11T09:48:30.208283+00:00",
   "source": "resilient-rss+website+youtube-tabs+atom",
   "sourceStatus": {
     "websiteArchive": "fresh",
@@ -8,6 +8,20 @@
     "youtube": "fresh"
   },
   "episodes": [
+    {
+      "id": "hot-guy-court-41-men-zero-due-process-s2-ep34",
+      "title": "Hot Guy Court: 41 Men, Zero Due Process - S2 Ep34",
+      "label": "",
+      "summary": "Hot Guy Court is officially in session!This week on A Little Throuple Tea, we’re putting 41 famous men on trial and rating them from 1 to 10—with no changed votes, no defense and absolutely no guarantee of good taste.Bad Bunny, Maluma, Glenn Powell, Oscar Isaac, Jason Momoa, Chris Evans and plenty more face three very different judges. Some men break the scoring system, some cause an unexpected age crisis and others leave us questioning what the internet considers hot.We eventually crown three different champions and discover the one man who somehow earned full throuple approval.Want to play along? Head to @ThroupleTea on Instagram, where we posted every hottie in the exact order we discussed them. Follow along while you watch, then vote for your favorite in the comments.Plus, Sassy Astrology tells us to stop clinging to what feels safe, celebrity dad jokes nearly get thrown out of court and the Bowl of Chaos skips the game—but still DoorDashes us three Fireball shots from vacation.Download the FREE Throuple Tea app on Apple and Android to watch and listen, send us a Throuple Hotline message, enter Win a Book Wednesday and keep up with everything happening in our world.Visit ThroupleTea.com and read our weekly companion article with the Los Angeles Blade.Follow, subscribe, rate, review and share the show with someone whose celebrity taste needs to be investigated.Throuple life. It doesn’t suck.",
+      "description": "Hot Guy Court is officially in session!This week on A Little Throuple Tea, we’re putting 41 famous men on trial and rating them from 1 to 10—with no changed votes, no defense and absolutely no guarantee of good taste.Bad Bunny, Maluma, Glenn Powell, Oscar Isaac, Jason Momoa, Chris Evans and plenty more face three very different judges. Some men break the scoring system, some cause an unexpected age crisis and others leave us questioning what the internet considers hot.We eventually crown three different champions and discover the one man who somehow earned full throuple approval.Want to play along? Head to @ThroupleTea on Instagram, where we posted every hottie in the exact order we discussed them. Follow along while you watch, then vote for your favorite in the comments.Plus, Sassy Astrology tells us to stop clinging to what feels safe, celebrity dad jokes nearly get thrown out of court and the Bowl of Chaos skips the game—but still DoorDashes us three Fireball shots from vacation.Download the FREE Throuple Tea app on Apple and Android to watch and listen, send us a Throuple Hotline message, enter Win a Book Wednesday and keep up with everything happening in our world.Visit ThroupleTea.com and read our weekly companion article with the Los Angeles Blade.Follow, subscribe, rate, review and share the show with someone whose celebrity taste needs to be investigated.Throuple life. It doesn’t suck.",
+      "image": "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/44265273/44265273-1788991474382-de425c0b7ad82.jpg",
+      "webUrl": "https://podcasters.spotify.com/pod/show/3dudes1life/episodes/Hot-Guy-Court-41-Men--Zero-Due-Process---S2-Ep34-e3ok571",
+      "audioUrl": "https://anchor.fm/s/1087008c4/podcast/play/125489825/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-9%2F431562584-44100-2-cac74011e1943.mp3",
+      "date": "2026-09-11T07:00:00+00:00",
+      "duration": "01:08:20",
+      "season": 2,
+      "episode": 34
+    },
     {
       "id": "s2-ep33-the-throuple-bible-labor-day-chaos",
       "title": "The Throuple Bible & Labor Day Chaos | S2 Ep33",
@@ -627,6 +641,15 @@
   ],
   "videos": [
     {
+      "id": "mbK7Bfb9mI4",
+      "title": "Hot Guy Court: 41 Men, Zero Due Process - S2 Ep34",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/mbK7Bfb9mI4/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhyIDwoNjAP&rs=AOn4CLDM0pMADZjIm2DzgOGglYS7UIyT7w",
+      "url": "https://www.youtube.com/watch?v=mbK7Bfb9mI4",
+      "kind": "episode",
+      "durationSeconds": 4101
+    },
+    {
       "id": "_U052evCU80",
       "title": "The Throuple Bible & Labor Day Chaos | S2 Ep33",
       "published": "",
@@ -1026,7 +1049,7 @@
       "id": "XvUHshzeYjw",
       "title": "Maluma Broke Will 😂🔥 | S2 Ep34",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/XvUHshzeYjw/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAM0CMapcVOhneUZRy5p88g8b44fw&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/XvUHshzeYjw/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAHxmRoJZbBYVNLu4JscX1wivcHFA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=XvUHshzeYjw",
       "kind": "short",
       "durationSeconds": 0
@@ -1044,7 +1067,7 @@
       "id": "TOd6G05JDdo",
       "title": "Caleb in 3 Emojis 😂 | S2 Ep33",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/TOd6G05JDdo/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAaX-op4wSguufOh0SNdRo-wyY9pA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/TOd6G05JDdo/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLArfPk-TbRFAtlkaYL4M6d_qj0RBA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=TOd6G05JDdo",
       "kind": "short",
       "durationSeconds": 0
@@ -1053,7 +1076,7 @@
       "id": "cGNaNu-3bSY",
       "title": "Happy Memorial Day! 💀 | S2 Ep33",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/cGNaNu-3bSY/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD5YPuJqA87C39awcm0NovW_5InoA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/cGNaNu-3bSY/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBJLdrNmpgaKMyMJDtSaVgIbS29FQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=cGNaNu-3bSY",
       "kind": "short",
       "durationSeconds": 0
@@ -1062,7 +1085,7 @@
       "id": "4NhZav4NdhI",
       "title": "CLIMATOLOGY IS REAL 😂🌎 | S2 Ep33",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/4NhZav4NdhI/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBgqskRbeOKMqTUvai-lehBf55VWA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/4NhZav4NdhI/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDUeP962hEJXfEWvQmEOvZjAP0jPQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=4NhZav4NdhI",
       "kind": "short",
       "durationSeconds": 0
@@ -1089,7 +1112,7 @@
       "id": "316UM__mDJA",
       "title": "Your Energy for Sept 4–10 🔮 | S2 Ep33",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/316UM__mDJA/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBBuEeJJgQUAKr2veoXc2_vq0RSqQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/316UM__mDJA/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBiJrk5koTV8WYu_8fAno3I8UZ1pQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=316UM__mDJA",
       "kind": "short",
       "durationSeconds": 0
@@ -1116,7 +1139,7 @@
       "id": "C1VJAD1p6L8",
       "title": "You HAVE to Pick One 🏖️😂 | S2 Ep32",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/C1VJAD1p6L8/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCn3syQFoBboqzmczDI8TUoGUoqEA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/C1VJAD1p6L8/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCsEE6A7LXo32yrJ48m8MWgu2Oecg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=C1VJAD1p6L8",
       "kind": "short",
       "durationSeconds": 0
@@ -1143,7 +1166,7 @@
       "id": "mh4f5pidOR8",
       "title": "The Beach Was FOUR Tents Deep?! 🏖️💀 | S2 Ep32",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/mh4f5pidOR8/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDSoGRSjqKdE0eoESNaAvFkECnd_w&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/mh4f5pidOR8/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDV6zavqDMrKHfrbM2Xz8qROUzQow&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=mh4f5pidOR8",
       "kind": "short",
       "durationSeconds": 0
@@ -1152,7 +1175,7 @@
       "id": "YZchWZ6vNJE",
       "title": "What Happened to Big Brother?! 📺💀 | S2 Ep32",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/YZchWZ6vNJE/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAp5MhEUalpUCijLTiF4ZSCQW7Vqg&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/YZchWZ6vNJE/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD16189qB18TWJEnrobSXNMHJ6h7g&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=YZchWZ6vNJE",
       "kind": "short",
       "durationSeconds": 0
@@ -1161,7 +1184,7 @@
       "id": "EVBKfC9mHgc",
       "title": "Collective Energy • August 28–September 3 🔮✨ | S2 Ep32",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/EVBKfC9mHgc/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBZ54007G-Pj9cUVRSDs6BSxT-Dvg&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/EVBKfC9mHgc/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCEPfPx06-6besP0gpyxGCiXG0aNw&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=EVBKfC9mHgc",
       "kind": "short",
       "durationSeconds": 0
@@ -1197,7 +1220,7 @@
       "id": "8iwyb2qmfUQ",
       "title": "Would You See Britney Spears Right Now? 🔪😂 | S2 Ep31",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/8iwyb2qmfUQ/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA3SeqhrTqVVspVWgW7GspauOImrA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/8iwyb2qmfUQ/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAxC7_B4uaAOZ71k6oY8sO8HDfVVg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=8iwyb2qmfUQ",
       "kind": "short",
       "durationSeconds": 0
@@ -1242,7 +1265,7 @@
       "id": "IS56KuYmOuM",
       "title": "Daniel Apparently Has a Spider-Man Setting 🕸️💀 | S2 Ep31",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/IS56KuYmOuM/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDCeLeqcW9QuEyzvbAktpNHeR2dIw&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/IS56KuYmOuM/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAhJaQLk__RIpGgLoVK7nBp6wtyYA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=IS56KuYmOuM",
       "kind": "short",
       "durationSeconds": 0
@@ -1260,7 +1283,7 @@
       "id": "o3FJgFSY2jo",
       "title": "The Fastest Way to Ruin Brunch? 💀🥞 | S2 Ep30",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/o3FJgFSY2jo/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDIpjaiN-FtNMhYPQ9N_qINdTkEPQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/o3FJgFSY2jo/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDdrEoJaXithU6z9TUCrXsaqW1aTA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=o3FJgFSY2jo",
       "kind": "short",
       "durationSeconds": 0
@@ -1287,7 +1310,7 @@
       "id": "bB75DNqkvlU",
       "title": "Numbers Are Confusing… It’s Like Math & Stuff 😂 | S2 Ep30",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/bB75DNqkvlU/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBA2-WX5ia6Wx1ddqSenBc7NbTbLA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/bB75DNqkvlU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDUoBbccsXW-y9jCnVBNYNbGUdeCA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=bB75DNqkvlU",
       "kind": "short",
       "durationSeconds": 0
@@ -1332,7 +1355,7 @@
       "id": "GZPXnQ7IpjE",
       "title": "“At Least I’ll Be Basic…” 💀 | S2 Ep 29",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/GZPXnQ7IpjE/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBSSagkPjl__xLOw98RI_5Hf7qJyQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/GZPXnQ7IpjE/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDWSUoDVVFOroJzYyHOIKO9FGmTJw&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=GZPXnQ7IpjE",
       "kind": "short",
       "durationSeconds": 0
@@ -1386,7 +1409,7 @@
       "id": "dUiVsMql7lA",
       "title": "Our Domestic Partnership Meant… NOTHING? 💍😳 | S2 Ep29",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/dUiVsMql7lA/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBJcyLn7_55QoDr4IWxE_ED4p-LVg&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/dUiVsMql7lA/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB46P49wgCRl9aOgM7X9a80oQI85g&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=dUiVsMql7lA",
       "kind": "short",
       "durationSeconds": 0
@@ -1413,7 +1436,7 @@
       "id": "ZCQJQW4pvDM",
       "title": "Why Do We Sound Like The View…  🐔😂 | EP 28",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/ZCQJQW4pvDM/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCAF7Yy4660q4XpjIT8oH6jMdVcvQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/ZCQJQW4pvDM/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDJAECXR3tdyNV7WNCdb0hgKjrnjA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=ZCQJQW4pvDM",
       "kind": "short",
       "durationSeconds": 0
@@ -1422,7 +1445,7 @@
       "id": "ykwBU4V6CKY",
       "title": "Flat Earthers vs. Gemini Logic 🌎😂 | S2 Ep28",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/ykwBU4V6CKY/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC4CIDH7G1L89Rt4f4mLCOGdAU7cw&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/ykwBU4V6CKY/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAqFVrsUd7jsONggNMZnLbLMn0ldA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=ykwBU4V6CKY",
       "kind": "short",
       "durationSeconds": 0
@@ -1440,7 +1463,7 @@
       "id": "h-0hdpLdEPM",
       "title": "He Said “Wrong Throat”… 💀🐐 | S2 Ep28",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/h-0hdpLdEPM/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCF0gSU9S0TyiPwY881WdnfDERmMQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/h-0hdpLdEPM/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDbohTN_if6hoNiedc2KkCfM1P9zQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=h-0hdpLdEPM",
       "kind": "short",
       "durationSeconds": 0
@@ -1575,7 +1598,7 @@
       "id": "X6G2_CaeHv4",
       "title": "Daniel Had an Online Boyfriend in England?! 🇬🇧😭 | S2 Ep26",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/X6G2_CaeHv4/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDSsKz_iHYZKcAFjTg_biK6pIi1dg&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/X6G2_CaeHv4/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB88hv19dL90lgZhaLkUddrGoL1Pg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=X6G2_CaeHv4",
       "kind": "short",
       "durationSeconds": 0
@@ -1602,7 +1625,7 @@
       "id": "rI_NI9zLhH4",
       "title": "Sassy Astrology 🔮 Collective Energy | July 17–23 | S2 Ep26",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/rI_NI9zLhH4/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAghMsQoDVXwf1tLGB7rP4Mr0oYnQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/rI_NI9zLhH4/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCnzUwpFiT116MdkGMePIb12G_mLA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=rI_NI9zLhH4",
       "kind": "short",
       "durationSeconds": 0
@@ -1611,7 +1634,7 @@
       "id": "MkF0MbDi2Jk",
       "title": "Will Keeps His Gay Card WHERE?! 🌈💀 | S2 Ep26",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/MkF0MbDi2Jk/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAYcLR4qgQBzG6DUMrgGr8D7TcDaw&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/MkF0MbDi2Jk/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAsr3iU5TMBXT9IZVaoCYKOFEg1tg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=MkF0MbDi2Jk",
       "kind": "short",
       "durationSeconds": 0
@@ -1638,7 +1661,7 @@
       "id": "WEa34SUMQvc",
       "title": "They Took Photos for 45 MINUTES 😭🏖️ | S2 Ep25",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/WEa34SUMQvc/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAAw_8f5m2yph4WOQUDYn6mmAW6mg&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/WEa34SUMQvc/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBaKv_loAEXxsZT56TReKnlWtoQdg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=WEa34SUMQvc",
       "kind": "short",
       "durationSeconds": 0
@@ -1647,7 +1670,7 @@
       "id": "7ezFdVFQp7A",
       "title": "A Squirrel Threatened Me 😭🐿️ | S2 Ep25",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/7ezFdVFQp7A/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBzEneQS8AlwWcod3hXQbEblwwLxw&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/7ezFdVFQp7A/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD_nGmFlNWksqeyNykKZvJGygL8YA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=7ezFdVFQp7A",
       "kind": "short",
       "durationSeconds": 0
@@ -1656,7 +1679,7 @@
       "id": "GMUCVErhAC4",
       "title": "I’m Old Enough to Be a Grandpa?! 😭💀 | S2 Ep25",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/GMUCVErhAC4/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAwKfVLDmd9bhdfLYKJBF2lvDMOMA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/GMUCVErhAC4/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCnlYn0v0ZcOBMmzny_t31p4pn_0A&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=GMUCVErhAC4",
       "kind": "short",
       "durationSeconds": 0
