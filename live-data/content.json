@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-09-25T01:36:28.939291+00:00",
+  "generatedAt": "2026-09-25T07:56:41.278234+00:00",
   "source": "resilient-rss+website+youtube-tabs+atom",
   "sourceStatus": {
     "websiteArchive": "fresh",
@@ -8,6 +8,20 @@
     "youtube": "fresh"
   },
   "episodes": [
+    {
+      "id": "fireball-pig-frogs-things-we-shouldn-t-say-on-mic-s2-ep36",
+      "title": "Fireball, Pig Frogs & Things We Shouldn’t Say on Mic | S2 Ep36",
+      "label": "",
+      "summary": "What happens when three guys sit down to talk about podcasting and immediately lose control of the conversation?This week on A Little Throuple Tea, we somehow go from the episodes we actually remember to whether we interrupt each other more now, the ridiculous amount of work that happens after we stop recording, and why apparently none of us are actually listening when the other two are talking.Then things get considerably less productive.We invent an entirely new species called the pig frog, discover that our former “meat boy” may have become a flower boy, debate whether homemade cookies can be smuggled onto a cruise ship, and let Fireball make several decisions for us.We also get into something a little creepier: some of the haunting moments from Tres Amigos, Una Vida: Fault Lines were inspired by things that actually happened in our house—including a bedroom door mysteriously being wide open in the middle of the night.Then the Bowl of Chaos exposes who derails the show, who interrupts everybody, who tells stories the other two definitely did not approve for public consumption, and the uncomfortable realization that all three of us might just be waiting for our turn to talk.The Throuple Hotline asks where we actually record the podcast, which leads to the glamorous reveal that our “basement studio” is really a converted garage approximately one step below the rest of the house.Plus, Sassy Astrology comes for anyone overthinking their life, Zoe becomes our unexpected first podcast guest, and Daniel somehow finds an audiobook dad joke to close everything out.Also in this episode:• The Halloween episode none of us can forget• Why making one podcast episode can turn into three days of work• The return of completely unnecessary throuple arguments• Pig frogs and the science nobody requested• Our plans to eventually take the podcast on the road• The Bowl of Chaos + Fireball• Caleb from Nebraska calls the Throuple Hotline• Zoe crashes Sassy Astrology• The real-life haunting behind parts of Book Two• Daniel’s Dad JokeTell us: What is the most unhinged conversation you’ve ever had that started completely normally?Submit your questions, stories, relationship chaos and confessions through the Throuple Hotline.Download the FREE Throuple Tea app on Apple and Android to watch and listen, chat with us, leave a message on the Tea Wall, play Bowl of Chaos, enter Win a Book Wednesday and keep up with everything happening in our world.Visit ThroupleTea.com and read our weekly companion article with the Los Angeles Blade.Follow, subscribe, rate, review and share the show with somebody who would absolutely help us breed a pig frog.Throuple life. It doesn’t suck.",
+      "description": "What happens when three guys sit down to talk about podcasting and immediately lose control of the conversation?This week on A Little Throuple Tea, we somehow go from the episodes we actually remember to whether we interrupt each other more now, the ridiculous amount of work that happens after we stop recording, and why apparently none of us are actually listening when the other two are talking.Then things get considerably less productive.We invent an entirely new species called the pig frog, discover that our former “meat boy” may have become a flower boy, debate whether homemade cookies can be smuggled onto a cruise ship, and let Fireball make several decisions for us.We also get into something a little creepier: some of the haunting moments from Tres Amigos, Una Vida: Fault Lines were inspired by things that actually happened in our house—including a bedroom door mysteriously being wide open in the middle of the night.Then the Bowl of Chaos exposes who derails the show, who interrupts everybody, who tells stories the other two definitely did not approve for public consumption, and the uncomfortable realization that all three of us might just be waiting for our turn to talk.The Throuple Hotline asks where we actually record the podcast, which leads to the glamorous reveal that our “basement studio” is really a converted garage approximately one step below the rest of the house.Plus, Sassy Astrology comes for anyone overthinking their life, Zoe becomes our unexpected first podcast guest, and Daniel somehow finds an audiobook dad joke to close everything out.Also in this episode:• The Halloween episode none of us can forget• Why making one podcast episode can turn into three days of work• The return of completely unnecessary throuple arguments• Pig frogs and the science nobody requested• Our plans to eventually take the podcast on the road• The Bowl of Chaos + Fireball• Caleb from Nebraska calls the Throuple Hotline• Zoe crashes Sassy Astrology• The real-life haunting behind parts of Book Two• Daniel’s Dad JokeTell us: What is the most unhinged conversation you’ve ever had that started completely normally?Submit your questions, stories, relationship chaos and confessions through the Throuple Hotline.Download the FREE Throuple Tea app on Apple and Android to watch and listen, chat with us, leave a message on the Tea Wall, play Bowl of Chaos, enter Win a Book Wednesday and keep up with everything happening in our world.Visit ThroupleTea.com and read our weekly companion article with the Los Angeles Blade.Follow, subscribe, rate, review and share the show with somebody who would absolutely help us breed a pig frog.Throuple life. It doesn’t suck.",
+      "image": "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/44265273/44265273-1790209336917-352d030da5a08.jpg",
+      "webUrl": "https://podcasters.spotify.com/pod/show/3dudes1life/episodes/Fireball--Pig-Frogs--Things-We-Shouldnt-Say-on-Mic--S2-Ep36-e3pacel",
+      "audioUrl": "https://anchor.fm/s/1087008c4/podcast/play/126218133/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-24%2F432544808-44100-2-00f78d52b7519.mp3",
+      "date": "2026-09-25T07:00:00+00:00",
+      "duration": "01:24:14",
+      "season": 2,
+      "episode": 36
+    },
     {
       "id": "s2-ep35-do-throuples-have-favorites-guess-who-s-not-getting-laid",
       "title": "Do Throuples Have Favorites? Guess Who's Not Getting Laid | S2 EP35",
@@ -655,6 +669,15 @@
   ],
   "videos": [
     {
+      "id": "S2MEBvmPDnU",
+      "title": "Fireball, Pig Frogs & Things We Shouldn’t Say on Mic | S2 Ep36",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/S2MEBvmPDnU/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhOIFcoZTAP&rs=AOn4CLC9p-Nj93wx-M9pGIOVFsBoU_9-AQ",
+      "url": "https://www.youtube.com/watch?v=S2MEBvmPDnU",
+      "kind": "episode",
+      "durationSeconds": 5054
+    },
+    {
       "id": "bIjsO284mMo",
       "title": "Do Throuples Have Favorites? Guess Who's Not Getting Laid | S2 EP35",
       "published": "",
@@ -1081,7 +1104,7 @@
       "id": "Vs_yPl1suaQ",
       "title": "Blackout Hungry 😂 | S2 Ep35",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/Vs_yPl1suaQ/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBxR1WOH7nq3nYoSOHG_CuUxhlKKQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/Vs_yPl1suaQ/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAELqK00px0Yz4K7krgJFaHvS0zQQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=Vs_yPl1suaQ",
       "kind": "short",
       "durationSeconds": 0
@@ -1099,7 +1122,7 @@
       "id": "_Ztud3HjzzA",
       "title": "Simpletic?! 😂 | S2 Ep35",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/_Ztud3HjzzA/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCn-Qqb9gsag3gOE8dqxbB0crOXgw&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/_Ztud3HjzzA/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCJK79a_s42TbTF6V4IRGpsLXCtWQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=_Ztud3HjzzA",
       "kind": "short",
       "durationSeconds": 0
@@ -1126,7 +1149,7 @@
       "id": "b2lPIf-CbeM",
       "title": "Bird Spikes in the Bed?! 💀 | S2 Ep35",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/b2lPIf-CbeM/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAR-5bn6G7MRjlnlvfHaNkkRtlVyA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/b2lPIf-CbeM/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBENKx9M8uQyzQSg8W6bc1dvrF8XQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=b2lPIf-CbeM",
       "kind": "short",
       "durationSeconds": 0
@@ -1135,7 +1158,7 @@
       "id": "g5-pXIrL3mw",
       "title": "Your Energy: Sept 18–24 🔮 | S2 Ep35",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/g5-pXIrL3mw/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD0U1jshzhi6BnRUYYx9KK262_zYQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/g5-pXIrL3mw/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB-x3E3ZqqFHUHbqSRQM1JRJNo8Cg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=g5-pXIrL3mw",
       "kind": "short",
       "durationSeconds": 0
@@ -1153,7 +1176,7 @@
       "id": "0EAVTGEIE_4",
       "title": "Glen Powell: Unanimous 😂 | S2 Ep34",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/0EAVTGEIE_4/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA3ZIPhj5r2u6p3xkWafVr_96wl9w&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/0EAVTGEIE_4/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAuGxGy-lSRkmwoyWkYZHZ11_YDzw&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=0EAVTGEIE_4",
       "kind": "short",
       "durationSeconds": 0
@@ -1162,7 +1185,7 @@
       "id": "bHzsbPdURLU",
       "title": "Hot or Not Before Self-Esteem 💀 | S2 Ep34",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/bHzsbPdURLU/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBbr1zOm8760_9otfa2ZTseoFZ9UQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/bHzsbPdURLU/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAIi9qToIc7_D9-gzdzM0FU87kg-g&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=bHzsbPdURLU",
       "kind": "short",
       "durationSeconds": 0
@@ -1180,7 +1203,7 @@
       "id": "MAVDSHhjnPw",
       "title": "Girl, You’re a Djo?! 😂 | S2 Ep34",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/MAVDSHhjnPw/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDJcG8tlZIo4GEsgn6XSHMrTHn6eg&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/MAVDSHhjnPw/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC__XJFpuGTTpXiAQbTTaOOi2ZjOA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=MAVDSHhjnPw",
       "kind": "short",
       "durationSeconds": 0
@@ -1189,7 +1212,7 @@
       "id": "Z7cgbbKkb_s",
       "title": "Amazon Basics Hotties?! 💀 | S2 Ep34",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/Z7cgbbKkb_s/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAAWDMJnpwjUiiLHoISMMIIuSNv9w&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/Z7cgbbKkb_s/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAIpM8lAgsrpQ3JOrNP0i-S65s9EQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=Z7cgbbKkb_s",
       "kind": "short",
       "durationSeconds": 0
@@ -1207,7 +1230,7 @@
       "id": "NKOpHayarj8",
       "title": "Your Collective Energy: Sept 11–17 🔮 | S2 Ep34",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/NKOpHayarj8/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCKxvDNdUw8_S8RULwxSCYeeVXB5g&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/NKOpHayarj8/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBBFDaf601f52iwt706tyVSZPGSjw&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=NKOpHayarj8",
       "kind": "short",
       "durationSeconds": 0
@@ -1234,7 +1257,7 @@
       "id": "TOd6G05JDdo",
       "title": "Caleb in 3 Emojis 😂 | S2 Ep33",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/TOd6G05JDdo/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA19h8G9PAGc7c-IOf6ryIFl8yfjQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/TOd6G05JDdo/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLArfPk-TbRFAtlkaYL4M6d_qj0RBA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=TOd6G05JDdo",
       "kind": "short",
       "durationSeconds": 0
@@ -1252,7 +1275,7 @@
       "id": "4NhZav4NdhI",
       "title": "CLIMATOLOGY IS REAL 😂🌎 | S2 Ep33",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/4NhZav4NdhI/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBgqskRbeOKMqTUvai-lehBf55VWA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/4NhZav4NdhI/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBvKgZxsiUrJTOW1anklEnB1lRvZQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=4NhZav4NdhI",
       "kind": "short",
       "durationSeconds": 0
@@ -1261,7 +1284,7 @@
       "id": "XKIYPQsg_ts",
       "title": "We Wrote a 730-Page Book 💀 | S2 Ep33",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/XKIYPQsg_ts/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCj8N-2AFNhSnGkWx0eVe7PAgvh5A&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/XKIYPQsg_ts/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBo6H7HpDQdkflHp621BW8WBPEc-Q&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=XKIYPQsg_ts",
       "kind": "short",
       "durationSeconds": 0
@@ -1288,7 +1311,7 @@
       "id": "y41jw4ceE-o",
       "title": "Gay & Eating Chick-fil-A?! 💀 | S2 Ep33",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/y41jw4ceE-o/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCEUZqDmbL9muqVki8y7Yer-FzN8Q&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/y41jw4ceE-o/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAzxNPGjtYdG8qd1S-IRf4LsGvVqg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=y41jw4ceE-o",
       "kind": "short",
       "durationSeconds": 0
@@ -1324,7 +1347,7 @@
       "id": "hCzVO3n5dac",
       "title": "South Dakota State Has… Right? 🌴💀 | S2 Ep32",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/hCzVO3n5dac/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD60E7e6EBkEOn0__uHVmTDlZYF6w&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/hCzVO3n5dac/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLACe4GK9wheKwUUwG9tX2Xp-QIPcw&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=hCzVO3n5dac",
       "kind": "short",
       "durationSeconds": 0
@@ -1342,7 +1365,7 @@
       "id": "YZchWZ6vNJE",
       "title": "What Happened to Big Brother?! 📺💀 | S2 Ep32",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/YZchWZ6vNJE/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD16189qB18TWJEnrobSXNMHJ6h7g&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/YZchWZ6vNJE/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAp5MhEUalpUCijLTiF4ZSCQW7Vqg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=YZchWZ6vNJE",
       "kind": "short",
       "durationSeconds": 0
@@ -1387,7 +1410,7 @@
       "id": "8iwyb2qmfUQ",
       "title": "Would You See Britney Spears Right Now? 🔪😂 | S2 Ep31",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/8iwyb2qmfUQ/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA3SeqhrTqVVspVWgW7GspauOImrA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/8iwyb2qmfUQ/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDAxX_5uORV_FbYUsyXROjsQuzdkA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=8iwyb2qmfUQ",
       "kind": "short",
       "durationSeconds": 0
@@ -1432,7 +1455,7 @@
       "id": "IS56KuYmOuM",
       "title": "Daniel Apparently Has a Spider-Man Setting 🕸️💀 | S2 Ep31",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/IS56KuYmOuM/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDCeLeqcW9QuEyzvbAktpNHeR2dIw&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/IS56KuYmOuM/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAhJaQLk__RIpGgLoVK7nBp6wtyYA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=IS56KuYmOuM",
       "kind": "short",
       "durationSeconds": 0
@@ -1459,7 +1482,7 @@
       "id": "_FxtgS52s5I",
       "title": "We Accidentally Invented a Mark Consuelos Scandal 💀😂 | S2 Ep30",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/_FxtgS52s5I/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC1touZRy4q_RxkU2lunkinXar2JA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/_FxtgS52s5I/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAsGcdmPaPecLRaf_y6iCUl9MP3Mw&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=_FxtgS52s5I",
       "kind": "short",
       "durationSeconds": 0
@@ -1477,7 +1500,7 @@
       "id": "bB75DNqkvlU",
       "title": "Numbers Are Confusing… It’s Like Math & Stuff 😂 | S2 Ep30",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/bB75DNqkvlU/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB9_WMFiSYKTu9oizhgJBD2ITKQ8g&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/bB75DNqkvlU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDUoBbccsXW-y9jCnVBNYNbGUdeCA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=bB75DNqkvlU",
       "kind": "short",
       "durationSeconds": 0
@@ -1522,7 +1545,7 @@
       "id": "GZPXnQ7IpjE",
       "title": "“At Least I’ll Be Basic…” 💀 | S2 Ep 29",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/GZPXnQ7IpjE/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDvMLN3_YH3AWMa7E5HApXaqW5E2Q&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/GZPXnQ7IpjE/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBSSagkPjl__xLOw98RI_5Hf7qJyQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=GZPXnQ7IpjE",
       "kind": "short",
       "durationSeconds": 0
@@ -1531,7 +1554,7 @@
       "id": "yHhY24xTrQU",
       "title": "Never Mix Cutwater & Fireball… Trust Us. 🥃💀 | S2 Ep29",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/yHhY24xTrQU/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDqPZ3XnzwAEIrisQ8G45Wzd-3KPg&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/yHhY24xTrQU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD6f6EYQmc9D_TkcBCM8UzvZBZXiA&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=yHhY24xTrQU",
       "kind": "short",
       "durationSeconds": 0
@@ -1576,7 +1599,7 @@
       "id": "dUiVsMql7lA",
       "title": "Our Domestic Partnership Meant… NOTHING? 💍😳 | S2 Ep29",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/dUiVsMql7lA/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCyw90jD_aenvsejBJLtqmkDFX52A&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/dUiVsMql7lA/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB46P49wgCRl9aOgM7X9a80oQI85g&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=dUiVsMql7lA",
       "kind": "short",
       "durationSeconds": 0
@@ -1612,7 +1635,7 @@
       "id": "ykwBU4V6CKY",
       "title": "Flat Earthers vs. Gemini Logic 🌎😂 | S2 Ep28",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/ykwBU4V6CKY/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAqFVrsUd7jsONggNMZnLbLMn0ldA&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/ykwBU4V6CKY/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAJF9gH7AUvnAXVP4_j72wuCGwnKw&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=ykwBU4V6CKY",
       "kind": "short",
       "durationSeconds": 0
@@ -1666,7 +1689,7 @@
       "id": "JkdZzmGddgs",
       "title": "Sleep Number Beds Are for Saving Our Hips 😂🛏️ | S2 Ep27",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/JkdZzmGddgs/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDUC-r2RtqOyZFixeFuWm7owU0z7g&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/JkdZzmGddgs/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC_wx4zLYxZ5q_Yja11mZ5nAIFZxQ&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=JkdZzmGddgs",
       "kind": "short",
       "durationSeconds": 0
@@ -1720,7 +1743,7 @@
       "id": "VBbKY1WW_Jw",
       "title": "We Thought Two-Story Houses Meant You Were Rich 😂🏡 | S2 Ep27",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/VBbKY1WW_Jw/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAY-FQtUDCnSBFVEsjLQf9an-ZQBw&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/VBbKY1WW_Jw/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCH9kcyHznUGdLi6_tvS-ZJH6xcbg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=VBbKY1WW_Jw",
       "kind": "short",
       "durationSeconds": 0
@@ -1738,7 +1761,7 @@
       "id": "DabXxEnmfjk",
       "title": "How Did We Go From Tacos to a Hole Pic?! 🌮💀 | S2 Ep26",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/DabXxEnmfjk/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBpLuCTcThJn1tnTCIeTIA9t9mmaQ&usqp=CCk",
+      "thumbnail": "https://i.ytimg.com/vi/DabXxEnmfjk/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAIgBTgSwQm02miHd0uSR_RVFA_cg&usqp=CCk",
       "url": "https://www.youtube.com/watch?v=DabXxEnmfjk",
       "kind": "short",
       "durationSeconds": 0
