@@ -1,11 +1,12 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-30T13:52:37.067103+00:00",
+  "generatedAt": "2026-10-30T16:43:17.850733+00:00",
   "source": "resilient-rss+website+youtube-tabs+atom",
   "sourceStatus": {
     "websiteArchive": "fresh",
     "podcastRss": "fresh",
-    "youtube": "fresh"
+    "youtube": "fresh",
+    "podcastCatalogSafeguard": "preserved-1-missing-episodes"
   },
   "episodes": [
     {
@@ -1207,10 +1208,19 @@
       "durationSeconds": 40
     },
     {
+      "id": "AePelEn_t10",
+      "title": "Halloween Week Energy | S2 Ep41",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/AePelEn_t10/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD4y-zL2YMsxj7BfqUdMSRNjN7o0g",
+      "url": "https://www.youtube.com/watch?v=AePelEn_t10",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
       "id": "4pPwog4MrRg",
       "title": "Is Your Phone Listening?! | S2 Ep40",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/4pPwog4MrRg/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB0jV1w8-EGrmNhuQ7dUQ2e_HA7Kg",
+      "thumbnail": "https://i.ytimg.com/vi/4pPwog4MrRg/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAhbpTdHMt5__YOakmGjcHH-JY_sQ",
       "url": "https://www.youtube.com/watch?v=4pPwog4MrRg",
       "kind": "short",
       "durationSeconds": 0
@@ -1228,7 +1238,7 @@
       "id": "Ca_K9n4YPz4",
       "title": "Sneaking Online in 1999 | S2 Ep40",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/Ca_K9n4YPz4/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAxDZCuvUFOy47so6q-Zl_ghrtbPQ",
+      "thumbnail": "https://i.ytimg.com/vi/Ca_K9n4YPz4/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC7NQwSYhELDITRgQ5IG5rQDO41tQ",
       "url": "https://www.youtube.com/watch?v=Ca_K9n4YPz4",
       "kind": "short",
       "durationSeconds": 0
@@ -1246,7 +1256,7 @@
       "id": "jKvvTX1nIc0",
       "title": "Gay Dating Before Apps?! | S2 Ep40",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/jKvvTX1nIc0/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD_5q5ktw5n7zsQDCMDVurrYyOYDg",
+      "thumbnail": "https://i.ytimg.com/vi/jKvvTX1nIc0/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBUrljYb7oEIeKltX5Y4yWF1EBRtA",
       "url": "https://www.youtube.com/watch?v=jKvvTX1nIc0",
       "kind": "short",
       "durationSeconds": 0
@@ -1255,7 +1265,7 @@
       "id": "8CdWLvw_-mM",
       "title": "Mercury Retrograde Again?! 🔮 | S2 Ep40",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/8CdWLvw_-mM/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBkTaUH-rJSn36Sj71g3AW3n5Y28A",
+      "thumbnail": "https://i.ytimg.com/vi/8CdWLvw_-mM/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBVx3-dqoMijB2BFzvXyUuDk2CArg",
       "url": "https://www.youtube.com/watch?v=8CdWLvw_-mM",
       "kind": "short",
       "durationSeconds": 0
@@ -1273,7 +1283,7 @@
       "id": "TcZI2I6-lRo",
       "title": "We're the Lesbians from Shameless?!  | S2 Ep39",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/TcZI2I6-lRo/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBCmfbzyN30mqnawzbWfitUzeb3-Q",
+      "thumbnail": "https://i.ytimg.com/vi/TcZI2I6-lRo/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCw5gsa8K0jXdTgmlKCH7GjYFb3KQ",
       "url": "https://www.youtube.com/watch?v=TcZI2I6-lRo",
       "kind": "short",
       "durationSeconds": 0
@@ -1327,7 +1337,7 @@
       "id": "sxwo_aIS1Uc",
       "title": "I'm Burning the Bed! 🔥 | S2 Ep38",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/sxwo_aIS1Uc/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCmqTYDUVDiLvR8yZ3G-W1Ho1lb8w",
+      "thumbnail": "https://i.ytimg.com/vi/sxwo_aIS1Uc/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAl_NZL0aqc7EJSS2uNQkhfFh_-GA",
       "url": "https://www.youtube.com/watch?v=sxwo_aIS1Uc",
       "kind": "short",
       "durationSeconds": 0
@@ -1336,7 +1346,7 @@
       "id": "RL9y4aB6mY0",
       "title": "Tea in My Sugar?! ☕ | S2 Ep38",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/RL9y4aB6mY0/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCtbnt1mYyUedRKbKK8EvPPa4GMIw",
+      "thumbnail": "https://i.ytimg.com/vi/RL9y4aB6mY0/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA1ZFown2SYYzpD_4N740i9YsSC-w",
       "url": "https://www.youtube.com/watch?v=RL9y4aB6mY0",
       "kind": "short",
       "durationSeconds": 0
@@ -1354,7 +1364,7 @@
       "id": "g2gwQaVoXZM",
       "title": "Your Energy: Oct 9–15 | S2 Ep38",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/g2gwQaVoXZM/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBGFWsQZiGcr0H6DHAZ_skce6QCfA",
+      "thumbnail": "https://i.ytimg.com/vi/g2gwQaVoXZM/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAaXZK9wiNSnmO8I_s7ld2nHZEaNg",
       "url": "https://www.youtube.com/watch?v=g2gwQaVoXZM",
       "kind": "short",
       "durationSeconds": 0
@@ -1363,7 +1373,7 @@
       "id": "O3L7dm5jLmU",
       "title": "Taco Bell DENIED 😂🌮 | S2 Ep37",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/O3L7dm5jLmU/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDHPhV78gGDUbtWzcOW6vxi9DsOeA",
+      "thumbnail": "https://i.ytimg.com/vi/O3L7dm5jLmU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAPVoJoQZY9NAsqjZw9jJ7SiRMQ1w",
       "url": "https://www.youtube.com/watch?v=O3L7dm5jLmU",
       "kind": "short",
       "durationSeconds": 0
@@ -1372,7 +1382,7 @@
       "id": "olg2fmxUpB8",
       "title": "Do We Look Like Brothers?! 💀 | S2 Ep37",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/olg2fmxUpB8/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB2skNPjxWGPJ9AWHRL7WcnE64_Ig",
+      "thumbnail": "https://i.ytimg.com/vi/olg2fmxUpB8/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCuhz2NNxzb9MBvlDZhlEi5IC_IDw",
       "url": "https://www.youtube.com/watch?v=olg2fmxUpB8",
       "kind": "short",
       "durationSeconds": 0
@@ -1399,7 +1409,7 @@
       "id": "LZ08_E3MAiw",
       "title": "It’s 8 AM, Caleb! 💀 | S2 Ep37",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/LZ08_E3MAiw/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBPJauG-NSraiCDxfsrIPfCXAdHlw",
+      "thumbnail": "https://i.ytimg.com/vi/LZ08_E3MAiw/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBmV7jGt9wFc6ScBxS4thwxDvQjfQ",
       "url": "https://www.youtube.com/watch?v=LZ08_E3MAiw",
       "kind": "short",
       "durationSeconds": 0
@@ -1408,7 +1418,7 @@
       "id": "kwOoSZKr2C8",
       "title": "Four Relationships?! 😳 | S2 Ep37",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/kwOoSZKr2C8/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCjARMNomxgxr6iBv9wM8Srj6-BQw",
+      "thumbnail": "https://i.ytimg.com/vi/kwOoSZKr2C8/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB4MjVY7bO3VknCqlL5bfO07MSZZg",
       "url": "https://www.youtube.com/watch?v=kwOoSZKr2C8",
       "kind": "short",
       "durationSeconds": 0
@@ -1426,7 +1436,7 @@
       "id": "QYAOalW4sM0",
       "title": "Never Seen The Truman Show?! 💀 | S2 Ep36",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/QYAOalW4sM0/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBeqC6vMFzTR0zI2-M2rxK96z0nBQ",
+      "thumbnail": "https://i.ytimg.com/vi/QYAOalW4sM0/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBCDQ0a6-6FNaNITpUyQFOuL2wv7w",
       "url": "https://www.youtube.com/watch?v=QYAOalW4sM0",
       "kind": "short",
       "durationSeconds": 0
@@ -1444,7 +1454,7 @@
       "id": "tUmmbybAbE4",
       "title": "He Can Fart on Command?! 💨😂 | S2 Ep36",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/tUmmbybAbE4/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCjMMLnF-a4-IB66_rL1lDoVa1SRg",
+      "thumbnail": "https://i.ytimg.com/vi/tUmmbybAbE4/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDx91_t6isCPCONUk50BtGIMotj9A",
       "url": "https://www.youtube.com/watch?v=tUmmbybAbE4",
       "kind": "short",
       "durationSeconds": 0
@@ -1453,7 +1463,7 @@
       "id": "_S-DTrlJzQU",
       "title": "Meet Douchelisha 🐹💀 | S2 Ep36",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/_S-DTrlJzQU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC6bmgWgwOcvOs0BTFaMKptBVxPcg",
+      "thumbnail": "https://i.ytimg.com/vi/_S-DTrlJzQU/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBUErOQFv-X0XnxjqPvhymMAavGDA",
       "url": "https://www.youtube.com/watch?v=_S-DTrlJzQU",
       "kind": "short",
       "durationSeconds": 0
@@ -1525,7 +1535,7 @@
       "id": "b2lPIf-CbeM",
       "title": "Bird Spikes in the Bed?! 💀 | S2 Ep35",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/b2lPIf-CbeM/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAR-5bn6G7MRjlnlvfHaNkkRtlVyA",
+      "thumbnail": "https://i.ytimg.com/vi/b2lPIf-CbeM/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAON1ROxeP_gawxKxSGeVnzWE5FGQ",
       "url": "https://www.youtube.com/watch?v=b2lPIf-CbeM",
       "kind": "short",
       "durationSeconds": 0
@@ -1579,7 +1589,7 @@
       "id": "MAVDSHhjnPw",
       "title": "Girl, You’re a Djo?! 😂 | S2 Ep34",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/MAVDSHhjnPw/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC__XJFpuGTTpXiAQbTTaOOi2ZjOA",
+      "thumbnail": "https://i.ytimg.com/vi/MAVDSHhjnPw/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAQcj-W82Jgq-k0hn-saCeYTYIf8Q",
       "url": "https://www.youtube.com/watch?v=MAVDSHhjnPw",
       "kind": "short",
       "durationSeconds": 0
@@ -1669,7 +1679,7 @@
       "id": "HUppXYjmE38",
       "title": "He Likes a BIG Hot Dog 🌭😂 | S2 Ep33",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/HUppXYjmE38/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLApfk_7Ts6bmZE8o_m842bTw2ZqoA",
+      "thumbnail": "https://i.ytimg.com/vi/HUppXYjmE38/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAvIg4lZSC0bShyu41u_5MeBD6EAQ",
       "url": "https://www.youtube.com/watch?v=HUppXYjmE38",
       "kind": "short",
       "durationSeconds": 0
@@ -1786,7 +1796,7 @@
       "id": "8iwyb2qmfUQ",
       "title": "Would You See Britney Spears Right Now? 🔪😂 | S2 Ep31",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/8iwyb2qmfUQ/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDAxX_5uORV_FbYUsyXROjsQuzdkA",
+      "thumbnail": "https://i.ytimg.com/vi/8iwyb2qmfUQ/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAxC7_B4uaAOZ71k6oY8sO8HDfVVg",
       "url": "https://www.youtube.com/watch?v=8iwyb2qmfUQ",
       "kind": "short",
       "durationSeconds": 0
@@ -1849,7 +1859,7 @@
       "id": "o3FJgFSY2jo",
       "title": "The Fastest Way to Ruin Brunch? 💀🥞 | S2 Ep30",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/o3FJgFSY2jo/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAEEO3qMVJRCE4fghqsI114NrWtjQ",
+      "thumbnail": "https://i.ytimg.com/vi/o3FJgFSY2jo/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDIpjaiN-FtNMhYPQ9N_qINdTkEPQ",
       "url": "https://www.youtube.com/watch?v=o3FJgFSY2jo",
       "kind": "short",
       "durationSeconds": 0
@@ -1869,15 +1879,6 @@
       "published": "",
       "thumbnail": "https://i.ytimg.com/vi/j0SozobMxPw/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAhMggf8I7D7l3jxEWkQ1iTHuc5rA",
       "url": "https://www.youtube.com/watch?v=j0SozobMxPw",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "bB75DNqkvlU",
-      "title": "Numbers Are Confusing… It’s Like Math & Stuff 😂 | S2 Ep30",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/bB75DNqkvlU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDUoBbccsXW-y9jCnVBNYNbGUdeCA",
-      "url": "https://www.youtube.com/watch?v=bB75DNqkvlU",
       "kind": "short",
       "durationSeconds": 0
     }
