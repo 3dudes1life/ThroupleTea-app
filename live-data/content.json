@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-11-03T19:35:19.914341+00:00",
+  "generatedAt": "2026-11-04T00:40:05.215886+00:00",
   "source": "resilient-rss+website+youtube-tabs+atom",
   "sourceStatus": {
     "websiteArchive": "fresh",
@@ -1207,6 +1207,15 @@
       "durationSeconds": 40
     },
     {
+      "id": "HM2XZAVWVPQ",
+      "title": "Never Touch an Ouija Board?! | S2 Ep41",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/HM2XZAVWVPQ/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAK6UDp8Q64Cc8M4KdZbHRsRO_ddA",
+      "url": "https://www.youtube.com/watch?v=HM2XZAVWVPQ",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
       "id": "2J_zFzcvVrg",
       "title": "A Shadow in the Mirror?! | S2 Ep41",
       "published": "",
@@ -1228,17 +1237,8 @@
       "id": "hgk5uk2A3z4",
       "title": "Who Dies First?! | S2 Ep41",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/hgk5uk2A3z4/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDnZ_lgZgJBU1F3WgKP21dwNeXuMQ",
+      "thumbnail": "https://i.ytimg.com/vi/hgk5uk2A3z4/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB_8r4gSiwA1frlIw_LxlwD8X0VRw",
       "url": "https://www.youtube.com/watch?v=hgk5uk2A3z4",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "AePelEn_t10",
-      "title": "Halloween Week Energy | S2 Ep41",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/AePelEn_t10/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB5gBe-l5XrPf7hQvKaPXj_KTEKlA",
-      "url": "https://www.youtube.com/watch?v=AePelEn_t10",
       "kind": "short",
       "durationSeconds": 0
     },
@@ -1246,53 +1246,8 @@
       "id": "4pPwog4MrRg",
       "title": "Is Your Phone Listening?! | S2 Ep40",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/4pPwog4MrRg/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB0jV1w8-EGrmNhuQ7dUQ2e_HA7Kg",
+      "thumbnail": "https://i.ytimg.com/vi/4pPwog4MrRg/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAhbpTdHMt5__YOakmGjcHH-JY_sQ",
       "url": "https://www.youtube.com/watch?v=4pPwog4MrRg",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "tMTdNjUslM0",
-      "title": "MySpace Taught Us to Code?! | S2 Ep40",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/tMTdNjUslM0/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA687FuA5bUtXD9gjRcdMIlksmBXg",
-      "url": "https://www.youtube.com/watch?v=tMTdNjUslM0",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "Ca_K9n4YPz4",
-      "title": "Sneaking Online in 1999 | S2 Ep40",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/Ca_K9n4YPz4/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAxDZCuvUFOy47so6q-Zl_ghrtbPQ",
-      "url": "https://www.youtube.com/watch?v=Ca_K9n4YPz4",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "35NX7YJdZPQ",
-      "title": "Remember Gay.com?! | S2 Ep40",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/35NX7YJdZPQ/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDXoMg3Pq6mmnvwgJVkaecK5zZA_Q",
-      "url": "https://www.youtube.com/watch?v=35NX7YJdZPQ",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "jKvvTX1nIc0",
-      "title": "Gay Dating Before Apps?! | S2 Ep40",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/jKvvTX1nIc0/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBUrljYb7oEIeKltX5Y4yWF1EBRtA",
-      "url": "https://www.youtube.com/watch?v=jKvvTX1nIc0",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "8CdWLvw_-mM",
-      "title": "Mercury Retrograde Again?! 🔮 | S2 Ep40",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/8CdWLvw_-mM/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC8Kmt8C4KDfcx-ajp888DVd54MzQ",
-      "url": "https://www.youtube.com/watch?v=8CdWLvw_-mM",
       "kind": "short",
       "durationSeconds": 0
     },
@@ -1306,56 +1261,11 @@
       "durationSeconds": 0
     },
     {
-      "id": "TcZI2I6-lRo",
-      "title": "We're the Lesbians from Shameless?!  | S2 Ep39",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/TcZI2I6-lRo/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBAu55KT_dcbOH5c4VuzMH5KkM4mg",
-      "url": "https://www.youtube.com/watch?v=TcZI2I6-lRo",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
       "id": "FO7KC8WGiQE",
       "title": "Too Poor for Halloween?! | S2 Ep39",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/FO7KC8WGiQE/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA-d1KrIbCQcqjwd-kXCFRr1qQLDg",
+      "thumbnail": "https://i.ytimg.com/vi/FO7KC8WGiQE/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCKRI_WjfycKPRx7n-48iP3ozo0nw",
       "url": "https://www.youtube.com/watch?v=FO7KC8WGiQE",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "-XaoQcu7HFI",
-      "title": "SEE-THROUGH COKE?!  | S2 Ep39",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/-XaoQcu7HFI/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCmsb1Lf9ym-qRCd1u_pBExVppWDw",
-      "url": "https://www.youtube.com/watch?v=-XaoQcu7HFI",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "tyQ0aeFA5O4",
-      "title": "Ghost in Our Kitchen?! | S2 Ep39",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/tyQ0aeFA5O4/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDoVOVR7o_DTM2mPR7FY0dbSR6pjA",
-      "url": "https://www.youtube.com/watch?v=tyQ0aeFA5O4",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "cIurHP5pwpY",
-      "title": "Your Energy: Oct 16–22 | S2 Ep39",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/cIurHP5pwpY/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBCQZNPvEWgQPB7b0ybi4LEPwQLMw",
-      "url": "https://www.youtube.com/watch?v=cIurHP5pwpY",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "MhIabM7ebpw",
-      "title": "20 Years of Vomit?! 🤮 | S2 Ep38",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/MhIabM7ebpw/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC_I7Q0pD_8K0hyiqdMjT6pvQcB2g",
-      "url": "https://www.youtube.com/watch?v=MhIabM7ebpw",
       "kind": "short",
       "durationSeconds": 0
     },
@@ -1363,125 +1273,8 @@
       "id": "sxwo_aIS1Uc",
       "title": "I'm Burning the Bed! 🔥 | S2 Ep38",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/sxwo_aIS1Uc/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC0omp7Ua2aosEIlGJE132v5pnmMw",
+      "thumbnail": "https://i.ytimg.com/vi/sxwo_aIS1Uc/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCmqTYDUVDiLvR8yZ3G-W1Ho1lb8w",
       "url": "https://www.youtube.com/watch?v=sxwo_aIS1Uc",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "RL9y4aB6mY0",
-      "title": "Tea in My Sugar?! ☕ | S2 Ep38",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/RL9y4aB6mY0/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCtbnt1mYyUedRKbKK8EvPPa4GMIw",
-      "url": "https://www.youtube.com/watch?v=RL9y4aB6mY0",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "EihhtXFJ2JU",
-      "title": "HOT Miracle Whip?! | S2 Ep38",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/EihhtXFJ2JU/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD6Iq472YLigRGTfbuh6CRQuX8Sjw",
-      "url": "https://www.youtube.com/watch?v=EihhtXFJ2JU",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "g2gwQaVoXZM",
-      "title": "Your Energy: Oct 9–15 | S2 Ep38",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/g2gwQaVoXZM/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBGFWsQZiGcr0H6DHAZ_skce6QCfA",
-      "url": "https://www.youtube.com/watch?v=g2gwQaVoXZM",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "O3L7dm5jLmU",
-      "title": "Taco Bell DENIED 😂🌮 | S2 Ep37",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/O3L7dm5jLmU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAPVoJoQZY9NAsqjZw9jJ7SiRMQ1w",
-      "url": "https://www.youtube.com/watch?v=O3L7dm5jLmU",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "olg2fmxUpB8",
-      "title": "Do We Look Like Brothers?! 💀 | S2 Ep37",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/olg2fmxUpB8/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB2skNPjxWGPJ9AWHRL7WcnE64_Ig",
-      "url": "https://www.youtube.com/watch?v=olg2fmxUpB8",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "vHXvSCrs1Vw",
-      "title": "Hey Dumbass… TALK 😂 | S2 Ep37",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/vHXvSCrs1Vw/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDFT85KAibU0lrouLfFfmC1QCybSw",
-      "url": "https://www.youtube.com/watch?v=vHXvSCrs1Vw",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "Hc_bNrfjLpg",
-      "title": "Who Gets the Credit Card? 💳😂 | S2 Ep37",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/Hc_bNrfjLpg/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBrM3DJBYeNb-13DIdJvGbmniIe1Q",
-      "url": "https://www.youtube.com/watch?v=Hc_bNrfjLpg",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "LZ08_E3MAiw",
-      "title": "It’s 8 AM, Caleb! 💀 | S2 Ep37",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/LZ08_E3MAiw/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBmV7jGt9wFc6ScBxS4thwxDvQjfQ",
-      "url": "https://www.youtube.com/watch?v=LZ08_E3MAiw",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "kwOoSZKr2C8",
-      "title": "Four Relationships?! 😳 | S2 Ep37",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/kwOoSZKr2C8/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBmE-ZHkILjVcG17eGrZwhpzOV5uw",
-      "url": "https://www.youtube.com/watch?v=kwOoSZKr2C8",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "vkJnBt_vZTc",
-      "title": "Your Energy: Oct 2–8 🔮 | S2 Ep37",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/vkJnBt_vZTc/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD8wxGrW3M5vyVYqhtSwJKu0Q-gkA",
-      "url": "https://www.youtube.com/watch?v=vkJnBt_vZTc",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "QYAOalW4sM0",
-      "title": "Never Seen The Truman Show?! 💀 | S2 Ep36",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/QYAOalW4sM0/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBeqC6vMFzTR0zI2-M2rxK96z0nBQ",
-      "url": "https://www.youtube.com/watch?v=QYAOalW4sM0",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "LkYpCDvm9sc",
-      "title": "Meat Boy Has Evolved 🥩😂 | S2 Ep36",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/LkYpCDvm9sc/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLConPxXlVOl2lR1X5OTQ7i9t6hiHw",
-      "url": "https://www.youtube.com/watch?v=LkYpCDvm9sc",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "tUmmbybAbE4",
-      "title": "He Can Fart on Command?! 💨😂 | S2 Ep36",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/tUmmbybAbE4/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDx91_t6isCPCONUk50BtGIMotj9A",
-      "url": "https://www.youtube.com/watch?v=tUmmbybAbE4",
       "kind": "short",
       "durationSeconds": 0
     },
@@ -1489,35 +1282,8 @@
       "id": "_S-DTrlJzQU",
       "title": "Meet Douchelisha 🐹💀 | S2 Ep36",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/_S-DTrlJzQU/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA71lWraMK19b-xZVhPis_chOVsjw",
+      "thumbnail": "https://i.ytimg.com/vi/_S-DTrlJzQU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC6bmgWgwOcvOs0BTFaMKptBVxPcg",
       "url": "https://www.youtube.com/watch?v=_S-DTrlJzQU",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "FN6h16sqHqQ",
-      "title": "The Bare Ass Episode 🍑😂 | S2 Ep36",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/FN6h16sqHqQ/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAhp9XVqSwmHjDzPMivRn0DcFqk4w",
-      "url": "https://www.youtube.com/watch?v=FN6h16sqHqQ",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "UWd4odJevOo",
-      "title": "Pig Frogs?! 🐷🐸 | S2 Ep36",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/UWd4odJevOo/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAau7Z87R6t_a5BFj35iyJ0CievqQ",
-      "url": "https://www.youtube.com/watch?v=UWd4odJevOo",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "Vs_yPl1suaQ",
-      "title": "Blackout Hungry 😂 | S2 Ep35",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/Vs_yPl1suaQ/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAELqK00px0Yz4K7krgJFaHvS0zQQ",
-      "url": "https://www.youtube.com/watch?v=Vs_yPl1suaQ",
       "kind": "short",
       "durationSeconds": 0
     },
@@ -1531,47 +1297,11 @@
       "durationSeconds": 0
     },
     {
-      "id": "_Ztud3HjzzA",
-      "title": "Simpletic?! 😂 | S2 Ep35",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/_Ztud3HjzzA/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCn-Qqb9gsag3gOE8dqxbB0crOXgw",
-      "url": "https://www.youtube.com/watch?v=_Ztud3HjzzA",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "7uqYkiylKj8",
-      "title": "My Favorite Is Myself 😂 | S2 Ep35",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/7uqYkiylKj8/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDgC4Y1sIOO_0nB4mlFyXi5YIG2cw",
-      "url": "https://www.youtube.com/watch?v=7uqYkiylKj8",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
       "id": "nVT5Phi6jgQ",
       "title": "Project or …? 😂 | S2 Ep35",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/nVT5Phi6jgQ/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD0D5s185iRMylNdhqg2vcAVLuSPg",
+      "thumbnail": "https://i.ytimg.com/vi/nVT5Phi6jgQ/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD3JvPZHJX6RzenF-eEHf4_4ku6Jg",
       "url": "https://www.youtube.com/watch?v=nVT5Phi6jgQ",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "b2lPIf-CbeM",
-      "title": "Bird Spikes in the Bed?! 💀 | S2 Ep35",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/b2lPIf-CbeM/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAON1ROxeP_gawxKxSGeVnzWE5FGQ",
-      "url": "https://www.youtube.com/watch?v=b2lPIf-CbeM",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "g5-pXIrL3mw",
-      "title": "Your Energy: Sept 18–24 🔮 | S2 Ep35",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/g5-pXIrL3mw/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD0U1jshzhi6BnRUYYx9KK262_zYQ",
-      "url": "https://www.youtube.com/watch?v=g5-pXIrL3mw",
       "kind": "short",
       "durationSeconds": 0
     },
@@ -1585,155 +1315,11 @@
       "durationSeconds": 0
     },
     {
-      "id": "0EAVTGEIE_4",
-      "title": "Glen Powell: Unanimous 😂 | S2 Ep34",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/0EAVTGEIE_4/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC74vi6mVHEtEy0_DXTCewnByCplQ",
-      "url": "https://www.youtube.com/watch?v=0EAVTGEIE_4",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "bHzsbPdURLU",
-      "title": "Hot or Not Before Self-Esteem 💀 | S2 Ep34",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/bHzsbPdURLU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA-xHsM791xPZVUUWAKoknMjAsoeg",
-      "url": "https://www.youtube.com/watch?v=bHzsbPdURLU",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "wm-xMEKBK20",
-      "title": "Girl, Get Your Glasses On 👓😂 | S2 Ep34",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/wm-xMEKBK20/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCQYFZnKLj4O5mHNNwAL3cw7CgySw",
-      "url": "https://www.youtube.com/watch?v=wm-xMEKBK20",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "MAVDSHhjnPw",
-      "title": "Girl, You’re a Djo?! 😂 | S2 Ep34",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/MAVDSHhjnPw/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDJcG8tlZIo4GEsgn6XSHMrTHn6eg",
-      "url": "https://www.youtube.com/watch?v=MAVDSHhjnPw",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "Z7cgbbKkb_s",
-      "title": "Amazon Basics Hotties?! 💀 | S2 Ep34",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/Z7cgbbKkb_s/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAAWDMJnpwjUiiLHoISMMIIuSNv9w",
-      "url": "https://www.youtube.com/watch?v=Z7cgbbKkb_s",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
       "id": "-H6Ewnt19Zo",
       "title": "Does Jason Momoa Smell?! 💀 | S2 Ep34",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/-H6Ewnt19Zo/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA4zsuLy4JsOwnnb0Y0H9Py6CNIWA",
+      "thumbnail": "https://i.ytimg.com/vi/-H6Ewnt19Zo/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDPYoYwNlf2q88Z8SARzES9cJtDAw",
       "url": "https://www.youtube.com/watch?v=-H6Ewnt19Zo",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "NKOpHayarj8",
-      "title": "Your Collective Energy: Sept 11–17 🔮 | S2 Ep34",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/NKOpHayarj8/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBBFDaf601f52iwt706tyVSZPGSjw",
-      "url": "https://www.youtube.com/watch?v=NKOpHayarj8",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "XvUHshzeYjw",
-      "title": "Maluma Broke Will 😂🔥 | S2 Ep34",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/XvUHshzeYjw/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAM0CMapcVOhneUZRy5p88g8b44fw",
-      "url": "https://www.youtube.com/watch?v=XvUHshzeYjw",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "4VWrIWpos6s",
-      "title": "Just Call an Uber?! 💀 | S2 Ep33",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/4VWrIWpos6s/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCIIYVAZcAQSIxVNRt2wezxfl1-xA",
-      "url": "https://www.youtube.com/watch?v=4VWrIWpos6s",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "TOd6G05JDdo",
-      "title": "Caleb in 3 Emojis 😂 | S2 Ep33",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/TOd6G05JDdo/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA19h8G9PAGc7c-IOf6ryIFl8yfjQ",
-      "url": "https://www.youtube.com/watch?v=TOd6G05JDdo",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "cGNaNu-3bSY",
-      "title": "Happy Memorial Day! 💀 | S2 Ep33",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/cGNaNu-3bSY/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBJLdrNmpgaKMyMJDtSaVgIbS29FQ",
-      "url": "https://www.youtube.com/watch?v=cGNaNu-3bSY",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "4NhZav4NdhI",
-      "title": "CLIMATOLOGY IS REAL 😂🌎 | S2 Ep33",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/4NhZav4NdhI/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBgqskRbeOKMqTUvai-lehBf55VWA",
-      "url": "https://www.youtube.com/watch?v=4NhZav4NdhI",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "XKIYPQsg_ts",
-      "title": "We Wrote a 730-Page Book 💀 | S2 Ep33",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/XKIYPQsg_ts/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBo6H7HpDQdkflHp621BW8WBPEc-Q",
-      "url": "https://www.youtube.com/watch?v=XKIYPQsg_ts",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "HUppXYjmE38",
-      "title": "He Likes a BIG Hot Dog 🌭😂 | S2 Ep33",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/HUppXYjmE38/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBeiul1zR1RNE3gwY7GCh6nIQikuw",
-      "url": "https://www.youtube.com/watch?v=HUppXYjmE38",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "316UM__mDJA",
-      "title": "Your Energy for Sept 4–10 🔮 | S2 Ep33",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/316UM__mDJA/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBiJrk5koTV8WYu_8fAno3I8UZ1pQ",
-      "url": "https://www.youtube.com/watch?v=316UM__mDJA",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "y41jw4ceE-o",
-      "title": "Gay & Eating Chick-fil-A?! 💀 | S2 Ep33",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/y41jw4ceE-o/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAzxNPGjtYdG8qd1S-IRf4LsGvVqg",
-      "url": "https://www.youtube.com/watch?v=y41jw4ceE-o",
-      "kind": "short",
-      "durationSeconds": 0
-    },
-    {
-      "id": "BiCNVGO9I4g",
-      "title": "Sex on the Beach Is…  🏖️💀 | S2 Ep32",
-      "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/BiCNVGO9I4g/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDCjZVOsXpMFMxnXwlDhWLIh8wWMQ",
-      "url": "https://www.youtube.com/watch?v=BiCNVGO9I4g",
       "kind": "short",
       "durationSeconds": 0
     },
@@ -1741,7 +1327,7 @@
       "id": "C1VJAD1p6L8",
       "title": "You HAVE to Pick One 🏖️😂 | S2 Ep32",
       "published": "",
-      "thumbnail": "https://i.ytimg.com/vi/C1VJAD1p6L8/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCsEE6A7LXo32yrJ48m8MWgu2Oecg",
+      "thumbnail": "https://i.ytimg.com/vi/C1VJAD1p6L8/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCJuTZRXTLGklPD84h4ViHyZFteFQ",
       "url": "https://www.youtube.com/watch?v=C1VJAD1p6L8",
       "kind": "short",
       "durationSeconds": 0
@@ -1878,6 +1464,420 @@
       "published": "",
       "thumbnail": "https://i.ytimg.com/vi/gAIVx89PD-U/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAScnT_HgOqnXEBgJJ37rGuExXx4g",
       "url": "https://www.youtube.com/watch?v=gAIVx89PD-U",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "o3FJgFSY2jo",
+      "title": "The Fastest Way to Ruin Brunch? 💀🥞 | S2 Ep30",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/o3FJgFSY2jo/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDIpjaiN-FtNMhYPQ9N_qINdTkEPQ",
+      "url": "https://www.youtube.com/watch?v=o3FJgFSY2jo",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "_FxtgS52s5I",
+      "title": "We Accidentally Invented a Mark Consuelos Scandal 💀😂 | S2 Ep30",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/_FxtgS52s5I/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC1touZRy4q_RxkU2lunkinXar2JA",
+      "url": "https://www.youtube.com/watch?v=_FxtgS52s5I",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "j0SozobMxPw",
+      "title": "Syndicated One Episode Ago… Already Unhinged 😂 | S2 Ep30",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/j0SozobMxPw/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAhMggf8I7D7l3jxEWkQ1iTHuc5rA",
+      "url": "https://www.youtube.com/watch?v=j0SozobMxPw",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "bB75DNqkvlU",
+      "title": "Numbers Are Confusing… It’s Like Math & Stuff 😂 | S2 Ep30",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/bB75DNqkvlU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDUoBbccsXW-y9jCnVBNYNbGUdeCA",
+      "url": "https://www.youtube.com/watch?v=bB75DNqkvlU",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "Gva40ZEFUNw",
+      "title": "He Needed a NET… Caleb Said “KNEAD” 💀😂 | S2 Ep30",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/Gva40ZEFUNw/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDtR7F_f7dkEdSPuYoLl_UCdjoQJA",
+      "url": "https://www.youtube.com/watch?v=Gva40ZEFUNw",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "_7A3fvYE7s0",
+      "title": "Collective Energy • August 14–20 🔮✨| S2 Ep30",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/_7A3fvYE7s0/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD8JsPKD_0nzzwTXxqjC_exJCHWZA",
+      "url": "https://www.youtube.com/watch?v=_7A3fvYE7s0",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "yDuXuLtm5Lg",
+      "title": "We Finally Named the Hamster in Will’s Brain 🤖💀 | S2 Ep30",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/yDuXuLtm5Lg/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA0CKdwEQnjM3DC9dRTbzQIwQtL6g",
+      "url": "https://www.youtube.com/watch?v=yDuXuLtm5Lg",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "-4CHyBjkb70",
+      "title": "Who Cares Who You’re Sleeping With? 🌈😂 | S2 Ep29",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/-4CHyBjkb70/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBwkssa186fOtWjrlZNLVzCe_e8_w",
+      "url": "https://www.youtube.com/watch?v=-4CHyBjkb70",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "GZPXnQ7IpjE",
+      "title": "“At Least I’ll Be Basic…” 💀 | S2 Ep 29",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/GZPXnQ7IpjE/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBSSagkPjl__xLOw98RI_5Hf7qJyQ",
+      "url": "https://www.youtube.com/watch?v=GZPXnQ7IpjE",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "yHhY24xTrQU",
+      "title": "Never Mix Cutwater & Fireball… Trust Us. 🥃💀 | S2 Ep29",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/yHhY24xTrQU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD6f6EYQmc9D_TkcBCM8UzvZBZXiA",
+      "url": "https://www.youtube.com/watch?v=yHhY24xTrQU",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "NU_iOdkoBzg",
+      "title": "I Got Replaced by an iPad at the Gay Bar 😂📱 | S2 Ep 29",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/NU_iOdkoBzg/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDHJN6yBr7eAe5S6VxRBPqZjnQN_Q",
+      "url": "https://www.youtube.com/watch?v=NU_iOdkoBzg",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "bHEp3qQrJg4",
+      "title": "How Does Divorce Work in a Throuple? 😂💔 | S2 Ep29",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/bHEp3qQrJg4/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBu5ufJCB3sfI5NE6o_UZ_cw5W-SA",
+      "url": "https://www.youtube.com/watch?v=bHEp3qQrJg4",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "C1mx4Y1WPpc",
+      "title": "How Does $33 Million in Debt Work in a Throuple? 😂💰 | S2 Ep29",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/C1mx4Y1WPpc/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAEu0tW1kjIu4iYyk5BlBm9A08fhg",
+      "url": "https://www.youtube.com/watch?v=C1mx4Y1WPpc",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "NSotmqNXnwE",
+      "title": "Collective Energy • August 7–13 🔮 | Sassy Astrology | S2 Ep 29",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/NSotmqNXnwE/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDO6gljK3x4YM6Kdu4rloArDtUYWA",
+      "url": "https://www.youtube.com/watch?v=NSotmqNXnwE",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "dUiVsMql7lA",
+      "title": "Our Domestic Partnership Meant… NOTHING? 💍😳 | S2 Ep29",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/dUiVsMql7lA/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB46P49wgCRl9aOgM7X9a80oQI85g",
+      "url": "https://www.youtube.com/watch?v=dUiVsMql7lA",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "S5t7O0Uo1PI",
+      "title": "“I Got”… Wait, WHAT? 😂💀 | S2 Ep28",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/S5t7O0Uo1PI/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCZr6O6tIWLk0e6czFjXIBCR37RWw",
+      "url": "https://www.youtube.com/watch?v=S5t7O0Uo1PI",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "VKbi_dafbt0",
+      "title": "When Your Type A Partner Ruins Coffee Time ☕️😂 | S2 Ep28",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/VKbi_dafbt0/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCU8-b29qUCunWWD29YkjXZKq8f8Q",
+      "url": "https://www.youtube.com/watch?v=VKbi_dafbt0",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "ZCQJQW4pvDM",
+      "title": "Why Do We Sound Like The View…  🐔😂 | EP 28",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/ZCQJQW4pvDM/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDJAECXR3tdyNV7WNCdb0hgKjrnjA",
+      "url": "https://www.youtube.com/watch?v=ZCQJQW4pvDM",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "ykwBU4V6CKY",
+      "title": "Flat Earthers vs. Gemini Logic 🌎😂 | S2 Ep28",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/ykwBU4V6CKY/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAqFVrsUd7jsONggNMZnLbLMn0ldA",
+      "url": "https://www.youtube.com/watch?v=ykwBU4V6CKY",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "uohiAPQn15w",
+      "title": "Stop Trying to Make “Tuning It Up” Happen 😂 | S2 Ep28",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/uohiAPQn15w/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBU5ujio3mED5dcSXwcz4mqdaKDvg",
+      "url": "https://www.youtube.com/watch?v=uohiAPQn15w",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "h-0hdpLdEPM",
+      "title": "He Said “Wrong Throat”… 💀🐐 | S2 Ep28",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/h-0hdpLdEPM/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDbohTN_if6hoNiedc2KkCfM1P9zQ",
+      "url": "https://www.youtube.com/watch?v=h-0hdpLdEPM",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "0Jz0UozpJOg",
+      "title": "Your Collective Energy This Week ✨🔮 | Sassy Astrology | S2 Ep28",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/0Jz0UozpJOg/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLC7N1i8XUSLzsOVpgCCFNfJ2rayOg",
+      "url": "https://www.youtube.com/watch?v=0Jz0UozpJOg",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "CxKnFU2boAU",
+      "title": "His Mustache Didn’t Turn White From Age… 💀 | S2 Ep28",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/CxKnFU2boAU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAx78F0g8Ykwj_F7jrnVgsufSvhvQ",
+      "url": "https://www.youtube.com/watch?v=CxKnFU2boAU",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "h4aKj8AOyA8",
+      "title": "Pocahontas… or “Poke Your”? 💀😂 | S2 Ep27",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/h4aKj8AOyA8/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCCN8gilFU5mHE5O7L6fXXIHGDWZA",
+      "url": "https://www.youtube.com/watch?v=h4aKj8AOyA8",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "JkdZzmGddgs",
+      "title": "Sleep Number Beds Are for Saving Our Hips 😂🛏️ | S2 Ep27",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/JkdZzmGddgs/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAXUH0LoGRGESR7REyR9BAVNktqCA",
+      "url": "https://www.youtube.com/watch?v=JkdZzmGddgs",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "HkeVoAqErmw",
+      "title": "The Deli Meat Upgrade 😂🥪 | S2 Ep27",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/HkeVoAqErmw/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBb8rYN2MDX9j0hEkZL784v0fBg4g",
+      "url": "https://www.youtube.com/watch?v=HkeVoAqErmw",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "a_N4reqfUWU",
+      "title": "Remember Gateway Computers? 💻😂 | S2 Ep27",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/a_N4reqfUWU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDOvZ3UJfYN6zBIIZiwdPdI280Lvw",
+      "url": "https://www.youtube.com/watch?v=a_N4reqfUWU",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "GLulygC3kUE",
+      "title": "We Had NO Idea What Cap Rocks Were 😂🪨 | S2 Ep27",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/GLulygC3kUE/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLD7t5hRZDn7VPJwXKpfAosHPkSY7Q",
+      "url": "https://www.youtube.com/watch?v=GLulygC3kUE",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "dwvZk_LwtXk",
+      "title": "We Thought Homemade Lemonade Was Fancy 🍋😂 | S2 Ep27",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/dwvZk_LwtXk/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLARQ3VxWulaIpxob57QEyMw8qSjIw",
+      "url": "https://www.youtube.com/watch?v=dwvZk_LwtXk",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "YAyxVfxfN7Y",
+      "title": "Your Weekly Astrology Reading 🔮 | July 24–30 | S2 Ep27",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/YAyxVfxfN7Y/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAayyB0oE4fzlZys-CGYekSOfffKw",
+      "url": "https://www.youtube.com/watch?v=YAyxVfxfN7Y",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "VBbKY1WW_Jw",
+      "title": "We Thought Two-Story Houses Meant You Were Rich 😂🏡 | S2 Ep27",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/VBbKY1WW_Jw/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCH9kcyHznUGdLi6_tvS-ZJH6xcbg",
+      "url": "https://www.youtube.com/watch?v=VBbKY1WW_Jw",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "RkDMc_u_e2s",
+      "title": "Dear Throuple Hotline 😭",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/RkDMc_u_e2s/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB-chHaB50hOJyt21WwRzC-IMw_Lg",
+      "url": "https://www.youtube.com/watch?v=RkDMc_u_e2s",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "DabXxEnmfjk",
+      "title": "How Did We Go From Tacos to a Hole Pic?! 🌮💀 | S2 Ep26",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/DabXxEnmfjk/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAIgBTgSwQm02miHd0uSR_RVFA_cg",
+      "url": "https://www.youtube.com/watch?v=DabXxEnmfjk",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "Dd_ZK4wl-6A",
+      "title": "Is Hawaii Sending Us Signs?! 🌺👀 | S2 Ep26",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/Dd_ZK4wl-6A/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLB5jiTancWnTBALhwm-mNFITnKv_w",
+      "url": "https://www.youtube.com/watch?v=Dd_ZK4wl-6A",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "inIX-HX6NuE",
+      "title": "The Hair Removal Reality Nobody Talks About 😭💀 | S2 Ep26",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/inIX-HX6NuE/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDQE1ULSo0q8smFFN2m2nZPoTVhZA",
+      "url": "https://www.youtube.com/watch?v=inIX-HX6NuE",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "X6G2_CaeHv4",
+      "title": "Daniel Had an Online Boyfriend in England?! 🇬🇧😭 | S2 Ep26",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/X6G2_CaeHv4/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLACzhpSKC6HS9nRCdJUY5c9R42MuQ",
+      "url": "https://www.youtube.com/watch?v=X6G2_CaeHv4",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "n0AR2R_cqdk",
+      "title": "Buying a Trailer Turned Into?! 😭💀 | S2 Ep26",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/n0AR2R_cqdk/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCBZ-EFzd3IZZdZz7lgvNkQQfMAtg",
+      "url": "https://www.youtube.com/watch?v=n0AR2R_cqdk",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "0Izvu5dzMTw",
+      "title": "Should Will Grow a Skullet for Hawaii?! 💀🌴 | S2 Ep26",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/0Izvu5dzMTw/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDMBuLjV9ARep7SxnibJIvvrNq9Tw",
+      "url": "https://www.youtube.com/watch?v=0Izvu5dzMTw",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "rI_NI9zLhH4",
+      "title": "Sassy Astrology 🔮 Collective Energy | July 17–23 | S2 Ep26",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/rI_NI9zLhH4/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAghMsQoDVXwf1tLGB7rP4Mr0oYnQ",
+      "url": "https://www.youtube.com/watch?v=rI_NI9zLhH4",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "MkF0MbDi2Jk",
+      "title": "Will Keeps His Gay Card WHERE?! 🌈💀 | S2 Ep26",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/MkF0MbDi2Jk/oar3.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA6cPeQZ8VPOwW9hpV3MzVRmYm9JA",
+      "url": "https://www.youtube.com/watch?v=MkF0MbDi2Jk",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "zYbgryzBa4U",
+      "title": "There’s a Bird That Says CHEESEBURGER?! 🍔🐦 | S2 Ep25",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/zYbgryzBa4U/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBLMqpXstwD3GVyyQ55Zgf0Z6g5aA",
+      "url": "https://www.youtube.com/watch?v=zYbgryzBa4U",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "RjB9eCdIwF8",
+      "title": "Tahoe Trees Ruined Our Lives 🌲😭 | S2 Ep25",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/RjB9eCdIwF8/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLA6XxsmbLT0yNEym6dj8cRtgWSchQ",
+      "url": "https://www.youtube.com/watch?v=RjB9eCdIwF8",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "WEa34SUMQvc",
+      "title": "They Took Photos for 45 MINUTES 😭🏖️ | S2 Ep25",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/WEa34SUMQvc/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLAAw_8f5m2yph4WOQUDYn6mmAW6mg",
+      "url": "https://www.youtube.com/watch?v=WEa34SUMQvc",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "7ezFdVFQp7A",
+      "title": "A Squirrel Threatened Me 😭🐿️ | S2 Ep25",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/7ezFdVFQp7A/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCXfYCm7-cikVpnJmysjmcG3dYJ5Q",
+      "url": "https://www.youtube.com/watch?v=7ezFdVFQp7A",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "GMUCVErhAC4",
+      "title": "I’m Old Enough to Be a Grandpa?! 😭💀 | S2 Ep25",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/GMUCVErhAC4/oar1.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLCVI-aa8yi0bs7Ao6jQtRBkldrcQA",
+      "url": "https://www.youtube.com/watch?v=GMUCVErhAC4",
+      "kind": "short",
+      "durationSeconds": 0
+    },
+    {
+      "id": "thfKmMxWZLY",
+      "title": "Rent Was Due… So He Did WHAT Before The Interview?! 😭 | S2 Ep25",
+      "published": "",
+      "thumbnail": "https://i.ytimg.com/vi/thfKmMxWZLY/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBja7l3ZWJSTLApQxIILLwSzYa6Vg",
+      "url": "https://www.youtube.com/watch?v=thfKmMxWZLY",
       "kind": "short",
       "durationSeconds": 0
     }
